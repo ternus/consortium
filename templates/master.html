@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consortium</title>
+    <style type="text/css">@import "{{ STATIC_URL }}/css/master.css";</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        {% block header %}
+        {% endblock %}
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            {% block sidebar %}
+            {% endblock %}
+        </div>
+        <div class="main">
+            {% block main %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="footer">
+
+    </div>
+</div>
+
+</body>
+</html>
