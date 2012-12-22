@@ -1,0 +1,3 @@
+[submodule "gametex"]
+	path = gametex
+	url = git@github.com:ternus/gametex-django.git
