@@ -1,0 +1,22 @@
+{% load i18n %}
+{% extends "master.html" %}
+
+{% block main %}
+    <div class="node">
+        <div id="node_name">{{ node.name }}</div>
+        <div id="node_desc">{{ node.desc }}</div>
+        <div id="node_items">
+
+        {% trans "I have the following items for sale:" %}
+            <ul class="node_sale_item">
+            {% for item in forsale %}
+                <li><span class="node_sale_item_name">{{ item.name }}</span> -
+                    <span class="node_sale_item_cost">{{ item.cost }}</span>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}
