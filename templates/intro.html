@@ -1,0 +1,26 @@
+{% extends "consortium.html" %}
+
+{% block headers %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.timer.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.countdown.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/time.js"></script>
+
+    <script type="text/javascript">
+    $('document').ready(function(){
+        $('#consortium_countdown').countdown(
+                {until: new Date(2013, 2, 8, 18, 0, 0),
+                format: "dHMS",
+                compact: true});
+        });
+    </script>
+
+{% endblock %}
+
+{% block container %}
+    <div id="consortium_hero">Consortium</div>
+    <div id="consortium_runtime">March 8-17, 2013</div>
+    <div id="consortium_countdown"></div>
+
+    <div id="consortium_gms">consortium-gms at mit dot edu</div>
+
+{% endblock %}

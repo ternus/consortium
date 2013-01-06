@@ -1,5 +1,6 @@
+# coding=utf-8
 from django.conf.urls import patterns, include, url
-
+from django.utils.translation import ugettext as _
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -7,11 +8,10 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'hexgrid2.views.home', name='home'),
-    # url(r'^hexgrid2/', include('hexgrid2.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
+    url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'intro.html'}),
+    url(r'^%s/' % _('market'), include('hexgrid.urls')),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )

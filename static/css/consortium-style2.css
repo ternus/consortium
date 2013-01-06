@@ -1,0 +1,47 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+    background: url('/static/img/wild_oliva.png');
+}
+
+.container {
+    background: url('/static/img/use_your_illusion.png');
+    color: #ddd !important;
+    box-shadow: 0px 3px 5px #111 !important;
+    text-shadow: 0px 1px 3px #aaa !important;
+}
+
+#consortium_header {
+    background: url('/static/img/bg.png');
+    font-family: "Orbitron", cursive;
+}
+#consortium_logo {
+}
+
+#consortium_hero {
+    font-variant: small-caps;
+    font-family: "Orbitron";
+    text-shadow: 0px 1px 4px #aaa !important;
+
+}
+
+#consortium_runtime {
+    font-family: "Orbitron";
+    text-shadow: 0px 1px 4px #aaa !important;
+
+}
+
+
+#consortium_countdown {
+    font-family: "Orbitron";
+    text-shadow: 0px 1px 4px #aaa !important;
+    margin-bottom: 10px;
+
+}
+
+#consortium_gms {
+    font-family: "Orbitron";
+    text-shadow: 0px 1px 4px #aaa !important;
+
+}

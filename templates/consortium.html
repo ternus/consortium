@@ -1,0 +1,73 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consortium</title>
+    <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+    <style type="text/css">@import "{{ STATIC_URL }}css/master.css";</style>
+    <style type="text/css">@import "{{ STATIC_URL }}css/consortium.css";</style>
+    <style type="text/css">@import "{{ STATIC_URL }}css/consortium-style2.css";</style>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.corner.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+        })
+    </script>
+
+    {% block headers %}
+    {% endblock %}
+</head>
+<body>
+
+<div id="consortium_header">
+    <div id="consortium_header_inner">
+        <div class="topbar_left">
+            <ul>
+                <li id="consortium_logo">
+                    <a href="/">
+                        {% trans "Consortium" %}
+                    </a>
+                </li>
+                {% if char %}
+                <li class="points">
+                    <a href="/market/">Bakaara Market</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="topbar_right">
+            <ul>
+            {% if char %}
+                <li class="user">{{ char.char.name }}</li>
+                <li class="gameday">Day {{ game_day }}</li>
+                <li class="logout"><a href="{% url logout %}">Logout</a></li>
+            {% else %}
+                <li>
+                <form method="post" action="{% url login %}">
+                    {% csrf_token %}
+                    <td><label for="id_username">Username</label></td>
+                    <td><input id="id_username" type="text" name="username" maxlength="30" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="id_password">Password</label></td>
+                        <td><input type="password" name="password" id="id_password" /></td>
+                    </tr>
+                    <input type="submit" value="Login" />
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </form>
+
+                </li>
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container note">
+    {% block container %}
+    {% endblock %}
+</div>
+</body>

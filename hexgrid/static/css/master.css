@@ -1,8 +1,27 @@
-.container {
-    margin:auto;
-    width:600px;
-}
+
 
 .header {
+    font-size: 35pt;
+    font-family: "Permanent Marker", cursive;
+    text-shadow: 1px 1px 2px #ccc;
+}
 
+
+.sidebar {
+    float: left;
+    width: 150px;
+    font-size: 10pt;
+}
+
+.main {
+
+}
+
+#node_name {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+#node_desc {
+    margin-bottom: 5px;
 }

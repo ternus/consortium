@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Consortium</title>
-    <style type="text/css">@import "{{ STATIC_URL }}/css/master.css";</style>
-</head>
-<body>
+{% extends "consortium.html" %}
+{% load i18n %}
 
-<div class="container">
+{% block container %}
     <div class="header">
+    {% trans "The Bakaara Market" %}
         {% block header %}
         {% endblock %}
     </div>
     <div class="content">
+        <div class="messages">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
         <div class="sidebar">
             {% block sidebar %}
             {% endblock %}
@@ -24,7 +30,4 @@
     <div class="footer">
 
     </div>
-</div>
-
-</body>
-</html>
+{% endblock %}

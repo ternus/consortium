@@ -7,3 +7,5 @@ BASE_PRICE = "1" # Must be a string!
 
 # Field on your items that denotes their price.  Could be e.g. "cost"
 PRICE_FIELD = "price"
+
+HOME_NODE = 314

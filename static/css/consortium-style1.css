@@ -1,0 +1,30 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+    background: url('/static/img/seamlesstexture15_1200.jpg');
+}
+
+.container {
+    background: url('/static/img/paper_texture2.jpg');
+}
+
+#consortium_header {
+    background: url('/static/img/bg.png');
+}
+#consortium_logo {
+    font-family: "Permanent Marker", cursive;
+}
+
+#consortium_hero {
+    font-variant: small-caps;
+    font-family: "Permanent Marker";
+}
+
+#consortium_runtime {
+    font-family: "Permanent Marker";
+}
+
+#consortium_gms {
+    font-family: "Permanent Marker";
+}
