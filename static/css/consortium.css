@@ -25,7 +25,7 @@ body {
     height: 32px;
     font-size: 14px;
     width: 100%;
-    box-shadow: 0 0 8px 0 #000000;
+    box-shadow: 0 0 8px 0 #333;
 }
 
 .topbar_left {
@@ -97,13 +97,47 @@ body {
     text-shadow: 0px 2px 2px #333;
 }
 
-#consortium_teaser {
+#consortium_blurb {
     margin: 40px auto 0px auto;
     width: 70%;
+    text-align: left;
+    padding: 10px;
+    padding-top: 25px;
+    background: url('/static/img/lined_paper.png') #ddd;
+    text-shadow: 0px 1px 1px #666;
+    box-shadow: 1px 1px 10px #999;
+    font-family: monospace;
+    color: #8b4513;
+    border: 1px dashed #333;
+
+}
+
+#floater {
+    position:relative;
+}
+
+#consortium_teaser {
+    /*float: right;*/
+    position:absolute;
+    /*font-variant: small-caps;*/
+    /*top:-32px;*/
+    top:-25px;
+    left:32%;
+    font-size: 20pt;
+    color: #ccc;
     text-align: center;
-    padding: 20px;
-    background:black;
-    border-radius: 5px;
-    text-shadow: 0px 1px 2px #666;
-    box-shadow: 0px 0px 4px #444;
+    padding:10px;
+    width:33%;
+    /*margin-right: 150px;*/
+    /*transform:rotate(-7deg);*/
+    /*-ms-transform:rotate(-7deg);*/
+    /*-moz-transform:rotate(-7deg);*/
+    /*-webkit-transform:rotate(-7deg);*/
+    /*-o-transform:rotate(-7deg);*/
+    background: rgba(0,0,0,0.9);
+    box-shadow: 1px 1px 3px #333;
+}
+
+.dateline {
+    font-weight: bold;
 }
