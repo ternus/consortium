@@ -145,7 +145,8 @@ INSTALLED_APPS = (
     'django_extensions',
     'singleton_models',
     'hexgrid',
-    'gametex'
+    'gametex',
+    'app'
 )
 
 # A sample logging configuration. The only tangible logging

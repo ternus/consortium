@@ -1,0 +1,14 @@
+{% extends "consortium.html" %}
+
+{% block container %}
+    <div class="consortium" id="consortium_runtime">Mogadishu Visa Application</div>
+    <div class="consortium">
+        <form action="{% url app %}" method="POST">
+            {% csrf_token %}
+            <table>
+            {{ form.as_table }}
+            </table>
+            <input type="submit" value="Apply For Consortium"/>
+        </form>
+    </div>
+{% endblock %}
