@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django_extensions',
     'singleton_models',
+    'south',
     'hexgrid',
     'gametex',
     'app'
