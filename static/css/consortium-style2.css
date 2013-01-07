@@ -102,7 +102,7 @@ body {
     text-shadow: 0px 1px 1px #aaa;
 }
 
-#app label {
+#app label, .text {
     font-size: 11pt;
     font-weight: normal;
     font-family: Helvetica Neue, Helvetica, sans-serif;
@@ -119,6 +119,15 @@ body {
     width: 100%;
     text-align: center;
     margin:auto;
+}
+
+#app #separator {
+    text-align: center;
+}
+
+#app th {
+    text-align: justify;
+    padding-right: 15px;
 }
 
 #app #apply {

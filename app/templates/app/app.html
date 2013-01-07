@@ -8,7 +8,7 @@
             Please fill out the information below to the best of your ability, as it
             will assist us in providing the best possible quality of service.
         </p>
-        <p>Applications are due by 11:59 p.m. on the first of March, 2013.
+        <p>Applications are due by 6 p.m. EST on the first of March, 2013.
         </p>
         <p class="ooc">
             If you fill out at least your name and email
@@ -24,7 +24,12 @@
             </div>
             {% csrf_token %}
             <table>
-                {{ form.as_table }}
+                {% for field in form %}
+                <tr><th>{{ field.label_tag }}</th><td>{{ field }}</td></tr>
+                    {% ifequal field.name "how_cast" %}
+                    <tr><td colspan="2" id="separator" class="text">The questions below are optional; more detail is always good.</td></tr>
+                    {% endifequal %}
+                {% endfor %}
             </table>
             <div class="appbutton">
                 <input type="submit" value="Apply For Consortium" id="apply" name="app_submit" class="gradientbutton"/>
