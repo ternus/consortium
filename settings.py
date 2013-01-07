@@ -175,6 +175,13 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'log_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(ROOT_PATH, 'logs/django.log'),
+            'maxBytes': '16777216', # 16megabytes
+            'formatter': 'verbose'
+        },
     }
 }
 
