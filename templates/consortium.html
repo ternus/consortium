@@ -1,5 +1,9 @@
 {% load i18n %}
 <!DOCTYPE html>
+
+<!-- Written by ternus <ternus at cternus dot net> -->
+<!-- http://cternus.net -->
+
 <html>
 <head>
     <title>Consortium</title>
@@ -14,13 +18,6 @@
 
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.corner.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-        })
-    </script>
-
     {% block headers %}
     {% endblock %}
 </head>
@@ -59,8 +56,8 @@
                         <td><label for="id_password">Password</label></td>
                         <td><input class="login_input" type="password" name="password" id="id_password" /></td>
                     </tr>
-                    <input id="login_button" type="submit" value="Login" />
-                    <input type="hidden" name="next" value="{{ next }}" />
+                    <input id="login_button" class="consortium" type="submit" value="Login" />
+                    <input type="hidden" name="next" value="/market/" />
                 </form>
 
                 </li>
