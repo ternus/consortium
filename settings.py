@@ -10,8 +10,15 @@ ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 print ROOT_PATH
 
 ADMINS = (
+    ('ternus', 'ternus@cternus.net'),
     # ('Your Name', 'your_email@example.com'),
 )
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'consortium-gms@cternus.net'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+
 
 MANAGERS = ADMINS
 
@@ -158,7 +165,8 @@ LOGGING = {
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True,
         }
     },
     'loggers': {
