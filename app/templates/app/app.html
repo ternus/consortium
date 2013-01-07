@@ -3,29 +3,31 @@
 {% block container %}
     <div class="consortium_smallheader consortium">Mogadishu Immigration and Customs Bureau</div>
     <div class="consortium_text" id="app_instructions">
-    <p>
-        The Government of Somalia is now accepting applications for residential and permanent visas.
-        Please fill out the information below to the best of your ability, as it
-        will assist us in providing the best possible quality of service.
-    </p>
+        <p>
+            The Government of Somalia is now accepting applications for residential and permanent visas.
+            Please fill out the information below to the best of your ability, as it
+            will assist us in providing the best possible quality of service.
+        </p>
         <p>Applications are due by 11:59 p.m. on the first of March, 2013.
-    </p>
-    <p class="ooc">
-        If you'd like to leave the app and come back, fill out at least your name and email
-        and click the "save" button below.  You'll receive an email with a link to the app,
-        and can come back and resume it at your leisure.
-    </p>
+        </p>
+        <p class="ooc">
+            If you fill out at least your name and email
+            and click the "save" button below, your partial app will be saved.  You'll receive an email with a link to your app
+            and may resume it at your leisure.
+        </p>
     </div>
 
     <div class="consortium" id="app">
-        <form action="{% url app %}" method="POST">
-            <input type="submit" id="save" class="gradientbutton" name="app_submit" value="Save App" />
+        <form action="{% url app app_id %}" method="POST">
+            <div class="appbutton">
+                <input type="submit" id="save" class="gradientbutton" name="app_submit" value="Save App" />
+            </div>
             {% csrf_token %}
             <table>
-            {{ form.as_table }}
+                {{ form.as_table }}
             </table>
-            <div id="appbutton">
-            <input type="submit" value="Apply For Consortium" id="apply" name="app_submit" class="gradientbutton"/>
+            <div class="appbutton">
+                <input type="submit" value="Apply For Consortium" id="apply" name="app_submit" class="gradientbutton"/>
             </div>
         </form>
     </div>

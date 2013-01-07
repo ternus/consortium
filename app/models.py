@@ -3,6 +3,7 @@ import hashlib
 
 from django.db import models
 from django.forms import ModelForm, Textarea
+from datetime import datetime
 
 ML=256
 
@@ -28,18 +29,19 @@ class ConsortiumApp(models.Model):
     changing_minds = models.TextField(blank=True, verbose_name="What is your preferred method of changing people's minds?")
     what_else = models.TextField(blank=True, verbose_name="What else should we know?")
 
-    saved_on = models.DateTimeField(blank=True)
-    apped_on = models.DateTimeField(blank=True)
+    saved_on = models.DateTimeField(blank=True, null=True)
+    apped_on = models.DateTimeField(blank=True, null=True)
 
     submitted = models.BooleanField(default=False)
-    app_id = models.CharField(blank=True, max_length=ML, editable=False)
+    app_id = models.CharField(blank=True, max_length=ML)
 
     def __unicode__(self):
-        return "%s <%s>" % (self.name, self.email)
+        return "%s <%s> %s" % (self.name, self.email,
+            "Final" if self.submitted else "Temp")
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.app_id = hashlib.sha1("app_"+self.email).hexdigest()[:6]
+            self.app_id = hashlib.sha1(str(datetime.now())).hexdigest()[:6]
         return super(ConsortiumApp, self).save(*args, **kwargs)
 
 class AppForm(ModelForm):
@@ -47,7 +49,7 @@ class AppForm(ModelForm):
         model = ConsortiumApp
         attrs = {'cols':40, 'rows':4}
         small = {'cols':40, 'rows':2}
-
+        exclude = ('saved_on', 'apped_on', 'submitted', 'app_id')
         widgets = {
 
                 "do_not_call": Textarea(attrs=small),
@@ -67,5 +69,4 @@ class AppForm(ModelForm):
                 "campus": Textarea(attrs=attrs),
                 "changing_minds": Textarea(attrs=attrs),
                 "what_else": Textarea(attrs=attrs),
-
-        }
+                    }

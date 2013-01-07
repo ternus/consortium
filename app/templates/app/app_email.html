@@ -1,0 +1,11 @@
+<html>
+<body>
+{% for field in form %}
+<div>
+    <div style="text-decoration: underline; font-weight: bold">{{ field.label }}</div>
+    <div>{{ field.value|linebreaks }}</div>
+</div>
+{% endfor %}
+</table>
+</body>
+</html>
