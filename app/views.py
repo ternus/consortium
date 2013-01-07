@@ -10,6 +10,7 @@ from models import AppForm, ConsortiumApp
 
 
 def app(request, app_id=None):
+    game_time = datetime(2013,3,1,6)
     if request.method == 'POST':
         try:
             instance = ConsortiumApp.objects.get(app_id=app_id)
@@ -47,4 +48,4 @@ def app(request, app_id=None):
         form = AppForm(instance=app)
     else:
         form = AppForm()
-    return render(request, "app/app.html", {'form': form, 'app_id': app_id})
+    return render(request, "app/app.html", {'form': form, 'app_id': app_id, 'game_time': game_time})

@@ -1,4 +1,5 @@
 {% extends "consortium.html" %}
+{% load humanize %}
 
 {% block container %}
     <div class="consortium_smallheader consortium" id="appheader">Mogadishu Immigration and Customs Bureau</div>
@@ -8,7 +9,8 @@
             Please fill out the information below to the best of your ability, as it
             will assist us in providing the best possible quality of service.
         </p>
-        <p>Applications are due by 6 a.m. EST on Friday, the first of March, 2013.
+        <p>
+            Applications are due by 6 a.m. EST on Friday, the first of March, 2013 {% if game_time %}({{ game_time|naturaltime }}){% endif %}.
         </p>
         <p>Game runs March 8<sup>th</sup>-17<sup>th</sup>, 2013.
         </p>
