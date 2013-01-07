@@ -1,4 +1,5 @@
 # coding=utf-8
+import hashlib
 
 from django.db import models
 from django.forms import ModelForm, Textarea
@@ -27,11 +28,19 @@ class ConsortiumApp(models.Model):
     changing_minds = models.TextField(blank=True, verbose_name="What is your preferred method of changing people's minds?")
     what_else = models.TextField(blank=True, verbose_name="What else should we know?")
 
-    saved_on = models.DateTimeField(auto_now=True)
+    saved_on = models.DateTimeField(blank=True)
+    apped_on = models.DateTimeField(blank=True)
+
+    submitted = models.BooleanField(default=False)
+    app_id = models.CharField(blank=True, max_length=ML, editable=False)
 
     def __unicode__(self):
         return "%s <%s>" % (self.name, self.email)
 
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.app_id = hashlib.sha1("app_"+self.email).hexdigest()[:6]
+        return super(ConsortiumApp, self).save(*args, **kwargs)
 
 class AppForm(ModelForm):
     class Meta:
