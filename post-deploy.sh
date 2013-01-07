@@ -3,7 +3,7 @@
 source /home/gm/virtualenvs/consortium/bin/activate
 
 export REPO_DIR="/home/gm/repos/consortium/"
-export DJANGO_SETTINGS_MODULE="consortium.settings"
+export DJANGO_SETTINGS_MODULE="settings"
 export PYTHONPATH="$REPO_DIR:$PYTHONPATH"
 
 cd $REPO_DIR
