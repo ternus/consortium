@@ -27,6 +27,7 @@ def app(request, app_id=None):
                     [app.email])
                 msg.content_subtype = 'html'
                 msg.send()
+
                 return redirect(reverse('app', args=[app.app_id]))
             else:
                 app = form.save(commit=False)
@@ -37,7 +38,7 @@ def app(request, app_id=None):
                 msg = EmailMessage("[Consortium] App from %s" % app.name,
                     render_to_string('app/app_email.html', {'form': form}),
                     "consortium-gms@cternus.net",
-                    ['ternus@cternus.net'])
+                    ['consortium-gms@mit.edu'])
                 msg.content_subtype = 'html'
                 msg.send()
                 return render(request, "app/postapp.html", {'app': app})
