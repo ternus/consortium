@@ -14,34 +14,53 @@ body {
 
 #consortium_header {
     background: url('/static/img/bg.png');
-    font-family: "Orbitron", cursive;
+    font-family: "Orbitron", Helvetica, sans-serif;
+    box-shadow: 0 0 8px 0 #000000;
+    text-shadow: 0px 2px 3px #2A2A2A;
 }
+
 #consortium_logo {
 }
 
 #consortium_hero {
-    font-variant: small-caps;
-    font-family: "Orbitron";
-    text-shadow: 0px 1px 4px #aaa !important;
+    font-family: "Orbitron", Helvetica, sans-serif;
+    text-shadow: 0px 2px 4px #aaa !important;
 
 }
 
 #consortium_runtime {
-    font-family: "Orbitron";
+    font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
     text-shadow: 0px 1px 4px #aaa !important;
 
 }
 
 
 #consortium_countdown {
-    font-family: "Orbitron";
+    font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
     text-shadow: 0px 1px 4px #aaa !important;
     margin-bottom: 10px;
 
 }
 
 #consortium_gms {
-    font-family: "Orbitron";
+    font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
     text-shadow: 0px 1px 4px #aaa !important;
 
+}
+
+.login_input  {
+    background: #666;
+    border: 1px solid black;
+    font-size: 10pt;
+    font-family: Helvetica, sans-serif;
+}
+
+#login_button {
+    background: #666;
+    border: 1px solid black;
+}
+
+#login_button:hover {
+    background: #aaa;
+    cursor: pointer;
 }
