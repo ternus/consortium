@@ -10,3 +10,4 @@ cd $REPO_DIR
 python manage.py collectstatic --noinput
 
 echo `date` >> /home/gm/www/static/last_updated.txt
+sudo apache2ctl configtest && sudo apache2ctl graceful
