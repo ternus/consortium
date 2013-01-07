@@ -101,6 +101,8 @@ body {
 #app {
     text-shadow: 0px 1px 1px #aaa;
     padding: 10px;
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+
 }
 
 #app label, .text {
@@ -117,6 +119,10 @@ body {
 }
 
 #app .appbutton {
+}
+
+#app .field_error {
+    color: #f33;
 }
 
 #app #separator {
@@ -144,6 +150,8 @@ body {
     font-size: 12pt;
     text-align: justify;
 }
+
+
 .ooc {
     font-style: italic;
 }
