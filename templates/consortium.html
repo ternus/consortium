@@ -46,16 +46,16 @@
                 <li class="logout"><a href="{% url logout %}">Logout</a></li>
             {% else %}
                 <li>
-                <form method="post" action="{% url login %}">
+                <form method="post" id="login_form" action="{% url login %}">
                     {% csrf_token %}
                     <td><label for="id_username">Username</label></td>
-                    <td><input id="id_username" type="text" name="username" maxlength="30" /></td>
+                    <td><input class="login_input" id="id_username" type="text" name="username" maxlength="30" /></td>
                     </tr>
                     <tr>
                         <td><label for="id_password">Password</label></td>
-                        <td><input type="password" name="password" id="id_password" /></td>
+                        <td><input class="login_input" type="password" name="password" id="id_password" /></td>
                     </tr>
-                    <input type="submit" value="Login" />
+                    <input id="login_button" type="submit" value="Login" />
                     <input type="hidden" name="next" value="{{ next }}" />
                 </form>
 
