@@ -19,13 +19,14 @@
 
     <div class="consortium" id="app">
         <form action="{% url app app_id %}" method="POST">
+        {{ form.non_field_errors }}
             <div class="appbutton">
                 <input type="submit" id="save" class="gradientbutton" name="app_submit" value="Save App" />
             </div>
             {% csrf_token %}
             <table>
                 {% for field in form %}
-                <tr><th>{{ field.label_tag }}</th><td>{{ field }}</td></tr>
+                <tr><th>{{ field.label_tag }}{% if field.errors %}<span class="field_error">{{ field.errors }}</span>{% endif %}</th><td>{{ field }}</td></tr>
                     {% ifequal field.name "how_cast" %}
                     <tr><td colspan="2" id="separator" class="text">The questions below are optional; more detail is always good.</td></tr>
                     {% endifequal %}
