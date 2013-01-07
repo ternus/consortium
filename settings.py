@@ -170,3 +170,5 @@ LOGGING = {
     }
 }
 
+# must be last
+from localsettings import *
