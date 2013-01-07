@@ -16,9 +16,8 @@ ADMINS = (
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'consortium-gms@cternus.net'
-EMAIL_PORT = 465
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
 
 MANAGERS = ADMINS
 
