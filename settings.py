@@ -167,13 +167,6 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler',
             'include_html': True,
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
         },
         'log_file': {
             'level': 'DEBUG',
@@ -181,6 +174,19 @@ LOGGING = {
             'filename': os.path.join(ROOT_PATH, 'logs/django.log'),
             'maxBytes': '16777216', # 16megabytes
             'formatter': 'verbose'
+        },
+
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['log_file'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
         },
     }
 }
