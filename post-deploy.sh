@@ -9,4 +9,4 @@ export PYTHONPATH="$REPO_DIR:$PYTHONPATH"
 cd $REPO_DIR
 python manage.py collectstatic --noinput
 
-echo `date` >> /home/gm/www/last_updated.html
+echo `date` >> /home/gm/www/static/last_updated.txt
