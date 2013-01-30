@@ -30,6 +30,9 @@
 
     {% block headers %}
     {% endblock %}
+
+    {% block javascripts %}
+    {% endblock %}
 </head>
 <body>
 
@@ -46,6 +49,12 @@
                 <li class="points">
                     <a href="/market/">Bakaara Market</a>
                 </li>
+                    {% if has_lines %}
+                <li class="points">
+                    <a href="/succession/">Group Command</a>
+                </li>
+                        {% endif %}
+
                 {% endif %}
             </ul>
         </div>
