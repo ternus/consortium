@@ -1,0 +1,38 @@
+{% extends "consortium.html" %}
+{% load i18n %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $('document').ready(function(){
+            $('.confirmLink').click(function(){
+                if(confirm("This will remove you as the controller of this line of succession. You will not be able to undo this. Are you sure?")){
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+
+    </script>
+{% endblock %}
+
+{% block container %}
+    <div class="header">
+        {{ line.name }}
+    </div>
+    <div>
+    {{ line.description }}
+    </div>
+    <ol>
+        {% for member in line_members %}
+            <li>{{ member.gto.name }} {% ifequal member.gto char.gto %}(you!){% endifequal %}
+            {% ifequal membership.order 1 %}
+                {% if forloop.counter0 %}
+                    <a href="{% url show_line line.id %}?promote={{ member.user.id }}"
+                     class="action {% ifequal forloop.counter0 1 %} confirmLink{% endifequal %}">Promote</a>
+                {% endif %}
+            {% endifequal %}
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

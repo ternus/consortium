@@ -1,0 +1,11 @@
+{% extends "consortium.html" %}
+{% load i18n %}
+
+{% block container %}
+    <div class="header">
+        Chains of Command
+    </div>
+    {% for line in lines %}
+        <a href="{% url show_line line.id %}">{{ line.name }}</a><br />
+    {% endfor %}
+{% endblock %}
