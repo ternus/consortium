@@ -44,10 +44,10 @@
                 {% endif %}
                 </th><td>{{ field }}</td></tr>
                     {% ifequal field.name "how_cast" %}
-                        <tr><td colspan="2" class="text separator">The questions below are for statistics and are not required for casting.</td></tr>
+                        <tr><td colspan="2" class="text separator">These questions are for statistical purposes and are not required for casting.</td></tr>
                     {% endifequal %}
                     {% ifequal field.name "zephyr" %}
-                    <tr><td colspan="2" class="text separator">The questions below are optional; more detail is always good.</td></tr>
+                    <tr><td colspan="2" class="text separator">These questions are optional; more detail is always good.</td></tr>
                     {% endifequal %}
                 {% endfor %}
             </table>

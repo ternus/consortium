@@ -309,6 +309,8 @@ textarea, input {
   }
   .separator {
     text-align: center;
+    border-bottom: 1px dotted $shadow;
+    padding-top: 25px;
   }
 
   th {

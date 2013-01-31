@@ -198,7 +198,9 @@ textarea, input {
     text-shadow: 0px 1px 1px #cccccc;
     color: #666666; }
   #app .separator {
-    text-align: center; }
+    text-align: center;
+    border-bottom: 1px dotted #cccccc;
+    padding-top: 25px; }
   #app th {
     text-align: justify;
     padding-right: 15px;
