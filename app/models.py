@@ -79,7 +79,7 @@ class AppForm(ModelForm):
 
     explanations = {
         "do_not_call": "This will be specified on the playerlist (unless you tell us not to). The GMs are unlikely to call you unless there's a problem.",
-        "time_constraints": "",
+        "time_constraints": "We will have a few time-constrained parts available.  If you can only make the first weekend, for example, we may still be able to cast you. Apply anyway!",
         "new_player": "Don't assume we know who you are. If there's any doubt whatsoever, tell us who you are, especially if you're an MIT underclassman.",
         "device": "We're trying to gauge the prevalence of these devices in the Guild playerbase. While this game will have a webapp, we have attempted to minimize the amount of time you'll need to spend on it.",
         "sms_ok": "We won't spam you. If we use this at all, it'll be for things you need to know, and it'll all be viewable in some other way. If you have some constraint ('nights only', 'less than 5 per day is fine'), tell us.",
