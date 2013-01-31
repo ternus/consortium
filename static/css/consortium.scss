@@ -15,10 +15,13 @@ $ultralight: #333;
 $nearwhite: #111;
 
 $medred: #844;
+$redlight: #f66;
 
-$background: url('/static/img/gplaypattern.png') #eee;//url('/static/img/wild_oliva.png');
+$background: url('/static/img/gplaypattern.png') #eee;
+//url('/static/img/wild_oliva.png');
 $headerbg: url('/static/img/subtle_freckles.png') #dde;
-$containerbg: url('/static/img/brillant.png') #fff; //url('/static/img/use_your_illusion.png');
+$containerbg: url('/static/img/brillant.png') #fff;
+//url('/static/img/use_your_illusion.png');
 
 $hugefont: 70px;
 $bigfont: 30px;
@@ -33,7 +36,7 @@ $bodyfont: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
 
 @mixin shadow-border {
   box-shadow: 0 2px 4px $lightshadow;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
 @mixin huge-text {
@@ -80,16 +83,21 @@ body {
   font-family: $bodyfont;
 }
 
+a:hover {
+  text-shadow: 0px 0px 2px $redlight;
+}
+
 .container {
-  margin:50px auto;
-  width:700px;
+  margin: 50px auto;
+  width: 700px;
   padding: 20px 10px;
   background: $containerbg;
   color: $nearwhite !important;
+  border-radius: 6px;
   box-shadow: 0px 3px 5px $shadow !important;
   a {
     color: $nearwhite;
-    cursor:pointer;
+    cursor: pointer;
     border-bottom: 1px dotted $nearwhite;
     text-decoration: none;
   }
@@ -109,7 +117,6 @@ body {
     }
   }
 }
-
 
 .topbar_left {
   float: left;
@@ -157,7 +164,7 @@ $headercolor: $ultralight;
     display: inline-block;
     vertical-align: middle;
     line-height: 25px;
-    height:30px;
+    height: 30px;
   }
 }
 
@@ -208,16 +215,16 @@ $headercolor: $ultralight;
 }
 
 #floater {
-  position:relative;
+  position: relative;
 }
 
 #consortium_teaser {
-  position:absolute;
-  top:-25px;
-  left:32%;
+  position: absolute;
+  top: -25px;
+  left: 32%;
   color: $ultralight;
-  padding:10px;
-  width:33%;
+  padding: 10px;
+  width: 33%;
   background: $darkfont;
   @include med-text;
 }
@@ -241,7 +248,8 @@ body {
   //text-shadow: 0px 1px 4px #aaa !important;
   margin-bottom: 10px;
 }
-.login_input  {
+
+.login_input {
   background: $darkfont;
   border: 1px solid black;
   @include small-text;
@@ -253,19 +261,24 @@ body {
   padding: 10px;
 }
 
-
-
 textarea, input {
-  border:1px;
+  border: 1px;
   background: #f5f5f5;
   color: $ultralight;
   border: 1px solid $lightshadow;
   border-radius: 3px;
-  cursor: pointer;
-
 }
 
+.gradientbutton {
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px $lightshadow;
+}
 
+.gradientbutton:hover {
+  box-shadow: 0px 0px 4px #f66;
+
+}
 
 #app {
   padding: 10px;
@@ -284,7 +297,7 @@ textarea, input {
   }
   .explain {
     @include tiny-text;
-    color:$medbright;
+    color: $medbright;
     border-bottom: 1px dotted $medbright;
   }
   .explanation {
@@ -298,7 +311,7 @@ textarea, input {
   th {
     text-align: justify;
     padding-right: 15px;
-    font-weight:normal;
+    font-weight: normal;
   }
 
   #apply {
