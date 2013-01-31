@@ -32,7 +32,7 @@
         <form action="{% url app app_id %}" method="POST">
         {{ form.non_field_errors }}
             <div class="appbutton">
-                <input type="submit" id="save" class="gradientbutton" name="app_submit" value="Save App" />
+                <input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" />
             </div>
             {% csrf_token %}
             <table>
@@ -52,7 +52,7 @@
                 {% endfor %}
             </table>
             <div class="appbutton">
-                <input type="submit" value="Apply For Consortium" id="apply" name="app_submit" class="gradientbutton"/>
+                <input type="submit" value="Apply For Consortium" id="apply" name="app_submit" class="gradientbutton redbutton"/>
             </div>
         </form>
     </div>
