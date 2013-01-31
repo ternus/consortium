@@ -145,37 +145,43 @@ $headercolor: $ultralight;
 }
 
 #consortium_hero {
-  @include real-center;
   @include huge-text;
 }
 
+#consortium_tagline {
+  @include med-text;
+}
+
 #consortium_runtime {
-  @include real-center;
+  padding-top: 10px;
   @include large-text;
 }
 
 #consortium_countdown {
-  @include real-center;
   @include med-text;
 }
 
 #consortium_gms {
-  @include real-center;
   @include med-text;
 }
 
 #consortium_teaser {
+  @include real-center;
+  color: $nearwhite;
   @include large-text;
+}
+
+#consortium_intro {
   @include real-center;
 }
 
 #consortium_blurb {
-  margin: 40px auto 0px auto;
-  width: 70%;
+  margin: 40px auto 20px auto;
+  width: 90%;
   padding: 10px;
   padding-top: 25px;
-  background: url('/static/img/lined_paper.png') #ddd;
-  text-shadow: 0px 1px 1px $lightfont;
+  background: url('/static/img/light_wool.png') #ddd;
+  text-shadow: 0px 1px 1px $ultralight;
   box-shadow: 1px 1px 10px #999;
   font-family: $bodyfont;
   text-align: justify;
@@ -221,29 +227,10 @@ body {
   @include med-text;
 }
 
-#consortium_logo {
-}
-
-
-#consortium_hero {
-  //text-shadow: 0px 2px 4px #aaa !important;
-
-}
-
-#consortium_runtime {
-  //text-shadow: 0px 1px 4px #aaa !important;
-}
-
-
 #consortium_countdown {
   //text-shadow: 0px 1px 4px #aaa !important;
   margin-bottom: 10px;
 }
-
-#consortium_gms {
-  //text-shadow: 0px 1px 4px #aaa !important;
-}
-
 .login_input  {
   background: #666;
   border: 1px solid black;

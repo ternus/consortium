@@ -4,13 +4,13 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.countdown.js"></script>
 
     <script type="text/javascript">
-        $('document').ready(function(){
+        $('document').ready(function () {
             $('#consortium_countdown').countdown(
-                    {until: new Date(2013, 2, 8, 18, 0, 0),
-                        format: "dHMS",
-                        compact: true});
+                    {until:new Date(2013, 2, 8, 18, 0, 0),
+                        format:"dHMS",
+                        compact:true});
             $('#consortium_teaser').corner('bevel cc:#666');
-            $('#consortium_gms')[0].innerHTML = 'consortium-gms'+'@'+'mit'+'.edu';
+            $('#consortium_gms')[0].innerHTML = 'consortium-gms' + '@' + 'mit' + '.edu';
         });
 
     </script>
@@ -19,39 +19,46 @@
 
 {% block container %}
     <div class="consortium">
-        <div id="consortium_hero">Consortium</div>
-        <div id="consortium_runtime">March 8-17, 2013</div>
-        <div id="consortium_countdown"></div>
-
-        <div id="consortium_gms"><noscript>consortium-gms at mit dot edu</noscript></div>
-
+        <div id="consortium_intro">
+            <div id="consortium_hero">Consortium</div>
+            <div id="consortium_description">An old-school game of espionage, politics, paranoia, and deceit</div>
+            <div id="consortium_runtime">March 8-17, 2013</div>
+            <div id="consortium_countdown"></div>
+            <div id="consortium_gms">
+                <noscript>consortium-gms at mit dot edu</noscript>
+            </div>
+        </div>
         <div id="floater">
             <div id="consortium_teaser" class="consortium">Coming Soon</div>
             <div id="consortium_blurb">
-            <div class="dateline">September 8, 2025, MOGADISHU:</div>
+                <div class="dateline">September 8, 2025, MOGADISHU:</div>
                 <p>
-                Citing security concerns surrounding last week's alleged nuclear
-                explosion in Western Somalia, the Mogadishu Chamber of Commerce has
-                blockaded all ports and land routes into the country.  Although there
-                is no confirmation as of yet, it is believed that this action may be
-                related to the recent terrorist attack that severed Somalia's
-                fiber-optic connection to the world at large.  A UN special council
-                has convened to discuss humanitarian aid.  Several Middle Eastern
-                nations have pledged to oppose any 'blatant invasions masking as
-                relief efforts,' leading the White House to officially state that it
-                has 'no plans to put boots on the ground at this date.'
-                    </p><p>
-                Mogadishu has been a thriving corporate hub for the last ten years.
-                Discovery of previously unknown rare-earth compounds has fueled
-                unprecedented growth in the city's technology sector, aided by a
-                lassez-faire regulatory regime.  Stock prices for corporations
-                headquartered in the city have dipped slightly in reaction to the news
-                and rumors of civil disturbance from unaffiliated militant factions
-                located nearby.  The official unveiling of the Amazon.com Inc. space
-                elevator project, housed just miles outside the city, has
-                been indefinitely delayed by the news, but Amazon CEO Jeff Bezos
-                has issued a statement that the project remains undamaged.</p>
-        </div>
+                    Citing security concerns surrounding last week's alleged nuclear
+                    explosion in Western Somalia, the Mogadishu Chamber of Commerce has
+                    blockaded all ports and land routes into the country. Although there
+                    is no confirmation as of yet, it is believed that this action may be
+                    related to the recent terrorist attack that severed Somalia's
+                    fiber-optic connection to the world at large. A UN special council
+                    has convened to discuss humanitarian aid. Several Middle Eastern
+                    nations have pledged to oppose any 'blatant invasions masking as
+                    relief efforts,' leading the White House to officially state that it
+                    has 'no plans to put boots on the ground at this date.'
+                </p>
+
+                <p>
+                    Mogadishu has been a thriving corporate hub for the last ten years.
+                    Discovery of previously unknown rare-earth compounds has fueled
+                    unprecedented growth in the city's technology sector, aided by a
+                    lassez-faire regulatory regime. Stock prices for corporations
+                    headquartered in the city have dipped slightly in reaction to the news
+                    and rumors of civil disturbance from unaffiliated militant factions
+                    located nearby. Countering rumors that the official opening date of the Amazon.com Inc. space
+                    elevator project, housed just miles outside the city, has
+                    been indefinitely delayed, an Amazon spokesperson
+                    has issued a statement that the project remains undamaged and the launch gala,
+                    scheduled for Sunday evening, remains on schedule.
+                </p>
+            </div>
         </div>
     </div>
 {% endblock %}
