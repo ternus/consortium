@@ -4,13 +4,19 @@
   font-weight: 400;
   src: local("Orbitron-Light"), local("Orbitron-Regular"), url("/static/fonts/orbitron.woff") format("woff"); }
 
+/*
+****************************
+Generic stuff
+****************************
+*/
 body {
   padding: 0;
   margin: 0;
-  font-family: "Helvetica Neue Ultra Light", Helvetica, sans-serif; }
+  font-family: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
+  background: url("/static/img/gplaypattern.png") #eeeeee; }
 
 a:hover {
-  text-shadow: 0px 0px 2px #ff1111; }
+  text-shadow: 0px 0px 1px #ff1111; }
 
 .container {
   margin: 50px auto;
@@ -45,6 +51,22 @@ a:hover {
 .topbar_right {
   float: right; }
 
+.consortium_smallheader {
+  font-size: 30px;
+  text-shadow: 0px 1px 2px #cccccc;
+  text-align: center;
+  margin: auto;
+  font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif; }
+
+.consortium_text {
+  margin: 0px 10px;
+  text-align: justify;
+  font-size: 14px;
+  text-shadow: 0px 1px 1px #cccccc; }
+
+.dateline {
+  font-weight: bold; }
+
 #consortium_header {
   position: absolute;
   top: 0;
@@ -78,38 +100,50 @@ a:hover {
     line-height: 25px;
     height: 30px; }
 
-#consortium_hero {
-  font-size: 70px;
-  font-variant: small-caps;
-  text-shadow: 0px 2px 3px #cccccc; }
-
-#consortium_tagline {
-  font-size: 14px;
-  text-shadow: 0px 1px 1px #cccccc; }
-
-#consortium_runtime {
-  padding-top: 10px;
-  font-size: 30px;
-  text-shadow: 0px 1px 2px #cccccc; }
-
-#consortium_countdown {
-  font-size: 14px;
-  text-shadow: 0px 1px 1px #cccccc; }
-
-#consortium_gms {
-  font-size: 14px;
-  text-shadow: 0px 1px 1px #cccccc; }
-
-#consortium_teaser {
-  text-align: center;
-  margin: auto;
-  color: #111111;
-  font-size: 30px;
-  text-shadow: 0px 1px 2px #cccccc; }
-
+/*
+****************************
+Front page
+****************************
+*/
 #consortium_intro {
   text-align: center;
   margin: auto; }
+  #consortium_intro #consortium_hero {
+    font-size: 70px;
+    font-variant: small-caps;
+    text-shadow: 0px 2px 3px #cccccc; }
+  #consortium_intro #consortium_tagline {
+    font-size: 14px;
+    text-shadow: 0px 1px 1px #cccccc; }
+  #consortium_intro #consortium_runtime {
+    padding-top: 10px;
+    font-size: 30px;
+    text-shadow: 0px 1px 2px #cccccc; }
+  #consortium_intro #consortium_countdown {
+    font-size: 14px;
+    text-shadow: 0px 1px 1px #cccccc; }
+  #consortium_intro #consortium_gms {
+    font-size: 14px;
+    text-shadow: 0px 1px 1px #cccccc; }
+  #consortium_intro #consortium_countdown {
+    margin-bottom: 10px; }
+  #consortium_intro #consortium_teaser {
+    text-align: center;
+    margin: auto;
+    color: #111111;
+    font-size: 30px;
+    text-shadow: 0px 1px 2px #cccccc;
+    position: absolute;
+    top: -25px;
+    left: 32%;
+    color: #333333;
+    padding: 10px;
+    width: 33%;
+    background: #eeeeee;
+    font-size: 14px;
+    text-shadow: 0px 1px 1px #cccccc;
+    border: 1px solid black;
+    box-shadow: 0px 0px 5px #cccccc; }
 
 #consortium_blurb {
   margin: 40px auto 20px auto;
@@ -127,32 +161,6 @@ a:hover {
 #floater {
   position: relative; }
 
-#consortium_teaser {
-  position: absolute;
-  top: -25px;
-  left: 32%;
-  color: #333333;
-  padding: 10px;
-  width: 33%;
-  background: #eeeeee;
-  font-size: 14px;
-  text-shadow: 0px 1px 1px #cccccc; }
-
-.dateline {
-  font-weight: bold; }
-
-body {
-  padding: 0;
-  margin: 0;
-  font-family: Helvetica Neue, Helvetica, sans-serif;
-  background: url("/static/img/gplaypattern.png") #eeeeee; }
-
-.consortium {
-  font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif; }
-
-#consortium_countdown {
-  margin-bottom: 10px; }
-
 #app_container {
   background: url("/static/img/seamlesspaper1.jpg");
   color: #000;
@@ -165,6 +173,11 @@ textarea, input {
   border: 1px solid #aaaaaa;
   border-radius: 3px; }
 
+/*
+****************************
+Buttons
+****************************
+*/
 .gradientbutton {
   border-radius: 2px;
   cursor: pointer;
@@ -179,6 +192,11 @@ textarea, input {
 .redbutton:hover {
   box-shadow: 0px 0px 4px #ff1111; }
 
+/*
+****************************
+App
+****************************
+*/
 #app {
   padding: 10px;
   font-family: Helvetica Neue, Helvetica, sans-serif;
@@ -194,6 +212,8 @@ textarea, input {
     color: #999999;
     border-bottom: 1px dotted #999999; }
   #app .explanation {
+    padding-top: 5px;
+    padding-bottom: 15px;
     font-size: 11px;
     text-shadow: 0px 1px 1px #cccccc;
     color: #666666; }
@@ -206,22 +226,7 @@ textarea, input {
     padding-right: 15px;
     font-weight: normal; }
   #app #apply {
-    margin: auto;
-    font-size: 14px;
-    text-shadow: 0px 1px 1px #cccccc; }
-
-.consortium_smallheader {
-  font-size: 30px;
-  text-shadow: 0px 1px 2px #cccccc;
-  text-align: center;
-  margin: auto;
-  font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif; }
-
-.consortium_text {
-  margin: 10px;
-  text-align: justify;
-  font-size: 14px;
-  text-shadow: 0px 1px 1px #cccccc; }
+    font-size: 18px; }
 
 .ooc {
   font-style: italic; }

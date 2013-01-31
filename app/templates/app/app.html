@@ -27,12 +27,13 @@
             and may resume it at your leisure.
         </p>
     </div>
-
     <div class="consortium" id="app">
+
         <form action="{% url app app_id %}" method="POST">
         {{ form.non_field_errors }}
             <div class="appbutton">
                 <input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" />
+                <a class="explain" onclick="$('.explanation').slideToggle();">Expand All Explanations</a>
             </div>
             {% csrf_token %}
             <table>
@@ -44,16 +45,17 @@
                 {% endif %}
                 </th><td>{{ field }}</td></tr>
                     {% ifequal field.name "how_cast" %}
+                        <tr><td colspan="2"><input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" />                        </td></tr>
+
                         <tr><td colspan="2" class="text separator">These questions are for statistical purposes and are not required for casting.</td></tr>
                     {% endifequal %}
                     {% ifequal field.name "zephyr" %}
                     <tr><td colspan="2" class="text separator">These questions are optional; more detail is always good.</td></tr>
                     {% endifequal %}
                 {% endfor %}
+                <tr><td colspan="2"><input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" /></td></tr>
+                <tr><td colspan="2"><input type="submit" value="Apply For Consortium" id="apply" name="app_submit" class="gradientbutton redbutton"/></td></tr>
             </table>
-            <div class="appbutton">
-                <input type="submit" value="Apply For Consortium" id="apply" name="app_submit" class="gradientbutton redbutton"/>
-            </div>
         </form>
     </div>
 {% endblock %}
