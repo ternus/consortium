@@ -15,7 +15,9 @@ $ultralight: #333;
 $nearwhite: #111;
 
 $medred: #844;
-$redlight: #f66;
+$redlight: #f11;
+$greenlight: #0f0;
+$bluelight: #11f;
 
 $background: url('/static/img/gplaypattern.png') #eee;
 //url('/static/img/wild_oliva.png');
@@ -249,12 +251,6 @@ body {
   margin-bottom: 10px;
 }
 
-.login_input {
-  background: $darkfont;
-  border: 1px solid black;
-  @include small-text;
-}
-
 #app_container {
   background: url('/static/img/seamlesspaper1.jpg');
   color: #000;
@@ -276,8 +272,15 @@ textarea, input {
 }
 
 .gradientbutton:hover {
-  box-shadow: 0px 0px 4px #f66;
+  box-shadow: 0px 0px 4px $bluelight;
+}
 
+.greenbutton:hover {
+  box-shadow: 0px 0px 4px $greenlight;
+}
+
+.redbutton:hover {
+  box-shadow: 0px 0px 4px $redlight;
 }
 
 #app {

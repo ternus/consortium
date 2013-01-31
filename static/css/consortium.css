@@ -10,7 +10,7 @@ body {
   font-family: "Helvetica Neue Ultra Light", Helvetica, sans-serif; }
 
 a:hover {
-  text-shadow: 0px 0px 2px #ff6666; }
+  text-shadow: 0px 0px 2px #ff1111; }
 
 .container {
   margin: 50px auto;
@@ -153,12 +153,6 @@ body {
 #consortium_countdown {
   margin-bottom: 10px; }
 
-.login_input {
-  background: #eeeeee;
-  border: 1px solid black;
-  font-size: 11px;
-  text-shadow: 0px 1px 1px #cccccc; }
-
 #app_container {
   background: url("/static/img/seamlesspaper1.jpg");
   color: #000;
@@ -177,7 +171,13 @@ textarea, input {
   box-shadow: 0px 0px 2px #aaaaaa; }
 
 .gradientbutton:hover {
-  box-shadow: 0px 0px 4px #ff6666; }
+  box-shadow: 0px 0px 4px #1111ff; }
+
+.greenbutton:hover {
+  box-shadow: 0px 0px 4px lime; }
+
+.redbutton:hover {
+  box-shadow: 0px 0px 4px #ff1111; }
 
 #app {
   padding: 10px;
