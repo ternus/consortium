@@ -93,7 +93,7 @@ class AppForm(ModelForm):
      own typecast is.<br/>
                     If you don't know what a typecast is, don't worry about it.""",
         "punts": "",
-        "how_cast": "We can't guarantee you'll get it, of course, but if you have the perfect role in mind, tell us.",
+        "how_cast": "If you must be cast in a certain way, if some of your answers are more important than others, or if you have the perfect role in mind, tell us.",
         "spy_plots": "This will help us match you with a good set of plots.",
         "public_secret": """'Public authority' might be the UN Secretary General,
 the chief of police, or the Pope in a game full of Catholics.  'Secret
