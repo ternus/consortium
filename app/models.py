@@ -96,14 +96,15 @@ class AppForm(ModelForm):
         "how_cast": "If you must be cast in a certain way, if some of your answers are more important than others, or if you have the perfect role in mind, tell us.",
         "spy_plots": "This will help us match you with a good set of plots.",
         "public_secret": """'Public authority' might be the UN Secretary General,
-the chief of police, or the Pope in a game full of Catholics.  'Secret
+the chief of police, or the Pope* in a game full of Catholics.  'Secret
 authority' might be the head of the secret police, the commander of a black-ops
 infiltration team, or an evil wizard with a group of brainwashed thralls.*
 'Working under others' might be an enforcer, assassin, researcher, agent, trusted
 lieutenant, or Judas.<br />
 As a very general rule of thumb, high-ranking people rely on those loyal to them to get stuff done.
 For example, a professor might have lots of research plots but a zero research stat, relying on her
-grad students (all of whom have high research stats and plots of their own) to get research done.
+grad students (all of whom have high research stats and plots of their own) to get research done.<br />
+* Neither the Pope nor evil wizards appear in this game.
 """,
         "motivations": "Some characters might be unswervingly devoted to particular causes, groups, countries, religions,"
                        " ethical viewpoints, and so on. Others might be more ideologically flexible. What suits you?",
