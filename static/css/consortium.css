@@ -13,13 +13,13 @@ body {
   margin: 50px auto;
   width: 700px;
   padding: 20px 10px;
-  background: url("/static/img/use_your_illusion.png");
-  color: #eeeeee !important;
-  box-shadow: 0px 3px 5px #333333 !important; }
+  background: url("/static/img/brillant.png") white;
+  color: #111111 !important;
+  box-shadow: 0px 3px 5px #cccccc !important; }
   .container a {
-    color: #eeeeee;
+    color: #111111;
     cursor: pointer;
-    border-bottom: 1px dotted #eeeeee;
+    border-bottom: 1px dotted #111111;
     text-decoration: none; }
   .container a.action {
     border: 1px solid black;
@@ -44,20 +44,22 @@ body {
 #consortium_header {
   position: absolute;
   top: 0;
-  color: #cccccc;
+  color: #333333;
   text-align: center;
   vertical-position: center;
   display: block;
   height: 32px;
   width: 100%;
-  box-shadow: 0 0 8px 0 #333333;
+  box-shadow: 0 0 8px 0 #aaaaaa;
   font-size: 14px;
-  text-shadow: 0px 2px 2px #333333; }
+  text-shadow: 0px 1px 1px #cccccc;
+  font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
+  background: url("/static/img/subtle_freckles.png") #ddddee; }
   #consortium_header a {
     text-decoration: none;
-    color: #cccccc; }
+    color: #333333; }
   #consortium_header a:visited {
-    color: #cccccc; }
+    color: #333333; }
   #consortium_header a:hover {
     text-shadow: 0px 0px 1px #eeeeee; }
   #consortium_header button {
@@ -75,31 +77,31 @@ body {
 #consortium_hero {
   font-size: 70px;
   font-variant: small-caps;
-  text-shadow: 0px 3px 3px #333333; }
+  text-shadow: 0px 2px 3px #cccccc; }
 
 #consortium_tagline {
   font-size: 14px;
-  text-shadow: 0px 2px 2px #333333; }
+  text-shadow: 0px 1px 1px #cccccc; }
 
 #consortium_runtime {
   padding-top: 10px;
   font-size: 30px;
-  text-shadow: 0px 2px 2px #333333; }
+  text-shadow: 0px 1px 2px #cccccc; }
 
 #consortium_countdown {
   font-size: 14px;
-  text-shadow: 0px 2px 2px #333333; }
+  text-shadow: 0px 1px 1px #cccccc; }
 
 #consortium_gms {
   font-size: 14px;
-  text-shadow: 0px 2px 2px #333333; }
+  text-shadow: 0px 1px 1px #cccccc; }
 
 #consortium_teaser {
   text-align: center;
   margin: auto;
-  color: #eeeeee;
+  color: #111111;
   font-size: 30px;
-  text-shadow: 0px 2px 2px #333333; }
+  text-shadow: 0px 1px 2px #cccccc; }
 
 #consortium_intro {
   text-align: center;
@@ -116,7 +118,7 @@ body {
   font-family: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
   text-align: justify;
   color: black;
-  border: 1px dashed #333333; }
+  border: 1px dashed #cccccc; }
 
 #floater {
   position: relative; }
@@ -125,12 +127,12 @@ body {
   position: absolute;
   top: -25px;
   left: 32%;
-  color: #cccccc;
+  color: #333333;
   padding: 10px;
   width: 33%;
-  background: rgba(0, 0, 0, 0.9);
+  background: #eeeeee;
   font-size: 14px;
-  text-shadow: 0px 2px 2px #333333; }
+  text-shadow: 0px 1px 1px #cccccc; }
 
 .dateline {
   font-weight: bold; }
@@ -139,101 +141,51 @@ body {
   padding: 0;
   margin: 0;
   font-family: Helvetica Neue, Helvetica, sans-serif;
-  background: url("/static/img/wild_oliva.png"); }
+  background: url("/static/img/gplaypattern.png") #eeeeee; }
 
 .consortium {
   font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif; }
-
-#consortium_header {
-  font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
-  background: url("/static/img/bg.png");
-  box-shadow: 0 0 8px 0 black;
-  font-size: 14px;
-  text-shadow: 0px 2px 2px #333333; }
 
 #consortium_countdown {
   margin-bottom: 10px; }
 
 .login_input {
-  background: #666;
+  background: #eeeeee;
   border: 1px solid black;
   font-size: 11px;
-  text-shadow: 0px 1px 1px #333333; }
-
-.gradientbutton {
-  background: -moz-linear-gradient(top, #45484d 0%, black 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #45484d), color-stop(100%, black));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #45484d 0%, black 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #45484d 0%, black 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #45484d 0%, black 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #45484d 0%, black 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#45484d', endColorstr='#000000',GradientType=0 );
-  /* IE6-9 */
-  border-radius: 2px;
-  cursor: pointer;
-  border: 1px solid black;
-  color: #fff; }
-
-.gradientbutton:hover {
-  background: -moz-linear-gradient(top, #662222 0%, black 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #662222), color-stop(100%, black));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #662222 0%, black 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #662222 0%, black 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #662222 0%, black 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #662222 0%, black 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#662222', endColorstr='#000000',GradientType=0 );
-  /* IE6-9 */
-  border-radius: 2px;
-  cursor: pointer;
-  border: 1px solid black;
-  color: #eeeeee; }
-
-#login_button {
-  font-size: 11pt;
-  padding: 3px 4px 0px 4px; }
-  #login_button #login_button:hover {
-    background: #aaaaaa;
-    cursor: pointer; }
+  text-shadow: 0px 1px 1px #cccccc; }
 
 #app_container {
   background: url("/static/img/seamlesspaper1.jpg");
   color: #000;
   padding: 10px; }
 
+textarea, input {
+  border: 1px;
+  background: #f5f5f5;
+  color: #333333;
+  border: 1px solid #aaaaaa;
+  border-radius: 3px;
+  cursor: pointer; }
+
 #app {
   padding: 10px;
   font-family: Helvetica Neue, Helvetica, sans-serif;
   font-size: 14px;
-  text-shadow: 0px 2px 2px #333333; }
-  #app textarea, #app input {
-    border: 1px;
-    background: #333333;
-    color: #cccccc;
-    font-size: 11px;
-    text-shadow: 0px 1px 1px #333333; }
+  text-shadow: 0px 1px 1px #cccccc; }
+  #app input {
+    border-radius: 2px; }
   #app .field_error {
     color: #f33; }
   #app .explain {
     font-size: 8px;
-    text-shadow: 0px 1px 1px #333333;
+    text-shadow: 0px 1px 1px #cccccc;
     color: #999999;
     border-bottom: 1px dotted #999999; }
   #app .explanation {
     font-size: 11px;
-    text-shadow: 0px 1px 1px #333333;
-    color: #999999; }
+    text-shadow: 0px 1px 1px #cccccc;
+    color: #666666; }
   #app .separator {
     text-align: center; }
   #app th {
@@ -243,11 +195,11 @@ body {
   #app #apply {
     margin: auto;
     font-size: 14px;
-    text-shadow: 0px 2px 2px #333333; }
+    text-shadow: 0px 1px 1px #cccccc; }
 
 .consortium_smallheader {
   font-size: 30px;
-  text-shadow: 0px 2px 2px #333333;
+  text-shadow: 0px 1px 2px #cccccc;
   text-align: center;
   margin: auto;
   font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif; }
@@ -256,7 +208,7 @@ body {
   margin: 10px;
   text-align: justify;
   font-size: 14px;
-  text-shadow: 0px 2px 2px #333333; }
+  text-shadow: 0px 1px 1px #cccccc; }
 
 .ooc {
   font-style: italic; }
