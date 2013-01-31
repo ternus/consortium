@@ -28,7 +28,7 @@ class ConsortiumApp(models.Model):
     motivations = models.TextField(blank=True, verbose_name="Do you want motivations like idealism, altruism, fanaticism, extreme views, etc.?")
     die_for = models.TextField(blank=True, verbose_name="What percentage of your goals and motivations do you want to be willing to die for?")
     teammate = models.TextField(blank=True, verbose_name="You have a teammate.  You don't know who they are, and have no mechanic for finding them.  You expect others want to find and kill you both.  You need your teammate's help.  How might you proceed?")
-    campus = models.TextField(blank=True, verbose_name="You need to search a portion of campus for something.  Who do you take with you, and why?")
+    campus = models.TextField(blank=True, verbose_name="You need to search a portion of campus for something.  Whom do you take with you, and why?")
     changing_minds = models.TextField(blank=True, verbose_name="What is your preferred method of changing people's minds?")
     what_else = models.TextField(blank=True, verbose_name="What else should we know?")
 
