@@ -9,6 +9,7 @@ $hugefont: 70px;
 $bigfont: 30px;
 $medfont: 14px;
 $smallfont: 11px;
+$tinyfont: 8px;
 $bodyfont: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
 
 @mixin orbitron {
@@ -26,7 +27,7 @@ $bodyfont: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
   text-shadow: 0px 3px 3px $shadow;
 }
 
-@mixin big-text {
+@mixin large-text {
   font-size: $bigfont;
   text-shadow: 0px 2px 2px $shadow;
 }
@@ -36,8 +37,13 @@ $bodyfont: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
   text-shadow: 0px 2px 2px $shadow;
 }
 
-@mixin normal-text {
+@mixin small-text {
   font-size: $smallfont;
+  text-shadow: 0px 1px 1px $shadow;
+}
+
+@mixin tiny-text {
+  font-size: $tinyfont;
   text-shadow: 0px 1px 1px $shadow;
 }
 
@@ -145,7 +151,7 @@ $headercolor: $ultralight;
 
 #consortium_runtime {
   @include real-center;
-  @include big-text;
+  @include large-text;
 }
 
 #consortium_countdown {
@@ -158,17 +164,22 @@ $headercolor: $ultralight;
   @include med-text;
 }
 
+#consortium_teaser {
+  @include large-text;
+  @include real-center;
+}
+
 #consortium_blurb {
   margin: 40px auto 0px auto;
   width: 70%;
-  text-align: left;
   padding: 10px;
   padding-top: 25px;
   background: url('/static/img/lined_paper.png') #ddd;
-  text-shadow: 0px 1px 1px $lightshadow;
+  text-shadow: 0px 1px 1px $lightfont;
   box-shadow: 1px 1px 10px #999;
-  font-family: monospace;
-  color: #8b4513;
+  font-family: $bodyfont;
+  text-align: justify;
+  color: black;
   border: 1px dashed $shadow;
 
 }
@@ -236,7 +247,7 @@ body {
 .login_input  {
   background: #666;
   border: 1px solid black;
-  @include normal-text;
+  @include small-text;
 }
 
 .gradientbutton {
@@ -285,15 +296,16 @@ body {
 #app {
   padding: 10px;
   font-family: Helvetica Neue, Helvetica, sans-serif;
+  @include med-text;
 
   label, .text {
-    @include normal-text;
   }
 
   textarea, input {
     border:1px;
     background: $shadow;
-    @include normal-text;
+    color: $ultralight;
+    @include small-text;
   }
 
   .appbutton {
@@ -302,14 +314,23 @@ body {
   .field_error {
     color: #f33;
   }
-
-  #separator {
+  .explain {
+    @include tiny-text;
+    color:$medbright;
+    border-bottom: 1px dotted $medbright;
+  }
+  .explanation {
+    @include small-text;
+    color: $medbright;
+  }
+  .separator {
     text-align: center;
   }
 
   th {
     text-align: justify;
     padding-right: 15px;
+    font-weight:normal;
   }
 
   #apply {
@@ -319,14 +340,15 @@ body {
 }
 
 .consortium_smallheader {
-  @include med-text;
+  @include large-text;
   @include real-center;
+  @include orbitron;
 }
 
 .consortium_text {
   margin: 10px;
   text-align: justify;
-  @include normal-text;
+  @include med-text;
 }
 
 .ooc {

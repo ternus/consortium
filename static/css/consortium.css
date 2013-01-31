@@ -97,17 +97,23 @@ body {
   font-size: 14px;
   text-shadow: 0px 2px 2px #333333; }
 
+#consortium_teaser {
+  font-size: 30px;
+  text-shadow: 0px 2px 2px #333333;
+  text-align: center;
+  margin: auto; }
+
 #consortium_blurb {
   margin: 40px auto 0px auto;
   width: 70%;
-  text-align: left;
   padding: 10px;
   padding-top: 25px;
   background: url("/static/img/lined_paper.png") #dddddd;
-  text-shadow: 0px 1px 1px #666666;
+  text-shadow: 0px 1px 1px #aaaaaa;
   box-shadow: 1px 1px 10px #999999;
-  font-family: monospace;
-  color: #8b4513;
+  font-family: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
+  text-align: justify;
+  color: black;
   border: 1px dashed #333333; }
 
 #floater {
@@ -206,38 +212,49 @@ body {
 
 #app {
   padding: 10px;
-  font-family: Helvetica Neue, Helvetica, sans-serif; }
-  #app label, #app .text {
-    font-size: 11px;
-    text-shadow: 0px 1px 1px #333333; }
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+  text-shadow: 0px 2px 2px #333333; }
   #app textarea, #app input {
     border: 1px;
     background: #333333;
+    color: #cccccc;
     font-size: 11px;
     text-shadow: 0px 1px 1px #333333; }
   #app .field_error {
     color: #f33; }
-  #app #separator {
+  #app .explain {
+    font-size: 8px;
+    text-shadow: 0px 1px 1px #333333;
+    color: #999999;
+    border-bottom: 1px dotted #999999; }
+  #app .explanation {
+    font-size: 11px;
+    text-shadow: 0px 1px 1px #333333;
+    color: #999999; }
+  #app .separator {
     text-align: center; }
   #app th {
     text-align: justify;
-    padding-right: 15px; }
+    padding-right: 15px;
+    font-weight: normal; }
   #app #apply {
     margin: auto;
     font-size: 14px;
     text-shadow: 0px 2px 2px #333333; }
 
 .consortium_smallheader {
-  font-size: 14px;
+  font-size: 30px;
   text-shadow: 0px 2px 2px #333333;
   text-align: center;
-  margin: auto; }
+  margin: auto;
+  font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif; }
 
 .consortium_text {
   margin: 10px;
   text-align: justify;
-  font-size: 11px;
-  text-shadow: 0px 1px 1px #333333; }
+  font-size: 14px;
+  text-shadow: 0px 2px 2px #333333; }
 
 .ooc {
   font-style: italic; }

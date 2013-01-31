@@ -1,13 +1,20 @@
 {% extends "consortium.html" %}
 {% load humanize %}
+{% load lookup %}
+
+{% block javascripts %}
+    <script type=text/javascript>
+
+    </script>
+{% endblock %}
 
 {% block container %}
-    <div class="consortium_smallheader consortium" id="appheader">Mogadishu Immigration and Customs Bureau</div>
+    <div class="consortium_smallheader consortium" id="appheader">Mogadishu Bureau of Immigration</div>
     <div class="consortium_text" id="app_instructions">
         <p>
             The Government of Somalia is now accepting applications for residential and permanent visas.
-            Please fill out the information below to the best of your ability, as it
-            will assist us in providing the best possible quality of service.
+            Please fill out the information below to the best of your ability. We will get back to you with your placement
+            as soon as possible.
         </p>
         <p>
             Applications are due by 6 a.m. EST on Friday, the first of March, 2013 {% if game_time %}({{ game_time|naturaltime }}){% endif %}.
@@ -30,9 +37,17 @@
             {% csrf_token %}
             <table>
                 {% for field in form %}
-                <tr><th>{{ field.label_tag }}{% if field.errors %}<span class="field_error">{{ field.errors }}</span>{% endif %}</th><td>{{ field }}</td></tr>
+                <tr><th>{{ field.label_tag }}{% if field.errors %}<span class="field_error">{{ field.errors }}</span>{% endif %}
+                {% if form.explanations|lookup:field.name %}
+                    <a class="explain"  onclick="$('#explanation_{{ field.name }}').slideToggle();">Explain</a>
+                    <div class="explanation" id="explanation_{{ field.name }}" style="display:none;">{{ form.explanations|lookup:field.name|safe }}</div>
+                {% endif %}
+                </th><td>{{ field }}</td></tr>
                     {% ifequal field.name "how_cast" %}
-                    <tr><td colspan="2" id="separator" class="text">The questions below are optional; more detail is always good.</td></tr>
+                        <tr><td colspan="2" class="text separator">The questions below are for statistics and are not required for casting.</td></tr>
+                    {% endifequal %}
+                    {% ifequal field.name "zephyr" %}
+                    <tr><td colspan="2" class="text separator">The questions below are optional; more detail is always good.</td></tr>
                     {% endifequal %}
                 {% endfor %}
             </table>

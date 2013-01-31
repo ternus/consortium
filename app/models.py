@@ -15,11 +15,14 @@ class ConsortiumApp(models.Model):
     time_constraints = models.TextField(blank=True, verbose_name="Do you have significant constraints on your time during game?")
     new_player = models.TextField(blank=True, verbose_name="If you are a new(ish) player, where might we know you from?")
     genders = models.TextField(blank=True, verbose_name="What genders are you willing to play?  Prefer to play?")
-    sms_ok = models.TextField(blank=True, verbose_name="Are you OK with receiving (infrequent) SMS alerts?")
     wargame_ok = models.TextField(blank=True, verbose_name="Do you want to participate in a wargame based on Diplomacy?")
     typecast = models.TextField(blank=True, verbose_name="If you have one, what is your typecast?  Do you want it?")
     punts = models.TextField(blank=True, verbose_name="Is there anything that would make you punt game?")
     how_cast = models.TextField(blank=True, verbose_name="Tell us how to cast you.")
+    disc_guns = models.IntegerField(blank=True, null=True, default=0, verbose_name="How many working (or repairable) disc guns do you own?")
+    device = models.TextField(blank=True, verbose_name="Do you have a smartphone, tablet, and/or laptop you would use in game, and if so, what kind(s)?")
+    sms_ok = models.TextField(blank=True, verbose_name="Are you OK with receiving (infrequent) SMS alerts?")
+    zephyr = models.TextField(blank=True, verbose_name="Are you generally reachable on zephyr?")
     spy_plots = models.TextField(blank=True, verbose_name="Briefly describe any 'spy plots' you've played before, and how you liked them.")
     public_secret = models.TextField(blank=True, verbose_name="Do you prefer public authority, secret authority, or working under others?")
     motivations = models.TextField(blank=True, verbose_name="Do you want motivations like idealism, altruism, fanaticism, extreme views, etc.?")
@@ -49,14 +52,17 @@ class AppForm(ModelForm):
         model = ConsortiumApp
         attrs = {'cols':40, 'rows':4}
         small = {'cols':40, 'rows':2}
+        tiny = {'cols':40, 'rows':1}
+
         exclude = ('saved_on', 'apped_on', 'submitted', 'app_id')
         widgets = {
-
                 "do_not_call": Textarea(attrs=small),
                 "time_constraints": Textarea(attrs=attrs),
                 "new_player": Textarea(attrs=attrs),
                 "genders": Textarea(attrs=small),
+                "device": Textarea(attrs=small),
                 "sms_ok": Textarea(attrs=small),
+                "zephyr": Textarea(attrs=small),
                 "wargame_ok": Textarea(attrs=small),
                 "typecast": Textarea(attrs=attrs),
                 "punts": Textarea(attrs=attrs),
@@ -69,4 +75,47 @@ class AppForm(ModelForm):
                 "campus": Textarea(attrs=attrs),
                 "changing_minds": Textarea(attrs=attrs),
                 "what_else": Textarea(attrs=attrs),
-                    }
+                }
+
+    explanations = {
+        "do_not_call": "This will be specified on the playerlist (unless you tell us not to). The GMs are unlikely to call you unless there's a problem.",
+        "time_constraints": "",
+        "new_player": "Don't assume we know who you are. If there's any doubt whatsoever, tell us who you are, especially if you're an MIT underclassman.",
+        "device": "We're trying to gauge the prevalence of these devices in the Guild playerbase. While this game will have a webapp, we have attempted to minimize the amount of time you'll need to spend on it.",
+        "sms_ok": "We won't spam you. If we use this at all, it'll be for things you need to know, and it'll all be viewable in some other way. If you have some constraint ('nights only', 'less than 5 per day is fine'), tell us.",
+        "zephyr": "Same as above -- trying to gauge how many use it.",
+        "disc_guns": "The Guild has a very limited supply of disc guns. "
+        "We expect to be able to provide everyone with one, but if we get enough loans or donations, we may be able to bump that up.  If you have your own, tell us.",
+        "wargame_ok": "The rules will be simplified and geared towards maximum human interaction.",
+        "typecast": """If you're an old hand at Guild games, we likely have an image in our heads of the type of
+    characters you play, and there's a good chance we'll gravitate towards roles
+     like that for you.  Here's your opportunity to tell us whether you want that, and what your view of your
+     own typecast is.<br/>
+                    If you don't know what a typecast is, don't worry about it.""",
+        "punts": "",
+        "how_cast": "We can't guarantee you'll get it, of course, but if you have the perfect role in mind, tell us.",
+        "spy_plots": "This will help us match you with a good set of plots.",
+        "public_secret": """'Public authority' might be the UN Secretary General,
+the chief of police, or the Pope in a game full of Catholics.  'Secret
+authority' might be the head of the secret police, the commander of a black-ops
+infiltration team, or an evil wizard with a group of brainwashed thralls.*
+'Working under others' might be an enforcer, assassin, researcher, agent, trusted
+lieutenant, or Judas.<br />
+As a very general rule of thumb, high-ranking people rely on those loyal to them to get stuff done.
+For example, a professor might have lots of research plots but a zero research stat, relying on her
+grad students (all of whom have high research stats and plots of their own) to get research done.
+""",
+        "motivations": "Some characters might be unswervingly devoted to particular causes, groups, countries, religions,"
+                       " ethical viewpoints, and so on. Others might be more ideologically flexible. What suits you?",
+        "die_for": "How strong do you wish your motivations to be? Not every character is willing to put it all on the "
+                   "line for King and country. Maybe only certain situations would make you risk your life -- which ones?",
+        "teammate": "You may encounter plots with no obvious mechanical support, some of which may be opposed by hidden"
+                    " hostile forces. You'll have to apply cunning, guile, and a healthy dose of paranoia. How do you thread the needle?",
+        "campus": "There are a number of reasons you might bring someone with you. Maybe you need them. Maybe they need you. "
+                  "Maybe you have other motivations. Use your imagination.",
+        "changing_minds": "Many plots will require you to convince people of something, whether it be to"
+                          " trust you, to give you something, or to take or refrain from an action. There are"
+                          " many ways of accomplishing this. What are your preferred ways?",
+        "what_else": "Here's your opportunity to tell us things we should know but didn't ask above.",
+
+        }
