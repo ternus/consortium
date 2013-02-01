@@ -199,7 +199,8 @@ textarea, input {
   box-sizing: border-box; }
 
 textarea {
-  width: 100%; }
+  margin-left: 2px;
+  width: 98%; }
 
 /*
 ****************************
