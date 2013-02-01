@@ -126,6 +126,9 @@ Front page
     font-size: 70px;
     font-variant: small-caps;
     text-shadow: 0px 2px 3px #cccccc; }
+    @media screen and (max-width: 720px) {
+      #consortium_intro #consortium_hero {
+        font-size: 40px; } }
   #consortium_intro #consortium_tagline {
     font-size: 14px;
     text-shadow: 0px 1px 1px #cccccc; }
