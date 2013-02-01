@@ -24,6 +24,7 @@ $smallfont: 11px;
 $tinyfont: 8px;
 $bodyfont: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
 
+$breaktiny: 620px;
 $breaksmall: 720px;
 
 $headersize: 32px;
@@ -80,6 +81,10 @@ body {
   margin: 0;
   font-family: $bodyfont;
   background: $background;
+
+  @media screen and (max-width:$breaksmall) {
+    background: $containerbg;
+  }
 }
 
 a:hover {
@@ -89,15 +94,15 @@ a:hover {
 .container {
   @media screen and (max-width:$breaksmall) {
     width: 100%;
-    margin: $headersize auto;
+    margin: $headersize+10 auto;
   }
   @media screen and (min-width:$breaksmall+1) {
     margin: 50px auto;
     width: 700px;
     border-radius: 6px;
     box-shadow: 0px 3px 5px $shadow !important;
+    padding: 20px 10px;
   }
-  padding: 20px 10px;
   background: $containerbg;
   color: $nearwhite !important;
   a {
@@ -105,21 +110,6 @@ a:hover {
     cursor: pointer;
     border-bottom: 1px dotted $nearwhite;
     text-decoration: none;
-  }
-  a.action {
-    border: 1px solid #000;
-    color: #222;
-    text-decoration: none;
-    background-color: #bbb;
-    box-shadow: 0px 0px 1px #ccc;
-    padding: 0px 4px;
-    line-height: $smallfont+10;
-    cursor: pointer;
-    border-radius: 4px;
-    a:hover {
-      background-color: #66f;
-      box-shadow: 0px 0px 1px #22f;
-    }
   }
 }
 
@@ -149,7 +139,8 @@ $headercolor: $ultralight;
 }
 
 #consortium_header {
-  position: absolute;
+
+    position: absolute;
   top: 0;
   color: $headercolor;
   text-align: center;
@@ -186,6 +177,29 @@ $headercolor: $ultralight;
     line-height: 25px;
     height: 30px;
   }
+  @media screen and (max-width:$breaktiny) {
+    height: $headersize;
+    font-size: $smallfont;
+    form {
+      display: none;
+      visibility: hidden;
+    }
+    .loginlink {
+      display: block;
+      visibility: visible;
+    }
+  }
+  @media screen and (min-width:$breaktiny+1) {
+    form {
+      display: block;
+      visibility: visible;
+    }
+    .loginlink {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
 }
 
 /*
