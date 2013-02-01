@@ -95,17 +95,14 @@ a:hover {
     vertical-align: middle;
     line-height: 25px;
     height: 30px; }
-  @media screen and (max-width: 620px) {
-    #consortium_header {
-      height: 32px;
-      font-size: 11px; }
-      #consortium_header form {
-        display: none;
-        visibility: hidden; }
-      #consortium_header .loginlink {
-        display: block;
-        visibility: visible; } }
-  @media screen and (min-width: 621px) {
+  @media screen and (max-width: 650px) {
+    #consortium_header form {
+      display: none;
+      visibility: hidden; }
+    #consortium_header .loginlink {
+      display: block;
+      visibility: visible; } }
+  @media screen and (min-width: 651px) {
     #consortium_header form {
       display: block;
       visibility: visible; }

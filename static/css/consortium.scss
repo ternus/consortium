@@ -24,8 +24,8 @@ $smallfont: 11px;
 $tinyfont: 8px;
 $bodyfont: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
 
-$breaktiny: 620px;
 $breaksmall: 720px;
+$breaktiny: 650px;
 
 $headersize: 32px;
 
@@ -181,8 +181,6 @@ $headercolor: $ultralight;
     height: 30px;
   }
   @media screen and (max-width:$breaktiny) {
-    height: $headersize;
-    font-size: $smallfont;
     form {
       display: none;
       visibility: hidden;
