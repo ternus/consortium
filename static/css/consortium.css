@@ -21,16 +21,67 @@ body {
 a:hover {
   text-shadow: 0px 0px 1px red; }
 
+div.messages {
+  font-size: 14px;
+  text-shadow: 0px 1px 1px #cccccc;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
+  @media screen and (max-width: 720px) {
+    div.messages {
+      width: 100%; } }
+  @media screen and (min-width: 721px) {
+    div.messages {
+      width: 720px;
+      box-shadow: 0px 3px 5px #cccccc !important; } }
+  div.messages #closemsgs {
+    float: right;
+    padding: 5px; }
+    div.messages #closemsgs a {
+      cursor: pointer; }
+  div.messages ul.messages {
+    padding: 0px;
+    margin: 0px; }
+    div.messages ul.messages :first-child {
+      border-top: 1px solid lightgrey;
+      padding-top: 6px; }
+    div.messages ul.messages :last-child {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px; }
+    div.messages ul.messages li {
+      border-right: 1px solid lightgrey;
+      border-left: 1px solid lightgrey;
+      border-bottom: 1px solid lightgrey;
+      display: block;
+      padding: 5px; }
+    div.messages ul.messages li.info {
+      background: #eef; }
+    div.messages ul.messages li.success {
+      background: #efe; }
+    div.messages ul.messages li.warning {
+      background: #ffe; }
+    div.messages ul.messages li.error {
+      background: #fee; }
+    div.messages ul.messages .iconized:before {
+      padding-top: 0px;
+      padding-left: 15px;
+      padding-right: 10px; }
+
+.closemargin {
+  margin: 33px auto 10px auto; }
+
+.topmargin {
+  margin: 52px auto 10px auto; }
+
 .container {
   background: url("/static/img/brillant.png") white;
   color: #111111 !important; }
   @media screen and (max-width: 720px) {
     .container {
-      width: 100%;
-      margin: 42px auto; } }
+      width: 100%; } }
   @media screen and (min-width: 721px) {
     .container {
-      margin: 50px auto;
+      margin-left: auto;
+      margin-right: auto;
       width: 700px;
       border-radius: 6px;
       box-shadow: 0px 3px 5px #cccccc !important;
@@ -46,6 +97,10 @@ a:hover {
 
 .topbar_right {
   float: right; }
+
+.c {
+  text-align: center;
+  margin: auto; }
 
 .consortium_smallheader {
   font-size: 30px;
@@ -115,30 +170,38 @@ a:hover {
 Front page
 ****************************
 */
+h1 {
+  padding: 0px;
+  margin: 5px;
+  font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
+  font-size: 70px;
+  font-variant: small-caps;
+  text-shadow: 0px 2px 3px #cccccc; }
+  @media screen and (max-width: 720px) {
+    h1 {
+      font-size: 60px; } }
+
+h2 {
+  padding: 0px;
+  margin: 5px;
+  font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
+  font-size: 30px;
+  text-shadow: 0px 1px 2px #cccccc; }
+
+h3 {
+  padding: 0px;
+  margin: 5px;
+  font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
+  font-size: 14px;
+  text-shadow: 0px 1px 1px #cccccc;
+  font-weight: bold; }
+
 #consortium_intro {
   font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
   text-align: center;
   margin: auto; }
-  #consortium_intro #consortium_hero {
-    font-size: 70px;
-    font-variant: small-caps;
-    text-shadow: 0px 2px 3px #cccccc; }
-    @media screen and (max-width: 720px) {
-      #consortium_intro #consortium_hero {
-        font-size: 60px; } }
-  #consortium_intro #consortium_tagline {
-    font-size: 14px;
-    text-shadow: 0px 1px 1px #cccccc; }
   #consortium_intro #consortium_runtime {
-    padding-top: 10px;
-    font-size: 30px;
-    text-shadow: 0px 1px 2px #cccccc; }
-  #consortium_intro #consortium_countdown {
-    font-size: 14px;
-    text-shadow: 0px 1px 1px #cccccc; }
-  #consortium_intro #consortium_gms {
-    font-size: 14px;
-    text-shadow: 0px 1px 1px #cccccc; }
+    padding-top: 10px; }
   #consortium_intro #consortium_countdown {
     margin-bottom: 10px; }
 

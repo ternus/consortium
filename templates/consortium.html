@@ -11,9 +11,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-
-    <style type="text/css">@import "{{ STATIC_URL }}css/consortium.css";</style>
+{##}
+{#    <style type="text/css">@import "{{ STATIC_URL }}css/elusive-webfont.css";</style>#}
+{#    <style type="text/css">@import "{{ STATIC_URL }}css/consortium.css";</style>#}
 
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.corner.js"></script>
@@ -86,8 +86,30 @@
     </div>
 </div>
 {% endblock %}
+<div class="messages {% if messages %}closemargin{% endif %}">
+    {% if messages %}
 
-<div class="container note">
+    <div id="closemsgs"><a onclick="$('div.messages').fadeOut(200, function(){$('.container').addClass('topmargin');});">X</a></div>
+    <ul class="messages icons">
+        {% for message in messages %}
+            <li{% if message.tags %} class="iconized
+            {% if message.tags == "success" %}
+            icon-ok-circle
+            {% elif message.tags == "error" %}
+            icon-error
+            {% elif message.tags == "info" %}
+            icon-info-sign
+            {% elif message.tags == "warning" %}
+            icon-warning-sign
+            {% endif %}
+            {{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</div>
+
+<div class="container note {% if not messages %}topmargin{% endif %}">
     {% block container %}
     {% endblock %}
 </div>

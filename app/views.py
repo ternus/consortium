@@ -30,7 +30,7 @@ def app(request, app_id=None):
                     "consortium-gms@cternus.net",
                     [app.email], fail_silently=True, html=render_to_string('app/app_saved_email.html', {'app': app}),
                 )
-                request.session['saved'] = True
+                messages.success(request, 'Saved! You can continue editing, but make sure to save or submit when you\'re done.')
                 return redirect(reverse('app', args=[app.app_id]))
             else:
                 app = form.save(commit=False)
@@ -44,12 +44,20 @@ def app(request, app_id=None):
                     ['consortium-gms@mit.edu'], html=render_to_string('app/app_saved_email.html', {'app': app}),
                 )
                 return render(request, "app/postapp.html", {'app': app})
+        else:
+            messages.error(request, "Please correct the problems below.")
+#            return redirect(reverse('app'))
     elif app_id:
         app = get_object_or_404(ConsortiumApp, app_id=app_id)
         form = AppForm(instance=app)
         readonly = request.GET.get('readonly', app.submitted)
     else:
         form = AppForm()
+#    messages.success(request, 'test success')
+#    messages.info(request, 'test info')
+#    messages.error(request, 'test error')
+#    messages.warning(request, 'test warning')
+
     return render(request, "app/app.html", {'form': form, 'app_id': app_id, 'game_time': game_time, 'readonly': readonly})
 
 @login_required()

@@ -5,31 +5,45 @@ from django.db import models
 from django.forms import ModelForm, Textarea
 from datetime import datetime
 
-ML=256
+ML = 256
 
 class ConsortiumApp(models.Model):
     name = models.CharField(max_length=ML)
     email = models.EmailField(max_length=ML)
     phone = models.CharField(max_length=ML, blank=True)
     do_not_call = models.TextField(blank=True, verbose_name="Times not to call (or other considerations)")
-    time_constraints = models.TextField(blank=True, verbose_name="Do you have significant constraints on your time during game?")
-    new_player = models.TextField(blank=True, verbose_name="If you are a new(ish) player, where might we know you from?")
+    time_constraints = models.TextField(blank=True,
+        verbose_name="Are there any significant constraints on your time during game?")
+    new_player = models.TextField(blank=True,
+        verbose_name="If you are a new(ish) player, where might we know you from?")
     genders = models.TextField(blank=True, verbose_name="What genders are you willing to play?  Prefer to play?")
-    wargame_ok = models.TextField(blank=True, verbose_name="Do you want to participate in a wargame based on Diplomacy?")
+    wargame_ok = models.TextField(blank=True,
+        verbose_name="Do you want to participate in a wargame based on Diplomacy?")
     typecast = models.TextField(blank=True, verbose_name="If you have one, what is your typecast?  Do you want it?")
     punts = models.TextField(blank=True, verbose_name="Is there anything that would make you punt game?")
     how_cast = models.TextField(blank=True, verbose_name="Tell us how to cast you.")
-    disc_guns = models.IntegerField(blank=True, null=True, default=0, verbose_name="How many working (or repairable) disc guns do you own?")
-    device = models.TextField(blank=True, verbose_name="Do you have a smartphone, tablet, and/or laptop you would use in game, and if so, what kind(s)?")
+    disc_guns = models.IntegerField(blank=True, null=True, default=0,
+        verbose_name="How many working (or repairable) disc guns do you own?")
+    device = models.TextField(blank=True,
+        verbose_name="Do you have a smartphone, tablet, and/or laptop you would use in game, and if so, what kind(s)?")
     sms_ok = models.TextField(blank=True, verbose_name="Are you OK with receiving (infrequent) SMS alerts?")
     zephyr = models.TextField(blank=True, verbose_name="Are you generally reachable on zephyr?")
-    spy_plots = models.TextField(blank=True, verbose_name="Briefly describe any 'spy plots' you've played before, and how you liked them.")
-    public_secret = models.TextField(blank=True, verbose_name="Do you prefer public authority, secret authority, or working under others?")
-    motivations = models.TextField(blank=True, verbose_name="Do you want motivations like idealism, altruism, fanaticism, extreme views, etc.?")
-    die_for = models.TextField(blank=True, verbose_name="What percentage of your goals and motivations do you want to be willing to die for?")
-    teammate = models.TextField(blank=True, verbose_name="You have a teammate.  You don't know who they are, and have no mechanic for finding them.  You expect others want to find and kill you both.  You need your teammate's help.  How might you proceed?")
-    campus = models.TextField(blank=True, verbose_name="You need to search a portion of campus for something.  Whom do you take with you, and why?")
-    changing_minds = models.TextField(blank=True, verbose_name="What is your preferred method of changing people's minds?")
+    spy_plots = models.TextField(blank=True,
+        verbose_name="Briefly describe any 'spy plots' you've played before, and how you liked them.")
+    public_secret = models.TextField(blank=True,
+        verbose_name="Do you prefer public authority, secret authority, or working under others?")
+    motivations = models.TextField(blank=True,
+        verbose_name="Do you want motivations like idealism, altruism, fanaticism, extreme views, etc.?")
+    die_for = models.TextField(blank=True,
+        verbose_name="What percentage of your goals and motivations do you want to be willing to die for?")
+    teammate = models.TextField(blank=True,
+        verbose_name="You have a teammate.  You don't know who they are, and have no mechanic for finding them. "+\
+                     "You expect others want to find and kill you both.  You need your teammate's help."+\
+                     "How might you proceed?")
+    campus = models.TextField(blank=True,
+        verbose_name="You need to search a portion of campus for something.  Whom do you take with you, and why?")
+    changing_minds = models.TextField(blank=True,
+        verbose_name="What is your preferred method of changing people's minds?")
     what_else = models.TextField(blank=True, verbose_name="What else should we know?")
 
     saved_on = models.DateTimeField(blank=True, null=True)
@@ -40,54 +54,55 @@ class ConsortiumApp(models.Model):
 
     def __unicode__(self):
         return "%s <%s> %s" % (self.name, self.email,
-            "Final" if self.submitted else "Temp")
+                               "Final" if self.submitted else "Temp")
 
     def save(self, *args, **kwargs):
         if not self.pk:
             self.app_id = hashlib.sha1(str(datetime.now())).hexdigest()[:6]
         return super(ConsortiumApp, self).save(*args, **kwargs)
 
+
 class AppForm(ModelForm):
     class Meta:
         model = ConsortiumApp
-        large = {'cols':None, 'rows':6}
+        large = {'cols': None, 'rows': 6}
 
-        attrs = {'cols':None, 'rows':4}
-        small = {'cols':None, 'rows':2}
-        tiny = {'cols':None, 'rows':1}
+        attrs = {'cols': None, 'rows': 4}
+        small = {'cols': None, 'rows': 2}
+        tiny = {'cols': None, 'rows': 1}
 
         exclude = ('saved_on', 'apped_on', 'submitted', 'app_id')
         widgets = {
-                "do_not_call": Textarea(attrs=small),
-                "time_constraints": Textarea(attrs=attrs),
-                "new_player": Textarea(attrs=attrs),
-                "genders": Textarea(attrs=small),
-                "device": Textarea(attrs=small),
-                "sms_ok": Textarea(attrs=small),
-                "zephyr": Textarea(attrs=small),
-                "wargame_ok": Textarea(attrs=small),
-                "typecast": Textarea(attrs=attrs),
-                "punts": Textarea(attrs=attrs),
-                "how_cast": Textarea(attrs=attrs),
-                "spy_plots": Textarea(attrs=attrs),
-                "public_secret": Textarea(attrs=attrs),
-                "motivations": Textarea(attrs=attrs),
-                "die_for": Textarea(attrs=attrs),
-                "teammate": Textarea(attrs=large),
-                "campus": Textarea(attrs=large),
-                "changing_minds": Textarea(attrs=large),
-                "what_else": Textarea(attrs=attrs),
-                }
+            "do_not_call": Textarea(attrs=small),
+            "time_constraints": Textarea(attrs=attrs),
+            "new_player": Textarea(attrs=attrs),
+            "genders": Textarea(attrs=small),
+            "device": Textarea(attrs=small),
+            "sms_ok": Textarea(attrs=small),
+            "zephyr": Textarea(attrs=small),
+            "wargame_ok": Textarea(attrs=small),
+            "typecast": Textarea(attrs=attrs),
+            "punts": Textarea(attrs=attrs),
+            "how_cast": Textarea(attrs=attrs),
+            "spy_plots": Textarea(attrs=attrs),
+            "public_secret": Textarea(attrs=attrs),
+            "motivations": Textarea(attrs=attrs),
+            "die_for": Textarea(attrs=attrs),
+            "teammate": Textarea(attrs=large),
+            "campus": Textarea(attrs=large),
+            "changing_minds": Textarea(attrs=large),
+            "what_else": Textarea(attrs=attrs),
+        }
 
     explanations = {
         "do_not_call": "This will be specified on the playerlist (unless you tell us not to). The GMs are unlikely to call you unless there's a problem.",
-        "time_constraints": "If you can't play certain days, aren't available at certain times, or have pre-existing commitments, here's where you tell us.<br />We will have a few time-constrained parts available.  If you can only make the first weekend, for example, we may still be able to cast you. Apply anyway!",
+        "time_constraints": "If you can't play certain days, aren't available at certain times, or have pre-existing commitments, we need to know.<br />We will have a few time-constrained parts available.  If you can only make the first weekend, for example, we may still be able to cast you. Apply anyway!",
         "new_player": "Don't assume we know who you are. If there's any doubt whatsoever, tell us who you are, especially if you're an MIT underclassman.",
         "device": "We're trying to gauge the prevalence of these devices in the Guild playerbase. While this game will have a webapp, we have attempted to minimize the amount of time you'll need to spend on it.",
         "sms_ok": "We won't spam you. If we use this at all, it'll be for things you need to know, and it'll all be viewable in some other way. If you have some constraint ('nights only', 'less than 5 per day is fine'), tell us.",
         "zephyr": "Same as above -- trying to gauge how many use it.",
         "disc_guns": "The Guild has a very limited supply of disc guns. "
-        "We expect to be able to provide everyone with one, but if we get enough loans or donations, we may be able to bump that up.  If you have your own, tell us.",
+                     "We expect to be able to provide everyone with one, but if we get enough loans or donations, we may be able to bump that up.  If you have your own, tell us.",
         "wargame_ok": "The rules will be simplified and geared towards maximum human interaction.",
         "typecast": """If you're an old hand at Guild games, we likely have an image in our heads of the type of
     characters you play, and there's a good chance we'll gravitate towards roles
@@ -121,4 +136,4 @@ grad students (all of whom have high research stats and plots of their own) to g
                           " many ways of accomplishing this. What are your preferred ways?",
         "what_else": "Here's your opportunity to tell us things we should know but didn't ask above.",
 
-        }
+    }

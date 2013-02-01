@@ -11,6 +11,11 @@ $redlight: red;
 $greenlight: green;
 $bluelight: blue;
 
+$info: #eef;
+$success: #efe;
+$warning: #ffe;
+$error: #fee;
+
 $background: url('/static/img/gplaypattern.png') #eee;
 $headerbg: url('/static/img/subtle_freckles.png') #dde;
 $containerbg: url('/static/img/brillant.png') #fff;
@@ -94,13 +99,84 @@ a:hover {
   text-shadow: 0px 0px 1px $redlight;
 }
 
+div.messages {
+  @include med-text;
+  @media screen and (max-width:$breaksmall) {
+    width: 100%;
+  }
+  @media screen and (min-width:$breaksmall+1) {
+    width: 720px;
+    box-shadow: 0px 3px 5px $shadow !important;
+  }
+  #closemsgs {
+    float:right;
+    padding:5px;
+
+    a {
+    cursor:pointer;
+    }
+  }
+  ul.messages {
+    :first-child {
+      border-top: 1px solid lightgray;
+      padding-top: 6px;
+    }
+    :last-child {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+    padding:0px;
+    margin:0px;
+    li {
+      border-right: 1px solid lightgray;
+      border-left: 1px solid lightgray;
+      border-bottom: 1px solid lightgray;
+
+      display:block;
+      padding:5px;
+    };
+    li.info {
+      background:#eef;
+    }
+    li.success {
+      background:#efe;
+    }
+    li.warning {
+      background: #ffe;
+    }
+    li.error{
+      background: #fee;
+    }
+    .iconized:before {
+      padding-top:0px;
+      padding-left:15px;
+      padding-right:10px;
+    }
+  }
+    border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+}
+
+.closemargin {
+  //@media screen and (min-width:$breaksmall+1) {
+  margin: $headersize+1 auto 10px auto;
+  //}
+}
+.topmargin {
+  //@media screen and (min-width:$breaksmall+1) {
+  margin: $headersize+20 auto 10px auto;
+  //}
+}
+
+
 .container {
   @media screen and (max-width:$breaksmall) {
     width: 100%;
-    margin: $headersize+10 auto;
   }
   @media screen and (min-width:$breaksmall+1) {
-    margin: 50px auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 700px;
     border-radius: 6px;
     box-shadow: 0px 3px 5px $shadow !important;
@@ -121,6 +197,10 @@ a:hover {
 }
 .topbar_right {
   float: right;
+}
+
+.c {
+  @include real-center;
 }
 
 $headercolor: $ultralight;
@@ -208,24 +288,32 @@ $headercolor: $ultralight;
 Front page
 ****************************
 */
+h1 {
+  padding: 0px;
+  margin: 5px;
+  @include orbitron;
+  @include huge-text;
+}
+
+h2 {
+  padding: 0px;
+  margin: 5px;
+  @include orbitron;
+  @include large-text;
+}
+
+h3 {
+  padding: 0px;
+  margin: 5px;
+  @include orbitron;
+  @include med-text;
+  font-weight: bold;
+}
 
 #consortium_intro {
   @include orbitron;
-  #consortium_hero {
-    @include huge-text;
-  }
-  #consortium_tagline {
-    @include med-text;
-  }
   #consortium_runtime {
     padding-top: 10px;
-    @include large-text;
-  }
-  #consortium_countdown {
-    @include med-text;
-  }
-  #consortium_gms {
-    @include med-text;
   }
   #consortium_countdown {
     margin-bottom: 10px;
