@@ -1,11 +1,11 @@
 # coding=utf-8
 from datetime import datetime
 from django.contrib import messages
-from django.core.mail import EmailMessage
 from django.core.urlresolvers import reverse
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
+from consortium.consortium import send_mail
 from models import AppForm, ConsortiumApp
 
 
@@ -22,13 +22,12 @@ def app(request, app_id=None):
                 app = form.save(commit=False)
                 app.saved_on = datetime.now()
                 app.save()
-                msg = EmailMessage("[Consortium] Your App Link",
+                send_mail("[Consortium] Your App Link",
                     render_to_string('app/app_saved_email.html', {'app': app}),
                     "consortium-gms@cternus.net",
-                    [app.email])
-                msg.content_subtype = 'html'
-                msg.send()
-
+                    [app.email], fail_silently=True, html=render_to_string('app/app_saved_email.html', {'app': app}),
+                )
+                request.session['saved'] = True
                 return redirect(reverse('app', args=[app.app_id]))
             else:
                 app = form.save(commit=False)
@@ -36,12 +35,11 @@ def app(request, app_id=None):
                 app.submitted = True
                 app.save()
                 form = AppForm(instance=app)
-                msg = EmailMessage("[Consortium] App from %s" % app.name,
+                send_mail("[Consortium] App from %s" % app.name,
                     render_to_string('app/app_email.html', {'form': form}),
                     "consortium-gms@cternus.net",
-                    ['consortium-gms@mit.edu'])
-                msg.content_subtype = 'html'
-                msg.send()
+                    ['consortium-gms@mit.edu'], html=render_to_string('app/app_saved_email.html', {'app': app}),
+                )
                 return render(request, "app/postapp.html", {'app': app})
     elif app_id:
         app = get_object_or_404(ConsortiumApp, app_id=app_id)

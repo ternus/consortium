@@ -68,7 +68,7 @@
                 <li class="logout"><a href="{% url logout %}">Logout</a></li>
             {% else %}
                 <li>
-                <a href="/login" class="loginlink">Login</a>
+                <a href="{% url login %}" class="loginlink">Login</a>
                 <form method="post" id="login_form" action="{% url login %}">
                     {% csrf_token %}
                     <label for="id_username">Username</label>
