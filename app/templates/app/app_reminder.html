@@ -1,0 +1,13 @@
+<html>
+<body>
+<h2>Hello {{ app.name }},</h2>
+<p>
+    Just a quick reminder that apps for Consortium are due {{ due_time }}.
+</p>
+<p>To finish and submit your app, go to this URL:</p>
+<div style="font-size: 18pt;text-align:center;">
+    <a href="http://consortium.so{% url app app.app_id %}">http://consortium.so{% url app app.app_id %}</a>
+</div>
+<p>- The Consortium GMs</p>
+</body>
+</html>

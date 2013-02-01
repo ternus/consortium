@@ -1,0 +1,50 @@
+{% extends "consortium.html" %}
+{% load humanize %}
+{% load lookup %}
+
+{% block javascripts %}
+    <script type=text/javascript>
+
+    </script>
+{% endblock %}
+
+{% block container %}
+
+    <h2>
+        App Dashboard
+    </h2>
+    <h3>
+        {{ complete_apps|length }} complete apps (deadline {{ due_time }})
+    </h3>
+    <h3>Complete Apps</h3>
+    <table width="100%">
+        <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Submitted On</th>
+        </thead>
+        {% for app in complete_apps %}
+            <tr>
+                <td><a href="{% url app app.app_id %}">{{ app.name }}</a></td>
+                <td>{{ app.email }}</td>
+                <td>{{ app.apped_on }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h3>Incomplete Apps</h3>
+    <table width="100%">
+    <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Last Edited</th>
+    </thead>
+        {% for app in incomplete_apps %}
+            <tr>
+                <td><a href="{% url app app.app_id %}">{{ app.name }}</a></td>
+                <td>{{ app.email }} (<a href="{% url remind app.app_id %}">Remind</a>)</td>
+                <td>{{ app.saved_on }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,6 +1,8 @@
 # coding=utf-8
 from datetime import datetime
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.humanize.templatetags.humanize import naturaltime
 from django.core.urlresolvers import reverse
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -11,6 +13,7 @@ from models import AppForm, ConsortiumApp
 
 def app(request, app_id=None):
     game_time = datetime(2013,3,1,6)
+    readonly = False
     if request.method == 'POST':
         try:
             instance = ConsortiumApp.objects.get(app_id=app_id)
@@ -44,6 +47,30 @@ def app(request, app_id=None):
     elif app_id:
         app = get_object_or_404(ConsortiumApp, app_id=app_id)
         form = AppForm(instance=app)
+        readonly = app.submitted
     else:
         form = AppForm()
-    return render(request, "app/app.html", {'form': form, 'app_id': app_id, 'game_time': game_time})
+    return render(request, "app/app.html", {'form': form, 'app_id': app_id, 'game_time': game_time, 'readonly': readonly})
+
+@login_required()
+def dashboard(request):
+    apps = ConsortiumApp.objects.all()
+    due_time = naturaltime(datetime(2013,3,1,6))
+    complete_apps = apps.filter(submitted=True)
+    incomplete_apps = apps.filter(submitted=False)
+    return render(request, "app/dashboard.html", {'apps': apps,
+                                                  'complete_apps': complete_apps,
+                                                  'incomplete_apps': incomplete_apps,
+                                                  'due_time': due_time})
+
+def remind(request, app_id):
+    app = get_object_or_404(ConsortiumApp, app_id=app_id)
+    due_time = naturaltime(datetime(2013,3,1,6))
+    send_mail("[Consortium] App Reminder",
+    render_to_string('app/app_reminder.html', {'app': app, 'due_time': due_time}),
+    "consortium-gms@cternus.net",
+    [app.email], fail_silently=True, html=render_to_string('app/app_reminder.html', {'app': app, 'due_time': due_time})
+    )
+    messages.success(request, "Reminded %s." % True)
+    return redirect(reverse('dashboard'))
+

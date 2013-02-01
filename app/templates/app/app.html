@@ -3,9 +3,14 @@
 {% load lookup %}
 
 {% block javascripts %}
+    {% if readonly %}
     <script type=text/javascript>
-
+         $('document').ready(function(){
+             $('table textarea').attr('readonly', 'readonly');
+             $('table input').attr('readonly', 'readonly');
+         });
     </script>
+    {% endif %}
 {% endblock %}
 
 {% block container %}
@@ -26,13 +31,16 @@
             and click the "save" button below, your partial app will be saved.  You'll receive an email with a link to your app
             and may resume it at your leisure.
         </p>
+    {% if readonly %}
+        <b>This app has already been submitted and cannot be changed.</b>
+    {% endif %}
     </div>
     <div class="consortium" id="app">
 
         <form action="{% url app app_id %}" method="POST">
         {{ form.non_field_errors }}
             <div class="appbutton">
-                <input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" />
+                {% if not readonly %}<input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" /> {% endif %}
                 {% if request.session.saved %}<span id="saved">Saved!</span>{% endif %}
                 <a class="explain" onclick="$('.explanation').slideToggle();">Expand All Explanations</a>
             </div>
@@ -46,7 +54,7 @@
                 {% endif %}
                 </th><td>{{ field }}</td></tr>
                     {% ifequal field.name "how_cast" %}
-                        <tr><td colspan="2"><input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" />                        </td></tr>
+                        {% if not readonly %}<tr><td colspan="2"><input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" />                        </td></tr>{% endif %}
 
                         <tr><td colspan="2" class="text separator">These questions are for statistical purposes and are not required for casting.</td></tr>
                     {% endifequal %}
@@ -54,8 +62,10 @@
                     <tr><td colspan="2" class="text separator">These questions are optional; more detail is always good.</td></tr>
                     {% endifequal %}
                 {% endfor %}
+            {% if not readonly %}
                 <tr><td colspan="2"><input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" /></td></tr>
                 <tr><td colspan="2"><input type="submit" value="Apply For Consortium" id="apply" name="app_submit" class="gradientbutton redbutton"/></td></tr>
+            {% endif %}
             </table>
         </form>
     </div>
