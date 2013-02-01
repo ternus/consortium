@@ -14,6 +14,8 @@ $bluelight: #11f;
 $background: url('/static/img/gplaypattern.png') #eee;
 $headerbg: url('/static/img/subtle_freckles.png') #dde;
 $containerbg: url('/static/img/brillant.png') #fff;
+$teaserbg: url('/static/img/honey_im_subtle.png') #aaa;
+$woolbg: url('/static/img/light_wool.png') #ddd;
 
 $hugefont: 70px;
 $bigfont: 30px;
@@ -183,6 +185,7 @@ Front page
 */
 
 #consortium_intro {
+  @include orbitron;
   #consortium_hero {
     @include huge-text;
   }
@@ -202,30 +205,36 @@ Front page
   #consortium_countdown {
     margin-bottom: 10px;
   }
-  #consortium_teaser {
-    @include real-center;
-    color: $nearwhite;
-    @include large-text;
-    position: absolute;
-    top: -25px;
-    left: 32%;
-    color: $ultralight;
-    padding: 10px;
-    width: 33%;
-    background: $darkfont;
-    @include med-text;
-    border: 1px solid black;
-    box-shadow: 0px 0px 5px $shadow;
-  }
   @include real-center;
 }
+#consortium_teaser {
+  @include orbitron;
+  @include real-center;
+  color: $nearwhite;
+  @include large-text;
+  position: absolute;
+  top: -20px;
+  left: 32%;
+  color: $ultralight;
+  padding: 10px;
+  width: 33%;
+  background: white;
+  @include med-text;
+  font-weight: bold;
+  border: 1px dashed $shadow;
+  //border: 1px dashed $shadow;
+  //border: 1px dashed $shadow;
+  background: #f5f5f5;
+  box-shadow: 0px 0px 3px $shadow;
+}
+
 
 #consortium_blurb {
-  margin: 40px auto 20px auto;
+  margin: 30px auto 20px auto;
   width: 90%;
   padding: 10px;
   padding-top: 25px;
-  background: url('/static/img/light_wool.png') #ddd;
+  background: $woolbg;
   text-shadow: 0px 1px 1px $shadow;
   box-shadow: 1px 1px 10px #999;
   font-family: $bodyfont;

@@ -71,7 +71,7 @@ class AppForm(ModelForm):
                 "public_secret": Textarea(attrs=attrs),
                 "motivations": Textarea(attrs=attrs),
                 "die_for": Textarea(attrs=attrs),
-                "teammate": Textarea(attrs=attrs),
+                "teammate": Textarea(attrs={'cols':40, 'rows':5}),
                 "campus": Textarea(attrs=attrs),
                 "changing_minds": Textarea(attrs=attrs),
                 "what_else": Textarea(attrs=attrs),
