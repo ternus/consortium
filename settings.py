@@ -7,36 +7,29 @@ TEMPLATE_DEBUG = DEBUG
 
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-print ROOT_PATH
-
 ADMINS = (
     ('ternus', 'ternus@cternus.net'),
-    # ('Your Name', 'your_email@example.com'),
-)
+    )
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'consortium-gms@cternus.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+GAMETEX_PROJECT_ROOT = '/Users/cternus/guild/consortium/'
+GAMETEX_NAME = 'consortium'
+PDFLATEX_PATH = '/opt/local/bin/pdflatex'
+
 MANAGERS = ADMINS
 
 DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#        'NAME': '',                      # Or path to database file if using sqlite3.
-#        'USER': '',                      # Not used with sqlite3.
-#        'PASSWORD': '',                  # Not used with sqlite3.
-#        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-#    },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dev.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'NAME': 'dev.db', # Or path to database file if using sqlite3.
+        'USER': '', # Not used with sqlite3.
+        'PASSWORD': '', # Not used with sqlite3.
+        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '', # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -88,25 +81,27 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     ROOT_PATH + "/static/",
-)
+    )
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    )
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'nwyf()m2(majb5fb-814mj4*bok4osuqy7v%#2(ialp9c3!yzg'
+
+OBFUSCATE_KEY = 'arglefraster'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
+    #     'django.template.loaders.eggs.Loader',
+    )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -116,7 +111,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+    )
 
 ROOT_URLCONF = 'urls'
 
@@ -128,7 +123,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     ROOT_PATH + "/templates/",
-)
+    )
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -147,8 +142,21 @@ INSTALLED_APPS = (
     'south',
     'hexgrid',
     'gametex',
-    'app'
-)
+    'gametex_django_print',
+    'app',
+    'succession'
+    )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "consortium.consortium.consortium_context"
+    )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
