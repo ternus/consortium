@@ -47,7 +47,7 @@ $bodyfont: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
 }
 @mixin small-text {
   font-size: $smallfont;
-  text-shadow: 0px 1px 1px $shadow;
+  text-shadow: 0px 1px 1px lighten($shadow, 10%);
 }
 @mixin tiny-text {
   font-size: $tinyfont;
@@ -312,7 +312,7 @@ App
     padding-top:5px;
     padding-bottom: 15px;
     @include small-text;
-    color: $lightfont;
+    color: lighten($lightfont, 10%);
   }
   .separator {
     text-align: center;

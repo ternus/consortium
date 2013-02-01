@@ -220,8 +220,8 @@ App
     padding-top: 5px;
     padding-bottom: 15px;
     font-size: 11px;
-    text-shadow: 0px 1px 1px #cccccc;
-    color: #666666; }
+    text-shadow: 0px 1px 1px #e6e6e6;
+    color: gray; }
   #app .separator {
     text-align: center;
     border-bottom: 1px dotted #cccccc;
