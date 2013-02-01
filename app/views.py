@@ -47,7 +47,7 @@ def app(request, app_id=None):
     elif app_id:
         app = get_object_or_404(ConsortiumApp, app_id=app_id)
         form = AppForm(instance=app)
-        readonly = app.submitted
+        readonly = request.GET.get('readonly', app.submitted)
     else:
         form = AppForm()
     return render(request, "app/app.html", {'form': form, 'app_id': app_id, 'game_time': game_time, 'readonly': readonly})
