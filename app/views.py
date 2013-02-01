@@ -13,7 +13,7 @@ from models import AppForm, ConsortiumApp
 
 def app(request, app_id=None):
     game_time = datetime(2013,3,1,6)
-    readonly = False
+    readonly = request.GET.get('readonly', False)
     if request.method == 'POST':
         try:
             instance = ConsortiumApp.objects.get(app_id=app_id)
