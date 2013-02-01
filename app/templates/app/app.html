@@ -36,7 +36,7 @@
                 <a class="explain" onclick="$('.explanation').slideToggle();">Expand All Explanations</a>
             </div>
             {% csrf_token %}
-            <table>
+            <table width=100%>
                 {% for field in form %}
                 <tr><th>{{ field.label_tag }}{% if field.errors %}<span class="field_error">{{ field.errors }}</span>{% endif %}
                 {% if form.explanations|lookup:field.name %}

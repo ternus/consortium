@@ -50,9 +50,11 @@ class ConsortiumApp(models.Model):
 class AppForm(ModelForm):
     class Meta:
         model = ConsortiumApp
-        attrs = {'cols':40, 'rows':4}
-        small = {'cols':40, 'rows':2}
-        tiny = {'cols':40, 'rows':1}
+        large = {'cols':None, 'rows':6}
+
+        attrs = {'cols':None, 'rows':4}
+        small = {'cols':None, 'rows':2}
+        tiny = {'cols':None, 'rows':1}
 
         exclude = ('saved_on', 'apped_on', 'submitted', 'app_id')
         widgets = {
@@ -71,9 +73,9 @@ class AppForm(ModelForm):
                 "public_secret": Textarea(attrs=attrs),
                 "motivations": Textarea(attrs=attrs),
                 "die_for": Textarea(attrs=attrs),
-                "teammate": Textarea(attrs={'cols':40, 'rows':5}),
-                "campus": Textarea(attrs=attrs),
-                "changing_minds": Textarea(attrs=attrs),
+                "teammate": Textarea(attrs=large),
+                "campus": Textarea(attrs=large),
+                "changing_minds": Textarea(attrs=large),
                 "what_else": Textarea(attrs=attrs),
                 }
 
