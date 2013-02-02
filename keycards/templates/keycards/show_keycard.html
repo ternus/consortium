@@ -1,0 +1,53 @@
+{% extends "consortium.html" %}
+
+{% block container %}
+
+
+    <div style="padding-bottom: 10px;">
+        <form method="get" action="{% url keycard %}">
+            Look up a keycard by number: <input type="text" name="number"/>
+            <input type="submit" value="Lookup"/>
+        </form>
+    </div>
+
+    {% if number %}
+        {% if kc %}
+
+            <h2>{{ kc.name }}</h2>
+            <div>
+                <div>
+                    <a href="#" onclick="$('#desc').slideToggle();">I have paid the soft skill cost</a>
+
+                    <p id="desc" style="display: none;">{{ kc.description }}</p>
+                </div>
+
+                {% if kc.words %}
+                    <div>
+                        <p>                        Pictionary words for this keycard step:
+                            {{ kc.words }}</p>
+                    </div>
+                {% endif %}
+
+                {% if kc.koan %}
+                    <div>
+                        <h3>Zendo koan for this keycard step:</h3>
+
+                        <p>{{ kc.koan }}</p>
+                    </div>
+                {% endif %}
+
+                {% if kc.hintreq %}
+                    <div>
+                        <a href="#" onclick="$('#hint').slideToggle();">I have paid the hint cost ({{ hintreq }})</a>
+
+                        <p id="hint" style="display: none;">{{ kc.hint }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+
+            <h3>That keycard doesn't exist!</h3>
+
+        {% endif %}
+    {% endif %}
+{% endblock %}

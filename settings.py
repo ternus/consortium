@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'south',
     'hexgrid',
     'gametex',
+    'keycards',
     #'gametex_django_print',
     'app',
     'succession'
