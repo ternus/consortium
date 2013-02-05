@@ -1,7 +1,8 @@
 from math import sqrt
 import svgwrite
+from territory.models import Territory
 
-somalia = [
+somaliax = [
    (10,30),
    (10,120),
    (30,150),
@@ -80,7 +81,7 @@ territories = [
     #Sanaag
     {
         'code':'C1',
-        'name':'Xiis',
+        'name':'Adad',
         'pts':[(120,330),(140,330),(150,340),(150,320),(160,290),(150,290),(120,310)],
         'connectsto':['A2','B2','E1','C2','C3'],
         'special': None,
@@ -418,121 +419,136 @@ territories = [
         },
 ]
 
-mogadishu = {
-    'name': 'Mogadishu',
-    'pts': [(110, 90), (102, 90), (102, 85)],
-    'connectsto': [], #None
-    'special': None,
-    'center': (55, 315),
-}
+#for t in territories:
+#    Territory.objects.create(
+#        code=t['code'],
+#        name=t['name'],
+#        pts_s=str(t['pts']),
+#        center_s=str(t['center'])
+#    )
+#for t in territories:
+#    tt = Territory.objects.get(code=t['code'])
+#    for ttc in t['connectsto']:
+#        tt.connects.add(Territory.objects.get(code=ttc))
+#        tt.save()
 
-
-def namecode(place):
-#    print place
-    return place['name'].replace(' ', '')[:3].upper()
-
-#for p in territories: print namecode(p)
-
-
-def convert_pt(pt):
-    return pt[0]*2.5, (370-pt[1])*2.5
-
-def convert_points(pts):
-    return map(convert_pt, pts)
-
-def fmtseg(seg):
-    if seg[1] > seg[0]:
-        return (seg[1], seg[0])
-    return seg
-
-def get_segs(t):
-    segs = []
-    # Convert each polygon (point set) to a set of line segments.
-    for x in range(0, len(t['pts']) - 1):
-        segs.append(
-            (t['pts'][x], t['pts'][x + 1])
-        )
-        # Make sure to grab the last one.
-    segs.append(
-        (t['pts'][len(t['pts']) - 1], t['pts'][0])
-    )
-    return map(fmtseg,segs)
-
-def external_border(territory_code):
-    ts = filter(lambda x: x['code'][0] == territory_code, territories)
-    outer_set = set()
-    for t in ts:
-        outer_set = outer_set ^ set(get_segs(t))
-    return outer_set
-
-def seg_len(s):
-    dx = abs(s[0][0] - s[1][0])
-    dy = abs(s[0][1] - s[1][1])
-    return sqrt(dx ** 2 + dy**2)
-
-null_seg = ((0,0),(1,1))
-
-def max_seg(x, y):
-    return x if seg_len(x) >= seg_len(y) else y
-
-def best_border(t1,t2):
-    x =  reduce(max_seg,set(get_segs(t1)) & set(get_segs(t2)),null_seg)
-#    print t1['code'],t2['code'], x
-    return x
-
-def border_center(b):
-    b = fmtseg(b)
-    return (b[0][0]-((b[0][0] - b[1][0]) / 2.0), b[0][1]-((b[0][1] - b[1][1]) / 2.0))
-
-def seg_slope(s):
-    dx = s[0][0] - s[1][0]
-    dy = s[0][1] - s[1][1]
-    return dy/float(dx)
-
-#def border_line(s):
-#    slope = -1/seg_slope(s)
-#    center = border_center(s)
-#    if abs(slope) >= 1:
-#        start_x = center[0] / slope
-#        start_y = center[1]
-
-all_codes = map(chr, range(ord('A'),ord('P')+1))
-
-def borders(codes=all_codes):
-    border_set = set()
-    for c in codes:
-        border_set |= external_border(c)
-    return border_set
-
-#draw_territories = ['A1','A2','C1','C2','D1','D2','B3','E1','E2']
-draw_codes = all_codes #map(lambda x: x[0], draw_territories)
-
-somalia = convert_points(somalia)
-dwg = svgwrite.Drawing(filename='somalia2.svg', size=(800,1000))
-for f in territories:
-#    if not f['code'] in draw_territories: continue
-    dwg.add(dwg.polygon(points=convert_points(f['pts']), stroke='green', class_='territory', stroke_dasharray='1,1', fill='#f6f6ff',
-        onmouseover="evt.target.setAttribute('opacity', '0.5');",
-        onmouseout="evt.target.setAttribute('opacity','1)');",
-        id="terr_%s" % f['code']))
-    dwg.add(dwg.text(f['name'], x=[convert_pt(f['center'])[0]-10], y=[convert_pt(f['center'])[1]], style="font-size:8px;"))
-
-for b in borders(codes=draw_codes):
-    dwg.add(dwg.polyline(points=convert_points(b), stroke="orange", stroke_dasharray='1,2', stroke_width='2'))
-
-#dwg.add(dwg.polyline(points=convert_points(compute_border('D')), stroke_dasharray='3,5', stroke_width=2, stroke='blue', fill='none'))
-#dwg.add(dwg.polyline(points=convert_points(compute_border('E')), stroke_dasharray='3,5', stroke_width=2, stroke='blue', fill='none'))
-
-dwg.add(dwg.polygon(points=convert_points(mogadishu['pts']), stroke='green', fill='#0000aa'))
-dwg.add(dwg.polygon(points=somalia, stroke='blue', fill='none', stroke_width=2))
-
-for t in territories:
-    for c in t['connectsto']:
-        for x in territories:
-            if x['code'] == c:
-                x,y = convert_pt(border_center(best_border(t,x)))
-                dwg.add(dwg.text('x', x=[x-3], y=[y+5]))
-
-#print "A-OK"
-
-dwg.save()
+#exit()
+#
+#mogadishu = {
+#    'name': 'Mogadishu',
+#    'pts': [(110, 90), (102, 90), (102, 85)],
+#    'connectsto': [], #None
+#    'special': None,
+#    'center': (55, 315),
+#}
+#
+#
+#def namecode(place):
+##    print place
+#    return place['name'].replace(' ', '')[:3].upper()
+#
+##for p in territories: print namecode(p)
+#
+#
+#def convert_pt(pt):
+#    return pt[0]*2.5, (370-pt[1])*2.5
+#
+#def convert_points(pts):
+#    return map(convert_pt, pts)
+#
+#def fmtseg(seg):
+#    if seg[1] > seg[0]:
+#        return (seg[1], seg[0])
+#    return seg
+#
+#def get_segs(t):
+#    segs = []
+#    # Convert each polygon (point set) to a set of line segments.
+#    for x in range(0, len(t['pts']) - 1):
+#        segs.append(
+#            (t['pts'][x], t['pts'][x + 1])
+#        )
+#        # Make sure to grab the last one.
+#    segs.append(
+#        (t['pts'][len(t['pts']) - 1], t['pts'][0])
+#    )
+#    return map(fmtseg,segs)
+#
+#def external_border(territory_code):
+#    ts = filter(lambda x: x['code'][0] == territory_code, territories)
+#    outer_set = set()
+#    for t in ts:
+#        outer_set = outer_set ^ set(get_segs(t))
+#    return outer_set
+#
+#def seg_len(s):
+#    dx = abs(s[0][0] - s[1][0])
+#    dy = abs(s[0][1] - s[1][1])
+#    return sqrt(dx ** 2 + dy**2)
+#
+#null_seg = ((0,0),(1,1))
+#
+#def max_seg(x, y):
+#    return x if seg_len(x) >= seg_len(y) else y
+#
+#def best_border(t1,t2):
+#    x =  reduce(max_seg,set(get_segs(t1)) & set(get_segs(t2)),null_seg)
+##    print t1['code'],t2['code'], x
+#    return x
+#
+#def border_center(b):
+#    b = fmtseg(b)
+#    return (b[0][0]-((b[0][0] - b[1][0]) / 2.0), b[0][1]-((b[0][1] - b[1][1]) / 2.0))
+#
+#def seg_slope(s):
+#    dx = s[0][0] - s[1][0]
+#    dy = s[0][1] - s[1][1]
+#    return dy/float(dx)
+#
+##def border_line(s):
+##    slope = -1/seg_slope(s)
+##    center = border_center(s)
+##    if abs(slope) >= 1:
+##        start_x = center[0] / slope
+##        start_y = center[1]
+#
+#all_codes = map(chr, range(ord('A'),ord('P')+1))
+#
+#def borders(codes=all_codes):
+#    border_set = set()
+#    for c in codes:
+#        border_set |= external_border(c)
+#    return border_set
+#
+##draw_territories = ['A1','A2','C1','C2','D1','D2','B3','E1','E2']
+#draw_codes = all_codes #map(lambda x: x[0], draw_territories)
+#
+#somalia = convert_points(somalia)
+#dwg = svgwrite.Drawing(filename='somalia2.svg', size=(800,1000))
+#for f in territories:
+##    if not f['code'] in draw_territories: continue
+#    dwg.add(dwg.polygon(points=convert_points(f['pts']), stroke='green', class_='territory', stroke_dasharray='1,1', fill='#f6f6ff',
+#        onmouseover="evt.target.setAttribute('opacity', '0.5');",
+#        onmouseout="evt.target.setAttribute('opacity','1)');",
+#        id="terr_%s" % f['code']))
+#    dwg.add(dwg.text(f['name'], x=[convert_pt(f['center'])[0]-10], y=[convert_pt(f['center'])[1]], style="font-size:8px;"))
+#
+#for b in borders(codes=draw_codes):
+#    dwg.add(dwg.polyline(points=convert_points(b), stroke="orange", stroke_dasharray='1,2', stroke_width='2'))
+#
+##dwg.add(dwg.polyline(points=convert_points(compute_border('D')), stroke_dasharray='3,5', stroke_width=2, stroke='blue', fill='none'))
+##dwg.add(dwg.polyline(points=convert_points(compute_border('E')), stroke_dasharray='3,5', stroke_width=2, stroke='blue', fill='none'))
+#
+#dwg.add(dwg.polygon(points=convert_points(mogadishu['pts']), stroke='green', fill='#0000aa'))
+#dwg.add(dwg.polygon(points=somalia, stroke='blue', fill='none', stroke_width=2))
+#
+#for t in territories:
+#    for c in t['connectsto']:
+#        for x in territories:
+#            if x['code'] == c:
+#                x,y = convert_pt(border_center(best_border(t,x)))
+#                dwg.add(dwg.text('x', x=[x-3], y=[y+5]))
+#
+##print "A-OK"
+#
+#dwg.save()

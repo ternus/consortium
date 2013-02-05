@@ -1,0 +1,43 @@
+{% extends "consortium.html" %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.svg.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.svgdom.js"></script>
+
+    <script type="text/javascript">
+{#     {{ t.js_center.0 }}, {{ t.js_center.1 }},#}
+
+        $(function() {
+
+            $('body').data('territories',
+                    { {% for t in territories %}'{{ t.code }}':{{ t.to_json|safe }},{% endfor %}
+                    });
+            $('body').data('factions',
+                    { {% for f in factions %}'{{ f.code }}': {{ f.to_json|safe }},{% endfor %}
+                    });
+
+
+            var svg = $("#map").svg({height: 1200, onLoad: function(svg){
+                terrs = $('body').data('territories');
+                for (var tx in terrs) {
+                    var t = terrs[tx];
+                    var tt = svg.polygon(t.points, {fill:t.color,stroke:'green',id:t.code,class_:'territory'});
+                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;",id:t.code,class_:'territory'});
+                }
+                svg.polygon([{{ somalia }}], {fill:'none', stroke:'blue', strokeWidth:2});
+
+            }});
+        $('.territory').hover(function(e){
+            var t = $('body').data('territories')[$(this).attr('id')];
+            var tstr = t.name;
+            if (t.owner) { tstr = tstr + " (owned by " + t.owner + ")";}
+            $("#tname")[0].innerHTML = tstr;
+        }, function(e){$('#tname')[0].innerHTML="Hover or tap on a territory to get more information"})});
+    </script>
+
+{% endblock %}
+
+{% block container %}
+    <div><span id="tname">Hover or tap on a territory to get more information</span> </div>
+    <div id="map" style="height:1000px;"></div>
+{% endblock %}
