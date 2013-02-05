@@ -145,7 +145,8 @@ INSTALLED_APPS = (
     'keycards',
     #'gametex_django_print',
     'app',
-    'succession'
+    'succession',
+    'territory'
     )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
