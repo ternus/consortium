@@ -410,6 +410,12 @@ App
 ****************************
 */
 
+#apply {
+  border:none;
+  display: block;
+  cursor:pointer;
+}
+
 
 #app {
   padding: 10px;
