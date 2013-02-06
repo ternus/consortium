@@ -13,6 +13,11 @@
 
             $('body').data('territories',
                     { {% for t in territories %}'{{ t.code }}':{{ t.to_json|safe }},{% endfor %}
+                        'XM':{code: 'XM', center: [0,0], name:'Mogadishu', points:[
+                            [187.0, 476.0],
+                            [173.4, 476.0],
+                            [173.4, 484.5]
+                        ], owner:'Chamber of Commerce', color:'blue', special:'City of Mogadishu', s_code:''}
                     });
             $('body').data('factions',
                     { {% for f in factions %}'{{ f.code }}': {{ f.to_json|safe }},{% endfor %}
@@ -20,16 +25,21 @@
 
             var svg = $("#map").svg({height: 1200, onLoad: function(svg){
                 terrs = $('body').data('territories');
+                var g = svg.group();
+                var defs = svg.defs(g);
                 for (var tx in terrs) {
                     var t = terrs[tx];
-                    var tt = svg.polygon(t.points, {fill:t.color,stroke:'green',id:t.code,class_:'territory territory_poly'});
+                    var lg = svg.linearGradient(g, t.color+"-grad", [[0, 'white'],[.5, t.color],[1, 'white']], 0,0,0,"100%");
+
+                    var tt = svg.polygon(t.points, {fill:'url(#'+ t.color+'-grad)',stroke:'green',id:t.code,class_:'territory territory_poly'});
+
                     svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;",id:t.code,class_:'territory territory_text icon-signal'});
                 }
                 svg.polygon([{{ somalia }}], {fill:'none', stroke:'blue', strokeWidth:2});
 
             }});
        setInfo = function(terr) {
-{#          terr.setAttribute("opacity","0.5");#}
+          terr[0].setAttribute("opacity","0.5");
            var t = $('body').data('territories')[terr.attr('id')];
            $("#t_name")[0].innerHTML = t.name;
            if (t.has_unit) { $("#t_unit")[0].innerHTML = "Yes"; }
@@ -50,6 +60,7 @@
 {% endblock %}
 
 {% block container %}
+    <div id="tcontainer">
     <div id="map" style="height:650px;"></div>
     <div id="territory_info">
     <table>
@@ -58,5 +69,6 @@
         <tr><th>Unit</th><td id="t_unit"></td></tr>
         <tr><th>Special</th><td id="t_special"></td></tr>
     </table>
+    </div>
     </div>
 {% endblock %}

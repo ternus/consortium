@@ -3,7 +3,7 @@
         "pk": "ET",
         "model": "territory.faction",
         "fields": {
-            "color": "turquoise",
+            "color": "lightgray",
             "name": "Ethiopian Militia"
         }
     },
@@ -11,7 +11,7 @@
         "pk": "AG",
         "model": "territory.faction",
         "fields": {
-            "color": "blue",
+            "color": "lightblue",
             "name": "Clan Abgaal"
         }
     },
@@ -19,7 +19,7 @@
         "pk": "AS",
         "model": "territory.faction",
         "fields": {
-            "color": "magenta",
+            "color": "lightpink",
             "name": "Al Shabaab"
         }
     },
@@ -27,7 +27,7 @@
         "pk": "GD",
         "model": "territory.faction",
         "fields": {
-            "color": "orange",
+            "color": "turquoise",
             "name": "General Dynamics"
         }
     },
@@ -35,7 +35,7 @@
         "pk": "IS",
         "model": "territory.faction",
         "fields": {
-            "color": "yellow",
+            "color": "lightyellow",
             "name": "Clan Isak"
         }
     },
@@ -43,7 +43,7 @@
         "pk": "OS",
         "model": "territory.faction",
         "fields": {
-            "color": "gray",
+            "color": "violet",
             "name": "Omega Security Solutions"
         }
     },
@@ -51,7 +51,7 @@
         "pk": "DR",
         "model": "territory.faction",
         "fields": {
-            "color": "green",
+            "color": "lightgreen",
             "name": "Clan Darod"
         }
     },
