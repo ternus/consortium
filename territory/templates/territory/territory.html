@@ -29,17 +29,19 @@
                 var defs = svg.defs(g);
                 for (var tx in terrs) {
                     var t = terrs[tx];
-                    var lg = svg.linearGradient(g, t.color+"-grad", [[0, 'white'],[.5, t.color],[1, 'white']], 0,0,0,"100%");
-
-                    var tt = svg.polygon(t.points, {fill:'url(#'+ t.color+'-grad)',stroke:'green',id:t.code,class_:'territory territory_poly'});
-
-                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;",id:t.code,class_:'territory territory_text icon-signal'});
+                    if (t.owner) {
+                        var lg = svg.linearGradient(g, t.color+"-grad", [[0, 'white'],[.5, t.color],[1, 'white']], 0,0,0,"100%");
+                        var tt = svg.polygon(t.points, {fill:'url(#'+ t.color+'-grad)',stroke:'green',id:t.code,class_:'territory territory_poly territory_'+ t.code});
+                    } else {
+                        var tt = svg.polygon(t.points, {fill:'#f0f9e7',stroke:'green',id:t.code,class_:'territory territory_poly territory_'+ t.code});
+                    }
+                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;",id:t.code,class_:'territory territory_text icon-signal territory_'+ t.code});
                 }
                 svg.polygon([{{ somalia }}], {fill:'none', stroke:'blue', strokeWidth:2});
 
             }});
        setInfo = function(terr) {
-          terr[0].setAttribute("opacity","0.5");
+           $(".territory_"+terr.attr('id'))[0].setAttribute("opacity","0.5");
            var t = $('body').data('territories')[terr.attr('id')];
            $("#t_name")[0].innerHTML = t.name;
            if (t.has_unit) { $("#t_unit")[0].innerHTML = "Yes"; }

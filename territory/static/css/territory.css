@@ -6,6 +6,9 @@
 #map {
   width: 500px; }
 
+.territory {
+  cursor: pointer; }
+
 #territory_info {
   border: 1px solid black;
   width: 300px;

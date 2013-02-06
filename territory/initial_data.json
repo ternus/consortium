@@ -51,7 +51,7 @@
         "pk": "DR",
         "model": "territory.faction",
         "fields": {
-            "color": "lightgreen",
+            "color": "#fa6",
             "name": "Clan Darod"
         }
     },
