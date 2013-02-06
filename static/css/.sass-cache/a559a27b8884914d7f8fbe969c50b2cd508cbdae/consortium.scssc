@@ -1,8 +1,8 @@
 3.2.5 (Media Mark)
-c0f85c7d5d7a8be208d442b0a68512f721708041
+ba563c093c07a418893b061427d3fe80464df8d9
 o:Sass::Tree::RootNode
 :@has_childrenT:
-@linei:@template"À$darkfont: #eee;
+@linei:@template"Ý!$darkfont: #eee;
 $shadow: #ccc;
 $lightshadow: #aaa;
 $medbright: #999;
@@ -468,7 +468,42 @@ App
 
 .ooc {
   font-style: italic;
-}:@children[No:Sass::Tree::VariableNode:
+}
+
+// Territory Control
+
+#tcontainer {
+  margin:auto;
+  position:relative;
+  width:500px;
+}
+
+#map {
+  width:500px;
+}
+
+.territory {
+  cursor:pointer;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+
+#territory_info {
+  border:1px solid black;
+  width: 300px;
+  position:absolute;
+  left: 200px;
+  top: 520px;
+  th {
+    line-height: 20px;
+  @include orbitron;
+  }
+}:@children[So:Sass::Tree::VariableNode:
 @expro:Sass::Script::Color	:@value0:@attrs{	:	blueiî:rediî:
 alphai:
 greeniî;i:@options{ :
@@ -709,4 +744,23 @@ width;o;;;$;"40%;@;iÉ;(;);*i ;	[ ;@;@o;7;8["#apply;9o;:;;[o;
 ;;[o;J;["
 apply;@" ;iÌ;@@¶;Ao;B;C{ ;iÌ;D0;@@¶;iÌ;T;iÌ;*i ;	[o;';["font-size;o;/
 ;0;1;2o; ;!["px;i	;""4px;iÍ;@;#[ ;iÍ;3o;+	;"medfont;,"medfont;iÍ;@;@;iÍ;(;);*i ;	[ ;@;@;@o;7;8["	.ooc;9o;:;;[o;<;;[o;=
-;;[o;H;["ooc;@" ;iÑ;@@Ó;Ao;B;C{ ;iÑ;D0;@@Ó;iÑ;T;iÑ;*i ;	[o;';["font-style;o;;;$;"italic;@;iÒ;(;);*i ;	[ ;@;@;@
+;;[o;H;["ooc;@" ;iÑ;@@Ó;Ao;B;C{ ;iÑ;D0;@@Ó;iÑ;T;iÑ;*i ;	[o;';["font-style;o;;;$;"italic;@;iÒ;(;);*i ;	[ ;@;@o;5
+;;K;["/* Territory Control */;iÕ;	[ ;@o;7;8["#tcontainer;9o;:;;[o;<;;[o;=
+;;[o;J;["tcontainer;@" ;i×;@@í;Ao;B;C{ ;i×;D0;@@í;i×;T;i×;*i ;	[o;';["margin;o;;;$;"	auto;@;iØ;(;);*i ;	[ ;@o;';["position;o;;;$;"relative;@;iÙ;(;);*i ;	[ ;@o;';["
+width;o;;;$;"
+500px;@;iÚ;(;);*i ;	[ ;@;@o;7;8["	#map;9o;:;;[o;<;;[o;=
+;;[o;J;["map;@" ;iÝ;@@;Ao;B;C{ ;iÝ;D0;@@;iÝ;T;iÝ;*i ;	[o;';["
+width;o;;;$;"
+500px;@;iÞ;(;);*i ;	[ ;@;@o;7;8[".territory;9o;:;;[o;<;;[o;=
+;;[o;H;["territory;@" ;iá;@@%;Ao;B;C{ ;iá;D0;@@%;iá;T;iá;*i ;	[o;';["cursor;o;;;$;"pointer;@;iâ;(;);*i ;	[ ;@o;';["-webkit-user-select;o;;;$;"	none;@;iã;(;);*i ;	[ ;@o;5
+;;6;["/* Chrome/Safari */;iã;	[ ;@o;';["-moz-user-select;o;;;$;"	none;@;iä;(;);*i ;	[ ;@o;5
+;;6;["/* Firefox */;iä;	[ ;@o;';["-ms-user-select;o;;;$;"	none;@;iå;(;);*i ;	[ ;@o;5
+;;6;["/* IE10+ */;iå;	[ ;@o;5
+;;6;["6/* Rules below not implemented in browsers yet */;iç;	[ ;@o;';["-o-user-select;o;;;$;"	none;@;iè;(;);*i ;	[ ;@o;';["user-select;o;;;$;"	none;@;ié;(;);*i ;	[ ;@;@o;7;8["#territory_info;9o;:;;[o;<;;[o;=
+;;[o;J;["territory_info;@" ;iì;@@i;Ao;B;C{ ;iì;D0;@@i;iì;T;iì;*i ;	[o;';["border;o;	;[o; ;!["px;i;""1px;ií;@;#[ o;	;;$;"
+solid;ií;@o;	;0;{	;i ;i ;i;i ;ií;@;ií;;;@;ií;(;);*i ;	[ ;@o;';["
+width;o;;;$;"
+300px;@;iî;(;);*i ;	[ ;@o;';["position;o;;;$;"absolute;@;iï;(;);*i ;	[ ;@o;';["	left;o;;;$;"
+200px;@;ið;(;);*i ;	[ ;@o;';["top;o;;;$;"
+520px;@;iñ;(;);*i ;	[ ;@o;7;8["th;9o;:;;[o;<;;[o;=
+;;[o;>	;?0;["th;@" ;iò;@@ ;Ao;B;C{ ;iò;D0;@@ ;iò;T;iò;*i ;	[o;';["line-height;o;;;$;"	20px;@;ió;(;);*i ;	[ ;@o;I;{ ;"orbitron;iô;0;	[ ;@;[ ;@;@;@

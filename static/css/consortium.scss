@@ -465,3 +465,38 @@ App
 .ooc {
   font-style: italic;
 }
+
+// Territory Control
+
+#tcontainer {
+  margin:auto;
+  position:relative;
+  width:500px;
+}
+
+#map {
+  width:500px;
+}
+
+.territory {
+  cursor:pointer;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+
+#territory_info {
+  border:1px solid black;
+  width: 300px;
+  position:absolute;
+  left: 200px;
+  top: 520px;
+  th {
+    line-height: 20px;
+  @include orbitron;
+  }
+}
