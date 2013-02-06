@@ -1,8 +1,8 @@
 3.2.5 (Media Mark)
-ba563c093c07a418893b061427d3fe80464df8d9
+213b482834f0b807123bbb4b510839817eca5748
 o:Sass::Tree::RootNode
 :@has_childrenT:
-@linei:@template"Ý!$darkfont: #eee;
+@linei:@template"©"$darkfont: #eee;
 $shadow: #ccc;
 $lightshadow: #aaa;
 $medbright: #999;
@@ -491,6 +491,7 @@ App
   /* Rules below not implemented in browsers yet */
   -o-user-select: none;
   user-select: none;
+  @include tiny-text;
 }
 
 #territory_info {
@@ -500,10 +501,20 @@ App
   left: 200px;
   top: 520px;
   th {
+    padding-top:5px;
+    padding-right: 10px;
     line-height: 20px;
   @include orbitron;
+    @include med-text;
+    vertical-align: center;
   }
-}:@children[So:Sass::Tree::VariableNode:
+  td {
+    @include med-text;
+    line-height:20px;
+    vertical-align: center;
+  }
+}
+:@children[So:Sass::Tree::VariableNode:
 @expro:Sass::Script::Color	:@value0:@attrs{	:	blueiî:rediî:
 alphai:
 greeniî;i:@options{ :
@@ -752,15 +763,16 @@ width;o;;;$;"
 ;;[o;J;["map;@" ;iÝ;@@;Ao;B;C{ ;iÝ;D0;@@;iÝ;T;iÝ;*i ;	[o;';["
 width;o;;;$;"
 500px;@;iÞ;(;);*i ;	[ ;@;@o;7;8[".territory;9o;:;;[o;<;;[o;=
-;;[o;H;["territory;@" ;iá;@@%;Ao;B;C{ ;iá;D0;@@%;iá;T;iá;*i ;	[o;';["cursor;o;;;$;"pointer;@;iâ;(;);*i ;	[ ;@o;';["-webkit-user-select;o;;;$;"	none;@;iã;(;);*i ;	[ ;@o;5
+;;[o;H;["territory;@" ;iá;@@%;Ao;B;C{ ;iá;D0;@@%;iá;T;iá;*i ;	[o;';["cursor;o;;;$;"pointer;@;iâ;(;);*i ;	[ ;@o;';["-webkit-user-select;o;;;$;"	none;@;iã;(;);*i ;	[ ;@o;5
 ;;6;["/* Chrome/Safari */;iã;	[ ;@o;';["-moz-user-select;o;;;$;"	none;@;iä;(;);*i ;	[ ;@o;5
 ;;6;["/* Firefox */;iä;	[ ;@o;';["-ms-user-select;o;;;$;"	none;@;iå;(;);*i ;	[ ;@o;5
 ;;6;["/* IE10+ */;iå;	[ ;@o;5
-;;6;["6/* Rules below not implemented in browsers yet */;iç;	[ ;@o;';["-o-user-select;o;;;$;"	none;@;iè;(;);*i ;	[ ;@o;';["user-select;o;;;$;"	none;@;ié;(;);*i ;	[ ;@;@o;7;8["#territory_info;9o;:;;[o;<;;[o;=
-;;[o;J;["territory_info;@" ;iì;@@i;Ao;B;C{ ;iì;D0;@@i;iì;T;iì;*i ;	[o;';["border;o;	;[o; ;!["px;i;""1px;ií;@;#[ o;	;;$;"
-solid;ií;@o;	;0;{	;i ;i ;i;i ;ií;@;ií;;;@;ií;(;);*i ;	[ ;@o;';["
+;;6;["6/* Rules below not implemented in browsers yet */;iç;	[ ;@o;';["-o-user-select;o;;;$;"	none;@;iè;(;);*i ;	[ ;@o;';["user-select;o;;;$;"	none;@;ié;(;);*i ;	[ ;@o;I;{ ;"tiny-text;iê;0;	[ ;@;[ ;@o;7;8["#territory_info;9o;:;;[o;<;;[o;=
+;;[o;J;["territory_info;@" ;ií;@@n;Ao;B;C{ ;ií;D0;@@n;ií;T;ií;*i ;	[o;';["border;o;	;[o; ;!["px;i;""1px;iî;@;#[ o;	;;$;"
+solid;iî;@o;	;0;{	;i ;i ;i;i ;iî;@;iî;;;@;iî;(;);*i ;	[ ;@o;';["
 width;o;;;$;"
-300px;@;iî;(;);*i ;	[ ;@o;';["position;o;;;$;"absolute;@;iï;(;);*i ;	[ ;@o;';["	left;o;;;$;"
-200px;@;ið;(;);*i ;	[ ;@o;';["top;o;;;$;"
-520px;@;iñ;(;);*i ;	[ ;@o;7;8["th;9o;:;;[o;<;;[o;=
-;;[o;>	;?0;["th;@" ;iò;@@ ;Ao;B;C{ ;iò;D0;@@ ;iò;T;iò;*i ;	[o;';["line-height;o;;;$;"	20px;@;ió;(;);*i ;	[ ;@o;I;{ ;"orbitron;iô;0;	[ ;@;[ ;@;@;@
+300px;@;iï;(;);*i ;	[ ;@o;';["position;o;;;$;"absolute;@;ið;(;);*i ;	[ ;@o;';["	left;o;;;$;"
+200px;@;iñ;(;);*i ;	[ ;@o;';["top;o;;;$;"
+520px;@;iò;(;);*i ;	[ ;@o;7;8["th;9o;:;;[o;<;;[o;=
+;;[o;>	;?0;["th;@" ;ió;@@¥;Ao;B;C{ ;ió;D0;@@¥;ió;T;ió;*i ;	[o;';["padding-top;o;;;$;"5px;@;iô;(;);*i ;	[ ;@o;';["padding-right;o;;;$;"	10px;@;iõ;(;);*i ;	[ ;@o;';["line-height;o;;;$;"	20px;@;iö;(;);*i ;	[ ;@o;I;{ ;"orbitron;i÷;0;	[ ;@;[ o;I;{ ;"med-text;iø;0;	[ ;@;[ o;';["vertical-align;o;;;$;"center;@;iù;(;);*i ;	[ ;@;@o;7;8["td;9o;:;;[o;<;;[o;=
+;;[o;>	;?0;["td;@" ;iû;@@×;Ao;B;C{ ;iû;D0;@@×;iû;T;iû;*i ;	[o;I;{ ;"med-text;iü;0;	[ ;@;[ o;';["line-height;o;;;$;"	20px;@;iý;(;);*i ;	[ ;@o;';["vertical-align;o;;;$;"center;@;iþ;(;);*i ;	[ ;@;@;@;@

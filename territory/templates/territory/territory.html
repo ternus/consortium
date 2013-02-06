@@ -35,7 +35,7 @@
                     } else {
                         var tt = svg.polygon(t.points, {fill:'#f0f9e7',stroke:'green',id:t.code,class_:'territory territory_poly territory_'+ t.code});
                     }
-                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;",id:t.code,class_:'territory territory_text icon-signal territory_'+ t.code});
+                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;",id:t.code,class_:'territory territory_text territory_'+ t.code});
                 }
                 svg.polygon([{{ somalia }}], {fill:'none', stroke:'blue', strokeWidth:2});
 

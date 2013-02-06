@@ -487,6 +487,7 @@ App
   /* Rules below not implemented in browsers yet */
   -o-user-select: none;
   user-select: none;
+  @include tiny-text;
 }
 
 #territory_info {
@@ -496,7 +497,16 @@ App
   left: 200px;
   top: 520px;
   th {
+    padding-top:5px;
+    padding-right: 10px;
     line-height: 20px;
   @include orbitron;
+    @include med-text;
+    vertical-align: center;
+  }
+  td {
+    @include med-text;
+    line-height:20px;
+    vertical-align: center;
   }
 }
