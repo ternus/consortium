@@ -73,6 +73,7 @@ div.messages {
   margin: 52px auto 10px auto; }
 
 .container {
+  position: relative;
   background: url("/static/img/brillant.png") white;
   color: #111111 !important; }
   @media screen and (max-width: 720px) {

@@ -1,6 +1,8 @@
 {% extends "consortium.html" %}
 
 {% block javascripts %}
+
+    <style type="text/css">@import "{{ STATIC_URL }}css/territory.css";</style>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.svg.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.svgdom.js"></script>
 
@@ -16,28 +18,45 @@
                     { {% for f in factions %}'{{ f.code }}': {{ f.to_json|safe }},{% endfor %}
                     });
 
-
             var svg = $("#map").svg({height: 1200, onLoad: function(svg){
                 terrs = $('body').data('territories');
                 for (var tx in terrs) {
                     var t = terrs[tx];
-                    var tt = svg.polygon(t.points, {fill:t.color,stroke:'green',id:t.code,class_:'territory'});
-                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;",id:t.code,class_:'territory'});
+                    var tt = svg.polygon(t.points, {fill:t.color,stroke:'green',id:t.code,class_:'territory territory_poly'});
+                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;",id:t.code,class_:'territory territory_text icon-signal'});
                 }
                 svg.polygon([{{ somalia }}], {fill:'none', stroke:'blue', strokeWidth:2});
 
             }});
+       setInfo = function(terr) {
+{#          terr.setAttribute("opacity","0.5");#}
+           var t = $('body').data('territories')[terr.attr('id')];
+           $("#t_name")[0].innerHTML = t.name;
+           if (t.has_unit) { $("#t_unit")[0].innerHTML = "Yes"; }
+           $("#t_owner")[0].innerHTML = t.owner;
+           $("#t_special")[0].innerHTML = t.special;
+       }
+
+        $('.territory').click(function(e){
+                setInfo($(this));
+            });
         $('.territory').hover(function(e){
-            var t = $('body').data('territories')[$(this).attr('id')];
-            var tstr = t.name;
-            if (t.owner) { tstr = tstr + " (owned by " + t.owner + ")";}
-            $("#tname")[0].innerHTML = tstr;
-        }, function(e){$('#tname')[0].innerHTML="Hover or tap on a territory to get more information"})});
+            setInfo($(this));
+        }, function(e){
+            e.target.setAttribute("opacity","1.0");
+            $('#territory_info td');})});
     </script>
 
 {% endblock %}
 
 {% block container %}
-    <div><span id="tname">Hover or tap on a territory to get more information</span> </div>
-    <div id="map" style="height:1000px;"></div>
+    <div id="map" style="height:650px;"></div>
+    <div id="territory_info">
+    <table>
+        <tr><th>Name</th><td id="t_name"></td></tr>
+        <tr><th>Owner</th><td id="t_owner"></td></tr>
+        <tr><th>Unit</th><td id="t_unit"></td></tr>
+        <tr><th>Special</th><td id="t_special"></td></tr>
+    </table>
+    </div>
 {% endblock %}

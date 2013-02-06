@@ -8,6 +8,20 @@ from singleton_models.models import SingletonModel
 
 ML = 256
 
+SUPPLYDEPOT = "Supply Center"
+AIRBASE = "Airbase"
+MINE = "Mine"
+FACTORY = "Factory"
+LAB = "Research Lab"
+
+special_choices = (
+    (SUPPLYDEPOT, SUPPLYDEPOT),
+    (MINE,MINE),
+    (FACTORY,FACTORY),
+    (AIRBASE,AIRBASE),
+    (LAB,LAB)
+)
+
 class Territory(models.Model):
     code = models.CharField(max_length=ML, primary_key=True, unique=True)
     name = models.CharField(max_length=ML)
@@ -15,19 +29,21 @@ class Territory(models.Model):
     connects = models.ManyToManyField('Territory', related_name='t_connects', symmetrical=True)
     center_s = models.CharField(max_length=ML, blank=True)
     owner = models.ForeignKey('Faction', null=True, blank=True)
+    special = models.CharField(max_length=ML, blank=True, null=True, choices=special_choices)
+    special_type = models.CharField(max_length=ML, blank=True, null=True)
 
     @classmethod
     def convert_pt(cls, pt):
-        return pt[0]*1.7, (370-pt[1])*1.7
+        return pt[0] * 1.7, (370 - pt[1]) * 1.7
 
     @classmethod
     def convert_points(cls, pts):
-#        return pts
+    #        return pts
         return map(Territory.convert_pt, pts)
 
     @property
     def s_code(self):
-        return self.name.replace(' ','')[:3]
+        return self.name.replace(' ', '')[:3]
 
     def to_json(self):
         return json.dumps({
@@ -39,9 +55,9 @@ class Territory(models.Model):
             'center': self.js_center(),
             'owner': self.owner.name if self.owner else '',
             'color': self.owner.color if self.owner else 'white',
-
+            'special': self.special,
             'has_unit': self.has_unit,
-#            'has_order': self.order() is not None
+            #            'has_order': self.order() is not None
         })
 
     @property
@@ -50,17 +66,18 @@ class Territory(models.Model):
         Turn a string into an ordered list of (x,y) tuples, the way God intended.
         """
         raw = self.pts_s.replace('(', '').replace(')', '').replace('[', '').replace(']', '').split(',')
-        return Territory.convert_points([(float(raw[x * 2]), float(raw[(x * 2) + 1])) for x in range((len(raw) + 1) / 2)])
+        return Territory.convert_points(
+            [(float(raw[x * 2]), float(raw[(x * 2) + 1])) for x in range((len(raw) + 1) / 2)])
 
     def connects_to(self, t):
         return t in self.connects.all()
 
     def js_pts(self):
-        return ",".join(["[%s,%s]" %(x[0],x[1]) for x in self.pts])
+        return ",".join(["[%s,%s]" % (x[0], x[1]) for x in self.pts])
 
     def js_center(self):
         pre = (self.center_s.replace('(', '').replace(')', '').replace('[', '').replace(']', '').split(','))
-        return Territory.convert_pt((float(pre[0])-2, float(pre[1])))
+        return Territory.convert_pt((float(pre[0]) - 2, float(pre[1])))
 
     @property
     def has_unit(self):
@@ -73,7 +90,6 @@ class Territory(models.Model):
     def order(self, turn=None):
         if not turn: turn = GameBoard.get_turn()
         p = Action.objects.filter(turn=turn, territory=self)
-        print p
         return p[0] if p.exists() else None
 
     def __unicode__(self):
@@ -83,7 +99,7 @@ class Territory(models.Model):
 class Faction(models.Model):
     code = models.CharField(max_length=ML, primary_key=True, unique=True)
     name = models.CharField(max_length=ML)
-    color = models.CharField(max_length=ML,default='')
+    color = models.CharField(max_length=ML, default='')
 
     def __unicode__(self):
         return "[%s] %s" % (self.code, self.name)
@@ -120,8 +136,13 @@ support_types = (
     (HOLD, 'Hold'),
     (SPEC, 'Special')
     )
+
 E_UNHANDLED = -20
+E_NOSUPPORTTARGET = -13
+E_NOTYOURS = -12
+E_NOTARGET = -11
 E_NOUNIT = -10
+F_NOSUPPDESTROY = -6
 F_NODESTROY = -5
 F_LOSE = -4
 F_NOSWAP = -3
@@ -133,8 +154,12 @@ V_SUCCESS = 2
 
 validation_phases = (
     (E_UNHANDLED, "Unimplemented"),
-    (E_NOUNIT, "No unit present"),
-    (F_NODESTROY, "Can't destroy own unit"),
+    (E_NOSUPPORTTARGET, "Support order without support destination"),
+    (E_NOTYOURS, "Unit in territory not owned"),
+    (E_NOTARGET, "Move order without destination"),
+    (E_NOUNIT, "Unit disappeared"),
+    (F_NOSUPPDESTROY, "Can't support the destruction of same-side unit"),
+    (F_NODESTROY, "Can't destroy same-side unit"),
     (F_LOSE, "Lost conflict"),
     (F_NOSWAP, "Swap not allowed"),
     (F_BOUNCE, "Equal-strength combatants bounced"),
@@ -248,12 +273,20 @@ class Action(models.Model):
         support, regardless of whether A's move succeeds, the support that B provides is cut.
         """
         return (self.type == SUPP and self.validation_level >= V_PRELIM
-                and not Action.objects.filter(
+                and (not (self.support_type == MOVE and
+                          self.target.has_unit and
+                          self.support_to.has_unit and
+                          (
+                          self.support_to.unit.faction == self.target.unit.faction or #Can't support someone else in destroying themselves
+                          self.support_to.unit.faction == self.faction)
+                          # Can't support destroying yourself, even if it's someone else
+            ))
+                and (not Action.objects.filter(
             turn=self.turn,
             validation_level__gte=0,
             type=MOVE,
             target=self.territory
-        ).exclude(territory=self.target).exclude(faction=self.faction).exists())
+        ).exclude(territory=self.support_to).exclude(faction=self.faction).exists()))
 
     def supporters(self):
         supps = Action.objects.filter(
@@ -280,8 +313,12 @@ class Action(models.Model):
         return Action.objects.get(turn=self.turn, territory=self.target, type=MOVE)
 
     def clean(self):
+        if self.validation_level != V_PRELIM:
+            # Already been validated
+            return super(Action, self).clean()
         if not Unit.live_units().filter(territory=self.territory).exists():
-            raise ValidationError('No unit in territory %s.' % self.territory.code)
+            self.validation_level = E_NOUNIT
+            # raise ValidationError('No unit in territory %s.' % self.territory.code)
         if not Unit.live_units().filter(territory=self.territory, faction=self.faction).exists():
             raise ValidationError('Unit in %s doesn\'t belong to %s.' % (self.territory.code, self.faction.code))
 
@@ -301,7 +338,7 @@ class Action(models.Model):
                         raise ValidationError('Territory to support to must be adjacent.')
         elif self.type == HOLD and not self.target:
             self.target = self.territory
-        super(Action, self).clean()
+        return super(Action, self).clean()
 
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -319,12 +356,18 @@ def resolve_conflict(opponents):
         return opponents[0]
     opps = sorted(opponents, key=lambda x: x.support_strength, reverse=True)
     if opps[0].faction == opps[1].faction:
+        # This code should never get run, but it's here anyway.
         if opps[0].support_strength > opps[1].support_strength:
             map(lambda x: x.validate(F_NODESTROY),
                 filter(lambda y: y.faction == opps[0].faction, opponents)
             )
     if opps[0].support_strength == opps[1].support_strength:
-        for a in opponents: a.validate(F_BOUNCE)
+        for a in opponents:
+            if a.validation_level >= V_PRELIM:
+                if a.type == MOVE:
+                    a.validate(F_BOUNCE)
+                else:
+                    a.validate(V_SUCCESS)
     else:
         opps[0].validate(V_SUCCESS)
         for a in opponents:
@@ -348,7 +391,8 @@ class GameBoard(SingletonModel):
             if not Action.objects.filter(territory=u.territory, turn=self.turn).exists():
                 a = Action.objects.create(territory=u.territory, type=HOLD, turn=self.turn, faction=u.faction)
 
-        # here comes the big one
+                # here comes the big one
+
     def validate_all_moves(self):
         """
         Process all outstanding moves.
@@ -373,6 +417,10 @@ class GameBoard(SingletonModel):
             if a.type == SUPP:
                 if a.provides_support():
                     a.validate(V_SUCCESS)
+                elif a.support_to and a.support_to.has_unit and a.support_to.unit.faction and a.target.has_unit and (
+                a.target.unit.faction == a.support_to.unit.faction or a.support_to.unit.faction == a.faction):
+                    # Can't support the destruction of your own unit, or someone else's destruction of theirs
+                    a.validate(F_NOSUPPDESTROY)
                 else:
                     a.validate(F_SUPPORTCUT)
                 continue
@@ -387,13 +435,16 @@ class GameBoard(SingletonModel):
                 a.validate(V_SUCCESS)
                 for s in a.supporters(): s.validate(V_SUCCESS)
                 continue
+            if a.type == MOVE and a.target.has_unit and a.target.unit.faction == a.faction and not Action.objects.filter(
+                turn=self.turn, territory=a.target, type=MOVE).exists():
+                a.validate(F_NODESTROY)
+                continue
             if a.type == MOVE and acts().filter(territory=a.target, type=MOVE).exists():
                 # Opposed move into an occupied square with someone moving out.  Need to determine whether the move succeeds.
                 a.validate(V_PENDING)
                 continue
-
             else:
-                if Unit.live_units().filter(territory=a.target, faction=a.faction).exists():
+                if a.type == MOVE and Unit.live_units().filter(territory=a.target, faction=a.faction).exists():
                     a.validate(F_NODESTROY)
                     continue
                     # Opposed move into an empty or non-moving square,
@@ -403,8 +454,8 @@ class GameBoard(SingletonModel):
                     resolve_conflict(actz)
                 continue
 
-            #            print "Unhandled case! %s" % a
-            #            a.validate(E_UNHANDLED)
+                #            print "Unhandled case! %s" % a
+                #            a.validate(E_UNHANDLED)
 
         # By this point nothing should be in V_PRELIM.
         unproc = acts().filter(validation_level=V_PRELIM).count()
@@ -415,9 +466,16 @@ class GameBoard(SingletonModel):
         def iterate():
             waiters = {}
             for w in acts().filter(validation_level=V_PENDING):
-                # If the guy I was waiting on succeeded, I might succeed.
+                # If the guy I was waiting on succeeded, I might succeed
                 if done(w.waiting_on()):
-                    resolve_conflict(acts().filter(target=w.target))
+                    if w.waiting_on().validation_level == V_SUCCESS:
+                        # Guy moved; fight with anyone else trying to take this spot
+                        resolve_conflict(acts().filter(type=MOVE, target=w.target))
+                    else:
+                        print "got here with %s" % w
+                        # we fight with the guy whose move just failed
+                        resolve_conflict(acts().filter(Q(Q(target=w.target) & Q(type=MOVE)) | Q(id=w.waiting_on().id)))
+
 
                 # Detect cycles.
                 # Everything just succeeds if 3+ units are involved.
@@ -427,6 +485,7 @@ class GameBoard(SingletonModel):
                     # Cycle?
                     # Position swaps always fail
                     if waiters[w.waiting_on().id] == w:
+                        # We check this above too, but it's here for completeness.
                         w.validate(F_BOUNCE)
                         w.waiting_on().validate(F_BOUNCE)
                         continue
@@ -457,7 +516,6 @@ class GameBoard(SingletonModel):
         assert it == 0, "Iteration limit reached; failed to find solution"
         bad_acts = acts().filter(Q(validation_level__lt=V_SUCCESS) & Q(validation_level__gte=V_PRELIM))
         assert len(bad_acts) == 0, "Some moves didn't succeed or fail"
-
 
     def process_moves(self):
         def acts(): return Action.objects.filter(turn=self.turn)

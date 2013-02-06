@@ -70,6 +70,21 @@ class DiplomacyTest(TestCase):
                     self.assertTrue(to.connects_to(t))
 
 
+    def move_from(self, terr, turn=None):
+        if not turn: turn=self.gameboard.turn-1
+        return Action.objects.get(territory=terr, turn=turn)
+
+    def moves_to(self, terr):
+        return Action.objects.filter(target=terr, turn=self.gameboard.turn-1)
+
+    def assertMoveResult(self, terr, result):
+        mv = self.move_from(terr)
+        self.assertEqual((mv, validation_str(result)), (mv, validation_str(mv.validation_level)))
+
+    def assertMoveResults(self, moves):
+        for m in moves:
+            self.assertMoveResult(m[0], m[1])
+
     def make_moves(self, moves):
         return map(Action.parse_move, map(lambda x: x.strip(), moves.strip().split("\n")))
 
@@ -94,12 +109,30 @@ class DiplomacyTest(TestCase):
         self.assertRaises(ValidationError, Action.parse_move, 'US H Hold') # Not US's unit
         self.assertRaises(ValidationError, Action.parse_move, 'UK H Supp B Hold') # H and B not adjacent
         self.assertRaises(ValidationError, Action.parse_move, 'UK H Supp D Move B') # H and B not adjacent
+        self.assertRaises(RuntimeError, Action.parse_move, 'UK H Foo')
 
     def assertOwns(self, faction, terrs):
-        return self.assertTrue(sorted(terrs), sorted(list(Territory.objects.filter(faction__code=faction).values_list('code', flat=True))))
+        return self.assertTrue(sorted(terrs), sorted(list(Territory.objects.filter(owner__code=faction).values_list('code', flat=True))))
 
     def assertUnits(self, faction, terrs):
         return self.assertListEqual(sorted(terrs), sorted(list(Unit.live_units().filter(faction__code=faction).values_list('territory__code', flat=True))))
+
+    def test_s_code(self):
+        a = Territory.objects.get(code='A')
+        a.name = 'Arglefraster'
+        a.save()
+
+        self.assertEqual('Arg', a.s_code)
+
+    def test_no_unit(self):
+        a = Action.parse_move('RU B Move E')
+        Unit.objects.get(territory__code='B').delete()
+
+        self.gameboard.execute_turn()
+
+        a = Action.objects.get(target__code='E',territory__code='B')
+
+        self.assertEqual(E_NOUNIT, a.validation_level)
 
     def test_support(self):
         # Basic support
@@ -130,6 +163,7 @@ class DiplomacyTest(TestCase):
 
         self.gameboard.execute_turn()
 
+        self.assertOwns('RU', ['B','D','E'])
         self.assertUnits('RU', ['D', 'E'])
         self.assertUnits('US', ['A', 'C'])
         self.assertUnits('UK', ['G', 'H'])
@@ -169,6 +203,15 @@ class DiplomacyTest(TestCase):
         self.assertEqual(F_NOSWAP, a.validation_level)
         self.assertEqual(F_NOSWAP, b.validation_level)
 
+    def test_hold(self):
+        # No moves -- everyone holds
+
+        self.gameboard.execute_turn()
+
+        for m in ['A','B','C','D','G','H']:
+            self.assertEqual(HOLD, self.move_from(m).type)
+            self.assertMoveResult(m, V_SUCCESS)
+
     def test_no_destruction(self):
         """
         A standoff does not destroy a unit in the location where the standoff takes place.
@@ -196,15 +239,15 @@ class DiplomacyTest(TestCase):
         Unit.objects.create(faction=self.ru, territory=Territory.objects.get(code='E'))
 
         self.make_moves("""
+        UK G Supp D Move E
         RU D Move E
-        RU B Supp D Move E
         """)
 
         self.gameboard.execute_turn()
 
-        a = Action.objects.get(faction__code='RU', type=MOVE)
-
-        self.assertEqual(F_NODESTROY, a.validation_level)
+        self.assertMoveResult('D', F_NODESTROY)
+        self.assertMoveResult('G', F_NOSUPPDESTROY)
+        self.assertMoveResult('E', V_SUCCESS)
 
     def test_three_way_standoff(self):
         self.make_moves("""
@@ -256,3 +299,108 @@ class DiplomacyTest(TestCase):
         self.assertUnits('RU', ['D'])
         self.assertUnits('US', ['B', 'C'])
 
+    def test_bounce_on_moveout(self):
+        self.make_moves("""
+        RU B Move E
+        US A Move B
+        RU D Move B
+        """)
+
+        self.gameboard.execute_turn()
+
+        self.assertEqual(V_SUCCESS, self.move_from('B').validation_level)
+
+        for m in self.moves_to('B'):
+            self.assertEqual(F_BOUNCE, m.validation_level)
+
+    def test_cant_cut_support_against_self(self):
+        self.make_moves("""
+        RU D Move E
+        """)
+
+        self.gameboard.execute_turn()
+
+        self.make_moves("""
+        RU B Move C
+        RU E Supp B Move C
+        US C Move E
+        """)
+
+        self.gameboard.execute_turn()
+
+        self.assertMoveResult('C', F_LOSE)
+        self.assertMoveResult('B', V_SUCCESS)
+
+    def test_cant_support_own_destruction(self):
+        self.make_moves("""
+        RU B Move A
+        US C Supp B Move A
+        US A Hold
+        """)
+
+        a = self.move_from('C', turn=1)
+
+        self.gameboard.execute_turn()
+
+        self.assertFalse(self.move_from('C').provides_support())
+
+        self.assertMoveResult('B', F_BOUNCE)
+        self.assertMoveResult('A', V_SUCCESS)
+        self.assertMoveResult('C', F_NOSUPPDESTROY)
+
+    def test_support_cut_from_destroyed_unit(self):
+        # Support is cut if the supporting unit is destroyed.
+        Unit.objects.create(faction=self.ru, territory=Territory.objects.get(code='E'))
+        Unit.objects.create(faction=self.ru, territory=Territory.objects.get(code='F'))
+
+        self.make_moves("""
+        RU F Move C
+        RU E Supp F Move C
+        US A Move B
+        US C Supp A Move B
+        """)
+
+        self.gameboard.execute_turn()
+
+        self.assertMoveResult('F', V_SUCCESS)
+        self.assertMoveResult('E', V_SUCCESS)
+        self.assertMoveResult('C', F_SUPPORTCUT)
+        self.assertMoveResult('A', F_BOUNCE)
+
+    def test_self_attack_does_not_cut_support(self):
+        Unit.objects.create(faction=self.ru, territory=Territory.objects.get(code='E'))
+        self.make_moves("""
+        RU B Move C
+        RU E Supp B Move C
+        RU D Move E
+        """)
+
+        self.gameboard.execute_turn()
+
+        self.assertMoveResults([
+            ('B', V_SUCCESS),
+            ('E', V_SUCCESS),
+            ('D', F_NODESTROY)
+        ])
+
+    def test_chained_move_fail(self):
+        # A failed move can stop others from moving.
+        self.make_moves("""
+        US C Move A
+        US A Move B
+        RU B Move D
+        RU D Move G
+        UK G Move H
+        UK H Hold
+        """)
+
+        self.gameboard.execute_turn()
+
+        self.assertMoveResults([
+            ('C', F_BOUNCE),
+            ('A', F_BOUNCE),
+            ('B', F_BOUNCE),
+            ('D', F_BOUNCE),
+            ('G', F_NODESTROY),
+            ('H', V_SUCCESS)
+        ])

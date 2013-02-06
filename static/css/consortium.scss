@@ -171,6 +171,7 @@ div.messages {
 
 
 .container {
+  position:relative;
   @media screen and (max-width:$breaksmall) {
     width: 100%;
   }
