@@ -293,11 +293,10 @@ class Action(models.Model):
             turn=self.turn,
             type=SUPP,
             target=self.territory,
-            support_type=self.type,
             validation_level__gte=V_PRELIM, # XXX check
         )
         if self.type == MOVE:
-            supps = supps.filter(support_to=self.target)
+            supps = supps.filter(support_type=MOVE, support_to=self.target)
         return filter(lambda x: x.provides_support(), supps)
 
     def validate(self, level):

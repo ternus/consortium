@@ -7,13 +7,13 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.svgdom.js"></script>
 
     <script type="text/javascript">
-{#     {{ t.js_center.0 }}, {{ t.js_center.1 }},#}
+        {#     {{ t.js_center.0 }}, {{ t.js_center.1 }},#}
 
-        $(function() {
+        $(function () {
 
             $('body').data('territories',
                     { {% for t in territories %}'{{ t.code }}':{{ t.to_json|safe }},{% endfor %}
-                        'XM':{code: 'XM', center: [0,0], name:'Mogadishu', points:[
+                        'XM':{code:'XM', center:[0, 0], name:'Mogadishu', points:[
                             [187.0, 476.0],
                             [173.4, 476.0],
                             [173.4, 484.5]
@@ -23,54 +23,124 @@
                     { {% for f in factions %}'{{ f.code }}': {{ f.to_json|safe }},{% endfor %}
                     });
 
-            var svg = $("#map").svg({height: 1200, onLoad: function(svg){
+            var svg = $("#map").svg({height:1200, onLoad:function (svg) {
                 terrs = $('body').data('territories');
                 var g = svg.group();
                 var defs = svg.defs(g);
                 for (var tx in terrs) {
                     var t = terrs[tx];
                     if (t.owner) {
-                        var lg = svg.linearGradient(g, t.color+"-grad", [[0, 'white'],[.5, t.color],[1, 'white']], 0,0,0,"100%");
-                        var tt = svg.polygon(t.points, {fill:'url(#'+ t.color+'-grad)',stroke:'green',id:t.code,class_:'territory territory_poly territory_'+ t.code});
+                        var lg = svg.linearGradient(g, t.color + "-grad", [
+                            [0, 'white'],
+                            [.5, t.color],
+                            [1, 'white']
+                        ], 0, 0, 0, "100%");
+                        var tt = svg.polygon(t.points, {fill:'url(#' + t.color + '-grad)', stroke:'green', id:t.code, class_:'territory territory_poly territory_' + t.code});
                     } else {
-                        var tt = svg.polygon(t.points, {fill:'#f0f9e7',stroke:'green',id:t.code,class_:'territory territory_poly territory_'+ t.code});
+                        var tt = svg.polygon(t.points, {fill:'#f0f9e7', stroke:'green', id:t.code, class_:'territory territory_poly territory_' + t.code});
                     }
-                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;",id:t.code,class_:'territory territory_text territory_'+ t.code});
+                    svg.text(t.center[0], t.center[1], t.s_code, {style:"font-size:8px;", id:t.code, class_:'territory territory_text territory_' + t.code});
                 }
                 svg.polygon([{{ somalia }}], {fill:'none', stroke:'blue', strokeWidth:2});
 
             }});
-       setInfo = function(terr) {
-           $(".territory_"+terr.attr('id'))[0].setAttribute("opacity","0.5");
-           var t = $('body').data('territories')[terr.attr('id')];
-           $("#t_name")[0].innerHTML = t.name;
-           if (t.has_unit) { $("#t_unit")[0].innerHTML = "Yes"; }
-           $("#t_owner")[0].innerHTML = t.owner;
-           $("#t_special")[0].innerHTML = t.special;
-       }
+            setInfo = function (terr, perm) {
+                if (perm) {
+                    $('body').data('t_selected', terr.attr('id'));
+                    var t = $('body').data('territories')[terr.attr('id')];
+                    var svg = $("#map").svg('get');
+                    $('body').data('t_selected_poly', svg.polygon(t.points, {fill:'none', stroke:'red', strokeWidth: 2, id:t.code+"_2", class_:'territory territory_poly territory_' + t.code}));
+                }
+                $(".territory_" + terr.attr('id'))[0].setAttribute("opacity", "0.5");
+                var t = $('body').data('territories')[terr.attr('id')];
+                $("#t_name")[0].innerHTML = t.name;
+                if (t.has_unit) {
+                    $("#t_unit")[0].innerHTML = "Yes";
+                }
+                $("#t_owner")[0].innerHTML = t.owner;
+                $("#t_special")[0].innerHTML = t.special;
+            }
+            unsetInfo = function(terr) {
+                $(".territory_" + terr)[0].setAttribute("opacity", "1.0");
+                $('#territory_info td').html('');
+                $('body').data('t_selected', null);
+                $('body').data('t_selected_poly').remove();
 
-        $('.territory').click(function(e){
-                setInfo($(this));
+            }
+
+            $('.territory').click(function (e) {
+                var t = $('body').data('t_selected');
+                if (!(t) || t == undefined || (t != $(this).attr('id'))) {
+                    if (t != undefined && t != $(this).attr('id')) {
+                        unsetInfo($('body').data('t_selected'));
+                    }
+                    setInfo($(this), true);
+                } else {
+                    unsetInfo($('body').data('t_selected'));
+                }
             });
-        $('.territory').hover(function(e){
-            setInfo($(this));
-        }, function(e){
-            e.target.setAttribute("opacity","1.0");
-            $('#territory_info td');})});
+            $('.territory').hover(function (e) {
+                if (!($('body').data('t_selected'))) {
+                setInfo($(this), false);
+                }
+            }, function (e) {
+                if (!($('body').data('t_selected'))) {
+                    unsetInfo($(this).attr('id'));
+                }
+            });
+
+
+        });
     </script>
 
 {% endblock %}
 
 {% block container %}
     <div id="tcontainer">
-    <div id="map" style="height:650px;"></div>
-    <div id="territory_info">
-    <table>
-        <tr><th>Name</th><td id="t_name"></td></tr>
-        <tr><th>Owner</th><td id="t_owner"></td></tr>
-        <tr><th>Unit</th><td id="t_unit"></td></tr>
-        <tr><th>Special</th><td id="t_special"></td></tr>
-    </table>
+        <div id="map" style="height:650px;"></div>
+        <div id="territory_info">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td id="t_name"></td>
+                </tr>
+                <tr>
+                    <th>Owner</th>
+                    <td id="t_owner"></td>
+                </tr>
+                <tr>
+                    <th>Unit</th>
+                    <td id="t_unit"></td>
+                </tr>
+                <tr>
+                    <th>Special</th>
+                    <td id="t_special"></td>
+                </tr>
+            </table>
+            <div id="orderform">
+                <form method="post" action="{% url submit_order %}">
+                    <input type="hidden" id="f_id" name="f_id"/>
+                    <input type="hidden" id="t_id" name="t_id"/>
+                    <input type="radio" name="order_type" value="Hold">Hold</input>
+                    <input type="radio" name="order_type" value="Move">Move</input>
+                    <input type="radio" name="order_type" value="Supp">Support</input>
+                    <input type="radio" name="order_type" value="Spec">Special</input>
+                    </select>
+                    <select id="support_type" name="support_type">
+                        <option name="Hold">Hold</option>
+                        <option name="Move">Move</option>
+                    </select>
+                    <select id="support_to" name="support_to">
+                        <!-- ... -->
+                    </select>
+                    <input type="submit" name="go" value="Give the Order" />
+                </form>
+
+            </div>
+
+        </div>
+
+
     </div>
-    </div>
+
 {% endblock %}
