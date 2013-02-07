@@ -2,6 +2,8 @@
 # Django settings for hexgrid2 project.
 import os
 
+from django.db import connections
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
