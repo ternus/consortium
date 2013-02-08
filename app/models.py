@@ -28,6 +28,9 @@ class ConsortiumApp(models.Model):
         verbose_name="Do you have a smartphone, tablet, and/or laptop you would use in game, and if so, what kind(s)?")
     sms_ok = models.TextField(blank=True, verbose_name="Are you OK with receiving (infrequent) SMS alerts?")
     zephyr = models.TextField(blank=True, verbose_name="Are you generally reachable on zephyr?")
+    mechanics = models.TextField(blank=True,
+    verbose_name="Are there any types of plots or mechanics you particularly like or dislike?")
+
     spy_plots = models.TextField(blank=True,
         verbose_name="Briefly describe any 'spy plots' you've played before, and how you liked them.")
     public_secret = models.TextField(blank=True,
@@ -111,6 +114,7 @@ class AppForm(ModelForm):
                     If you don't know what a typecast is, don't worry about it.""",
         "punts": "",
         "how_cast": "If you must be cast in a certain way, if some of your answers are more important than others, or if you have the perfect role in mind, tell us.",
+        "mechanics": "Examples include ",
         "spy_plots": "This will help us match you with a good set of plots. If you've never played a spy plot before (or think you haven't), tell us that, and perhaps what spy plots you might enjoy.<br />What's a spy plot? Broadly speaking, it's an opposed plot conducted under conditions of secrecy and uncertainty. What that means is up to you.",
         "public_secret": """'Public authority' might be the UN Secretary General,
 the chief of police, or the Pope* in a game full of Catholics.  'Secret
