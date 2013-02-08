@@ -64,9 +64,9 @@
                 $(".territory_" + terr)[0].setAttribute("opacity", "1.0");
                 $('#territory_info td').html('');
                 $('body').data('t_selected', null);
-                if ($('body').data('t_selected_poly')) {
-                    $('body').data('t_selected_poly').remove();
-                }
+{#                if ($('body').data('t_selected_poly') != undefined) {#}
+{#                    $('body').data('t_selected_poly').remove();#}
+{#                }#}
                 $('.territory_red_outline').remove();
 
             }
