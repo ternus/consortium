@@ -64,8 +64,10 @@
                 $(".territory_" + terr)[0].setAttribute("opacity", "1.0");
                 $('#territory_info td').html('');
                 $('body').data('t_selected', null);
-                $('body').data('t_selected_poly').remove();
-                $('.t_red_outline').remove();
+                if ($('body').data('t_selected_poly')) {
+                    $('body').data('t_selected_poly').remove();
+                }
+                $('.territory_red_outline').remove();
 
             }
 
