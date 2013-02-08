@@ -83,6 +83,7 @@ class AppForm(ModelForm):
             "device": Textarea(attrs=small),
             "sms_ok": Textarea(attrs=small),
             "zephyr": Textarea(attrs=small),
+            "mechanics": Textarea(attrs=small),
             "wargame_ok": Textarea(attrs=small),
             "typecast": Textarea(attrs=attrs),
             "punts": Textarea(attrs=attrs),

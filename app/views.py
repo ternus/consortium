@@ -25,11 +25,12 @@ def app(request, app_id=None):
                 app = form.save(commit=False)
                 app.saved_on = datetime.now()
                 app.save()
-                send_mail("[Consortium] Your App Link",
-                    render_to_string('app/app_saved_email.html', {'app': app}),
-                    "consortium-gms@cternus.net",
-                    [app.email], fail_silently=True, html=render_to_string('app/app_saved_email.html', {'app': app}),
-                )
+                if not instance:
+                    send_mail("[Consortium] Your App Link",
+                        render_to_string('app/app_saved_email.html', {'app': app}),
+                        "consortium-gms@cternus.net",
+                        [app.email], fail_silently=True, html=render_to_string('app/app_saved_email.html', {'app': app}),
+                    )
                 messages.success(request, 'Saved! You can continue editing, but make sure to save or submit when you\'re done.')
                 return redirect(reverse('app', args=[app.app_id]))
             else:
