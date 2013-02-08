@@ -49,7 +49,7 @@
                     $('body').data('t_selected', terr.attr('id'));
                     var t = $('body').data('territories')[terr.attr('id')];
                     var svg = $("#map").svg('get');
-                    $('body').data('t_selected_poly', svg.polygon(t.points, {fill:'none', stroke:'red', strokeWidth: 2, id:t.code+"_2", class_:'territory territory_poly territory_' + t.code}));
+                    $('body').data('t_selected_poly', svg.polygon(t.points, {fill:'none', stroke:'red', strokeWidth: 2, id:t.code+"_2", class_:'territory territory_poly territory_red_outline'}));
                 }
                 $(".territory_" + terr.attr('id'))[0].setAttribute("opacity", "0.5");
                 var t = $('body').data('territories')[terr.attr('id')];
@@ -65,6 +65,7 @@
                 $('#territory_info td').html('');
                 $('body').data('t_selected', null);
                 $('body').data('t_selected_poly').remove();
+                $('.t_red_outline').remove();
 
             }
 
