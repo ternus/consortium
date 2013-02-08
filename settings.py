@@ -2,8 +2,6 @@
 # Django settings for hexgrid2 project.
 import os
 
-from django.db import connections
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -43,6 +41,7 @@ DATABASES = {
     }
 
 }
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -160,7 +159,6 @@ INSTALLED_APPS = (
     'territory'
     )
 
-DATABASE_ROUTERS = ['consortium.consortium.AppRouter']
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -226,3 +224,5 @@ LOGGING = {
 
 # must be last
 from localsettings import *
+DATABASE_ROUTERS = ['app.routers.AppRouter',]
+from django.db import connections

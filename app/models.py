@@ -38,8 +38,8 @@ class ConsortiumApp(models.Model):
         verbose_name="What percentage of your goals and motivations do you want to be willing to die for?")
     teammate = models.TextField(blank=True,
         verbose_name="You have a teammate.  You don't know who they are, and have no mechanic for finding them. "+\
-                     "You expect others want to find and kill you both.  You need your teammate's help."+\
-                     "How might you proceed?")
+                     " You expect others want to find and kill you both.  You need your teammate's help."+\
+                     " How might you proceed?")
     campus = models.TextField(blank=True,
         verbose_name="You need to search a portion of campus for something.  Whom do you take with you, and why?")
     changing_minds = models.TextField(blank=True,
