@@ -42,7 +42,7 @@ def app(request, app_id=None):
                 send_mail("[Consortium] App from %s" % app.name,
                     render_to_string('app/app_email.html', {'form': form}),
                     "consortium-gms@cternus.net",
-                    ['consortium-gms@mit.edu'], html=render_to_string('app/app_saved_email.html', {'app': app}),
+                    ['consortium-gms@mit.edu', app.email], html=render_to_string('app/app_saved_email.html', {'app': app}),
                 )
                 return render(request, "app/postapp.html", {'app': app})
         else:
