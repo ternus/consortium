@@ -49,7 +49,7 @@
                 {% for field in form %}
                 <tr><th>{{ field.label_tag }}{% if field.errors %}<span class="field_error">{{ field.errors }}</span>{% endif %}
                 {% if form.explanations|lookup:field.name %}
-                    <a class="explain" href="#" onclick="$('#explanation_{{ field.name }}').slideToggle();">Explain</a>
+                    <a class="explain" onclick="$('#explanation_{{ field.name }}').slideToggle();">Explain</a>
                     <div class="explanation" id="explanation_{{ field.name }}" style="display:none;">{{ form.explanations|lookup:field.name|safe }}</div>
                 {% endif %}
                 </th><td>{{ field }}</td></tr>
