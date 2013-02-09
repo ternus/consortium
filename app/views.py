@@ -21,7 +21,7 @@ def app(request, app_id=None):
             instance = None
         form = AppForm(request.POST, instance=instance)
         if form.is_valid():
-            if request.POST['app_submit'] == 'Save App':
+            if request.POST['app_submit'] == 'Save and Continue Editing':
                 app = form.save(commit=False)
                 app.saved_on = datetime.now()
                 app.save()

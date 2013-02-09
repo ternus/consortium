@@ -40,7 +40,7 @@
         <form action="{% url app app_id %}" method="POST">
         {{ form.non_field_errors }}
             <div class="appbutton">
-                {% if not readonly %}<input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" /> {% endif %}
+                {% if not readonly %}<input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save and Continue Editing" /> {% endif %}
                 {% if request.session.saved %}<span id="saved">Saved!</span>{% endif %}
                 <a class="explain" href="#" onclick="$('.explanation').slideToggle();">Expand All Explanations</a>
             </div>
@@ -54,7 +54,7 @@
                 {% endif %}
                 </th><td>{{ field }}</td></tr>
                     {% ifequal field.name "how_cast" %}
-                        {% if not readonly %}<tr><td colspan="2"><input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" />                        </td></tr>{% endif %}
+                        {% if not readonly %}<tr><td colspan="2"><input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save and Continue Editing" />                        </td></tr>{% endif %}
                         <tr><td colspan="2" class="text separator">These questions are for statistical purposes and are not required for casting.</td></tr>
                     {% endifequal %}
                     {% ifequal field.name "zephyr" %}
@@ -62,8 +62,8 @@
                     {% endifequal %}
                 {% endfor %}
             {% if not readonly %}
-                <tr><td colspan="2"><input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save App" /></td></tr>
-                <tr><td colspan="2"><input type="submit" value="Apply For Consortium" id="apply" name="app_submit" class="gradientbutton redbutton"/></td></tr>
+                <tr><td colspan="2"><input type="submit" id="save" class="gradientbutton greenbutton" name="app_submit" value="Save and Continue Editing" /></td></tr>
+                <tr><td colspan="2"><input type="submit" value="Submit App" id="apply" name="app_submit" class="gradientbutton redbutton"/></td></tr>
             {% endif %}
             </table>
         </form>
