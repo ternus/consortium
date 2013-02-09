@@ -321,8 +321,7 @@ App
     font-weight: normal;
     width: 40%; }
   #app #apply {
-    font-size: 18px;
-    box-shadow: 0px 0px 4px #aaaaaa; }
+    font-size: 18px; }
 
 .ooc {
   font-style: italic; }
