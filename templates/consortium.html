@@ -79,7 +79,7 @@
                     <label for="id_password">Password</label>
                     <input class="login_input" type="password" name="password" id="id_password" />
                     <input id="login_button" class="gradientbutton bluebutton" type="submit" value="Login" />
-                    <input type="hidden" name="next" value="/market/" />
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}" />
                 </form>
 
                 </li>
