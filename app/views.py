@@ -65,8 +65,8 @@ def app(request, app_id=None):
 def dashboard(request):
     apps = ConsortiumApp.objects.all()
     due_time = naturaltime(datetime(2013,3,1,6))
-    complete_apps = apps.filter(submitted=True)
-    incomplete_apps = apps.filter(submitted=False)
+    complete_apps = apps.filter(submitted=True).order_by('apped_on')
+    incomplete_apps = apps.filter(submitted=False).order_by('saved_on')
     return render(request, "app/dashboard.html", {'apps': apps,
                                                   'complete_apps': complete_apps,
                                                   'incomplete_apps': incomplete_apps,
