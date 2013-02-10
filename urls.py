@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     url(r'^keycard/', include('keycards.urls')),
     url(r'^succession/', include('succession.urls')),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login',  name='login' ),
-    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page':'/'}, name='logout'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
