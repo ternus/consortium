@@ -54,10 +54,6 @@ def app(request, app_id=None):
         readonly = request.GET.get('readonly', app.submitted)
     else:
         form = AppForm()
-#    messages.success(request, 'test success')
-#    messages.info(request, 'test info')
-#    messages.error(request, 'test error')
-#    messages.warning(request, 'test warning')
 
     return render(request, "app/app.html", {'form': form, 'app_id': app_id, 'game_time': game_time, 'readonly': readonly})
 

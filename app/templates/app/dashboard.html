@@ -40,7 +40,7 @@
     </thead>
         {% for app in incomplete_apps %}
             <tr>
-                <td><a href="{% url app app.app_id %}">{{ app.name }}</a></td>
+                <td><a href="{% url app app.app_id %}?readonly=1">{{ app.name }}</a></td>
                 <td>{{ app.email }} (<a href="{% url remind app.app_id %}">Remind</a>)</td>
                 <td>{{ app.saved_on }}</td>
             </tr>
