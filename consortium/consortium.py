@@ -9,6 +9,7 @@ from django.core.mail import EmailMultiAlternatives
 import threading
 
 def consortium_context(request):
+
     try:
         char = HGCharacter.objects.get(user=request.user)
     except HGCharacter.DoesNotExist:
@@ -21,7 +22,8 @@ def consortium_context(request):
     has_lines = LineOrder.objects.filter(character=char).exists()
     return {'char': char,
             'game_day': game_day,
-            'has_lines': has_lines}
+            'has_lines': has_lines,
+            'gm': request.user.is_superuser}
 
 
 class EmailThread(threading.Thread):

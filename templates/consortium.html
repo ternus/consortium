@@ -66,6 +66,9 @@
                 <li class="user">{{ char.char.name }}</li>
                 <li class="gameday">Day {{ game_day }}</li>
                 <li class="logout"><a href="{% url logout %}">Logout</a></li>
+            {% elif gm%}
+                <li class="user">Welcome, GM.</li>
+                <li class="logout"><a href="{% url logout %}">Logout</a></li>
             {% else %}
                 <li>
                 <a href="{% url login %}" class="loginlink">Login</a>
