@@ -7,10 +7,11 @@ from django.core.urlresolvers import reverse
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
+from django.views.decorators.csrf import csrf_exempt
 from consortium.consortium import send_mail
 from models import AppForm, ConsortiumApp
 
-
+@csrf_exempt()
 def app(request, app_id=None):
     game_time = datetime(2013,3,1,6)
     readonly = request.GET.get('readonly', False)
