@@ -326,6 +326,11 @@ App
 .ooc {
   font-style: italic; }
 
+/*
+****************************
+ Territory Control
+****************************
+*/
 #tcontainer {
   margin: auto;
   position: relative;
@@ -352,8 +357,8 @@ App
   border: 1px solid black;
   width: 300px;
   position: absolute;
-  left: 200px;
-  top: 520px; }
+  left: 300px;
+  top: 420px; }
   #territory_info th {
     padding-top: 5px;
     padding-right: 10px;
@@ -367,3 +372,13 @@ App
     text-shadow: 0px 1px 1px #cccccc;
     line-height: 20px;
     vertical-align: center; }
+  #territory_info #orderform {
+    display: none; }
+    #territory_info #orderform #support_mvs {
+      display: none; }
+    #territory_info #orderform #move_to {
+      display: none; }
+    #territory_info #orderform #support_to {
+      display: none; }
+    #territory_info #orderform #special {
+      display: none; }

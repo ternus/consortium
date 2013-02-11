@@ -5,26 +5,71 @@
     <style type="text/css">@import "{{ STATIC_URL }}css/territory.css";</style>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.svg.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.svgdom.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
 
     <script type="text/javascript">
         {#     {{ t.js_center.0 }}, {{ t.js_center.1 }},#}
+        // Bulllllshit
+        var aContains = function (a, o)
+                {
+                    var l = a.length + 1;
+                    while (l -= 1)
+                    {
+                        if (a[l - 1] === o)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
 
         $(function () {
 
             $('body').data('territories',
                     { {% for t in territories %}'{{ t.code }}':{{ t.to_json|safe }},{% endfor %}
-                        'XM':{code:'XM', center:[0, 0], name:'Mogadishu', points:[
+                        'XM': {code: 'XM', center: [0, 0], name: 'Mogadishu', points: [
                             [187.0, 476.0],
                             [173.4, 476.0],
                             [173.4, 484.5]
-                        ], owner:'Chamber of Commerce', color:'blue', special:'City of Mogadishu', s_code:''}
+                        ], owner: 'Chamber of Commerce', color: 'blue', special: 'City of Mogadishu', s_code: ''}
                     });
             $('body').data('factions',
                     { {% for f in factions %}'{{ f.code }}': {{ f.to_json|safe }},{% endfor %}
                     });
+            {% if orders %}
+            $('body').data('orders', {{ orders|safe }}
 
-            var svg = $("#map").svg({height:1200, onLoad:function (svg) {
+            );
+            {% endif %}
+
+
+            var adjacentTo = function(a,b){
+                return aContains(a.connects, b.code);
+
+            }
+
+            var getTerr = function (id) {
+                return $('body').data('territories')[id];
+            }
+
+            var set_order_t = function (terr) {
+                return set_order($('body').data('orders')[terr]);
+            }
+
+            var set_order = function (o) {
+                if (o === undefined) return;
+                $('input[name="order_type"][value="' + o.type + '"]').prop('checked', true).trigger('change');
+                $('select[name="support_type"]').val(o.support_type).trigger('change');
+                $('select[name="support_to"]').val(o.support_to).trigger('change');
+                $('select[name="support_from"]').val(o.target).trigger('change');
+                $('select[name="move_to"]').val(o.target).trigger('change');
+                $('input[name="special"]').val(o.special);
+            }
+
+            var svg = $("#map").svg({height: 1200, onLoad: function (svg) {
                 terrs = $('body').data('territories');
+                ords = $('body').data('orders');
+
                 var g = svg.group();
                 var defs = svg.defs(g);
                 for (var tx in terrs) {
@@ -35,62 +80,138 @@
                             [.5, t.color],
                             [1, 'white']
                         ], 0, 0, 0, "100%");
-                        var tt = svg.polygon(t.points, {fill:'url(#' + t.color + '-grad)', stroke:'green', id:t.code, class_:'territory territory_poly territory_' + t.code});
+                        var tt = svg.polygon(t.points, {fill: 'url(#' + t.color + '-grad)', stroke: 'green', id: t.code, class_: 'territory territory_poly territory_' + t.code});
                     } else {
-                        var tt = svg.polygon(t.points, {fill:'#f0f9e7', stroke:'green', id:t.code, class_:'territory territory_poly territory_' + t.code});
+                        var tt = svg.polygon(t.points, {fill: '#f0f9e7', stroke: 'green', id: t.code, class_: 'territory territory_poly territory_' + t.code});
                     }
-                    svg.text(t.center[0], t.center[1], t.s_code, {style:"font-size:8px;", id:t.code, class_:'territory territory_text territory_' + t.code});
+                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;", id: t.code, class_: 'territory territory_text territory_' + t.code});
+                    if (ords[tx] != undefined) {
+                        t.order = ords[tx];
+                    }
                 }
-                svg.polygon([{{ somalia }}], {fill:'none', stroke:'blue', strokeWidth:2});
+
+                svg.polygon([{{ somalia }}], {fill: 'none', stroke: 'blue', strokeWidth: 2});
 
             }});
-            setInfo = function (terr, perm) {
+            var drawLine = function (from, to, args) {
+                var svg = $("#map").svg('get');
+                var f_t = getTerr(from);
+                var t_t = getTerr(to);
+                svg.line(f_t.center[0], f_t.center[1], t_t.center[0], t_t.center[1], args);
+            };
+
+            var setInfo = function (terr, perm) {
+                var t = getTerr(terr.attr('id'));
                 if (perm) {
                     $('body').data('t_selected', terr.attr('id'));
-                    var t = $('body').data('territories')[terr.attr('id')];
                     var svg = $("#map").svg('get');
-                    $('body').data('t_selected_poly', svg.polygon(t.points, {fill:'none', stroke:'red', strokeWidth: 2, id:t.code+"_2", class_:'territory territory_poly territory_red_outline'}));
+                    $('body').data('t_selected_poly', svg.polygon(t.points, {fill: 'none', stroke: 'red', strokeWidth: 2, id: t.code + "_2", class_: 'territory territory_poly territory_red_outline'}));
+                    $('#t_id').val(terr.attr('id'));
+                    $('#f_id').val(t.owner);
+                    $('select[name="move_to"]').empty();
+                    $('select[name="support_from"]').empty();
+                    $('#orderform').slideDown();
+                    $('#orderform').resetForm();
+                    $('#special').hide();
+                    $('#support_mvs').hide();
+                    $('#support_to').hide();
+                    $('#move_to').hide();
+                    console.log(t.connects);
+                    for (tc in t.connects) {
+                        var tct = getTerr(t.connects[tc]);
+                        $('select[name="move_to"]').append('<option value="' + tct.code + '">' + tct.name + '</option>');
+                        $('select[name="support_from"]').append('<option value="' + tct.code + '">' + tct.name + '</option>');
+                    }
+                    set_order_t(terr.attr('id'));
+
                 }
                 $(".territory_" + terr.attr('id'))[0].setAttribute("opacity", "0.5");
-                var t = $('body').data('territories')[terr.attr('id')];
                 $("#t_name")[0].innerHTML = t.name;
                 if (t.has_unit) {
                     $("#t_unit")[0].innerHTML = "Yes";
                 }
                 $("#t_owner")[0].innerHTML = t.owner;
                 $("#t_special")[0].innerHTML = t.special;
+                if (t.order != undefined)
+                    $("#t_order")[0].innerHTML = t.order.str;
+
             }
-            unsetInfo = function(terr) {
+            unsetInfo = function (terr) {
                 $(".territory_" + terr)[0].setAttribute("opacity", "1.0");
                 $('#territory_info td').html('');
                 $('body').data('t_selected', null);
-{#                if ($('body').data('t_selected_poly') != undefined) {#}
-{#                    $('body').data('t_selected_poly').remove();#}
-{#                }#}
                 $('.territory_red_outline').remove();
-
             }
 
             $('.territory').click(function (e) {
                 var t = $('body').data('t_selected');
                 if (!(t) || t == undefined || (t != $(this).attr('id'))) {
                     if (t != undefined && t != $(this).attr('id')) {
-                        unsetInfo($('body').data('t_selected'));
+                        unsetInfo(t);
                     }
                     setInfo($(this), true);
                 } else {
                     unsetInfo($('body').data('t_selected'));
+                    $('#orderform').slideUp();
+
+                }
+            }).hover(function (e) {
+                        if (!($('body').data('t_selected'))) {
+                            setInfo($(this), false);
+                        }
+                    }, function (e) {
+                        if (!($('body').data('t_selected'))) {
+                            unsetInfo($(this).attr('id'));
+                        }
+                    });
+            $("input[name='order_type']").change(function () {
+                console.log($(this).val());
+                if ($(this).val() == 'Supp') {
+                    $('#support_mvs').show();
+                    $('#move_to').hide();
+                    $('#special').hide();
+                } else if ($(this).val() == 'Move') {
+                    $('#move_to').show();
+                    $('#support_mvs').hide();
+                    $('#special').hide();
+
+                } else if ($(this).val() == 'Spec') {
+                    $('#special').show();
+                    $('#move_to').hide();
+                    $('#support_mvs').hide();
+
+                } else {
+                    $('#special').hide();
+                    $('#move_to').hide();
+                    $('#support_mvs').hide();
                 }
             });
-            $('.territory').hover(function (e) {
-                if (!($('body').data('t_selected'))) {
-                setInfo($(this), false);
-                }
-            }, function (e) {
-                if (!($('body').data('t_selected'))) {
-                    unsetInfo($(this).attr('id'));
+            $("select[name='support_type']").change(function () {
+                if ($(this).val() == 'Move') {
+                    $('#support_to').show();
+                } else {
+                    $('#support_to').hide();
                 }
             });
+            $("select[name='support_from']").change(function () {
+                if ($("select[name='support_type']").val() == 'Move') {
+                    var t = getTerr($(this).val());
+                    $('select[name="support_to"]').empty();
+                    for (tc in t.connects) {
+                        var tct = getTerr(t.connects[tc]);
+                        if (adjacentTo(getTerr($('body').data('t_selected')), tct)) {
+                        $('select[name="support_to"]').append('<option value="' + tct.code + '">' + tct.name + '</option>');
+                        }
+                    }
+                    $('#support_to').show();
+                }
+            });
+            $('#orderform').ajaxForm({
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    $('#order_status').addClass(response['status']).html(response['message']).show().delay(3000).fadeOut();
+                }});
 
 
         });
@@ -99,6 +220,12 @@
 {% endblock %}
 
 {% block container %}
+    {% if gm %}
+    <h2>GM Territory View</h2>
+    {% else %}
+    <h2>Control of Somalia</h2>
+    <h3>You are controlling {{ faction.name }}.</h3>
+    {% endif %}
     <div id="tcontainer">
         <div id="map" style="height:650px;"></div>
         <div id="territory_info">
@@ -119,27 +246,49 @@
                     <th>Special</th>
                     <td id="t_special"></td>
                 </tr>
+                {% if gm %}
+                <tr>
+                    <th>Order</th>
+                    <td id="t_order"></td>
+                </tr>
+                {% endif %}
             </table>
-            <div id="orderform">
-                <form method="post" action="{% url submit_order %}">
-                    <input type="hidden" id="f_id" name="f_id"/>
-                    <input type="hidden" id="t_id" name="t_id"/>
-                    <input type="radio" name="order_type" value="Hold">Hold</input>
-                    <input type="radio" name="order_type" value="Move">Move</input>
-                    <input type="radio" name="order_type" value="Supp">Support</input>
-                    <input type="radio" name="order_type" value="Spec">Special</input>
-                    </select>
-                    <select id="support_type" name="support_type">
-                        <option name="Hold">Hold</option>
-                        <option name="Move">Move</option>
-                    </select>
-                    <select id="support_to" name="support_to">
+            <form method="post" action="{% url submit_order %}" id="orderform">
+                {% csrf_token %}
+                <input type="hidden" id="f_id" name="f_id" value="{{ faction.id }}"/>
+                <input type="hidden" id="t_id" name="t_id"/>
+
+                <input type="radio" name="order_type" value="Hold">Hold</input>
+                <input type="radio" name="order_type" value="Move">Move</input>
+                <input type="radio" name="order_type" value="Supp">Support</input>
+                <input type="radio" name="order_type" value="Spec">Special</input>
+                </select>
+
+                <div id="move_to">
+                    To: <select name="move_to">
+                    <!-- ... -->
+                </select>
+                </div>
+
+                <div id="support_mvs">
+                    Support <select id="support_type" name="support_type">
+                    <option value="Hold">Hold in</option>
+                    <option value="Move">Move from</option>
+                </select>
+                    <select name="support_from">
                         <!-- ... -->
                     </select>
-                    <input type="submit" name="go" value="Give the Order" />
-                </form>
 
-            </div>
+                    <div id="support_to"> to
+                        <select name="support_to">
+                            <!-- ... -->
+                        </select>
+                    </div>
+                </div>
+                <div id="special">Special: <input name="special"/></div>
+                <input type="submit" name="go" value="Give the Order"/>
+            </form>
+        <div id="order_status"></div>
 
         </div>
 

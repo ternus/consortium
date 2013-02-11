@@ -79,3 +79,16 @@ def remind(request, app_id):
     messages.success(request, "Reminded %s." % True)
     return redirect(reverse('dashboard'))
 
+
+def remind_everyone(request):
+    due_time = naturaltime(datetime(2013, 3, 1, 6))
+
+    for app in ConsortiumApp.objects.filter(submitted=False):
+        send_mail("[Consortium] App Reminder",
+                  render_to_string('app/app_reminder.html', {'app': app, 'due_time': due_time}),
+                  "consortium-gms@cternus.net",
+                  [app.email], fail_silently=True,
+                  html=render_to_string('app/app_reminder.html', {'app': app, 'due_time': due_time})
+        )
+        messages.success(request, "Reminded %s." % app.name)
+    return redirect(reverse('dashboard'))

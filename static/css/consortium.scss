@@ -466,7 +466,11 @@ App
   font-style: italic;
 }
 
-// Territory Control
+/*
+****************************
+ Territory Control
+****************************
+*/
 
 #tcontainer {
   margin:auto;
@@ -494,8 +498,8 @@ App
   border:1px solid black;
   width: 300px;
   position:absolute;
-  left: 200px;
-  top: 520px;
+  left: 300px;
+  top: 420px;
   th {
     padding-top:5px;
     padding-right: 10px;
@@ -508,5 +512,20 @@ App
     @include med-text;
     line-height:20px;
     vertical-align: center;
+  }
+  #orderform {
+    display:none;
+    #support_mvs {
+      display:none;
+    }
+    #move_to {
+      display:none;
+    }
+    #support_to {
+      display:none;
+    }
+    #special {
+      display: none;
+    }
   }
 }

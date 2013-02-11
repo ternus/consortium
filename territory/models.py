@@ -1,5 +1,4 @@
 import json
-from django.core.exceptions import ValidationError
 from django.db import models
 
 # Create your models here.
@@ -190,6 +189,9 @@ class Action(models.Model):
     support_to = models.ForeignKey('Territory', blank=True, null=True, related_name='t_supp_to')
     validation_level = models.IntegerField(default=0, choices=validation_phases)
 
+    class InvalidMoveError(Exception):
+        pass
+
     @property
     def is_valid(self):
         return self.validation_level > 0
@@ -200,14 +202,16 @@ class Action(models.Model):
 
     def __unicode__(self):
         status = "{%s}" % validation_str(self.validation_level)#  if self.validation_level else ""
-        initial = "%s %s %s %s" % (status, self.faction.code, self.territory.code, self.type)
+        initial = "%s %s %s %s" % (status, self.faction.code, self.territory.s_code, self.type)
         if self.type == MOVE:
-            return "%s %s" % (initial, self.target.code)
+            return "%s %s" % (initial, self.target.s_code)
         elif self.type == SUPP:
             if self.support_type == MOVE:
-                return "%s %s %s %s" % (initial, self.target.code, self.support_type, self.support_to.code)
+                return "%s %s %s %s" % (initial, self.target.s_code, self.support_type, self.support_to.s_code)
             else:
-                return "%s %s %s" % (initial, self.target.code, self.support_type)
+                return "%s %s %s" % (initial, self.target.s_code, self.support_type)
+        elif self.type == SPEC:
+            return "%s %s" % (initial, self.special)
         else:
             return initial
 
@@ -226,7 +230,7 @@ class Action(models.Model):
             faction = Faction.objects.get(code=tokens[0])
             terr = Territory.objects.get(code=tokens[1])
         except:
-            raise ValidationError("Bad parameters")
+            raise Action.InvalidMoveError("Bad parameters")
         type = tokens[2]
         if type == HOLD:
             return cls.objects.create(faction=faction, turn=turn,
@@ -317,24 +321,24 @@ class Action(models.Model):
             return super(Action, self).clean()
         if not Unit.live_units().filter(territory=self.territory).exists():
             self.validation_level = E_NOUNIT
-            # raise ValidationError('No unit in territory %s.' % self.territory.code)
+            # raise InvalidMoveError('No unit in territory %s.' % self.territory.code)
         if not Unit.live_units().filter(territory=self.territory, faction=self.faction).exists():
-            raise ValidationError('Unit in %s doesn\'t belong to %s.' % (self.territory.code, self.faction.code))
+            raise Action.InvalidMoveError('Unit in %s doesn\'t belong to %s.' % (self.territory.code, self.faction.code))
 
         if self.type == MOVE:
             if not self.target:
-                raise ValidationError('Must select move target.')
+                raise Action.InvalidMoveError('Must select move target.')
             if not self.territory.connects_to(self.target):
-                raise ValidationError('Territories %s and %s aren\'t adjacent.', self.territory.code, self.target.code)
+                raise Action.InvalidMoveError('Territories %s and %s aren\'t adjacent.', self.territory.code, self.target.code)
         elif self.type == SUPP:
             if self.support_type and self.target:
                 if not self.territory.connects_to(self.target):
-                    raise ValidationError('Territory to support from must be adjacent.')
+                    raise Action.InvalidMoveError('Territory to support from must be adjacent.')
                 if self.support_type == MOVE:
                     if not self.support_to:
-                        raise ValidationError('Support moves must provide a valid destination.')
+                        raise Action.InvalidMoveError('Support moves must provide a valid destination.')
                     elif not self.territory.connects_to(self.support_to):
-                        raise ValidationError('Territory to support to must be adjacent.')
+                        raise Action.InvalidMoveError('Territory to support to must be adjacent.')
         elif self.type == HOLD and not self.target:
             self.target = self.territory
         return super(Action, self).clean()

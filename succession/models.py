@@ -13,9 +13,19 @@ class Line(models.Model):
     description = models.TextField(blank=True)
     members = models.ManyToManyField(GameTeXUser, through="LineOrder")
     ability_card = models.ForeignKey(GameTeXObject, blank=True, null=True)
+    faction_id = models.CharField(max_length=3, blank=True)
 
     def __unicode__(self):
         return self.name
+
+    def current_leader(self):
+        if self.lineorder_set.order_by('order').exists():
+            return self.lineorder_set.order_by('order')[0]
+        return None
+
+    @classmethod
+    def by_char(cls, hgc, **kwargs):
+        return cls.objects.filter(lineorder__character=hgc, lineorder__order=1)
 
 class LineOrder(models.Model):
     line = models.ForeignKey(Line)

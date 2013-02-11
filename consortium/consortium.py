@@ -9,6 +9,11 @@ from django.core.mail import EmailMultiAlternatives
 import threading
 
 def consortium_context(request):
+    """
+    Get important Consortium variables into the request
+    :param request: request object
+    :return: none
+    """
 
     try:
         char = HGCharacter.objects.get(user=request.user)

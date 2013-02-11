@@ -1,5 +1,12 @@
 [
     {
+        "pk": 1,
+        "model": "territory.gameboard",
+        "fields": {
+            "turn": 1
+        }
+    },
+    {
         "pk": "ET",
         "model": "territory.faction",
         "fields": {
@@ -927,6 +934,196 @@
                 "P1",
                 "P2"
             ]
+        }
+    },
+    {
+        "pk": 1,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "B1",
+            "special": "",
+            "alive": true,
+            "faction": "IS"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "B3",
+            "special": "",
+            "alive": true,
+            "faction": "IS"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "C1",
+            "special": "",
+            "alive": true,
+            "faction": "IS"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "C3",
+            "special": "",
+            "alive": true,
+            "faction": "DR"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "D1",
+            "special": "",
+            "alive": true,
+            "faction": "DR"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "D3",
+            "special": "",
+            "alive": true,
+            "faction": "DR"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "F3",
+            "special": "",
+            "alive": true,
+            "faction": "AG"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "G1",
+            "special": "",
+            "alive": true,
+            "faction": "AG"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "G3",
+            "special": "",
+            "alive": true,
+            "faction": "AG"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "I2",
+            "special": "",
+            "alive": true,
+            "faction": "OS"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "J2",
+            "special": "",
+            "alive": true,
+            "faction": "OS"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "K2",
+            "special": "",
+            "alive": true,
+            "faction": "OS"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "L2",
+            "special": "",
+            "alive": true,
+            "faction": "GD"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "N1",
+            "special": "",
+            "alive": true,
+            "faction": "AS"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "O2",
+            "special": "",
+            "alive": true,
+            "faction": "AS"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "O3",
+            "special": "",
+            "alive": true,
+            "faction": "AS"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "P1",
+            "special": "",
+            "alive": true,
+            "faction": "ET"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "P2",
+            "special": "",
+            "alive": true,
+            "faction": "ET"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "P3",
+            "special": "",
+            "alive": true,
+            "faction": "ET"
         }
     }
 ]

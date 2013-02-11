@@ -39,6 +39,11 @@ def show_line(request, line_id, template="lines/show_line.html"):
         to_membership.save()
         from_membership.order = neworder
         from_membership.save()
+        while not LineOrder.objects.filter(line=line, order=1).exists():
+            for o in LineOrder.objects.filter(line=line).order_by('-order'):
+                o.order -= 1
+                o.save()
+
         return redirect('show_line', line_id)
     membership = get_object_or_404(LineOrder, character=gtu)
     context = {
