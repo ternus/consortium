@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from consortium.consortium import send_mail
 from models import AppForm, ConsortiumApp
 
-@csrf_exempt()
+@csrf_exempt
 def app(request, app_id=None):
     game_time = datetime(2013,3,1,6)
     readonly = request.GET.get('readonly', False)
