@@ -1,0 +1,7388 @@
+[
+    {
+        "pk": "Blue", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Element", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "SubOwner", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Owner", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Green", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Abil", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Combat", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Align", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "MemFold", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Mem", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "MemEnvelope", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "MemCover", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "MemPage", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Item", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "TransElement", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "White", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Notebook", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "GreenNotebook", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "EOG", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Sign", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "SignMedium", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "SignTiny", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Safe", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "TransSubOwner", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "PC", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Char", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Name", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "NPC", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Place", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "HuntKey", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "KeyCard", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "WordsKey", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "WritingKey", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "ZendoKey", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "MarketKey", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Trail", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "LabelCover", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Label", 
+        "model": "gametex.gametexclass", 
+        "fields": {}
+    }, 
+    {
+        "pk": "number", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "price", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Username", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Combat Rating", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Stamina", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "Password", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "description", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "hint", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "hintreq", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "words", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "koan", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "merchant", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": "password", 
+        "model": "gametex.gametexfield", 
+        "fields": {}
+    }, 
+    {
+        "pk": 1, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bAG", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bAS", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bAZ", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bCIA", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bKGB", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bCOC", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bBW", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bDR", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bGD", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bPR", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bSB", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bSH", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bSY", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "bHY", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "gSecurity", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "gMarket", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "gTerritoryWargame", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "gInterrogation", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "gHospital", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aFiremansCarry", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aAssist", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aKnockOut", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aWound", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aDisarm", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aRestrain", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aThrow", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aFirstAid", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aFasterWaylay", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aAdrenaline", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aHitTooMuch", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aSafeCracker", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aLegal", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aTorture", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aDisguise", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aEntry", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aTestCombat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aBatWham", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "aPokeEyeSharp", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "mTest", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "mEnvTest", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "mAmazing", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "mBookTest", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "mPageOne", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "mPageTwo", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "price", 
+            "object": "iArmor", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "iArmor", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "wTest", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "nTest", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "nGreenTest", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sEOG", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sGM", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sBox", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sCommon", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sCoC", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sHospital", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sStorage", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sElectronics", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sMechanical", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sSimulation", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sIntegration", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "sClusteredComputer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "iSafe", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "iBigSafe", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "iBetterSafe", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "iBetterBigSafe", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "iSiteSafe", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 67, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "iBigSiteSafe", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 68, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "iBetterSiteSafe", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "iBetterBigSiteSafe", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 70, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "oTest", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 71, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "oThreeThings", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "oTestSuite", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAGDiplomat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 74, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAGDiplomat", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAGDiplomat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 76, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAGDiplomat", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 77, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAGDiplomat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 78, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAGAhmad", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 79, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAGAhmad", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 80, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAGAhmad", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 81, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAGAhmad", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 82, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAGAhmad", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 83, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAGJabir", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 84, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAGJabir", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 85, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAGJabir", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 86, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAGJabir", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 87, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAGJabir", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 88, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAGMagertin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 89, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAGMagertin", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 90, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAGMagertin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 91, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAGMagertin", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 92, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAGMagertin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 93, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAGSenuole", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 94, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAGSenuole", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 95, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAGSenuole", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 96, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAGSenuole", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 97, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAGSenuole", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 98, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cASEnforcer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 99, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cASEnforcer", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 100, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cASEnforcer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 101, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cASEnforcer", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 102, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cASEnforcer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 103, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cASPR", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 104, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cASPR", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 105, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cASPR", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 106, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cASPR", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 107, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cASPR", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 108, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cASTerrorist", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 109, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cASTerrorist", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 110, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cASTerrorist", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 111, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cASTerrorist", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 112, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cASTerrorist", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 113, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cASIbrahim", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 114, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cASIbrahim", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 115, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cASIbrahim", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 116, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cASIbrahim", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 117, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cASIbrahim", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 118, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAZJeffBezos", 
+            "value": "jbezos"
+        }
+    }, 
+    {
+        "pk": 119, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAZJeffBezos", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 120, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAZJeffBezos", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 121, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAZJeffBezos", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 122, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAZJeffBezos", 
+            "value": "amazon"
+        }
+    }, 
+    {
+        "pk": 123, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAZRice", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 124, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAZRice", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 125, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAZRice", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 126, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAZRice", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 127, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAZRice", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 128, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAZCali", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 129, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAZCali", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 130, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAZCali", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 131, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAZCali", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 132, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAZCali", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 133, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAZMassoud", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 134, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAZMassoud", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 135, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAZMassoud", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 136, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAZMassoud", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 137, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAZMassoud", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 138, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cAZWilliams", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 139, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cAZWilliams", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 140, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cAZWilliams", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 141, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cAZWilliams", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 142, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cAZWilliams", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 143, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cBWKurtz", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 144, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cBWKurtz", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 145, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cBWKurtz", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 146, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cBWKurtz", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 147, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cBWKurtz", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 148, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cBWLeader", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 149, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cBWLeader", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 150, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cBWLeader", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 151, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cBWLeader", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 152, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cBWLeader", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 153, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cBWQuartermaster", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 154, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cBWQuartermaster", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 155, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cBWQuartermaster", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 156, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cBWQuartermaster", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 157, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cBWQuartermaster", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 158, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cBWCameron", 
+            "value": "bcameron"
+        }
+    }, 
+    {
+        "pk": 159, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cBWCameron", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 160, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cBWCameron", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 161, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cBWCameron", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 162, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cBWCameron", 
+            "value": "arglefraster"
+        }
+    }, 
+    {
+        "pk": 163, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cCNLin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 164, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cCNLin", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 165, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cCNLin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 166, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cCNLin", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 167, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cCNLin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 168, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cCOCSecretary", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 169, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cCOCSecretary", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 170, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cCOCSecretary", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 171, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cCOCSecretary", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 172, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cCOCSecretary", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 173, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cDRDiplomat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 174, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cDRDiplomat", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 175, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cDRDiplomat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 176, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cDRDiplomat", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 177, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cDRDiplomat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 178, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cDREfyere", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 179, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cDREfyere", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 180, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cDREfyere", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 181, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cDREfyere", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 182, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cDREfyere", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 183, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cDRResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 184, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cDRResearcher", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 185, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cDRResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 186, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cDRResearcher", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 187, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cDRResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 188, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cDrugResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 189, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cDrugResearcher", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 190, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cDrugResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 191, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cDrugResearcher", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 192, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cDrugResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 193, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cDRWarlord", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 194, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cDRWarlord", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 195, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cDRWarlord", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 196, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cDRWarlord", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 197, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cDRWarlord", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 198, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cEGAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 199, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cEGAmbassador", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 200, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cEGAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 201, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cEGAmbassador", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 202, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cEGAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 203, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cFRYusuf", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 204, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cFRYusuf", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 205, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cFRYusuf", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 206, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cFRYusuf", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 207, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cFRYusuf", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 208, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cGDWarlord", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 209, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cGDWarlord", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 210, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cGDWarlord", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 211, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cGDWarlord", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 212, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cGDWarlord", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 213, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cGDDiplomat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 214, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cGDDiplomat", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 215, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cGDDiplomat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 216, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cGDDiplomat", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 217, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cGDDiplomat", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 218, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cGDResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 219, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cGDResearcher", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 220, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cGDResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 221, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cGDResearcher", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 222, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cGDResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 223, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cGDProjectGuy", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 224, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cGDProjectGuy", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 225, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cGDProjectGuy", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 226, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cGDProjectGuy", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 227, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cGDProjectGuy", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 228, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cGDIntern", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 229, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cGDIntern", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 230, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cGDIntern", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 231, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cGDIntern", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 232, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cGDIntern", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 233, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cGXGeele", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 234, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cGXGeele", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 235, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cGXGeele", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 236, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cGXGeele", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 237, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cGXGeele", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 238, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cGXOdowaa", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 239, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cGXOdowaa", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 240, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cGXOdowaa", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 241, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cGXOdowaa", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 242, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cGXOdowaa", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 243, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cGXDanovaro", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 244, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cGXDanovaro", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 245, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cGXDanovaro", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 246, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cGXDanovaro", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 247, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cGXDanovaro", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 248, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cHYThanh", 
+            "value": "tthanh"
+        }
+    }, 
+    {
+        "pk": 249, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cHYThanh", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 250, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cHYThanh", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 251, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cHYThanh", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 252, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cHYThanh", 
+            "value": "quux"
+        }
+    }, 
+    {
+        "pk": 253, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cJPAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 254, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cJPAmbassador", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 255, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cJPAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 256, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cJPAmbassador", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 257, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cJPAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 258, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cCNPeng", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 259, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cCNPeng", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 260, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cCNPeng", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 261, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cCNPeng", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 262, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cCNPeng", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 263, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cPRShermarke", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 264, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cPRShermarke", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 265, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cPRShermarke", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 266, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cPRShermarke", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 267, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cPRShermarke", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 268, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cPRGhedi", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 269, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cPRGhedi", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 270, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cPRGhedi", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 271, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cPRGhedi", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 272, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cPRGhedi", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 273, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cPRKaar", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 274, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cPRKaar", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 275, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cPRKaar", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 276, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cPRKaar", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 277, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cPRKaar", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 278, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cPRKaahin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 279, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cPRKaahin", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 280, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cPRKaahin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 281, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cPRKaahin", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 282, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cPRKaahin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 283, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cPRSilanyo", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 284, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cPRSilanyo", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 285, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cPRSilanyo", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 286, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cPRSilanyo", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 287, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cPRSilanyo", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 288, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cRUAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 289, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cRUAmbassador", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 290, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cRUAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 291, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cRUAmbassador", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 292, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cRUAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 293, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSBLeader", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 294, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSBLeader", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 295, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSBLeader", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 296, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSBLeader", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 297, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSBLeader", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 298, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSBFinance", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 299, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSBFinance", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 300, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSBFinance", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 301, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSBFinance", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 302, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSBFinance", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 303, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSBResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 304, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSBResearcher", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 305, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSBResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 306, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSBResearcher", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 307, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSBResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 308, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSBEnforcer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 309, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSBEnforcer", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 310, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSBEnforcer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 311, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSBEnforcer", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 312, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSBEnforcer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 313, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSBIntern", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 314, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSBIntern", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 315, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSBIntern", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 316, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSBIntern", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 317, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSBIntern", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 318, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSHSamatar", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 319, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSHSamatar", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 320, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSHSamatar", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 321, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSHSamatar", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 322, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSHSamatar", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 323, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSHMcAfee", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 324, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSHMcAfee", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 325, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSHMcAfee", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 326, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSHMcAfee", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 327, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSHMcAfee", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 328, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSHResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 329, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSHResearcher", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 330, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSHResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 331, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSHResearcher", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 332, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSHResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 333, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSHAbdire", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 334, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSHAbdire", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 335, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSHAbdire", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 336, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSHAbdire", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 337, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSHAbdire", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 338, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSTMuuse", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 339, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSTMuuse", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 340, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSTMuuse", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 341, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSTMuuse", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 342, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSTMuuse", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 343, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSTYassin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 344, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSTYassin", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 345, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSTYassin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 346, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSTYassin", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 347, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSTYassin", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 348, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSTFarah", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 349, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSTFarah", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 350, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSTFarah", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 351, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSTFarah", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 352, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSTFarah", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 353, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSYLeaderA", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 354, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSYLeaderA", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 355, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSYLeaderA", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 356, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSYLeaderA", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 357, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSYLeaderA", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 358, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSYLeaderB", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 359, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSYLeaderB", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 360, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSYLeaderB", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 361, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSYLeaderB", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 362, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSYLeaderB", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 363, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSYLeaderC", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 364, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSYLeaderC", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 365, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSYLeaderC", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 366, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSYLeaderC", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 367, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSYLeaderC", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 368, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSYSpy", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 369, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSYSpy", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 370, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSYSpy", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 371, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSYSpy", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 372, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSYSpy", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 373, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cSYIntern", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 374, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cSYIntern", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 375, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cSYIntern", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 376, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cSYIntern", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 377, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cSYIntern", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 378, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cTCLeader", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 379, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cTCLeader", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 380, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cTCLeader", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 381, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cTCLeader", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 382, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cTCLeader", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 383, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cTCResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 384, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cTCResearcher", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 385, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cTCResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 386, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cTCResearcher", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 387, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cTCResearcher", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 388, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cUKAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 389, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cUKAmbassador", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 390, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cUKAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 391, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cUKAmbassador", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 392, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cUKAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 393, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cUKEnforcer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 394, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cUKEnforcer", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 395, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cUKEnforcer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 396, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cUKEnforcer", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 397, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cUKEnforcer", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 398, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cUSAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 399, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cUSAmbassador", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 400, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cUSAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 401, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cUSAmbassador", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 402, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cUSAmbassador", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 403, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cThanhDaughter", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 404, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cThanhDaughter", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 405, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cThanhDaughter", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 406, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cThanhDaughter", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 407, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cThanhDaughter", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 408, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cUSAttache", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 409, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cUSAttache", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 410, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cUSAttache", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 411, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cUSAttache", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 412, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cUSAttache", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 413, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cZMChipunza", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 414, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cZMChipunza", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 415, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cZMChipunza", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 416, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cZMChipunza", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 417, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cZMChipunza", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 418, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cCptHughes", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 419, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cCptHughes", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 420, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cCptHughes", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 421, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cCptHughes", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 422, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cCptHughes", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 423, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cWarlock", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 424, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cWarlock", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 425, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cWarlock", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 426, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cWarlock", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 427, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cWarlock", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 428, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cWarlockDad", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 429, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cWarlockDad", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 430, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cWarlockDad", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 431, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cWarlockDad", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 432, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cWarlockDad", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 433, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Username", 
+            "object": "cWarlockMom", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 434, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Combat Rating", 
+            "object": "cWarlockMom", 
+            "value": "2"
+        }
+    }, 
+    {
+        "pk": 435, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "cWarlockMom", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 436, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Stamina", 
+            "object": "cWarlockMom", 
+            "value": "3"
+        }
+    }, 
+    {
+        "pk": 437, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "Password", 
+            "object": "cWarlockMom", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 438, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "pTrails", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 439, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "description", 
+            "object": "key@5551", 
+            "value": "A list of Gestapo archives containing a variety of obscure codenames."
+        }
+    }, 
+    {
+        "pk": 440, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hint", 
+            "object": "key@5551", 
+            "value": "building 37"
+        }
+    }, 
+    {
+        "pk": 441, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hintreq", 
+            "object": "key@5551", 
+            "value": "Cryptography 2"
+        }
+    }, 
+    {
+        "pk": 442, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "key@5551", 
+            "value": "5551"
+        }
+    }, 
+    {
+        "pk": 443, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "price", 
+            "object": "key@5551", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 444, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "description", 
+            "object": "key@5659", 
+            "value": "A set of complex notes on old government projects, focusing on AI research."
+        }
+    }, 
+    {
+        "pk": 445, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hint", 
+            "object": "key@5659", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 446, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hintreq", 
+            "object": "key@5659", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 447, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "key@5659", 
+            "value": "5659"
+        }
+    }, 
+    {
+        "pk": 448, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "words", 
+            "object": "key@5659", 
+            "value": "capacitor, mind, virtual"
+        }
+    }, 
+    {
+        "pk": 449, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "price", 
+            "object": "key@5659", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 450, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "description", 
+            "object": "key@5727", 
+            "value": "Decrypted spec sheets for a long list of Nazi proto-AIs."
+        }
+    }, 
+    {
+        "pk": 451, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hint", 
+            "object": "key@5727", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 452, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hintreq", 
+            "object": "key@5727", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 453, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "key@5727", 
+            "value": "5727"
+        }
+    }, 
+    {
+        "pk": 454, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "price", 
+            "object": "key@5727", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 455, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "description", 
+            "object": "key@5683", 
+            "value": "Experimental results on 200 AI trials from before the War."
+        }
+    }, 
+    {
+        "pk": 456, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hint", 
+            "object": "key@5683", 
+            "value": "You may give the student the hint 'transpose letters to numbers.'"
+        }
+    }, 
+    {
+        "pk": 457, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hintreq", 
+            "object": "key@5683", 
+            "value": "Compsci 1"
+        }
+    }, 
+    {
+        "pk": 458, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "koan", 
+            "object": "key@5683", 
+            "value": "Turn the letters into numbers (A=1, B=2, ...). Their product is 100 or greater. (e.g. EEBB, JXTV)"
+        }
+    }, 
+    {
+        "pk": 459, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "key@5683", 
+            "value": "5683"
+        }
+    }, 
+    {
+        "pk": 460, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "price", 
+            "object": "key@5683", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 461, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "merchant", 
+            "object": "key@5092", 
+            "value": "Rickland Powell"
+        }
+    }, 
+    {
+        "pk": 462, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "description", 
+            "object": "key@5092", 
+            "value": "Deposition of lead researcher Bill Thorn."
+        }
+    }, 
+    {
+        "pk": 463, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hint", 
+            "object": "key@5092", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 464, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hintreq", 
+            "object": "key@5092", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 465, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "key@5092", 
+            "value": "5092"
+        }
+    }, 
+    {
+        "pk": 466, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "password", 
+            "object": "key@5092", 
+            "value": "supra"
+        }
+    }, 
+    {
+        "pk": 467, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "price", 
+            "object": "key@5092", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 468, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "description", 
+            "object": "key@5591", 
+            "value": "Deposition of Dr. Smith, implicating James Bond in the murder of Prime Minister Stevens."
+        }
+    }, 
+    {
+        "pk": 469, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hint", 
+            "object": "key@5591", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 470, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "hintreq", 
+            "object": "key@5591", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 471, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "key@5591", 
+            "value": "5591"
+        }
+    }, 
+    {
+        "pk": 472, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "price", 
+            "object": "key@5591", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": 473, 
+        "model": "gametex.gametexfieldvalue", 
+        "fields": {
+            "field": "number", 
+            "object": "tSmallExample", 
+            "value": ""
+        }
+    }, 
+    {
+        "pk": "bAG", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Clan Abgaal"
+        }
+    }, 
+    {
+        "pk": "bAS", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Al Shabaab"
+        }
+    }, 
+    {
+        "pk": "bAZ", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Amazon.com"
+        }
+    }, 
+    {
+        "pk": "bCIA", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "CIA"
+        }
+    }, 
+    {
+        "pk": "bKGB", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "KGB"
+        }
+    }, 
+    {
+        "pk": "bCOC", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Chamber of Commerce"
+        }
+    }, 
+    {
+        "pk": "bBW", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Blackwater Inc."
+        }
+    }, 
+    {
+        "pk": "bDR", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Clan Darod"
+        }
+    }, 
+    {
+        "pk": "bGD", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "General Dynamics"
+        }
+    }, 
+    {
+        "pk": "bPR", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "NEEDS A PIRATE NAME"
+        }
+    }, 
+    {
+        "pk": "bSB", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Saab"
+        }
+    }, 
+    {
+        "pk": "bSH", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Clan Sheikhaal"
+        }
+    }, 
+    {
+        "pk": "bSY", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Sony"
+        }
+    }, 
+    {
+        "pk": "bHY", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Blue", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Hyperion Global"
+        }
+    }, 
+    {
+        "pk": "gSecurity", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Green", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Security"
+        }
+    }, 
+    {
+        "pk": "gMarket", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Green", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Market"
+        }
+    }, 
+    {
+        "pk": "gTerritoryWargame", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Green", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Territory Wargame"
+        }
+    }, 
+    {
+        "pk": "gInterrogation", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Green", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Interrogation"
+        }
+    }, 
+    {
+        "pk": "gHospital", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Green", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Hospital Rules"
+        }
+    }, 
+    {
+        "pk": "aFiremansCarry", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Fireman's Carry"
+        }
+    }, 
+    {
+        "pk": "aAssist", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Assist"
+        }
+    }, 
+    {
+        "pk": "aKnockOut", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Knock Out"
+        }
+    }, 
+    {
+        "pk": "aWound", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Wound"
+        }
+    }, 
+    {
+        "pk": "aDisarm", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Disarm"
+        }
+    }, 
+    {
+        "pk": "aRestrain", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Restrain"
+        }
+    }, 
+    {
+        "pk": "aThrow", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Throw"
+        }
+    }, 
+    {
+        "pk": "aFirstAid", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "First Aid"
+        }
+    }, 
+    {
+        "pk": "aFasterWaylay", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Faster Waylay"
+        }
+    }, 
+    {
+        "pk": "aAdrenaline", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Adrenaline Surge"
+        }
+    }, 
+    {
+        "pk": "aHitTooMuch", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Hit Too Many Times"
+        }
+    }, 
+    {
+        "pk": "aSafeCracker", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Safe Cracker"
+        }
+    }, 
+    {
+        "pk": "aLegal", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Extra-Legal Powers"
+        }
+    }, 
+    {
+        "pk": "aTorture", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Government Interrogation Influence"
+        }
+    }, 
+    {
+        "pk": "aDisguise", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Disguise"
+        }
+    }, 
+    {
+        "pk": "aEntry", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Entry Window"
+        }
+    }, 
+    {
+        "pk": "aTestCombat", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Align", 
+                "Combat", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Test Combat Card"
+        }
+    }, 
+    {
+        "pk": "aBatWham", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Align", 
+                "Combat", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Patented Bat-Wham"
+        }
+    }, 
+    {
+        "pk": "aPokeEyeSharp", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Abil", 
+                "Align", 
+                "Combat", 
+                "Element", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Poke in the Eye with a Sharp Stick"
+        }
+    }, 
+    {
+        "pk": "mTest", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Mem", 
+                "MemFold", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Test Trigger"
+        }
+    }, 
+    {
+        "pk": "mEnvTest", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Mem", 
+                "MemEnvelope", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Test Trigger"
+        }
+    }, 
+    {
+        "pk": "mAmazing", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Mem", 
+                "MemEnvelope", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "if you see something amazing"
+        }
+    }, 
+    {
+        "pk": "mBookTest", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Mem", 
+                "MemCover", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Book of Memory Packets"
+        }
+    }, 
+    {
+        "pk": "mPageOne", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Mem", 
+                "MemPage", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Test Trigger One"
+        }
+    }, 
+    {
+        "pk": "mPageTwo", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Mem", 
+                "MemPage", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Test Trigger Two"
+        }
+    }, 
+    {
+        "pk": "iArmor", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Item", 
+                "Owner", 
+                "SubOwner", 
+                "TransElement"
+            ], 
+            "name": "Advanced Concealable Personal Armor"
+        }
+    }, 
+    {
+        "pk": "wTest", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "SubOwner", 
+                "TransElement", 
+                "White"
+            ], 
+            "name": "Test Whitesheet"
+        }
+    }, 
+    {
+        "pk": "nTest", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Notebook", 
+                "Owner", 
+                "SubOwner", 
+                "TransElement"
+            ], 
+            "name": "Test Research Notebook"
+        }
+    }, 
+    {
+        "pk": "nGreenTest", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "GreenNotebook", 
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Test Out-of-Game Notebook"
+        }
+    }, 
+    {
+        "pk": "sEOG", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "EOG", 
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SubOwner"
+            ], 
+            "name": "End Of Game"
+        }
+    }, 
+    {
+        "pk": "sGM", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignMedium", 
+                "SubOwner"
+            ], 
+            "name": "GM Room"
+        }
+    }, 
+    {
+        "pk": "sBox", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignMedium", 
+                "SubOwner"
+            ], 
+            "name": "Box Room"
+        }
+    }, 
+    {
+        "pk": "sCommon", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignMedium", 
+                "SubOwner"
+            ], 
+            "name": "Common Room"
+        }
+    }, 
+    {
+        "pk": "sCoC", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignMedium", 
+                "SubOwner"
+            ], 
+            "name": "Mogadishu Chamber of Commerce"
+        }
+    }, 
+    {
+        "pk": "sHospital", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignMedium", 
+                "SubOwner"
+            ], 
+            "name": "Hospital"
+        }
+    }, 
+    {
+        "pk": "sStorage", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Storage Lockers"
+        }
+    }, 
+    {
+        "pk": "sElectronics", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Electronics Prototyping Facility"
+        }
+    }, 
+    {
+        "pk": "sMechanical", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Mechanical Prototyping Facility"
+        }
+    }, 
+    {
+        "pk": "sSimulation", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Model Simulation Facility"
+        }
+    }, 
+    {
+        "pk": "sIntegration", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Systems Integration Facility"
+        }
+    }, 
+    {
+        "pk": "sClusteredComputer", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Clustered Computing System"
+        }
+    }, 
+    {
+        "pk": "iSafe", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Safe", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Secure Private Safe"
+        }
+    }, 
+    {
+        "pk": "iBigSafe", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Safe", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Large Secure Private Safe"
+        }
+    }, 
+    {
+        "pk": "iBetterSafe", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Safe", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Very Secure Private Safe"
+        }
+    }, 
+    {
+        "pk": "iBetterBigSafe", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Safe", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Large, Very Secure Private Safe"
+        }
+    }, 
+    {
+        "pk": "iSiteSafe", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Safe", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Secure Safe"
+        }
+    }, 
+    {
+        "pk": "iBigSiteSafe", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Safe", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Large Secure Safe"
+        }
+    }, 
+    {
+        "pk": "iBetterSiteSafe", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Safe", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Very Secure Safe"
+        }
+    }, 
+    {
+        "pk": "iBetterBigSiteSafe", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Owner", 
+                "Safe", 
+                "Sign", 
+                "SignTiny", 
+                "SubOwner"
+            ], 
+            "name": "Large, Very Secure Safe"
+        }
+    }, 
+    {
+        "pk": "oTest", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Test SubOwner"
+        }
+    }, 
+    {
+        "pk": "oThreeThings", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Owner", 
+                "SubOwner", 
+                "TransSubOwner"
+            ], 
+            "name": "The Three Items of Power"
+        }
+    }, 
+    {
+        "pk": "oTestSuite", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Owner", 
+                "SubOwner"
+            ], 
+            "name": "Test Suite"
+        }
+    }, 
+    {
+        "pk": "cAGDiplomat", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cAGAhmad", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Ahmad"
+        }
+    }, 
+    {
+        "pk": "cAGJabir", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Jabir"
+        }
+    }, 
+    {
+        "pk": "cAGMagertin", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Magertin"
+        }
+    }, 
+    {
+        "pk": "cAGSenuole", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Senuole"
+        }
+    }, 
+    {
+        "pk": "cASEnforcer", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cASPR", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cASTerrorist", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cASIbrahim", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Ibrahim"
+        }
+    }, 
+    {
+        "pk": "cAZJeffBezos", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Jeff Bezos"
+        }
+    }, 
+    {
+        "pk": "cAZRice", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Rice"
+        }
+    }, 
+    {
+        "pk": "cAZCali", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Cali"
+        }
+    }, 
+    {
+        "pk": "cAZMassoud", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Massoud"
+        }
+    }, 
+    {
+        "pk": "cAZWilliams", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Williams"
+        }
+    }, 
+    {
+        "pk": "cBWKurtz", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cBWLeader", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cBWQuartermaster", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cBWCameron", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Sgt. Brian Cameron"
+        }
+    }, 
+    {
+        "pk": "cCNLin", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Lin"
+        }
+    }, 
+    {
+        "pk": "cCOCSecretary", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cDRDiplomat", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cDREfyere", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Efyere"
+        }
+    }, 
+    {
+        "pk": "cDRResearcher", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cDrugResearcher", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cDRWarlord", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cEGAmbassador", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cFRYusuf", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Yusuf"
+        }
+    }, 
+    {
+        "pk": "cGDWarlord", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cGDDiplomat", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cGDResearcher", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cGDProjectGuy", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cGDIntern", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cGXGeele", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Geele"
+        }
+    }, 
+    {
+        "pk": "cGXOdowaa", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Odowaa"
+        }
+    }, 
+    {
+        "pk": "cGXDanovaro", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Danovaro"
+        }
+    }, 
+    {
+        "pk": "cHYThanh", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Tu'ong Thanh"
+        }
+    }, 
+    {
+        "pk": "cJPAmbassador", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cCNPeng", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Peng"
+        }
+    }, 
+    {
+        "pk": "cPRShermarke", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Shermarke"
+        }
+    }, 
+    {
+        "pk": "cPRGhedi", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Ghedi"
+        }
+    }, 
+    {
+        "pk": "cPRKaar", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Kaar"
+        }
+    }, 
+    {
+        "pk": "cPRKaahin", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Kaahin"
+        }
+    }, 
+    {
+        "pk": "cPRSilanyo", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Silanyo"
+        }
+    }, 
+    {
+        "pk": "cRUAmbassador", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSBLeader", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSBFinance", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSBResearcher", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSBEnforcer", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSBIntern", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSHSamatar", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Samatar"
+        }
+    }, 
+    {
+        "pk": "cSHMcAfee", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSHResearcher", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSHAbdire", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Abdire"
+        }
+    }, 
+    {
+        "pk": "cSTMuuse", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Muuse"
+        }
+    }, 
+    {
+        "pk": "cSTYassin", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Yassin"
+        }
+    }, 
+    {
+        "pk": "cSTFarah", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "Farah"
+        }
+    }, 
+    {
+        "pk": "cSYLeaderA", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSYLeaderB", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSYLeaderC", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSYSpy", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cSYIntern", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cTCLeader", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cTCResearcher", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cUKAmbassador", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cUKEnforcer", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cUSAmbassador", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Owner", 
+                "PC"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cThanhDaughter", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Name", 
+                "Owner"
+            ], 
+            "name": "Chau Thanh"
+        }
+    }, 
+    {
+        "pk": "cUSAttache", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Name", 
+                "Owner"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cZMChipunza", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Name", 
+                "Owner"
+            ], 
+            "name": "Chipunza"
+        }
+    }, 
+    {
+        "pk": "cCptHughes", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Name", 
+                "Owner"
+            ], 
+            "name": "Cpt. Steve Hughes"
+        }
+    }, 
+    {
+        "pk": "cWarlock", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "NPC", 
+                "Owner"
+            ], 
+            "name": "The Commander"
+        }
+    }, 
+    {
+        "pk": "cWarlockDad", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Name", 
+                "Owner"
+            ], 
+            "name": "NEEDS-A-NAME"
+        }
+    }, 
+    {
+        "pk": "cWarlockMom", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Char", 
+                "Name", 
+                "Owner"
+            ], 
+            "name": "Dr. [REDACTED]"
+        }
+    }, 
+    {
+        "pk": "pTrails", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Owner", 
+                "Place"
+            ], 
+            "name": "Trail Signs"
+        }
+    }, 
+    {
+        "pk": "key@5551", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "HuntKey", 
+                "Item", 
+                "KeyCard", 
+                "Owner", 
+                "SubOwner", 
+                "TransElement"
+            ], 
+            "name": "Keycard 5551: Compsci data"
+        }
+    }, 
+    {
+        "pk": "key@5659", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Item", 
+                "KeyCard", 
+                "Owner", 
+                "SubOwner", 
+                "TransElement", 
+                "WordsKey"
+            ], 
+            "name": "Keycard 5659: Bureaucracy data"
+        }
+    }, 
+    {
+        "pk": "key@5727", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Item", 
+                "KeyCard", 
+                "Owner", 
+                "SubOwner", 
+                "TransElement", 
+                "WritingKey"
+            ], 
+            "name": "Keycard 5727: Compsci data"
+        }
+    }, 
+    {
+        "pk": "key@5683", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Item", 
+                "KeyCard", 
+                "Owner", 
+                "SubOwner", 
+                "TransElement", 
+                "ZendoKey"
+            ], 
+            "name": "Keycard 5683: Mathematics data"
+        }
+    }, 
+    {
+        "pk": "key@5092", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Item", 
+                "KeyCard", 
+                "MarketKey", 
+                "Owner", 
+                "SubOwner", 
+                "TransElement"
+            ], 
+            "name": "Keycard 5092: Business data"
+        }
+    }, 
+    {
+        "pk": "key@5591", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "HuntKey", 
+                "Item", 
+                "KeyCard", 
+                "Owner", 
+                "SubOwner", 
+                "TransElement"
+            ], 
+            "name": "Keycard 5591: Police Proc. data"
+        }
+    }, 
+    {
+        "pk": "tSmallExample", 
+        "model": "gametex.gametexobject", 
+        "fields": {
+            "classes": [
+                "Element", 
+                "Label", 
+                "LabelCover", 
+                "Owner", 
+                "Sign", 
+                "SubOwner", 
+                "Trail"
+            ], 
+            "name": "Small Example Key Trail"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_logentry", 
+            "name": "Can add log entry", 
+            "content_type": 7
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_logentry", 
+            "name": "Can change log entry", 
+            "content_type": 7
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_logentry", 
+            "name": "Can delete log entry", 
+            "content_type": 7
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_consortiumapp", 
+            "name": "Can add consortium app", 
+            "content_type": 25
+        }
+    }, 
+    {
+        "pk": 74, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_consortiumapp", 
+            "name": "Can change consortium app", 
+            "content_type": 25
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_consortiumapp", 
+            "name": "Can delete consortium app", 
+            "content_type": 25
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_group", 
+            "name": "Can add group", 
+            "content_type": 2
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_group", 
+            "name": "Can change group", 
+            "content_type": 2
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_group", 
+            "name": "Can delete group", 
+            "content_type": 2
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_permission", 
+            "name": "Can add permission", 
+            "content_type": 1
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_permission", 
+            "name": "Can change permission", 
+            "content_type": 1
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_permission", 
+            "name": "Can delete permission", 
+            "content_type": 1
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_user", 
+            "name": "Can add user", 
+            "content_type": 3
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_user", 
+            "name": "Can change user", 
+            "content_type": 3
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_user", 
+            "name": "Can delete user", 
+            "content_type": 3
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_contenttype", 
+            "name": "Can add content type", 
+            "content_type": 4
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_contenttype", 
+            "name": "Can change content type", 
+            "content_type": 4
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_contenttype", 
+            "name": "Can delete content type", 
+            "content_type": 4
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_gametexclass", 
+            "name": "Can add game te x class", 
+            "content_type": 9
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_gametexclass", 
+            "name": "Can change game te x class", 
+            "content_type": 9
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_gametexclass", 
+            "name": "Can delete game te x class", 
+            "content_type": 9
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_gametexfield", 
+            "name": "Can add game te x field", 
+            "content_type": 10
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_gametexfield", 
+            "name": "Can change game te x field", 
+            "content_type": 10
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_gametexfield", 
+            "name": "Can delete game te x field", 
+            "content_type": 10
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_gametexfieldvalue", 
+            "name": "Can add game te x field value", 
+            "content_type": 11
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_gametexfieldvalue", 
+            "name": "Can change game te x field value", 
+            "content_type": 11
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_gametexfieldvalue", 
+            "name": "Can delete game te x field value", 
+            "content_type": 11
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_gametexobject", 
+            "name": "Can add game te x object", 
+            "content_type": 12
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_gametexobject", 
+            "name": "Can change game te x object", 
+            "content_type": 12
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_gametexobject", 
+            "name": "Can delete game te x object", 
+            "content_type": 12
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_gametexuser", 
+            "name": "Can add game te x user", 
+            "content_type": 13
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_gametexuser", 
+            "name": "Can change game te x user", 
+            "content_type": 13
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_gametexuser", 
+            "name": "Can delete game te x user", 
+            "content_type": 13
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_charnode", 
+            "name": "Can add char node", 
+            "content_type": 21
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_charnode", 
+            "name": "Can change char node", 
+            "content_type": 21
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_charnode", 
+            "name": "Can delete char node", 
+            "content_type": 21
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_charnodewatch", 
+            "name": "Can add char node watch", 
+            "content_type": 22
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_charnodewatch", 
+            "name": "Can change char node watch", 
+            "content_type": 22
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_charnodewatch", 
+            "name": "Can delete char node watch", 
+            "content_type": 22
+        }
+    }, 
+    {
+        "pk": 70, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_gameday", 
+            "name": "Can add game day", 
+            "content_type": 24
+        }
+    }, 
+    {
+        "pk": 71, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_gameday", 
+            "name": "Can change game day", 
+            "content_type": 24
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_gameday", 
+            "name": "Can delete game day", 
+            "content_type": 24
+        }
+    }, 
+    {
+        "pk": 67, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_hgcharacter", 
+            "name": "Can add hg character", 
+            "content_type": 23
+        }
+    }, 
+    {
+        "pk": 68, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_hgcharacter", 
+            "name": "Can change hg character", 
+            "content_type": 23
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_hgcharacter", 
+            "name": "Can delete hg character", 
+            "content_type": 23
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_item", 
+            "name": "Can add item", 
+            "content_type": 20
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_item", 
+            "name": "Can change item", 
+            "content_type": 20
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_item", 
+            "name": "Can delete item", 
+            "content_type": 20
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_node", 
+            "name": "Can add node", 
+            "content_type": 16
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_node", 
+            "name": "Can change node", 
+            "content_type": 16
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_node", 
+            "name": "Can delete node", 
+            "content_type": 16
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_nodeevent", 
+            "name": "Can add node event", 
+            "content_type": 19
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_nodeevent", 
+            "name": "Can change node event", 
+            "content_type": 19
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_nodeevent", 
+            "name": "Can delete node event", 
+            "content_type": 19
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_rumor", 
+            "name": "Can add rumor", 
+            "content_type": 18
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_rumor", 
+            "name": "Can change rumor", 
+            "content_type": 18
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_rumor", 
+            "name": "Can delete rumor", 
+            "content_type": 18
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_secret", 
+            "name": "Can add secret", 
+            "content_type": 17
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_secret", 
+            "name": "Can change secret", 
+            "content_type": 17
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_secret", 
+            "name": "Can delete secret", 
+            "content_type": 17
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_session", 
+            "name": "Can add session", 
+            "content_type": 5
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_session", 
+            "name": "Can change session", 
+            "content_type": 5
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_session", 
+            "name": "Can delete session", 
+            "content_type": 5
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_site", 
+            "name": "Can add site", 
+            "content_type": 6
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_site", 
+            "name": "Can change site", 
+            "content_type": 6
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_site", 
+            "name": "Can delete site", 
+            "content_type": 6
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_migrationhistory", 
+            "name": "Can add migration history", 
+            "content_type": 8
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_migrationhistory", 
+            "name": "Can change migration history", 
+            "content_type": 8
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_migrationhistory", 
+            "name": "Can delete migration history", 
+            "content_type": 8
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_line", 
+            "name": "Can add line", 
+            "content_type": 14
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_line", 
+            "name": "Can change line", 
+            "content_type": 14
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_line", 
+            "name": "Can delete line", 
+            "content_type": 14
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_lineorder", 
+            "name": "Can add line order", 
+            "content_type": 15
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_lineorder", 
+            "name": "Can change line order", 
+            "content_type": 15
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_lineorder", 
+            "name": "Can delete line order", 
+            "content_type": 15
+        }
+    }, 
+    {
+        "pk": 85, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_action", 
+            "name": "Can add action", 
+            "content_type": 29
+        }
+    }, 
+    {
+        "pk": 86, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_action", 
+            "name": "Can change action", 
+            "content_type": 29
+        }
+    }, 
+    {
+        "pk": 87, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_action", 
+            "name": "Can delete action", 
+            "content_type": 29
+        }
+    }, 
+    {
+        "pk": 79, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_faction", 
+            "name": "Can add faction", 
+            "content_type": 27
+        }
+    }, 
+    {
+        "pk": 80, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_faction", 
+            "name": "Can change faction", 
+            "content_type": 27
+        }
+    }, 
+    {
+        "pk": 81, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_faction", 
+            "name": "Can delete faction", 
+            "content_type": 27
+        }
+    }, 
+    {
+        "pk": 88, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_gameboard", 
+            "name": "Can add game board", 
+            "content_type": 30
+        }
+    }, 
+    {
+        "pk": 89, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_gameboard", 
+            "name": "Can change game board", 
+            "content_type": 30
+        }
+    }, 
+    {
+        "pk": 90, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_gameboard", 
+            "name": "Can delete game board", 
+            "content_type": 30
+        }
+    }, 
+    {
+        "pk": 76, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_territory", 
+            "name": "Can add territory", 
+            "content_type": 26
+        }
+    }, 
+    {
+        "pk": 77, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_territory", 
+            "name": "Can change territory", 
+            "content_type": 26
+        }
+    }, 
+    {
+        "pk": 78, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_territory", 
+            "name": "Can delete territory", 
+            "content_type": 26
+        }
+    }, 
+    {
+        "pk": 82, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "add_unit", 
+            "name": "Can add unit", 
+            "content_type": 28
+        }
+    }, 
+    {
+        "pk": 83, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "change_unit", 
+            "name": "Can change unit", 
+            "content_type": 28
+        }
+    }, 
+    {
+        "pk": 84, 
+        "model": "auth.permission", 
+        "fields": {
+            "codename": "delete_unit", 
+            "name": "Can delete unit", 
+            "content_type": 28
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "cternus", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2013-02-10T04:50:17.213Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$1KF0LrgC9Vfe$dxzA5LVthKCv/44UHp2tJsE3NwKZXjxhl3UlFcmFDA0=", 
+            "email": "ternus@cternus.net", 
+            "date_joined": "2013-02-06T03:02:23.638Z"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "test", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2013-02-11T04:17:37.670Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "", 
+            "email": "test@test.test", 
+            "date_joined": "2013-02-11T04:17:37.670Z"
+        }
+    }, 
+    {
+        "pk": 313, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "", 
+            "name": "Foo", 
+            "short_name": "Foo", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Foo bar baz", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 314, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "", 
+            "name": "Center Node", 
+            "short_name": "", 
+            "rumors_per_day": 2, 
+            "quick_desc": "This is the center node.", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "hexgrid.item", 
+        "fields": {
+            "item_card": null, 
+            "sold_by": [
+                314
+            ], 
+            "post_buy": "Spork!", 
+            "base_name": "arglefraster", 
+            "base_price": 1
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "hexgrid.hgcharacter", 
+        "fields": {
+            "is_disguised": false, 
+            "points": 10, 
+            "has_disguise": true
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "hexgrid.gameday", 
+        "fields": {
+            "tick_time": "16:00:00", 
+            "day": 1
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "gametex.gametexuser", 
+        "fields": {
+            "user": 2, 
+            "gto": "cAZJeffBezos"
+        }
+    }
+]
