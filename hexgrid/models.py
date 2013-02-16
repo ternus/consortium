@@ -5,10 +5,12 @@ from django.core.exceptions import ValidationError
 from django.db import models
 
 # Create your models here.
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.shortcuts import get_object_or_404
-from gametex.models import GameTeXObject
+from gametex.models import GameTeXObject, GameTeXUser
 from singleton_models.models import SingletonModel
-from hexgrid.game_settings import PRICE_FIELD
+from hexgrid.game_settings import PRICE_FIELD, MARKET_STAT
 from hexgrid.utils import currency
 from django.utils.translation import ugettext as _
 
@@ -245,16 +247,18 @@ class CharNodeWatch(models.Model):
     node = models.ForeignKey(Node)
     watched_on = models.IntegerField()
 
-class HGCharacter(models.Model):
+class HGCharacter(GameTeXUser):
     """
     HGCharacter ("Hex Grid Character")
     """
-    user = models.OneToOneField(User)
-    char = models.OneToOneField(GameTeXObject, blank=True)
-    points = models.IntegerField()
+    points = models.IntegerField(default=0)
     nodes = models.ManyToManyField(Node, through=CharNode)
-    is_disguised = models.BooleanField()
-    has_disguise = models.BooleanField()
+    is_disguised = models.BooleanField(default=False)
+    has_disguise = models.BooleanField(default=False)
+
+    @property
+    def char(self):
+        return self.gto
 
     def all_nodes(self):
         """
@@ -334,6 +338,16 @@ class HGCharacter(models.Model):
             who=self,
             day=GameDay.get_day(),
         ).delete()
+
+@receiver(post_save, sender=GameTeXUser)
+def create_hgcharacter(sender, **kwargs):
+    if kwargs['created']:
+        g = kwargs['instance']
+        h = HGCharacter(points = 0,#g.gto.field(MARKET_STAT, default=0),
+        is_disguised = False,
+        has_disguise = False)#(g.gto.field('disguise', default=0)))
+        h.__dict__.update(g.__dict__)
+        h.save()
 
 
 class GameDay(SingletonModel):

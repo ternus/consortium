@@ -96,9 +96,7 @@ class Migration(SchemaMigration):
 
         # Adding model 'HGCharacter'
         db.create_table('hexgrid_hgcharacter', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
-            ('char', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['gametex.GameTeXObject'], unique=True, blank=True)),
+            ('gametexuser_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['gametex.GameTeXUser'], unique=True, primary_key=True)),
             ('points', self.gf('django.db.models.fields.IntegerField')()),
             ('is_disguised', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('has_disguise', self.gf('django.db.models.fields.BooleanField')(default=False)),
@@ -205,6 +203,12 @@ class Migration(SchemaMigration):
             'macro': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '256', 'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '256'})
         },
+        'gametex.gametexuser': {
+            'Meta': {'object_name': 'GameTeXUser'},
+            'gto': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['gametex.GameTeXObject']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+        },
         'hexgrid.charnode': {
             'Meta': {'object_name': 'CharNode'},
             'character': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['hexgrid.HGCharacter']"}),
@@ -226,14 +230,12 @@ class Migration(SchemaMigration):
             'tick_time': ('django.db.models.fields.TimeField', [], {})
         },
         'hexgrid.hgcharacter': {
-            'Meta': {'object_name': 'HGCharacter'},
-            'char': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['gametex.GameTeXObject']", 'unique': 'True', 'blank': 'True'}),
+            'Meta': {'object_name': 'HGCharacter', '_ormbases': ['gametex.GameTeXUser']},
+            'gametexuser_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['gametex.GameTeXUser']", 'unique': 'True', 'primary_key': 'True'}),
             'has_disguise': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'is_disguised': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'nodes': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['hexgrid.Node']", 'through': "orm['hexgrid.CharNode']", 'symmetrical': 'False'}),
-            'points': ('django.db.models.fields.IntegerField', [], {}),
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True'})
+            'points': ('django.db.models.fields.IntegerField', [], {})
         },
         'hexgrid.item': {
             'Meta': {'object_name': 'Item'},

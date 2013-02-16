@@ -4,18 +4,17 @@
 
 {% block main %}
     <div class="node">
-        <div id="node_name">{{ node.name }}</div>
-        <div id="node_desc">{{ node.long_desc|safe }}</div>
+        <h2>{{ node.name }}</h2>
+        <p>{{ node.long_desc|safe }}</p>
 
         <div id="node_items">
-
-        {% trans "I can sell you:" %}
+        <h3>{% trans "I can sell you:" %}</h3>
             <ul class="node_sale_item">
             {% for item in items %}
                 <li><span class="node_sale_item_name">{{ item.name }}</span> -
                     <span class="node_sale_item_cost">{{ item.price }}</span>
                     <span class="node_sale_item_buy_link">
-                        [<a href="{% url buy item.id %}">Buy</a>]
+                        <a href="{% url buy item.id %}">Buy</a>
                     </span>
                 </li>
             {% endfor %}
@@ -24,13 +23,13 @@
 
         <div id="node_neighbors">
 
-            {% trans "I can introduce you to:" %}
+            <h3>{% trans "I can introduce you to:" %}</h3>
             <ul class="node_neighbor">
                 {% for neighbor in node.get_all_neighbors %}
                     <li><span class="node_neighbor_name">{{ neighbor.name }}</span> -
                         <span class="node_neighbor_desc">{{ neighbor.quick_desc }}</span>
                     {% if char.points %}
-                    [<a href="{% url unlock node.hex neighbor.hex %}">{% trans "Introduce me" %}</a>]
+                    <a href="{% url unlock node.hex neighbor.hex %}">{% trans "Introduce me" %}</a>
                     {% endif %}
                     </li>
                 {% endfor %}
@@ -42,8 +41,8 @@
             {% for rumor in rumors %}
                 <li>
                     <span class="node_rumor_subject">{{ rumor.subject }}</span>
-                    [<a href="{% url rumor rumor.id %}">{% trans "Tell me" %}</a>]&nbsp;
-                    [<a href="{% url squash rumor.id %}">{% trans "Squelch" %}</a>]
+                    <a href="{% url rumor rumor.id %}">{% trans "Tell me" %}</a>&nbsp;
+                    <a href="{% url squash rumor.id %}">{% trans "Squelch" %}</a>
                 </li>
             {% endfor %}
             </div>
