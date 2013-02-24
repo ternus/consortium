@@ -6,6 +6,7 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
     # Examples:
+    url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'security/security.html'}),
     url(r'^security/$', 'security.views.security_window', name='security_window'),
     url(r'^entry/$', 'security.views.entry_window', name='entry_window'),
     url(r'^gm/$', 'security.views.gm_security', name='gm_security'),
