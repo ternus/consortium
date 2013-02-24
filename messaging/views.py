@@ -15,7 +15,9 @@ def mail_home(request, template="messaging/mail_home.html"):
         'special_mailboxes': Mailbox.objects.filter(public=True, type=0).order_by('name'),
         'char_mailboxes': Mailbox.objects.filter(public=True, type=1).order_by('name'),
         'group_mailboxes': Mailbox.objects.filter(public=True, type=2).order_by('name'),
-        'mailboxes': Mailbox.objects.filter(Q(character=char) | Q(line__lineorder__order=1, line__lineorder__character=char))
+        'send_mailboxes': Mailbox.objects.filter(Q(character=char) | Q(line__lineorder__order=1, line__lineorder__character=char)),
+        'read_mailboxes': Mailbox.objects.filter(Q(character=char) | Q(line__lineorder__character=char))
+
     }
     if request.method == 'POST':
         try:
@@ -49,7 +51,8 @@ def gm_mail_home(request, template="messaging/mail_home.html"):
         'special_mailboxes': Mailbox.objects.filter(public=True, type=0).order_by('name'),
         'char_mailboxes': Mailbox.objects.filter(public=True, type=1).order_by('name'),
         'group_mailboxes': Mailbox.objects.filter(public=True, type=2).order_by('name'),
-        'mailboxes': Mailbox.objects.all()
+        'send_mailboxes': Mailbox.objects.all(),
+        'read_mailboxes': Mailbox.objects.all()
     }
     if request.method == 'POST':
         try:
