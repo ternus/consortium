@@ -38,7 +38,7 @@
 {% block container %}
     <h2>Mail</h2>
     <div>
-        <h3 class="icon-chevron-down" onclick="$('#compose').slideToggle(100);$(this).toggleClass('icon-chevron-down icon-chevron-up');"> Compose Mail</h3>
+        <h3 class="icon-chevron-down" id="compose_link" onclick="$('#compose').slideToggle(100);$(this).toggleClass('icon-chevron-down icon-chevron-up');"> Compose Mail</h3>
         <div id="compose" style="display:none;">
             <form method="post">
                 {% csrf_token %}
@@ -52,7 +52,7 @@
                         <select name="to_name">
                             <option value="">---</option>
                             <optgroup label="Special">
-                                {% for mb in public_mailboxes %}
+                                {% for mb in special_mailboxes %}
                                     <option value="{{ mb.name }}">{{ mb.name }}</option>
                                 {% endfor %}
                             </optgroup>
