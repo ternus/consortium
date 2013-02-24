@@ -155,7 +155,7 @@ class NodeEvent(models.Model):
     """
     where = models.ForeignKey(Node)
     when = models.DateTimeField(auto_now_add=True)
-    who = models.ForeignKey("HGCharacter")
+    who = models.ForeignKey("Character")
     who_disguised = models.BooleanField()
     what = models.CharField(max_length=256)
     day = models.IntegerField()
@@ -235,7 +235,7 @@ class CharNode(models.Model):
     """
     Links characters to nodes to track unlocking.
     """
-    character = models.ForeignKey("HGCharacter")
+    character = models.ForeignKey("Character")
     node = models.ForeignKey(Node)
     unlocked_on = models.IntegerField()
 
@@ -243,18 +243,21 @@ class CharNodeWatch(models.Model):
     """
     Links characters to nodes to track watchers.
     """
-    char = models.ForeignKey("HGCharacter")
+    char = models.ForeignKey("Character")
     node = models.ForeignKey(Node)
     watched_on = models.IntegerField()
 
-class HGCharacter(GameTeXUser):
+class Character(GameTeXUser):
     """
-    HGCharacter ("Hex Grid Character")
+    Hex Grid Character")
     """
     points = models.IntegerField(default=0)
     nodes = models.ManyToManyField(Node, through=CharNode)
     is_disguised = models.BooleanField(default=False)
     has_disguise = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return self.char.name
 
     @property
     def char(self):
@@ -343,7 +346,7 @@ class HGCharacter(GameTeXUser):
 def create_hgcharacter(sender, **kwargs):
     if kwargs['created']:
         g = kwargs['instance']
-        h = HGCharacter(points = 0,#g.gto.field(MARKET_STAT, default=0),
+        h = Character(points = 0,#g.gto.field(MARKET_STAT, default=0),
         is_disguised = False,
         has_disguise = False)#(g.gto.field('disguise', default=0)))
         h.__dict__.update(g.__dict__)
@@ -369,7 +372,7 @@ class GameDay(SingletonModel):
         """
         Tick the game state forward one day.
         """
-        for char in HGCharacter.objects.all():
+        for char in Character.objects.all():
             if char.char.has_field('market'):
                 char.points = char.char.market
 

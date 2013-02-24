@@ -6,14 +6,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import  render, get_object_or_404, redirect
 from hexgrid.game_settings import CURRENCY_SINGULAR, CURRENCY_PLURAL, HOME_NODE
-from hexgrid.models import Node, HGCharacter, Item, GameDay, CharNodeWatch, NodeEvent
+from hexgrid.models import Node, Character, Item, GameDay, CharNodeWatch, NodeEvent
 from django.utils.translation import ugettext as _, ungettext as _n
 
 def gtc(request):
     """
     Shortcut method to get a HexGridCharacter from request.user
     """
-    return get_object_or_404(HGCharacter, user=request.user)
+    try:
+        return Character.objects.get(user=request.user)
+    except:
+        return None
+#    return get_object_or_404(Character, user=request.user)
 
 @login_required()
 def home(request):

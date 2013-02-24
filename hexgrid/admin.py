@@ -1,7 +1,7 @@
 # coding=utf-8
 from django.contrib import admin
 from gametex.models import GameTeXObject, GameTeXFieldValue
-from hexgrid.models import Node, Item, Rumor, HGCharacter, GameDay
+from hexgrid.models import Node, Item, Rumor, Character, GameDay
 from hexgrid.game_settings import PRICE_FIELD
 
 class ItemAdmin(admin.ModelAdmin):
@@ -22,5 +22,5 @@ class ItemAdmin(admin.ModelAdmin):
 admin.site.register(Node)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Rumor)
-admin.site.register(HGCharacter)
+admin.site.register(Character)
 admin.site.register(GameDay)
