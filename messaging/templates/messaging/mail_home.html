@@ -81,7 +81,7 @@
 
     {% for mb in read_mailboxes %}
         <div class="mailbox">
-            <h3 class="icon-inbox{% if mb.unread_mail %}{% else %}-box{% endif %}"> <a class="expand_box" id="{{ mb.id }}">{{ mb.name }}</a> [<span {% if mb.unread_mail %}class="unread"{% endif %}>{{ mb.unread_mail|length }}</span>/{{ mb.mail|length }}]</h3>
+            <h3 class="icon-inbox{% if mb.unread_mail %}{% else %}-box{% endif %}"> <a class="expand_box" id="{{ mb.id }}">{{ mb.name }}</a> {% if not mb.public %}({{ mb.code }}) {% endif %}[<span {% if mb.unread_mail %}class="unread"{% endif %}>{{ mb.unread_mail|length }}</span>/{{ mb.mail|length }}]</h3>
             <div id="mailbox_{{ mb.id }}" style="display:none;">
                 <h4>Received Mail <span class="showall">&mdash; Showing 10 most recent (click to show all)</span></h4>
                 {% if mb.mail %}
