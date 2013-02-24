@@ -15,17 +15,21 @@ from territory.models import Faction
 
 
 @login_required()
+def gm_lines(request, template="lines/lines.html"):
+    lines = Line.objects.all()
+    return render(request, template, {"lines": lines})
+
+@login_required()
 def my_lines(request, template="lines/lines.html"):
     gtu = get_object_or_404(GameTeXUser, user=request.user)
     lines = Line.objects.filter(members=gtu)
-    context = {
-        "lines": lines,
-    }
     return render(request, template, {"lines": lines})
 
 @login_required()
 def show_line(request, line_id, template="lines/show_line.html"):
-    gtu = get_object_or_404(GameTeXUser, user=request.user)
+    gtu = None
+    if not request.user.is_superuser:
+        gtu = get_object_or_404(GameTeXUser, user=request.user)
     line = get_object_or_404(Line, id=line_id)
     line_controls = []
     try:
@@ -59,7 +63,10 @@ def show_line(request, line_id, template="lines/show_line.html"):
                 o.save()
 
         return redirect('show_line', line_id)
-    membership = get_object_or_404(LineOrder, character=gtu)
+    if not request.user.is_superuser:
+        membership = get_object_or_404(LineOrder, character=gtu)
+    else:
+        membership = None
     context = {
         "line": line,
         "line_controls": line_controls,

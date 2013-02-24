@@ -4,6 +4,6 @@
 {% block container %}
     <h2>Chains of Command</h2>
     {% for line in lines %}
-        <a href="{% url show_line line.id %}">{{ line.name }}</a><br />
+        <a href="{% url show_line line.id %}">{{ line.name }}</a> (current leader: {% ifequal line.current_leader.character char %}you!{% else %}{{ line.current_leader.character.gto.name }}{% endifequal %})<br />
     {% endfor %}
 {% endblock %}
