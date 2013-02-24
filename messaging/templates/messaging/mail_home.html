@@ -1,0 +1,124 @@
+{% extends "consortium.html" %}
+{% load humanize %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $(function() {
+            $('.expand_mail').click(function(){
+                var this_id =$(this).attr('id');
+                $('#mtext_'+this_id).slideToggle(100);
+                {#                $(this).toggleClass('icon-chevron-down').toggleClass('icon-chevron-up');#}
+                $.get('{% url set_read %}', {
+                    id: this_id
+                }, function() {
+                    $('#icon_'+this_id).removeClass('mail-unread').addClass('mail-read');
+                });
+            });
+            $('.expand_sent_mail').click(function(){
+                var this_id =$(this).attr('id');
+                $('#stext_'+this_id).slideToggle(100);
+                {#                $(this).toggleClass('icon-chevron-down').toggleClass('icon-chevron-up');#}
+            });
+            $('.expand_box').click(function(){
+                var this_id =$(this).attr('id');
+                $('.mail_hidden').hide();
+                $('.showall').show();
+                $('#mailbox_'+this_id).slideToggle(100);
+            });
+            $('.showall').click(function(){
+                $('.mail_hidden').show();
+                $(this).hide();
+            });
+
+        });
+
+    </script>
+{% endblock %}
+
+{% block container %}
+    <h2>Mail</h2>
+    <div>
+        <h3 class="icon-chevron-down" onclick="$('#compose').slideToggle(100);$(this).toggleClass('icon-chevron-down icon-chevron-up');"> Compose Mail</h3>
+        <div id="compose" style="display:none;">
+            <form method="post">
+                {% csrf_token %}
+                <table>
+                    <tr><td>From:</td><td><select name="from_code">
+                        {% for mb in mailboxes %}
+                            <option value="{{ mb.code }}">{{ mb.name }}</option>
+                        {% endfor %}
+                    </select></td></tr>
+                    <tr><td>To:</td><td>
+                        <select name="to_name">
+                            <option value="">---</option>
+                            <optgroup label="Special">
+                                {% for mb in public_mailboxes %}
+                                    <option value="{{ mb.name }}">{{ mb.name }}</option>
+                                {% endfor %}
+                            </optgroup>
+                            <optgroup label="Characters">
+                                {% for mb in char_mailboxes %}
+                                    <option value="{{ mb.name }}">{{ mb.name }}</option>
+                                {% endfor %}
+                            </optgroup>
+                            <optgroup label="Groups">
+                                {% for mb in group_mailboxes %}
+                                    <option value="{{ mb.name }}">{{ mb.name }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                        or mailbox code: <input name="to_code" />
+                    </td></tr>
+                    <tr><td>Subject:</td><td><input name="subject" value="{{ mail_subject }}"/></td></tr>
+                    <tr><td>Anonymous (costs 1 point of Hacking):</td><td><input type="checkbox" name="anon" /></td></tr>
+                    <tr><td colspan="2"><textarea name="text">{{ mail_text }}</textarea></td></tr>
+                    <tr><td><input type="submit" value="Send Mail" /></td></tr>
+                </table>
+            </form>
+        </div>
+
+    </div>
+
+    {% for mb in mailboxes %}
+        <div class="mailbox">
+            <h3 class="icon-inbox{% if mb.unread_mail %}{% else %}-box{% endif %}"> <a class="expand_box" id="{{ mb.id }}">{{ mb.name }}</a> [<span {% if mb.unread_mail %}class="unread"{% endif %}>{{ mb.unread_mail|length }}</span>/{{ mb.mail|length }}]</h3>
+            <div id="mailbox_{{ mb.id }}" style="display:none;">
+                <h4>Received Mail <span class="showall">&mdash; Showing 10 most recent (click to show all)</span></h4>
+                {% if mb.mail %}
+                    {% for m in mb.mail %}
+                        <div class="mail_msg expand_mail {% if forloop.counter > 10 %}mail_hidden{% endif %}" id="{{ m.id }}">
+                            <table width="100%" class="mailtable"><tr><td class="mail-icon"><span id="icon_{{ m.id }}" class="icon-envelope mail-{% if m.viewed %}read{% else %}unread{% endif %}"></span></td><td class="small_td"><span title="{{ m.time }}">{{ m.time|naturaltime }}</span></td>
+                                <td class="small_td">{% if m.anon %}<i>Anonymous</i>{% else %}{{ m.sender.name }}{% endif %}</td>
+                                <td>{{ m.subject }}</td></tr>
+                                <tr><td colspan=4><div id="mtext_{{ m.id }}" style="display:none;" class="mail_txt">
+                                    {{ m.text|linebreaks }}<br />
+                                </div></td>
+                                </tr></table>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div>No mail in this mailbox.</div>
+                {% endif %}
+                <h4 style="cursor:pointer;" class="icon-chevron-down" onclick="$('#sent_mail_{{ mb.id }}').slideToggle(100);$(this).toggleClass('icon-chevron-down icon-chevron-up');"> Sent Mail [{{ mb.sent_mail|length }}]</h4>
+                <div id="sent_mail_{{ mb.id }}" style="display: none;">
+                    {% if mb.sent_mail %}
+                        {% for m in mb.sent_mail %}
+                            <div class="mail_msg expand_sent_mail" id="{{ m.id }}">
+                                <table width="100%" class="mailtable"><tr><td class="mail-icon"><span id="icon_{{ m.id }}" class="icon-envelope mail-{% if m.viewed %}read{% else %}unread{% endif %}"></span></td><td class="small_td"><span title="{{ m.time }}">{{ m.time|naturaltime }}</span></td>
+                                    <td class="small_td">{% if m.anon %}Anonymous{% else %}{{ m.sender }}{% endif %}</td>
+                                    <td>{{ m.subject }}</td></tr>
+                                    <tr><td colspan=4>
+                                        <div id="stext_{{ m.id }}" style="display:none;" class="mail_txt">
+                                            {{ m.text }}<br />
+                                        </div></td>
+                                    </tr></table>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div>No sent mail.</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

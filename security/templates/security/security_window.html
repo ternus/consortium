@@ -1,0 +1,26 @@
+{% extends "consortium.html" %}
+
+{% block container %}
+    <div><h3>Your current security windows:</h3>
+        <table>
+            {% for window in current_windows %}
+                <tr><td>{{ window.location }}</td><td>{{ window.start_time }}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h3>Create a new entry window:</h3>
+        <form method="post">
+            {% csrf_token %}
+            <label for="room">Room:</label><select id="room" name="room">
+            {% for location in owned_locations %}
+            <option value="{{ location.room }}">{{ location }}</option>
+            {% endfor %}
+            </select>
+            <label for="time">Start time (e.g. "3/12 2:15 p.m."):</label> <input type="text" id="time" name="time" />
+            <input type="submit" value="Create Security Window" />
+        </form>
+    </div>
+
+
+{% endblock %}

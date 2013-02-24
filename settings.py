@@ -20,6 +20,11 @@ GAMETEX_PROJECT_ROOT = '/Users/cternus/guild/consortium/'
 GAMETEX_NAME = 'consortium'
 PDFLATEX_PATH = '/opt/local/bin/pdflatex'
 
+ML = 256
+
+ENTRY_WINDOW_MINUTES = 15
+SECURITY_WINDOW_MINUTES = 60 * 4
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -156,7 +161,9 @@ INSTALLED_APPS = (
     #'gametex_django_print',
     'app',
     'succession',
-    'territory'
+    'territory',
+    'security',
+    'messaging'
     )
 
 
