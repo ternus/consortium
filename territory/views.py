@@ -49,7 +49,10 @@ def orders_json(request, faction_code=None, turn=None):
 def overview(request, template="territory/territory.html"):
     somalia = ",".join(["[%s,%s]" % (x[0], x[1]) for x in Territory.convert_points(somalia_pts)])
     user = gtc(request)
-    faction_code = Line.objects.filter(lineorder__order=1, lineorder__character=user).exclude(faction=None)[0].faction
+    if not Line.objects.filter(lineorder__character=user).exclude(faction=None).exists():
+        messages.error(request, "You're not a member of any wargame factions.")
+        return redirect('/')
+    faction_code = Line.objects.filter(lineorder__character=user).exclude(faction=None).faction
     faction = get_object_or_404(Faction, code=faction_code)
     #    units = Unit.live_units().filter(faction=faction)
     territories = Territory.objects.all()
