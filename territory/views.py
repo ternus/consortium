@@ -52,7 +52,7 @@ def overview(request, template="territory/territory.html"):
     if not Line.objects.filter(lineorder__character=user).exclude(faction=None).exists():
         messages.error(request, "You're not a member of any wargame factions.")
         return redirect('/')
-    faction_code = Line.objects.filter(lineorder__character=user).exclude(faction=None).faction
+    faction_code = Line.objects.filter(lineorder__character=user).exclude(faction=None)[0].faction
     faction = get_object_or_404(Faction, code=faction_code)
     #    units = Unit.live_units().filter(faction=faction)
     territories = Territory.objects.all()
