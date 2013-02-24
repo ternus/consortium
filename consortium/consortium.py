@@ -2,7 +2,9 @@
 """
 Miscellaneous stuff that didn't fit anywhere else.
 """
-from hexgrid.models import HGCharacter, GameDay
+from django.db.models import Q
+from hexgrid.models import Character, GameDay
+from messaging.models import Mailbox
 from succession.models import LineOrder
 from django.core.mail import send_mail as core_send_mail
 from django.core.mail import EmailMultiAlternatives
@@ -14,10 +16,11 @@ def consortium_context(request):
     :param request: request object
     :return: none
     """
-
+    mboxes = None
     try:
-        char = HGCharacter.objects.get(user=request.user)
-    except HGCharacter.DoesNotExist:
+        char = Character.objects.get(user=request.user)
+        mboxes = Mailbox.objects.filter(Q(character=char) | Q(line__lineorder__order=1, line__lineorder__character=char))
+    except Character.DoesNotExist:
         char = None
     except AttributeError:
         char = None
@@ -25,10 +28,14 @@ def consortium_context(request):
         char = None
     game_day = GameDay.get_day()
     has_lines = LineOrder.objects.filter(character=char).exists()
+    if request.user.is_superuser: mboxes = Mailbox.objects.filter(name__contains='GM')
+    unread = sum(map(lambda x: len(x.unread_mail()), mboxes))
     return {'char': char,
             'game_day': game_day,
             'has_lines': has_lines,
-            'gm': request.user.is_superuser}
+            'gm': request.user.is_superuser,
+            'unread': unread,
+            'mboxes': mboxes}
 
 
 class EmailThread(threading.Thread):
@@ -50,4 +57,6 @@ class EmailThread(threading.Thread):
 def send_mail(subject, body, from_email, recipient_list, fail_silently=False, html=None, *args, **kwargs):
     EmailThread(subject, body, from_email, recipient_list, fail_silently, html).start()
 
-
+def post_import():
+    for c in Character.objects.all():
+        m = Mailbox.objects.create(type=1, character=c, name=c.gto.name)

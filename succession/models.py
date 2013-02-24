@@ -13,7 +13,6 @@ class Line(models.Model):
     description = models.TextField(blank=True)
     members = models.ManyToManyField(GameTeXUser, through="LineOrder")
     ability_card = models.ForeignKey(GameTeXObject, blank=True, null=True)
-    faction_id = models.CharField(max_length=3, blank=True)
 
     def __unicode__(self):
         return self.name

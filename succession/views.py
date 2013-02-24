@@ -10,6 +10,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from models import Line, LineOrder
 from gametex.models import GameTeXUser
+from security.models import SecureLocation
+from territory.models import Faction
+
 
 @login_required()
 def my_lines(request, template="lines/lines.html"):
@@ -24,6 +27,17 @@ def my_lines(request, template="lines/lines.html"):
 def show_line(request, line_id, template="lines/show_line.html"):
     gtu = get_object_or_404(GameTeXUser, user=request.user)
     line = get_object_or_404(Line, id=line_id)
+    line_controls = []
+    try:
+        line_controls += ['The mailbox %s' % line.mailbox.name]
+    except:
+        pass
+    try:
+        line_controls += ['The territory control faction %s' % Faction.objects.get(controller=line).name]
+    except Faction.DoesNotExist:
+        pass
+    for s in SecureLocation.objects.filter(controller=line):
+        line_controls += ['The secure location %s' % s]
     promote = request.GET.get('promote', None)
     if promote:
         promoted_user = get_object_or_404(User, id=int(promote))
@@ -48,6 +62,7 @@ def show_line(request, line_id, template="lines/show_line.html"):
     membership = get_object_or_404(LineOrder, character=gtu)
     context = {
         "line": line,
+        "line_controls": line_controls,
         "line_members": line.members.all().order_by('lineorder'),
         "membership": membership,
     }

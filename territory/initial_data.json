@@ -669,7 +669,7 @@
             "pts_s":"[(70, 110), (100, 110), (92, 104.5), (80, 96.6), (70, 90)]",
             "center_s":"(75, 105)",
             "name":"Buur Hakaba",
-            "owner":null,
+            "owner":"OS",
             "special":"Supply Center",
             "special_type":null,
             "connects":[
@@ -704,7 +704,7 @@
         "model":"territory.territory",
         "fields":{
             "pts_s":"[(80, 96.6), (92, 104.5), (102, 90), (102, 85), (93, 79)]",
-            "center_s":"(90, 92)",
+            "center_s":"(86, 92)",
             "name":"Marka",
             "owner":"GD",
             "special":"Supply Center",
@@ -868,7 +868,7 @@
         "model":"territory.territory",
         "fields":{
             "pts_s":"[(20, 60), (40, 60), (50, 50), (35, 30)]",
-            "center_s":"(35, 45)",
+            "center_s":"(32, 45)",
             "name":"Kismaayo",
             "owner":"AS",
             "special":"Supply Center",
@@ -1124,6 +1124,16 @@
             "special": "",
             "alive": true,
             "faction": "ET"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "K3",
+            "special": "",
+            "alive": true,
+            "faction": "OS"
         }
     }
 ]

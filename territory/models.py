@@ -3,7 +3,10 @@ from django.db import models
 
 # Create your models here.
 from django.db.models import Q, F
+from django.utils.datetime_safe import datetime
 from singleton_models.models import SingletonModel
+from hexgrid.models import Character
+from succession.models import Line
 
 ML = 256
 
@@ -99,6 +102,7 @@ class Faction(models.Model):
     code = models.CharField(max_length=ML, primary_key=True, unique=True)
     name = models.CharField(max_length=ML)
     color = models.CharField(max_length=ML, default='')
+    controller = models.OneToOneField(Line, null=True, default=None)
 
     def __unicode__(self):
         return "[%s] %s" % (self.code, self.name)
@@ -188,6 +192,8 @@ class Action(models.Model):
     support_type = models.CharField(max_length=ML, choices=types, blank=True)
     support_to = models.ForeignKey('Territory', blank=True, null=True, related_name='t_supp_to')
     validation_level = models.IntegerField(default=0, choices=validation_phases)
+    issuer = models.ForeignKey(Character, null=True, default=None, blank=True)
+    time = models.DateTimeField(null=True, blank=True, default=None)
 
     class InvalidMoveError(Exception):
         pass
@@ -202,7 +208,23 @@ class Action(models.Model):
 
     def __unicode__(self):
         status = "{%s}" % validation_str(self.validation_level)#  if self.validation_level else ""
-        initial = "%s %s %s %s" % (status, self.faction.code, self.territory.s_code, self.type)
+        issuer = "/" + self.issuer.user.username + " " if self.issuer else " "
+        initial = "%s %s%s %s %s" % (status, self.faction.code, issuer, self.territory.s_code, self.type)
+        if self.type == MOVE:
+            return "%s %s" % (initial, self.target.s_code)
+        elif self.type == SUPP:
+            if self.support_type == MOVE:
+                return "%s %s %s %s" % (initial, self.target.s_code, self.support_type, self.support_to.s_code)
+            else:
+                return "%s %s %s" % (initial, self.target.s_code, self.support_type)
+        elif self.type == SPEC:
+            return "%s %s" % (initial, self.special)
+        else:
+            return initial
+
+    @property
+    def p_str(self):
+        initial = "%s %s" % (self.territory.s_code, self.type)
         if self.type == MOVE:
             return "%s %s" % (initial, self.target.s_code)
         elif self.type == SUPP:
@@ -341,6 +363,7 @@ class Action(models.Model):
                         raise Action.InvalidMoveError('Territory to support to must be adjacent.')
         elif self.type == HOLD and not self.target:
             self.target = self.territory
+        self.time = datetime.now()
         return super(Action, self).clean()
 
     def save(self, *args, **kwargs):
@@ -549,6 +572,7 @@ class GameBoard(SingletonModel):
         self.process_moves()
         self.turn += 1
         self.save()
+        self.generate_holds()
 
         if debug:
             self.print_turn()
