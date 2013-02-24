@@ -16,7 +16,7 @@ def consortium_context(request):
     :param request: request object
     :return: none
     """
-    mboxes = None
+    mboxes = []
     try:
         char = Character.objects.get(user=request.user)
         mboxes = Mailbox.objects.filter(Q(character=char) | Q(line__lineorder__order=1, line__lineorder__character=char))
