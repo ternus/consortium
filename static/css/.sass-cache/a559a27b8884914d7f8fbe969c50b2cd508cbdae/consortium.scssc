@@ -1,8 +1,8 @@
 3.2.5 (Media Mark)
-7bfe98488afffc8f99918b99f26b856091932087
+4964d004857d586e57e51a53177995ce94436bd7
 o:Sass::Tree::RootNode
 :@has_childrenT:
-@linei:@template"/)$darkfont: #eee;
+@linei:@template"“)$darkfont: #eee;
 $shadow: #ccc;
 $lightshadow: #aaa;
 $medbright: #999;
@@ -636,12 +636,19 @@ Mail
 .mail-read {
   color: black;
 }
+#compose_link {
+  cursor:pointer;
+}
+#compose_link:hover {
+  text-shadow: 0px 0px 1px $bluelight;
+
+}
 
 .mailbox {
   margin: 10px;
   margin-bottom:20px;
 }
-:@children[ao:Sass::Tree::VariableNode:
+:@children[co:Sass::Tree::VariableNode:
 @expro:Sass::Script::Color	:@value0:@attrs{	:	blueiî:rediî:
 alphai:
 greeniî;i:@options{ :
@@ -964,5 +971,9 @@ width;o;;;$;"	50px;@;is;(;);*i ;	[ ;@;@o;7;8[".mail-unread;9o;:
 color;o;;;$;"red;@;iv;(;);*i ;	[ ;@;@o;7;8[".mail-read;9o;:;;[o;<;;[o;=
 ;;[o;H;["mail-read;@" ;ix;@@Ý;Ao;B;C{ ;ix;D0;@@Ý;ix;T;ix;*i ;	[o;';["
 color;o;;;$;"
-black;@;iy;(;);*i ;	[ ;@;@o;7;8[".mailbox;9o;:;;[o;<;;[o;=
-;;[o;H;["mailbox;@" ;i|;@@ó;Ao;B;C{ ;i|;D0;@@ó;i|;T;i|;*i ;	[o;';["margin;o;;;$;"	10px;@;i};(;);*i ;	[ ;@o;';["margin-bottom;o;;;$;"	20px;@;i~;(;);*i ;	[ ;@;@;@
+black;@;iy;(;);*i ;	[ ;@;@o;7;8["#compose_link;9o;:;;[o;<;;[o;=
+;;[o;J;["compose_link;@" ;i{;@@ó;Ao;B;C{ ;i{;D0;@@ó;i{;T;i{;*i ;	[o;';["cursor;o;;;$;"pointer;@;i|;(;);*i ;	[ ;@;@o;7;8["#compose_link:hover;9o;:;;[o;<;;[o;=
+;;[o;J;["compose_link;@" ;i~o;E
+;F0;["
+hover;;G;@@	;i~;@@	;Ao;B;C{ ;i~;D0;@@	;i~;T;i~;*i ;	[o;';["text-shadow;o;	;[	o; ;!["px;i ;""0px;i;@;#[ o; ;!["px;i ;""0px;i;@;#[ o; ;!["px;i;""1px;i;@;#[ o;+	;"bluelight;,"bluelight;i;@;i;;;@;i;(;);*i ;	[ ;@;@o;7;8[".mailbox;9o;:;;[o;<;;[o;=
+;;[o;H;["mailbox;@" ;iƒ;@@4;Ao;B;C{ ;iƒ;D0;@@4;iƒ;T;iƒ;*i ;	[o;';["margin;o;;;$;"	10px;@;i„;(;);*i ;	[ ;@o;';["margin-bottom;o;;;$;"	20px;@;i…;(;);*i ;	[ ;@;@;@

@@ -60,6 +60,8 @@
                         </li>
 
                         {% endif %}
+                    <li class="points"><a href="/mail/">Mail [<span {% if unread %}class="mail-unread"{% endif %}>{{ unread }}</span>]</a></li>
+
                 {% elif gm %}
                     <li class="points"><a href="/app/dashboard/">Apps</a></li>
                     <li class="points"><a href="/territory/gm/">Territory Control</a></li>

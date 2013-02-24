@@ -632,6 +632,13 @@ Mail
 .mail-read {
   color: black;
 }
+#compose_link {
+  cursor:pointer;
+}
+#compose_link:hover {
+  text-shadow: 0px 0px 1px $bluelight;
+
+}
 
 .mailbox {
   margin: 10px;
