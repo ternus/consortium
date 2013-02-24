@@ -1,4 +1,4 @@
-from coverage.backward import md5
+from hashlib import md5
 from django.db import models
 from django.conf import settings
 from hexgrid.models import Character
