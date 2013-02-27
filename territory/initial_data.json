@@ -688,7 +688,7 @@
             "pts_s":"[(60, 80), (70, 90), (80, 96.6), (93, 79), (74, 66)]",
             "center_s":"(75, 75)",
             "name":"Haaway",
-            "owner":null,
+            "owner":"OS",
             "special":"Factory",
             "special_type":null,
             "connects":[
@@ -1134,6 +1134,16 @@
             "special": "",
             "alive": true,
             "faction": "OS"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "territory.unit",
+        "fields": {
+            "territory": "L1",
+            "special": "",
+            "alive": true,
+            "faction": "GD"
         }
     }
 ]

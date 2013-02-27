@@ -101,8 +101,8 @@
                 $("#t_order")[0].innerHTML = o.str;
             $('input[name="order_type"][value="' + o.type + '"]').prop('checked', true).trigger('change');
             $('select[name="support_type"]').val(o.support_type).trigger('change');
-            $('select[name="support_from"]').val(o.target).trigger('change');
-            $('select[name="support_to"]').val(o.support_to).trigger('change');
+            $('select[name="support_to"]').val(o.target).trigger('change');
+            $('select[name="support_from"]').val(o.support_from).trigger('change');
             $('select[name="move_to"]').val(o.target).trigger('change');
             $('input[name="special"]').val(o.special);
         }
@@ -160,19 +160,19 @@
                     $('#f_id').val(t.owner);
                     $('#order_status').hide();
                     $('select[name="move_to"]').empty();
-                    $('select[name="support_from"]').empty();
                     $('select[name="support_to"]').empty();
+                    $('select[name="support_from"]').empty();
 
                     $('#orderform').slideDown();
                     $('#orderform').resetForm();
                     $('#special').hide();
                     $('#support_mvs').hide();
-                    $('#support_to').hide();
+                    $('#support_from').hide();
                     $('#move_to').hide();
                     for (tc in t.connects) {
                         var tct = getTerr(t.connects[tc]);
                         $('select[name="move_to"]').append('<option value="' + tct.code + '">' + tct.name + '</option>');
-                        $('select[name="support_from"]').append('<option value="' + tct.code + '">' + tct.name + '</option>');
+                        $('select[name="support_to"]').append('<option value="' + tct.code + '">' + tct.name + '</option>');
                     }
                     set_order_t(terr);
                     if (t.order != undefined) {
@@ -278,22 +278,22 @@
         });
         $("select[name='support_type']").change(function () {
             if ($(this).val() == 'Move') {
-                $('#support_to').show();
+                $('#support_from').show();
             } else {
-                $('#support_to').hide();
+                $('#support_from').hide();
             }
         });
-        $("select[name='support_from']").change(function () {
+        $("select[name='support_to']").change(function () {
             if ($("select[name='support_type']").val() == 'Move') {
                 var t = getTerr($(this).val());
-                $('select[name="support_to"]').empty();
+                $('select[name="support_from"]').empty();
                 for (tc in t.connects) {
                     var tct = getTerr(t.connects[tc]);
-                    if (adjacentTo(getTerr($('body').data('t_selected')), tct)) {
-                        $('select[name="support_to"]').append('<option value="' + tct.code + '">' + tct.name + '</option>');
+                    if ($('body').data('t_selected') !== tct.code) {
+                        $('select[name="support_from"]').append('<option value="' + tct.code + '">' + tct.name + '</option>');
                     }
                 }
-                $('#support_to').show();
+                $('#support_from').show();
             }
         });
         $('#orderform').ajaxForm({
@@ -373,14 +373,14 @@
                 <div id="support_mvs">
                     Support <select id="support_type" name="support_type">
                     <option value="Hold">Hold in</option>
-                    <option value="Move">Move from</option>
+                    <option value="Move">Move to</option>
                 </select>
-                    <select name="support_from">
+                    <select name="support_to">
                         <!-- ... -->
                     </select>
 
-                    <div id="support_to"> to
-                        <select name="support_to">
+                    <div id="support_from"> from
+                        <select name="support_from">
                             <!-- ... -->
                         </select>
                     </div>

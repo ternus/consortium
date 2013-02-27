@@ -4,7 +4,6 @@ when you run "manage.py test".
 
 Replace this with more appropriate tests for your application.
 """
-from django.core.exceptions import ValidationError
 
 from django.test import TestCase
 from territory.models import *
@@ -104,11 +103,11 @@ class DiplomacyTest(TestCase):
         RU D Supp G Move E
         RU B Hold
         """)
-        self.assertRaises(ValidationError, Action.parse_move, 'US Q Hold') # Non-territory
-        self.assertRaises(ValidationError, Action.parse_move, 'US E Hold') # No unit there
-        self.assertRaises(ValidationError, Action.parse_move, 'US H Hold') # Not US's unit
-        self.assertRaises(ValidationError, Action.parse_move, 'UK H Supp B Hold') # H and B not adjacent
-        self.assertRaises(ValidationError, Action.parse_move, 'UK H Supp D Move B') # H and B not adjacent
+        self.assertRaises(Action.InvalidMoveError, Action.parse_move, 'US Q Hold') # Non-territory
+        self.assertRaises(Action.InvalidMoveError, Action.parse_move, 'US E Hold') # No unit there
+        self.assertRaises(Action.InvalidMoveError, Action.parse_move, 'US H Hold') # Not US's unit
+        self.assertRaises(Action.InvalidMoveError, Action.parse_move, 'UK H Supp B Hold') # H and B not adjacent
+        self.assertRaises(Action.InvalidMoveError, Action.parse_move, 'UK H Supp D Move B') # H and B not adjacent
         self.assertRaises(RuntimeError, Action.parse_move, 'UK H Foo')
 
     def assertOwns(self, faction, terrs):
@@ -326,7 +325,9 @@ class DiplomacyTest(TestCase):
         US C Move E
         """)
 
-        self.gameboard.execute_turn()
+        self.gameboard.execute_turn(debug=True)
+
+        print self.move_from('C')
 
         self.assertMoveResult('C', F_LOSE)
         self.assertMoveResult('B', V_SUCCESS)

@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 from django.db.models import Q, F
-from django.utils.datetime_safe import datetime
+from django.utils.timezone import now
 from singleton_models.models import SingletonModel
 from hexgrid.models import Character
 from succession.models import Line
@@ -145,6 +145,7 @@ E_NOSUPPORTTARGET = -13
 E_NOTYOURS = -12
 E_NOTARGET = -11
 E_NOUNIT = -10
+F_OUTRANKED = -7
 F_NOSUPPDESTROY = -6
 F_NODESTROY = -5
 F_LOSE = -4
@@ -161,6 +162,7 @@ validation_phases = (
     (E_NOTYOURS, "Unit in territory not owned"),
     (E_NOTARGET, "Move order without destination"),
     (E_NOUNIT, "Unit disappeared"),
+    (F_OUTRANKED, 'Outranked'),
     (F_NOSUPPDESTROY, "Can't support the destruction of same-side unit"),
     (F_NODESTROY, "Can't destroy same-side unit"),
     (F_LOSE, "Lost conflict"),
@@ -354,16 +356,16 @@ class Action(models.Model):
                 raise Action.InvalidMoveError('Territories %s and %s aren\'t adjacent.', self.territory.code, self.target.code)
         elif self.type == SUPP:
             if self.support_type and self.target:
-                if not self.territory.connects_to(self.target):
-                    raise Action.InvalidMoveError('Territory to support from must be adjacent.')
                 if self.support_type == MOVE:
                     if not self.support_to:
                         raise Action.InvalidMoveError('Support moves must provide a valid destination.')
                     elif not self.territory.connects_to(self.support_to):
                         raise Action.InvalidMoveError('Territory to support to must be adjacent.')
+                elif not self.territory.connects_to(self.target):
+                    raise Action.InvalidMoveError('Territory to support to must be adjacent.')
         elif self.type == HOLD and not self.target:
             self.target = self.territory
-        self.time = datetime.now()
+        self.time = now()
         return super(Action, self).clean()
 
     def save(self, *args, **kwargs):
@@ -401,9 +403,15 @@ def resolve_conflict(opponents):
             a.validate(F_LOSE)
     return opps[0]
 
+DAY = 0
+NIGHT = 1
 
 class GameBoard(SingletonModel):
     turn = models.IntegerField(default=0)
+
+    @classmethod
+    def get_phase(cls):
+        pass
 
     @classmethod
     def get_turn(cls):
@@ -416,8 +424,6 @@ class GameBoard(SingletonModel):
         for u in Unit.live_units().all():
             if not Action.objects.filter(territory=u.territory, turn=self.turn).exists():
                 a = Action.objects.create(territory=u.territory, type=HOLD, turn=self.turn, faction=u.faction)
-
-                # here comes the big one
 
     def validate_all_moves(self):
         """
@@ -498,7 +504,6 @@ class GameBoard(SingletonModel):
                         # Guy moved; fight with anyone else trying to take this spot
                         resolve_conflict(acts().filter(type=MOVE, target=w.target))
                     else:
-                        print "got here with %s" % w
                         # we fight with the guy whose move just failed
                         resolve_conflict(acts().filter(Q(Q(target=w.target) & Q(type=MOVE)) | Q(id=w.waiting_on().id)))
 
@@ -527,11 +532,11 @@ class GameBoard(SingletonModel):
                         if found:
                             x = w.waiting_on()
                             while x.id in waiters:
-                                next = x.waiting_on()
+                                _next = x.waiting_on()
                                 x.validate(V_SUCCESS)
                                 if x.id == w.id:
                                     break
-                                x = next
+                                x = _next
             return len(waiters)
 
         it = 1
@@ -572,7 +577,7 @@ class GameBoard(SingletonModel):
         self.process_moves()
         self.turn += 1
         self.save()
-        self.generate_holds()
+        # self.generate_holds()
 
         if debug:
             self.print_turn()
