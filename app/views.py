@@ -8,6 +8,7 @@ from django.http import HttpResponse
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
+from django.utils.encoding import smart_unicode
 from django.views.decorators.csrf import csrf_exempt
 from consortium.consortium import send_mail
 from models import AppForm, ConsortiumApp
@@ -79,7 +80,7 @@ def app_csv(request):
     writer = csv.writer(response, delimiter='\t')
     writer.writerow(headers)
     for app in ConsortiumApp.objects.filter(submitted=True).order_by('apped_on'):
-        writer.writerow([getattr(app, f) for f in headers])
+        writer.writerow([smart_unicode(getattr(app, f)) for f in headers])
     return response
 
 
