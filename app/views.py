@@ -4,12 +4,14 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from consortium.consortium import send_mail
 from models import AppForm, ConsortiumApp
+import csv
 
 @csrf_exempt
 def app(request, app_id=None):
@@ -68,6 +70,18 @@ def dashboard(request):
                                                   'complete_apps': complete_apps,
                                                   'incomplete_apps': incomplete_apps,
                                                   'due_time': due_time})
+
+def app_csv(request):
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=apps.csv'
+    fields = ConsortiumApp._meta.fields
+    headers = [field.name for field in fields]
+    writer = csv.writer(response, delimiter='\t')
+    writer.writerow(headers)
+    for app in ConsortiumApp.objects.filter(submitted=True).order_by('apped_on'):
+        writer.writerow([getattr(app, f) for f in headers])
+    return response
+
 
 def remind(request, app_id):
     app = get_object_or_404(ConsortiumApp, app_id=app_id)
