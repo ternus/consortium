@@ -80,7 +80,7 @@ def app_csv(request):
     writer = csv.writer(response, delimiter='\t')
     writer.writerow(headers)
     for app in ConsortiumApp.objects.filter(submitted=True).order_by('apped_on'):
-        writer.writerow([smart_unicode(getattr(app, f)) for f in headers])
+        writer.writerow([(getattr(app, f).encode('utf8') if type(getattr(app, f)) is basestring else getattr(app, f)) for f in headers])
     return response
 
 
