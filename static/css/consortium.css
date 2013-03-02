@@ -467,3 +467,21 @@ Mail
 .mailbox {
   margin: 10px;
   margin-bottom: 20px; }
+
+/* Market */
+.node {
+  overflow: hidden; }
+  .node .nodeheader {
+    border-bottom: 1px solid lightgrey; }
+  .node .sidebar {
+    float: right;
+    padding-top: 10px;
+    width: 160px; }
+  .node .main {
+    padding-right: 20px;
+    float: left;
+    display: block;
+    width: 500px;
+    border-right: 1px solid lightgrey; }
+  .node .footer {
+    clear: both; }

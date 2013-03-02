@@ -644,3 +644,29 @@ Mail
   margin: 10px;
   margin-bottom:20px;
 }
+
+
+/* Market */
+
+.node {
+  overflow: hidden;
+  .nodeheader {
+    border-bottom: 1px solid lightgray;
+  }
+  .sidebar {
+    float:right;
+    padding-top: 10px;
+    width: 160px;
+  }
+  .main {
+    padding-right: 20px;
+    float:left;
+    display:block;
+    width: 500px;
+    border-right:  1px solid lightgray;
+
+  }
+  .footer {
+    clear:both;
+  }
+}
