@@ -79,8 +79,15 @@ def app_csv(request):
     headers = [field.name for field in fields]
     writer = csv.writer(response, delimiter='\t')
     writer.writerow(headers)
+    def _foo(x):
+        try:
+            return unicode(getattr(app, x)).encode('utf-8')
+        except TypeError:
+            return getattr(app, x)
+        except:
+            return "UNICODE ERROR"
     for app in ConsortiumApp.objects.filter(submitted=True).order_by('apped_on'):
-        writer.writerow([(getattr(app, f).encode('utf8') if type(getattr(app, f)) is basestring else getattr(app, f)) for f in headers])
+        writer.writerow([_foo(f) for f in headers])
     return response
 
 
