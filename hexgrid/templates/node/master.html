@@ -2,25 +2,17 @@
 {% load i18n %}
 
 {% block container %}
-{#    <div class="header">#}
-{#    {% trans "The Bakaara Market" %}#}
-{#        {% block header %}#}
-{#        {% endblock %}#}
-{#    </div>#}
-    <div class="content">
-        <div class="messages">
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
+    <div class="node">
+        <div class="nodeheader">
+            <h2>Bakaara Market</h2>
         </div>
-
         <div class="sidebar">
-            {% block sidebar %}
-            {% endblock %}
+            Points: {{ char.points }}
+            {% if node %}
+            <form method="get" action="{% url node_password node.hex %}">
+                <label for="password">Speak Password:</label><input type="text" id="password" name="password" />
+            </form>
+            {% endif %}
         </div>
         <div class="main">
             {% block main %}

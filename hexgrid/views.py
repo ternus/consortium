@@ -2,11 +2,12 @@
 """
 Views for hexgrid project.
 """
+import json
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import  render, get_object_or_404, redirect
 from hexgrid.game_settings import CURRENCY_SINGULAR, CURRENCY_PLURAL, HOME_NODE
-from hexgrid.models import Node, Character, Item, GameDay, CharNodeWatch, NodeEvent
+from hexgrid.models import Node, Character, Item, GameDay, CharNodeWatch, NodeEvent, Secret
 from django.utils.translation import ugettext as _, ungettext as _n
 
 def gtc(request):
@@ -49,7 +50,8 @@ def unlock(request, from_hex, to_hex):
     char = gtc(request)
     from_node = Node.by_hex(from_hex)
     to_node = Node.by_hex(to_hex)
-    if not char.has_node(from_node):
+    print from_hex, HOME_NODE
+    if not (char.has_node(from_node) or int(from_hex) == HOME_NODE):
         messages.error(request,
             _("You didn't have node %s unlocked...?") % from_hex)
         return home(request)
@@ -59,11 +61,14 @@ def unlock(request, from_hex, to_hex):
             _("You already had node %s unlocked!") % to_hex)
         return redirect(node, to_hex)
 
-    if not char.points:
+    if char.points < 1:
         messages.error(request, _("You don't have any Market points!"))
         return redirect(node, from_hex)
 
     # Error checking done
+
+    char.points -= 1
+    char.save()
 
     char.unlock_node_final(to_node)
 
@@ -75,11 +80,30 @@ def unlock(request, from_hex, to_hex):
     return redirect(node, to_hex)
 
 @login_required()
-def node_map(request, template="node/node_map.html"):
+def node_password(request, from_hex, template="node/secret.html"):
+    from_node = Node.by_hex(from_hex)
+    password = request.GET.get("password", None)
+    if Secret.objects.filter(node=from_node, password__iexact=password.strip()):
+        s = Secret.objects.get(node=from_node, password__iexact=password.strip())
+    else:
+        s = None
+    return render(request, template, {'node': from_node, 'secret': s})
+
+@login_required()
+def node_map(request, template="node/map.html"):
     """
     Generates a map of nodes the character has unlocked.
     """
-    return render(request, template, {})
+    char = gtc(request)
+    nodes = []
+    unlockable = []
+    if char:
+        nodes = char.nodes.all()
+        unlockable = char.unlockable_nodes()
+    elif request.user.is_superuser:
+        nodes = Node.objects.all()
+    return render(request, template, {'nodes': json.dumps(map(lambda x: x.pre_json(), nodes)),
+                                      'unlockable': json.dumps(map(lambda x: x.pre_json(), unlockable))})
 
 @login_required()
 def buy(request, item_id, template="node/buy.html"):

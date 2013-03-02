@@ -1,0 +1,940 @@
+[
+    {
+        "pk": 1912, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"Want to buy this?\" Fazul says.", 
+            "name": "Fazul", 
+            "short_name": "Microfilm", 
+            "rumors_per_day": 2, 
+            "quick_desc": "For Sale: secret item?", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 1915, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I'm out of work at the moment,\" this lean Iranian says. \"I'd be happy to lend my engineering skills to whatever project you have in mind.\"", 
+            "name": "Ayman", 
+            "short_name": "HS:Engin", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Qualified Engineer", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 1916, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"Care to buy this little trinket?\"", 
+            "name": "Osul", 
+            "short_name": "Microfilm", 
+            "rumors_per_day": 2, 
+            "quick_desc": "For Sale: a fascinating item", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2012, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This suited Dane relaxes behind a mahogany desk. \"You can get anyone arrested for anything,\" he says, \"if you know the right people.  Which I do.  So, who's going to jail today?\"", 
+            "name": "Harald", 
+            "short_name": "Legal", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Lindskjold Prosecution Partners", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2013, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This rail-thin man has an unpleasant grin.  His hands bear some scars you can't quite identify.", 
+            "name": "Josef", 
+            "short_name": "LQ Interr", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Just Want To Ask You A Few Questions, LLC", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2015, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "Waleed admits his safes are small, but claims they're more secure than anything you'll find out there. \"Especially Zafir, that robber,\" he spits. \"And forget about the foreigners: Elias and Seth. I could open their safes with a sneeze.\" His safes do seem well-constructed, if not quite as capacious as elsewhere.", 
+            "name": "Waleed", 
+            "short_name": "XSSafe", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Mastercraft Safes", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2016, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This rotund, pale-skinned man strokes his goatee. \"If you want the biggest and the best safes to be had, look no further.\" You're impressed with the quality of his wares, until you see the eye-popping price.", 
+            "name": "Zafir", 
+            "short_name": "BigXSSafe", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Top-of-the-Line Security Storage Solutions", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2019, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I found a charred briefcase with this in it,\" Qassam says. \"Buy it from me?\"", 
+            "name": "Qassam", 
+            "short_name": "Microfilm", 
+            "rumors_per_day": 2, 
+            "quick_desc": "For Sale: something I found", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2112, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"Sometimes a friend gets into a bit of trouble,\" this smooth-talking doctor says. \"And you don't want to take them to a hospital.  Perfectly understandable.  We can treat them and make sure they're returned directly to you.  No messing about with the authorities.\"", 
+            "name": "Miguel", 
+            "short_name": "Hospital", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Discreet Medical Treatment", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2113, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"Sometimes a few minutes can make the difference between life and death,\" this slender, lab-coated woman says, proffering a tray of ampuoles. \"These can give you that few minutes.\"  The red WARNING labels on the bottles give you pause -- these are not to be used lightly.", 
+            "name": "Abdiqani", 
+            "short_name": "Adrenaline", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Emergency Medical Supplies", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2114, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "When you ask him about the strange name of his business, Salman smiles and produces a brick of thermite. \"You know,\" he grins, \"for locksmithing.\"", 
+            "name": "Salman", 
+            "short_name": "Thermite", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Locksmithing Powders", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2115, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This friendly man shows you safe after safe. \"Designed secure!\" he says, proudly. \"Sure, you'll pay more elsewhere, but why bother if this will do?\"", 
+            "name": "Seth", 
+            "short_name": "Safes", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Secure Document Storage", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2116, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"Have you seen the prices on Zafir's safes?\" this reedy man wheezes. \"Who'd pay that much, when you can store just as much in one of mine?\" He gestures towards a stack of rolled-steel safes with large tumbler locks. \"Guaranteed secure!\" He winks. You're not reassured.", 
+            "name": "Elias", 
+            "short_name": "BigSafe", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Capacious Safes, Inc.", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2117, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "A lean, hardened man eyes you up and down. \"You could use some toning up,\" he growls. \"I bet your security forces could too.\"", 
+            "name": "Talaat", 
+            "short_name": "PersTrain", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Personnel Trainer", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2118, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This blunt-faced, dark-skinned man holds an equally blunt weapon. \"People find it so difficult to tell the truth. Sometimes they just need a little... encouragement.  I've got a nice cargo container out in the jungle.\" He smiles, revealing a row of misaligned teeth. \"They always talk.\"", 
+            "name": "Naveen", 
+            "short_name": "LQ Interr", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Discreet Honesty Encouragement", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2119, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This dark-skinned rotund man wears a surprisingly clean pair of scrubs, given the filthiness of his surroundings. \"I understand people don't like to bring their 'friends' to the hospital,\" he says. \"I can make sure they're safely sedated and restrained.  For their own good, of course.\"", 
+            "name": "Roberto", 
+            "short_name": "Hospital", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Doctor for Hire", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2212, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I find lots of things,\" this smiling young boy says. \"Sure, it's all legit, why do you ask?\"", 
+            "name": "Karim", 
+            "short_name": "Scavenging", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Stuff I Found", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2214, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"It pays to be prepared,\" this soft-spoken Indian woman murmurs.  \"We try, but doctors can't always get there on time.\" Judging by the stains on her clothes, she's seen more accidents -- and \"accidents\" -- than her manner would suggest.", 
+            "name": "Lakshmi", 
+            "short_name": "First Aid", 
+            "rumors_per_day": 2, 
+            "quick_desc": "First Response Supplies", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2215, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"Iz a dahngerous vorld out zere,\" this boxy German man remarks. \"How much iz your life vorth?\"", 
+            "name": "Albrecht", 
+            "short_name": "BP Vests", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Personal Protection Gear", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2216, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"You think you're secure?\" this dark-haired man barks, surprising you. \"I could get into your systems like *that*!  Of course, if you pay me, I'll make it harder for anyone else to.\"", 
+            "name": "Khalif", 
+            "short_name": "SecAudit", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Penetration Testing", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2218, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "A long-fingered, lithe woman leans casually against a crumbling wall, clothed all in black. \"Let's assume you're ... locked out of someplace. I can get you an entry window.\" She smiles unconcernedly. \"They never catch me.\"", 
+            "name": "Yenee", 
+            "short_name": "EntryWndw", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Exfiltration Specialist", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2219, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This woman wears a helmet, mask, and thick work gloves. You can see a faint trace of blond hair beneath the straps of her headgear. \"I HEAR YOU MIGHT NEED SOMETHING BLOWN UP,\" she says, unnecessarily loud. Her trade must be getting to her.", 
+            "name": "Ulima", 
+            "short_name": "Thermite", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Discerning Supplier of Hypergolic Substances", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2312, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "A gruff-looking Russian, Dmitry's warehouse is full of electronics equipment. \"I can get you circuit boards made to spec,\" he says. \"Just tell me where and when.\"", 
+            "name": "Dmitry", 
+            "short_name": "S:CirctBrd", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Circuit Board Manufacturer", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2313, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This woman runs a spotless shop full of medical equipment. \"I supply all the corporations around Mogadishu,\" she claims, though her shop seems a little small for that.", 
+            "name": "Kavan", 
+            "short_name": "S:MedTech", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Medical Supplies", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2314, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I don't sell much myself,\" this hard-eyed Somali says, \"but I know some people who do.\"", 
+            "name": "Awaale", 
+            "short_name": "Supplies", 
+            "rumors_per_day": 2, 
+            "quick_desc": "General Supplier", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2315, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"Everyone knows there are people out there trying to break in,\" this Egyptian man says. \"I'm here to help you keep them out.\"", 
+            "name": "Basr", 
+            "short_name": "Security", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Security Goods and Services", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2316, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I can upgrade the electrical system in your secure location,\" this grinning man says, \"until even a rat couldn't get in unnoticed.\"", 
+            "name": "Haji", 
+            "short_name": "ElectUpgr", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Security System Refit", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2318, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "You can't tell anything about this individual -- they speak through a voice synthesizer and keep their face covered. \"If you want to keep your tracks covered on the 'net, I can help you,\" they say.", 
+            "name": "HENG_0", 
+            "short_name": "Anon MB", 
+            "rumors_per_day": 2, 
+            "quick_desc": "\"haxx0r\"", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2411, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I lost funding for my last project, so I'm back on the job market,\" this earnest-looking man informs you. \"My skills are yours if you'll fund me.\"", 
+            "name": "Luis", 
+            "short_name": "HS:Rsrch", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Researcher for Hire", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2412, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "Faruk grins as he describes his wares. \"I have all the latest imported from China, Japan, the Philippines...\"", 
+            "name": "Faruk", 
+            "short_name": "S:SmElectr", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Electronic Componentry", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2413, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I can polish tubes and collect data with the best of them,\" this bright-eyed young man says.", 
+            "name": "Almir", 
+            "short_name": "SoftSkill", 
+            "rumors_per_day": 1, 
+            "quick_desc": "Lab Assistant", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 1, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2414, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This Indian man smiles as he offers you tea. \"Sit down and tell me what you need.  Many corporations around here get their supplies from me, and if you're looking to hire a few employees, well, I know people for that too.\"", 
+            "name": "Sandeep", 
+            "short_name": "Research", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Engineering Supply and Service", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2415, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "You stand at the center of the Bakaara Market.  Bustling crowds move past you, some people alert and watchful, others furtive.  All around you are shouts and cries in a dozen languages -- people selling anything you could want, goods and services alike.\r\n\r\nA small boy introduces himself as Samir and offers to show you around. \"I have lots of friends who can get you what you need,\" he explains, smiling brightly as he tugs your garment. \"Money? Got money?\"", 
+            "name": "Samir", 
+            "short_name": "Center", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Market Guide", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2416, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "Maryam runs her services business out of a converted truck in the southern end of the market. \"I know quite a few people with the skills you need,\" she says.", 
+            "name": "Maryam", 
+            "short_name": "Services", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Services and Support", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2417, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "Abu offers to connect you with a number of skilled professionals. \"I know people,\" he says.  Seems like everyone does.", 
+            "name": "Abu Khar", 
+            "short_name": "SoftSkillA", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Human Resource Specialist", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2418, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "Hassan makes no claims about the quality of his staff, but they sure are cheap.", 
+            "name": "Hassan", 
+            "short_name": "SoftSkillB", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Temporary Staffing", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2419, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"Many of my men have been out of work for a while,\" Akash says. \"Please do them a favor and hire them.\"", 
+            "name": "Akash", 
+            "short_name": "SoftSkillB", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Skilled Contractors", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2512, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This squat Belgian runs a foundry and casting business. He offers to cast whatever metal parts you need, to order.", 
+            "name": "Yonas", 
+            "short_name": "S:StkMetal", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Foundry", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2513, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "A soft-eyed young woman, Sali offers to aid you in a number of possible ways.  Her resume is remarkably detailed.", 
+            "name": "Sali", 
+            "short_name": "SoftSkill", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Personal Assistant", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2514, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I know people,\" this woman chuckles, \"who know people, who know people, who know things.  What do you want to know?\"", 
+            "name": "Aasad", 
+            "short_name": "Info", 
+            "rumors_per_day": 4, 
+            "quick_desc": "Information Broker", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 4, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2515, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I can supply you with rare earths, and I know people who can.\"", 
+            "name": "Bergen", 
+            "short_name": "Resources", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Resource Extraction and Supplier", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2519, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I've been an executive for years,\" this suited man says, \"and my company just went under. I'd be happy to work for you.\"", 
+            "name": "Ibkar", 
+            "short_name": "HS:Admin", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Administrator for Hire", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2612, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This hungry-looking girl shivers as she speaks. \"I find lots of good stuff on dead bodies,\" she says. \"Maybe I can sell you some?\" She doesn't seem bothered by her grisly trade.", 
+            "name": "Marianne", 
+            "short_name": "Scavenging", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Scavenger", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2614, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This enormously fat man sips tea quietly. \"What do you want to know?\" he whispers.", 
+            "name": "Deepak", 
+            "short_name": "-Rumors", 
+            "rumors_per_day": 6, 
+            "quick_desc": "Rumormonger", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 6, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2616, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This bald man points to dump trucks full of rare earths. \"We can get it delivered wherever you need,\" he says, shoving a clipboard full of prices under your nose.", 
+            "name": "Dawit", 
+            "short_name": "Res:WK", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Rare Earth Supplier", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2617, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"Blue and Green rare earths, yes, I've got 'em,\" this tall man says brusquely. \"What more needs to be said?\"", 
+            "name": "Hakeem", 
+            "short_name": "R:BG", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Quality Rare Earths", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2618, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This slender, excitable woman gestures to a prototype drone. \"I've built a system for scanning for resources from the air,\" she says. \"I'd be happy to try it out for you, if you fund further development.\"", 
+            "name": "Negasi", 
+            "short_name": "War Scan", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Aerial Resource Evaluation", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2619, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This European expatriate offers a fine selection of \"pawned\" goods. \"Untraceable, guaranteed,\" he says. When you ask where he got them, he pointedly looks the other way.", 
+            "name": "Gerald", 
+            "short_name": "Scavenging", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Found Goods and Sundries", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2712, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This bulky man wearing faded military fatigues addresses you brusquely: \"If you need to know where the rare earths are, you've come to the right place.\"", 
+            "name": "Maher", 
+            "short_name": "Res.Scan", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Terrain Reconnaisance", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2713, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "You can barely see this man as he leans back into the shadows. His voice is like paper rubbing together as he whispers the names of people, companies, places...", 
+            "name": "Nassim", 
+            "short_name": "+Rumors", 
+            "rumors_per_day": 8, 
+            "quick_desc": "Knowledge, Inc.", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 8, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2714, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This sleazy-looking balding man gives you a used-car-salesman grin. \"In trouble with the law?  I'm sure it's not your fault.  You came to the right guy, uh... what did you say your name was?  Believe me.  I know a guy.\"", 
+            "name": "Saul", 
+            "short_name": "AntiLegal", 
+            "rumors_per_day": 3, 
+            "quick_desc": "Top-Tier Legal Defense", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 3, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2715, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "Though a strange smell hangs about this tiny shack, the man inside seems clean enough.  He offers your pick of things he's found on \"the recently departed.\"", 
+            "name": "Saavu", 
+            "short_name": "Scavenging", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Quality Remaindered Goods", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2716, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I have Yellow and Red rare earths for sale,\" this tall Swede murmurs. \"Just got a new shipment in yesterday.\"", 
+            "name": "Jules", 
+            "short_name": "R:YR", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Mineral Supplier", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2718, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This hard-faced Austrian frowns as you enter. \"What do you need?\" he asks. \"I can dispatch a unit anywhere in Somalia with a day's notice. It'll cost you, though.\"", 
+            "name": "Dietmar", 
+            "short_name": "War Unit", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Mercenary Dispatcher", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2812, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I found this recently. Looks like it might be important...\"", 
+            "name": "Tariq", 
+            "short_name": "Microfilm", 
+            "rumors_per_day": 2, 
+            "quick_desc": "For Sale: one interesting item", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2813, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "Flaunting her distaste for traditional Somali propriety, this woman wears her hair short, spiky, and shockingly pink.  Multiple piercings adorn her face in various improbable places.  Could this really be the best hacker this side of the Mediterranean?  Your phone beeps, informing you it is so.", 
+            "name": "4NN1KA", 
+            "short_name": "Anon MB", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Digital Sorceress", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2815, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "A jovial man with a big belly laugh, Rashad juggles a length of rubber hose. \"I'll beat it out of 'em, don't worry!\"  Finesse does not appear to be his strong suit.", 
+            "name": "Rashad", 
+            "short_name": "LQ Interr", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Rubber Hose Cryptanalysis", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2817, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I have the finest rare earths available.  Better than you'll find anywhere else.\"", 
+            "name": "Azizi", 
+            "short_name": "R:Good", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Premium Resource Supplier", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2818, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I found this. Not sure what it is, but maybe someone will want it?\"", 
+            "name": "Alvar", 
+            "short_name": "Microfilm", 
+            "rumors_per_day": 2, 
+            "quick_desc": "For Sale: an interesting item", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2914, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "This dark-skinned, beret-wearing man nods gravely as he fingers a bamboo. \"As I learned long ago, there are easy ways of extracting information... and there are hard ways.\"  A pensive look passes across his face -- bad memories?", 
+            "name": "Sayid", 
+            "short_name": "HQ Interro", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Ex-Military Interrogation Specialist", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 2915, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I've been everywhere, seen everything, done more than my fair share,\" this tall man says in a gravely voice. \"If you're looking for something -- or someone -- I can track it down.\"", 
+            "name": "Da'ud", 
+            "short_name": "HS:Investg", 
+            "rumors_per_day": 2, 
+            "quick_desc": "Private Eye", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 3015, 
+        "model": "hexgrid.node", 
+        "fields": {
+            "long_desc": "\"I found this. Pretty sure it's part of something secret, but I have no use for it.\"", 
+            "name": "Portia", 
+            "short_name": "Microfilm", 
+            "rumors_per_day": 2, 
+            "quick_desc": "For Sale: something secret?", 
+            "expired": false, 
+            "dead_until_day": 0, 
+            "rumors_at_once": 2, 
+            "special": false
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "hexgrid.gameday", 
+        "fields": {
+            "tick_time": "16:00:00", 
+            "day": 1
+        }
+    }
+]

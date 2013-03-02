@@ -9,10 +9,12 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.shortcuts import get_object_or_404
 from gametex.models import GameTeXObject, GameTeXUser
+import math
 from singleton_models.models import SingletonModel
 from hexgrid.game_settings import PRICE_FIELD, MARKET_STAT
 from hexgrid.utils import currency
 from django.utils.translation import ugettext as _
+
 
 class Dir:
     """
@@ -53,7 +55,50 @@ class Node(models.Model):
     expired = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return "%s [%s]" % (self.name, self.hex)
+        return "%s [%s] <%s> %s" % (self.name, self.hex, self.short_name, self.quick_desc)
+
+    width = 48
+    scaling = 1
+
+    def base_y(self):
+        return (self.hex % 100) + (self.base_x() % 2) * .5
+
+    def base_x(self):
+        return (self.hex / 100)
+
+    def x(self):
+        return self.base_x() * (self.width * .75) * self.scaling - 650
+
+    def y(self):
+        return self.base_y() * (self.width * .86) * self.scaling - 400
+
+    def points(self):
+        # Points on a hex map
+        x = float(self.x())
+        y = float(self.y())
+        sidelength = float(self.width / 2)
+        xmotion = float(sidelength / 2)
+        hexhalfheight = math.sin(math.radians(60))
+        ymotion = sidelength * hexhalfheight
+
+        sides = []
+        sides.append([0, ymotion])
+        sides.append([xmotion, 2 * ymotion])
+        sides.append([xmotion + sidelength, 2 * ymotion])
+        sides.append([sidelength * 2, ymotion])
+        sides.append([xmotion + sidelength, 0])
+        sides.append([xmotion, 0])
+
+        return map(lambda s: [(s[0] + x), (s[1] + y)], sides)
+
+    def pre_json(self):
+        return {
+            'name': self.name,
+            'hex': self.hex,
+            'points': self.points(),
+            'short_name': self.short_name
+        }
+
 
     @classmethod
     def by_hex(cls, hex_id):
@@ -72,21 +117,17 @@ class Node(models.Model):
         """
         try:
             if direction == Dir.north:
-                node = Node.objects.get(hex=(self.hex - 2))
+                node = Node.objects.get(hex=(self.hex - 1))
             elif direction == Dir.northeast:
-                node = Node.objects.get(hex=(self.hex + 99 if self.hex % 2
-                                                else self.hex - 1))
+                node = Node.objects.get(hex=(self.hex - 101))
             elif direction == Dir.southeast:
-                node = Node.objects.get(hex=(self.hex + 101 if self.hex % 2
-                                                else self.hex + 1))
+                node = Node.objects.get(hex=(self.hex - 100))
             elif direction == Dir.south:
-                node = Node.objects.get(hex=(self.hex + 2))
+                node = Node.objects.get(hex=(self.hex + 1))
             elif direction == Dir.southwest:
-                node = Node.objects.get(hex=(self.hex + 1 if self.hex % 2
-                                                else self.hex - 99))
+                node = Node.objects.get(hex=(self.hex + 100))
             elif direction == Dir.northwest:
-                node = Node.objects.get(hex=(self.hex - 1 if self.hex % 2
-                                                else self.hex - 101))
+                node = Node.objects.get(hex=(self.hex + 99))
             else:
                 return None
             if not node.expired:
@@ -147,7 +188,15 @@ class Rumor(models.Model):
     probability = models.FloatField(default=1.0,
         help_text="How likely is this rumor to show up?" + \
                   " (default 1.0; 2 is twice as likely, 0.5 is half as likely)")
+    # quality = models.IntegerField(default=1, help_text="On a scale of 1-4, how good is this rumor?")
     valid = models.BooleanField(default=True)
+
+class ItemBid(models.Model):
+    character = models.ForeignKey("Character")
+    item = models.ForeignKey("Item")
+    day = models.IntegerField(default=0)
+    resolved = models.BooleanField(default=False)
+    won = models.BooleanField(default=False)
 
 class NodeEvent(models.Model):
     """
@@ -159,6 +208,14 @@ class NodeEvent(models.Model):
     who_disguised = models.BooleanField()
     what = models.CharField(max_length=256)
     day = models.IntegerField()
+
+RARITY_CHOICES = (
+    (0, "Common (price never changes)"),
+    (1, "Rare (price increases over time)"),
+    (2, "Scarce (chance item disappears)"),
+    (3, "Unique (only one)"),
+    (4, "Auction (only one, auction model)")
+)
 
 class Item(models.Model):
     """
@@ -237,7 +294,7 @@ class CharNode(models.Model):
     """
     character = models.ForeignKey("Character")
     node = models.ForeignKey(Node)
-    unlocked_on = models.IntegerField()
+    unlocked_on = models.IntegerField(default=0)
 
 class CharNodeWatch(models.Model):
     """
@@ -255,6 +312,7 @@ class Character(GameTeXUser):
     nodes = models.ManyToManyField(Node, through=CharNode)
     is_disguised = models.BooleanField(default=False)
     has_disguise = models.BooleanField(default=False)
+    alive = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.char.name
@@ -262,6 +320,10 @@ class Character(GameTeXUser):
     @property
     def char(self):
         return self.gto
+
+    @property
+    def name(self):
+        return self.char.name
 
     def all_nodes(self):
         """
@@ -276,6 +338,15 @@ class Character(GameTeXUser):
         """
         return Node.objects.filter(id__in=CharNodeWatch.objects.filter(
             character=self).values_list('id', flat=True))
+
+    def visible_nodes(self):
+        visible = set()
+        for node in self.nodes.all():
+            visible.update(node.get_all_neighbors())
+        return Node.objects.filter(hex__in=map(lambda x: x.hex, visible))
+
+    def unlockable_nodes(self):
+        return self.visible_nodes().exclude(hex__in=map(lambda x: x.hex, self.nodes.all()))
 
     def has_node(self, node):
         """
@@ -341,6 +412,14 @@ class Character(GameTeXUser):
             who=self,
             day=GameDay.get_day(),
         ).delete()
+#
+# @receiver(post_save, sender=Character)
+# def create_mailbox(sender, **kwargs):
+#     from messaging.models import Mailbox
+#     if kwargs['created']:
+#         print kwargs['instance']
+#         Mailbox.objects.get_or_create(name=kwargs['instance'].name,
+#                                       type=2)
 
 @receiver(post_save, sender=GameTeXUser)
 def create_hgcharacter(sender, **kwargs):
