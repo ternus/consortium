@@ -77,7 +77,7 @@ def app_csv(request):
     response['Content-Disposition'] = 'attachment; filename=apps.csv'
     fields = ConsortiumApp._meta.fields
     headers = [field.name for field in fields]
-    writer = csv.writer(response, delimiter='\t')
+    writer = csv.writer(response, delimiter='|')
     writer.writerow(headers)
     def _foo(x):
         try:
