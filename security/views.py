@@ -3,9 +3,11 @@ from datetime import datetime
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render
 from hexgrid.views import gtc
+from messaging.models import Message
 from security.models import EntryWindow, SecureLocation, SecurityWindow
 from dateutil.parser import parse
 
@@ -23,8 +25,9 @@ def security_window(request, template='security/security_window.html'):
             location = SecureLocation.objects.get(room=request.POST.get('room').strip())
         except SecureLocation.DoesNotExist:
             raise ValidationError("No secure location in room %s." % request.POST.get('room').strip())
-        SecurityWindow.objects.create(location=location, start_time=time, creator=char)
-        messages.success(request, "Window created!")
+        new = SecurityWindow.objects.create(location=location, start_time=time, creator=char)
+        count = check_collisions_and_notify(new).count()
+        messages.success(request, "Window created! %s alerts triggered." % count)
     current_windows = SecurityWindow.objects.filter(creator=char)
     owned_locations = SecureLocation.objects.filter(controller__lineorder__order=1, controller__lineorder__character=char)
     return render(request, template, {'current_windows': current_windows, 'owned_locations': owned_locations})
@@ -44,7 +47,8 @@ def entry_window(request, template='security/entry_window.html'):
                 location = SecureLocation.objects.get(room=request.POST.get('room').strip())
             except SecureLocation.DoesNotExist:
                 raise ValidationError("No secure location in room %s." % request.POST.get('room').strip())
-            EntryWindow.objects.create(location=location, start_time=time, creator=char, person=request.POST.get('person'))
+            new = EntryWindow.objects.create(location=location, start_time=time, creator=char, person=request.POST.get('person'))
+            count = check_collisions_and_notify(new).count()
             messages.success(request, "Window created!")
         except ValidationError, e:
             messages.error(request, e.messages[0])
@@ -62,6 +66,14 @@ def gm_security(request, template="security/gm.html"):
     }
     return render(request, template, context)
 
-def check_collisions(new_window):
+def check_collisions_and_notify(new_window):
+    query_set = new_window.overlaps()
     if isinstance(new_window, EntryWindow):
-        pass
+        for s in query_set:
+            Message.mail_to(s.creator, "Security Window Triggered",
+                            "Security alert! Possible breach attempt at %s, time: %s" % (new_window.location, new_window.start_time), sender="Security")
+    elif isinstance(new_window, SecurityWindow):
+        for e in query_set:
+            Message.mail_to(new_window.creator, "Security Window Triggered",
+                            "Security alert! Possible breach attempt at %s, time: %s" % (new_window.location, e.start_time), sender="Security")
+    return query_set

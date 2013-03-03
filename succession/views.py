@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.core.urlresolvers import reverse
+from django.db.models import Max
 from django.http import Http404
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -35,26 +36,37 @@ def kill_character(request, template="lines/kill_character.html"):
     if request.method == 'POST':
         char_id = request.POST.get('char', None)
         char = get_object_or_404(Character, id=char_id)
-        char.alive = False
-        char.save()
+        really_dead = request.POST.get('really-dead', False)
+        print really_dead
+        if really_dead:
+            char.alive = False
+            char.save()
         for line in Line.objects.filter(members=char):
             lo = LineOrder.objects.get(line=line, character=char)
             los = LineOrder.objects.filter(line=line, order__gt=lo.order).order_by('order')
             orig_order = lo.order
-            lo.delete()
+            lo.order = 1000 + lo.id
+            lo.save()
             for lox in los:
                 lox.order -= 1
                 lox.save()
+            if really_dead:
+                lo.delete()
+                Message.mail_to(char, "You have been declared dead. Thanks for playing!", "You have been officially declared dead. Thanks for playing our game.", urgent=True)
+            else:
+                lo.order = LineOrder.objects.exclude(id=lo.id).filter(line=line, order__lt=lo.order).aggregate(Max('order'))['order__max'] + 1
+                lo.save()
+                Message.mail_to(char, "You have been declared missing.", "You have been officially declared missing, and demoted to the bottom of any groups you are in.", urgent=True)
             for c in line.members.exclude(id=char.id):
-                message = "Notice to all members of %s:\n %s has been declared dead. \n" % (line.name, char.gto.name)
+                message = "Notice to all members of %s:\n %s has been declared %s. \n" % (line.name, char.gto.name, "dead" if really_dead else "missing")
+                message += "The cause: %s.\n" % request.POST.get('cause', 'Unknown')
                 if orig_order == 1:
                     message += "%s is the new controller of %s." % (line.current_leader().character.gto.name, line.name)
                 print c
                 print Mailbox.objects.get(character=c, type=1)
-                Message.mail_to(c, "Death Notice: %s" % char.gto.name,
-                                message, sender="Mogadishu Morgue")
-
-        messages.success(request, "%s was declared dead.  Mail sent." % char.name)
+                Message.mail_to(c, "%s Alert: %s" % ("Death" if really_dead else "Missing", char.gto.name),
+                                message, sender="Mogadishu Office of Civil Security", urgent=True)
+        messages.success(request, "%s was declared %s.  Mail sent." % (char.name, "dead" if really_dead else "missing"))
 
     return render(request, template, {'chars': Character.objects.filter(alive=True)})
 

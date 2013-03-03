@@ -91,7 +91,7 @@
                                 <td class="small_td">{% if m.anon %}<i>Anonymous</i>{% else %}{{ m.sender.name }}{% endif %}</td>
                                 <td>{{ m.subject }}</td></tr>
                                 <tr><td colspan=4><div id="mtext_{{ m.id }}" style="display:none;" class="mail_txt">
-                                    {{ m.text|linebreaks }}<br />
+                                    {{ m.text|safe|linebreaks }}<br />
                                 </div></td>
                                 </tr></table>
                         </div>

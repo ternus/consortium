@@ -3,6 +3,8 @@
 {% block container %}
     <h2>Kill Character</h2>
     <h3>Warning: sends mail, not undoable!</h3>
+    <p>"Dead" will remove characters from every line of succession and promote people under them.</p>
+    <p>"Missing" will demote characters to the bottom of the line.</p>
     <form method="post">
     {% csrf_token %}
         <select name="char">
@@ -11,6 +13,7 @@
             {% endfor %}
         </select>
     <label for="cause">Cause of death:</label> <input type="text" id="cause" name="cause"/>
+    <label for="really-dead">Really dead? (uncheck if missing)</label> <input type="checkbox" id="really-dead" name="really-dead"/>
     <input type="submit" value="Declare Them Dead" />
     </form>
 

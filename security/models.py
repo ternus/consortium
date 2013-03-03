@@ -1,6 +1,7 @@
 from datetime import timedelta
 from django.db import models
 from django.conf import settings
+from django.db.models import Q
 from hexgrid.models import Character
 from succession.models import Line
 
@@ -29,6 +30,12 @@ class EntryWindow(models.Model):
         self.end_time = self.start_time + timedelta(minutes=settings.ENTRY_WINDOW_MINUTES)
         return super(EntryWindow, self).save(**kwargs)
 
+    def overlaps(self):
+        return SecurityWindow.objects.filter(location=self.location).filter(
+            Q(Q(start_time__lt=self.end_time) & Q(end_time__gt=self.end_time)) | Q(
+                Q(start_time__lt=self.start_time) & Q(end_time__lt=self.end_time)) | Q(
+                Q(start_time__lt=self.start_time) & Q(end_time__gt=self.end_time)))
+
 
 class SecurityWindow(models.Model):
     creator = models.ForeignKey(Character)
@@ -42,3 +49,9 @@ class SecurityWindow(models.Model):
 
     def __unicode__(self):
         return "%s securing %s at %s" % (self.creator, self.location, self.start_time)
+
+    def overlaps(self):
+        return EntryWindow.objects.filter(location=self.location).filter(
+            Q(Q(start_time__lte=self.start_time) & Q(end_time__gt=self.start_time)) | Q(
+                Q(start_time__gte=self.start_time) & Q(end_time__lte=self.end_time)) | Q(
+                Q(start_time__lte=self.start_time) & Q(end_time__gte=self.start_time)))

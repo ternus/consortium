@@ -4,6 +4,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from hexgrid.models import Character
 from succession.models import Line
+from twilio.rest import TwilioRestClient
 
 class Message(models.Model):
     time = models.DateTimeField(auto_now_add=True)
@@ -18,13 +19,24 @@ class Message(models.Model):
         return "From: %s To: %s Time: %s Subject: %s" % (self.sender, self.to, self.time, self.subject)
 
     @classmethod
-    def mail_to(cls, user, subject, message, sender="System"):
-        return cls.objects.create(
+    def mail_to(cls, char, subject, message, sender="System", urgent=False):
+        msg = cls.objects.create(
             sender=Mailbox.objects.get_or_create(name=sender, type=0)[0],
-            to=get_object_or_404(Mailbox, character=user, type=1),
+            to=get_object_or_404(Mailbox, character=char, type=1),
             subject=subject,
             text=message
         )
+        if char.routine_sms:
+            Message.sms_to_char(char, "New Mail: %s" % subject)
+        elif urgent and char.urgent_sms:
+            Message.sms_to_char(char, "New Urgent Mail: %s" % subject)
+        return msg
+
+    @classmethod
+    def sms_to_char(cls, char, message):
+        if not char.phone: return None
+        client = TwilioRestClient(settings.TWILIO_SID, settings.TWILIO_AUTH_TOKEN)
+        return client.sms.messages.create(to=char.phone, from_=settings.TWILIO_PHONE_NUMBER, body="[Consortium] %s" % message)
 
 MAILBOX_TYPES = (
     (0, 'System'),
