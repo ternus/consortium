@@ -16,7 +16,7 @@ def player_view(request, template='askgms/askgms.html'):
         q.save()
         send_mail('[Consortium] New question #%s from %s' % (q.id, q.asker_email),
                   "%s has a question: \n\n%s\n\nGo to http://consortium.so/ask/gm/#q%s to answer." % (q.asker_email, q.question, q.id),
-                  'consortium-gms@cternus.net', ["ternus@cternus.net"])
+                  'consortium-gms@cternus.net', ["consortium-gms@mit.edu"])
         messages.success(request, "Question asked! You'll receive an answer as soon as possible.")
     questions = Question.objects.filter(public=True).exclude(answer='').order_by('-answered_on')
     return render(request, template, {'questions': questions})
@@ -34,7 +34,7 @@ def gm_view(request, template='askgms/askgms.html'):
         verb = "updated" if updated else "answered"
         send_mail('[Consortium] Question #%s from %s %s by %s' % (q.id, q.asker_email, verb, q.answered_by),
                   "%s %s %s's question: \n\n'%s'\n---\n%s" % (q.answered_by, verb, q.asker_email, q.question, q.answer),
-                  'consortium-gms@cternus.net', ["ternus@cternus.net"])
+                  'consortium-gms@cternus.net', ["consortium-gms@mit.edu"])
         messages.success(request, "Question %s!" % verb)
     questions = Question.objects.all().order_by('-id')
     return render(request, template, {'questions': questions})
