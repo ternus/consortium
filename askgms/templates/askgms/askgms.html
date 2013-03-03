@@ -18,9 +18,9 @@
     </div>
     {% for question in questions %}
         <div class="question">
-            <div class="question-text">{{ question.question }}</div>
+            <div class="question-text">{{ question.question|linebreaks }}</div>
             {% if question.answer %}
-                <div class="question-answer">{{ question.answer }}</div>
+                <div class="question-answer">{{ question.answer|linebreaks }}</div>
                 <div class="question-answerer">Answered by {{ question.answered_by }} {{ question.answered_on|naturaltime }}</div>
             {% endif %}
         {% if gm %}
