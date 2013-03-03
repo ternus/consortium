@@ -5,7 +5,7 @@ Miscellaneous stuff that didn't fit anywhere else.
 from django.db.models import Q
 from hexgrid.models import Character, GameDay
 from messaging.models import Mailbox
-from succession.models import LineOrder
+from succession.models import LineOrder, Line
 from django.core.mail import send_mail as core_send_mail
 from django.core.mail import EmailMultiAlternatives
 import threading
@@ -28,11 +28,13 @@ def consortium_context(request):
         char = None
     game_day = GameDay.get_day()
     has_lines = LineOrder.objects.filter(character=char).exists()
+    has_wargame = Line.objects.filter(lineorder__character=char).exclude(faction=None).exists()
     if request.user.is_superuser: mboxes = Mailbox.objects.filter(name__contains='GM')
     unread = sum(map(lambda x: len(x.unread_mail()), mboxes))
     return {'char': char,
             'game_day': game_day,
             'has_lines': has_lines,
+            'has_wargame': has_wargame,
             'gm': request.user.is_superuser,
             'unread': unread,
             'mboxes': mboxes}
