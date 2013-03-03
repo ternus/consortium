@@ -1,8 +1,8 @@
 3.2.5 (Media Mark)
-112f3f23899a32526a5bea2943b22bd66dc85946
+508c7e8586985fce9415c9a2cc274f6a99949ed6
 o:Sass::Tree::RootNode
 :@has_childrenT:
-@linei:@template"ß/$darkfont: #eee;
+@linei:@template"¶/$darkfont: #eee;
 $shadow: #ccc;
 $lightshadow: #aaa;
 $medbright: #999;
@@ -715,7 +715,7 @@ Mail
   td {
     width: 400px;
     textarea {
-      height: 100px;
+      height: 50px;
     }
   }
   td.lbl {
@@ -1127,8 +1127,7 @@ clear;o;;;$;"	both;@;iµ;(;);*i ;	[ ;@;@o;5
 ;;[o;>	;?0;["td;@" ;i«;@@á;Ao;B;C{ ;i«;D0;@@á;i«;T;i«;*i ;	[o;';["
 width;o;;;$;"
 400px;@;i»;(;);*i ;	[ ;@o;7;8["textarea;9o;:;;[o;<;;[o;=
-;;[o;>	;?0;["textarea;@" ;i…;@@ù;Ao;B;C{ ;i…;D0;@@ù;i…;T;i…;*i ;	[o;';["height;o;;;$;"
-100px;@;i ;(;);*i ;	[ ;@;@;@o;7;8["td.lbl;9o;:;;[o;<;;[o;=
+;;[o;>	;?0;["textarea;@" ;i…;@@ù;Ao;B;C{ ;i…;D0;@@ù;i…;T;i…;*i ;	[o;';["height;o;;;$;"	50px;@;i ;(;);*i ;	[ ;@;@;@o;7;8["td.lbl;9o;:;;[o;<;;[o;=
 ;;[o;>	;?0;["td;@" ;iÕo;I;["lbl;@@≥;iÕ;@@≥;Ao;B;C{ ;iÕ;D0;@@≥;iÕ;T;iÕ;*i ;	[o;';["
 width;o;;;$;"
 200px;@;iŒ;(;);*i ;	[ ;@;@;@o;7;8[".question;9o;:;;[o;<;;[o;=
