@@ -1,0 +1,17 @@
+{% extends "consortium.html" %}
+
+{% block container %}
+    <h2>Kill Character</h2>
+    <h3>Warning: sends mail, not undoable!</h3>
+    <form method="post">
+    {% csrf_token %}
+        <select name="char">
+            {% for char in chars %}
+                <option value="{{ char.id }}">{{ char.name }}</option>
+            {% endfor %}
+        </select>
+    <label for="cause">Cause of death:</label> <input type="text" id="cause" name="cause"/>
+    <input type="submit" value="Declare Them Dead" />
+    </form>
+
+{% endblock %}

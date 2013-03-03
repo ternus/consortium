@@ -5,13 +5,14 @@ Models for Line of Succession app
 
 from django.db import models
 from gametex.models import GameTeXUser, GameTeXObject
+from hexgrid.models import Character
 
 ML=256
 
 class Line(models.Model):
     name = models.CharField(max_length=ML)
     description = models.TextField(blank=True)
-    members = models.ManyToManyField(GameTeXUser, through="LineOrder")
+    members = models.ManyToManyField(Character, through="LineOrder")
     ability_card = models.ForeignKey(GameTeXObject, blank=True, null=True)
 
     def __unicode__(self):
@@ -28,7 +29,7 @@ class Line(models.Model):
 
 class LineOrder(models.Model):
     line = models.ForeignKey(Line)
-    character = models.ForeignKey(GameTeXUser)
+    character = models.ForeignKey(Character)
     order = models.PositiveSmallIntegerField()
     class Meta:
         ordering = ['order']
