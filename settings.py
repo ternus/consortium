@@ -25,6 +25,8 @@ ML = 256
 ENTRY_WINDOW_MINUTES = 15
 SECURITY_WINDOW_MINUTES = 60 * 4
 
+SOUTH_TESTS_MIGRATE = False
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -163,7 +165,8 @@ INSTALLED_APPS = (
     'succession',
     'territory',
     'security',
-    'messaging'
+    'messaging',
+    'askgms'
     )
 
 

@@ -13,7 +13,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
-  background: url("/static/img/gplaypattern.png") #eeeeee; }
+  background: url("/static/img/gplaypattern.png") #eeeeee;
+  font-size: 11pt; }
   @media screen and (max-width: 720px) {
     body {
       background: url("/static/img/brillant.png") white; } }
@@ -23,7 +24,7 @@ a:hover {
   text-decoration: underline !important; }
 
 div.messages {
-  font-size: 14px;
+  font-size: 13px;
   text-shadow: 0px 1px 1px #cccccc;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px; }
@@ -117,7 +118,7 @@ div.messages {
 .consortium_text {
   margin: 0px 10px;
   text-align: justify;
-  font-size: 14px;
+  font-size: 13px;
   text-shadow: 0px 1px 1px #cccccc; }
 
 .dateline {
@@ -133,7 +134,7 @@ div.messages {
   height: 32px;
   width: 100%;
   box-shadow: 0 0 8px 0 #aaaaaa;
-  font-size: 14px;
+  font-size: 13px;
   text-shadow: 0px 1px 1px #cccccc;
   font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
   background: url("/static/img/subtle_freckles.png") #ddddee; }
@@ -197,7 +198,7 @@ h3 {
   padding: 0px;
   margin: 5px;
   font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   text-shadow: 0px 1px 1px #cccccc;
   font-weight: bold; }
 
@@ -205,7 +206,7 @@ h4 {
   padding: 0px;
   margin: 5px;
   font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   text-shadow: 0px 1px 1px #e6e6e6;
   font-weight: bold; }
 
@@ -232,7 +233,7 @@ h4 {
   padding: 10px;
   width: 33%;
   background: white;
-  font-size: 14px;
+  font-size: 13px;
   text-shadow: 0px 1px 1px #cccccc;
   font-weight: bold;
   border: 1px dashed #cccccc;
@@ -306,7 +307,7 @@ App
 #app {
   padding: 10px;
   font-family: Helvetica Neue, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   text-shadow: 0px 1px 1px #cccccc; }
   #app input {
     border-radius: 2px; }
@@ -320,7 +321,7 @@ App
   #app .explanation {
     padding-top: 5px;
     padding-bottom: 15px;
-    font-size: 11px;
+    font-size: 10px;
     text-shadow: 0px 1px 1px #e6e6e6;
     color: gray; }
   #app .separator {
@@ -333,7 +334,7 @@ App
     font-weight: normal;
     width: 40%; }
   #app #apply {
-    font-size: 18px; }
+    font-size: 17px; }
 
 .ooc {
   font-style: italic; }
@@ -381,11 +382,11 @@ App
     padding-right: 10px;
     line-height: 20px;
     font-family: "Orbitron", "Helvetica Neue Ultra Light", Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     text-shadow: 0px 1px 1px #cccccc;
     vertical-align: center; }
   #territory_info td {
-    font-size: 14px;
+    font-size: 13px;
     text-shadow: 0px 1px 1px #cccccc;
     line-height: 20px;
     vertical-align: center; }
@@ -449,7 +450,7 @@ Mail
   .mail_msg .mail_txt {
     padding: 5px;
     padding-bottom: -10px;
-    font-size: 14px;
+    font-size: 13px;
     text-shadow: 0px 1px 1px #cccccc;
     background: rgba(200, 200, 200, 0.2); }
 
@@ -473,10 +474,12 @@ Mail
   margin-bottom: 20px; }
 
 /* Market */
+.subheader {
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 10px; }
+
 .node {
   overflow: hidden; }
-  .node .nodeheader {
-    border-bottom: 1px solid lightgrey; }
   .node .sidebar {
     float: right;
     padding-top: 10px;
@@ -495,3 +498,40 @@ Mail
     border-right: 1px solid lightgrey; }
   .node .footer {
     clear: both; }
+
+.ask {
+  display: none;
+  padding: 10px; }
+  .ask td {
+    width: 400px; }
+    .ask td textarea {
+      height: 100px; }
+  .ask td.lbl {
+    width: 200px; }
+
+.question {
+  border: 1px solid black;
+  background: #eeeeee;
+  padding: 10px;
+  margin: 5px 0px; }
+  .question .question-text {
+    font-style: italic;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 5px; }
+  .question .question-answerer {
+    text-align: right;
+    font-style: italic;
+    font-size: 10px;
+    text-shadow: 0px 1px 1px #e6e6e6; }
+  .question textarea {
+    height: 100px; }
+  .question td {
+    width: 400px; }
+    .question td textarea {
+      height: 100px; }
+  .question td.lbl {
+    width: 200px; }
+
+.answer {
+  display: none; }

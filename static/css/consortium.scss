@@ -26,8 +26,8 @@ $woolbg: url('/static/img/light_wool.png') #ddd;
 
 $hugefont: 70px;
 $bigfont: 30px;
-$medfont: 14px;
-$smallfont: 11px;
+$medfont: 13px;
+$smallfont: 10px;
 $tinyfont: 8px;
 $bodyfont: "Helvetica Neue Ultra Light", Helvetica, sans-serif;
 
@@ -91,6 +91,7 @@ body {
   margin: 0;
   font-family: $bodyfont;
   background: $background;
+  font-size: 11pt;
 
   @media screen and (max-width:$breaksmall) {
     background: $containerbg;
@@ -659,11 +660,14 @@ Mail
 
 /* Market */
 
+.subheader {
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+
 .node {
   overflow: hidden;
-  .nodeheader {
-    border-bottom: 1px solid lightgray;
-  }
+
   .sidebar {
     float:right;
     padding-top: 10px;
@@ -700,4 +704,51 @@ Mail
   //  @include gbhover;
   //}
 
+}
+.ask {
+  display:none;
+  padding: 10px;
+  td {
+    width: 400px;
+    textarea {
+      height: 100px;
+    }
+  }
+  td.lbl {
+    width: 200px;
+  }
+}
+
+.question {
+  border: 1px solid black;
+  background:  #eeeeee;
+  padding: 10px;
+  margin: 5px 0px;
+  .question-text {
+    font-style: italic;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 5px;
+  }
+  .question-answerer {
+    text-align: right;
+    font-style: italic;
+    @include small-text;
+  }
+  textarea {
+    height: 100px;
+  }
+  td {
+    width: 400px;
+    textarea {
+      height: 100px;
+    }
+  }
+  td.lbl {
+    width: 200px;
+  }
+}
+
+.answer {
+  display:none;
 }

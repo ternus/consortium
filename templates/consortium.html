@@ -47,20 +47,29 @@
                         {% trans "Consortium" %}
                     </a>
                 </li>
+                <li class="points">
+                    <a href="/ask/">Ask GMs</a>
+                </li>
+
                 {% if char %}
                 <li class="points">
                     <a href="/market/">Market</a>
                 </li>
+                    <li class="points">
+                        <a href="/keycard/">Keycards</a>
+                    </li>
+
                     {% if has_lines %}
                 <li class="points">
-                    <a href="/succession/">Command</a>
+                    <a href="/succession/">Succession</a>
                 </li>
                         <li class="points">
                             <a href="/security/">Security</a>
                         </li>
+                        {% endif %}
+                    {% if has_wargame %}
                         <li class="points"><a href="/territory/">Territory Control</a></li>
                     {% endif %}
-                    <li class="points"><a href="/mail/">Mail [<span {% if unread %}class="mail-unread"{% endif %}>{{ unread }}</span>]</a></li>
 
                 {% elif gm %}
                     <li class="points"><a href="/app/dashboard/">Apps</a></li>
@@ -76,6 +85,8 @@
             <ul>
             {% if char %}
                 <li class="user">{{ char.char.name }}</li>
+                <li><a href="/mail/"> <span class="icon-envelope{% if unread %} mail-unread{% endif %}">{{ unread }}</span></a></li>
+
                 <li class="gameday">Day {{ game_day }}</li>
                 <li class="logout"><a href="{% url logout %}">Logout</a></li>
             {% elif gm%}

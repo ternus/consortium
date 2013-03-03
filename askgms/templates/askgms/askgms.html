@@ -1,0 +1,44 @@
+{% extends "consortium.html" %}
+{% load humanize %}
+
+{% block container %}
+    <div class="subheader"><h2>Ask the GMs</h2></div>
+    <div class="ask-dropdown"><a onclick="$('.ask').slideToggle(100);">Ask a Question</a></div>
+    <div class="ask">
+        <form method="POST" action="{% url askgms %}">
+            {% csrf_token %}
+            <table>
+                <tr><td class="lbl"><label for="asker_email">Email: </label></td><td><input type="text" name="email" id="asker_email" value="{% if request.user %}{{ request.user.email }}{% endif %}" /></td></tr>
+                <tr><td class="lbl"><label for="question">Question:</label></td><td><textarea id="question" name="question"></textarea></td></tr>
+                <tr><td class="lbl"><label for="public">Make the answer public:</label></td><td><input type="checkbox" checked="true" name="public" id="public"></td></tr>
+                <tr><td class="lbl"><input type="submit" value="Ask!" /></td></tr>
+            </table>
+        </form>
+    <p>You'll receive an email when your question is answered.</p>
+    </div>
+    {% for question in questions %}
+        <div class="question">
+            <div class="question-text">{{ question.question }}</div>
+            {% if question.answer %}
+                <div class="question-answer">{{ question.answer }}</div>
+                <div class="question-answerer">Answered by {{ question.answered_by }} {{ question.answered_on|naturaltime }}</div>
+            {% endif %}
+        {% if gm %}
+            <a name="q{{ question.id }}" onclick="$('#answer_{{ question.id }}').slideToggle();">GM: Answer</a>
+        <div class="answer" id="answer_{{ question.id }}">
+        <form method="POST" action="{% url askgms_gm %}">
+            {% csrf_token %}
+            <table>
+            <input type="hidden" name="qid" value="{{ question.id }}">
+                <tr><td class="lbl"><label for="asker_email2">Asker Email: </label></td><td><input type="text" name="email" id="asker_email2" value="{{ question.asker_email }}" /></td></tr>
+                <tr><td class="lbl"><label for="answered_by">Answerer: </label></td><td><input type="text" name="answered_by" id="answered_by" value="{{ question.answered_by }}" /></td></tr>
+                <tr><td class="lbl"><label for="answer">Answer:</label></td><td><textarea id="answer" name="answer">{{ question.answer }}</textarea></td></tr>
+                <tr><td class="lbl"><label for="public2">Make the answer public:</label></td><td><input type="checkbox" {% if question.public %}checked="true"{% endif %} name="public" id="public2"></td></tr>
+                <tr><td class="lbl"><input type="submit" value="Answer!" /></td></tr>
+            </table>
+        </form>
+        </div>
+        {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}
