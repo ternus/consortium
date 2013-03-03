@@ -115,19 +115,21 @@ class Node(models.Model):
         @param direction Direction.
         @return Hex, or None.
         """
+
         try:
+            _a = (self.hex / 100) % 2
             if direction == Dir.north:
                 node = Node.objects.get(hex=(self.hex - 1))
             elif direction == Dir.northeast:
-                node = Node.objects.get(hex=(self.hex - 101))
+                node = Node.objects.get(hex=(self.hex + 100 if _a else self.hex + 99))
             elif direction == Dir.southeast:
-                node = Node.objects.get(hex=(self.hex - 100))
+                node = Node.objects.get(hex=(self.hex + 101 if _a else self.hex + 100))
             elif direction == Dir.south:
                 node = Node.objects.get(hex=(self.hex + 1))
             elif direction == Dir.southwest:
-                node = Node.objects.get(hex=(self.hex + 100))
+                node = Node.objects.get(hex=(self.hex - 99 if _a else self.hex - 100))
             elif direction == Dir.northwest:
-                node = Node.objects.get(hex=(self.hex + 99))
+                node = Node.objects.get(hex=(self.hex - 100 if _a else self.hex - 101))
             else:
                 return None
             if not node.expired:

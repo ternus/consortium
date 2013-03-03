@@ -7,12 +7,17 @@
             <h2>Bakaara Market</h2>
         </div>
         <div class="sidebar">
-            Points: {{ char.points }}
+        <ul>
+        {% if char %}
+            <li>Points: {{ char.points }}</li>
+        {% endif %}
             {% if node %}
-            <form method="get" action="{% url node_password node.hex %}">
+                <li>            <form method="get" action="{% url node_password node.hex %}">
                 <label for="password">Speak Password:</label><input type="text" id="password" name="password" />
-            </form>
+            </form></li>
             {% endif %}
+            <li><a href="{% url map %}">{% if char %}My {% endif %}Map</a></li>
+        </ul>
         </div>
         <div class="main">
             {% block main %}

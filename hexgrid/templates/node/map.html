@@ -46,7 +46,15 @@
 {% endblock %}
 
 {% block main %}
+    {% if char %}
+        <h3>Your Market Map</h3>
 
+        <p>This is your personal market map.  Do not print it out or show it to anyone; it is for your convenience only.</p>
+    <p>You may click on a visited merchant to jump directly to them.</p>
+        {% elif gm %}
+        <h3>Full GM Market Map: SECRET, OUT OF GAME</h3>
+        <p>Obviously, be careful showing this to anyone. ;)</p>
+    {% endif %}
     <div id="map" style="height: 500px;">
 
     </div>
