@@ -31,7 +31,7 @@
                         {{ neighbor.name }}:
                         <span class="node_neighbor_desc">{{ neighbor.quick_desc }}</span>
                         {% if char.points %}
-                            <a href="{% url unlock node.hex neighbor.hex %}">{% trans "Introduce me" %}</a>
+                            <a href="{% url unlock node.hex neighbor.hex %}" class="action">{% trans "Introduce me" %}</a>
                         {% endif %}
                     {% endif %}
                     </li>

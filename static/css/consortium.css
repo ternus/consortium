@@ -92,6 +92,10 @@ div.messages {
     color: darkblue;
     cursor: pointer;
     text-decoration: none; }
+  .container a:before {
+    content: "["; }
+  .container a:after {
+    content: "]"; }
 
 .topbar_left {
   float: left; }

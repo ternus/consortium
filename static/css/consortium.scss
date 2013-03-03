@@ -195,6 +195,13 @@ div.messages {
     //border-bottom: 1px dotted $nearwhite;
     text-decoration: none;
   }
+
+  a:before {
+    content: "["
+  }
+  a:after {
+    content: "]"
+  }
 }
 
 .topbar_left {
@@ -681,4 +688,16 @@ Mail
   .footer {
     clear:both;
   }
+
+  //a.action {
+  //  border-radius: 3px;
+  //  border: 1px solid black;
+  //  display: inline-block;
+  //}
+  //a.action:hover {
+  //  //color: darkblue !important;
+  //  text-decoration: none !important;
+  //  @include gbhover;
+  //}
+
 }
