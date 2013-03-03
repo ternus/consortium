@@ -12,7 +12,7 @@ from messaging.models import Message, Mailbox
 def mail_home(request, template="messaging/mail_home.html"):
     char = gtc(request)
     context = {
-        'special_mailboxes': Mailbox.objects.filter(public=True, type=0).order_by('name'),
+        # 'special_mailboxes': Mailbox.objects.filter(public=True, type=0).order_by('name'),
         'char_mailboxes': Mailbox.objects.filter(public=True, type=1).order_by('name'),
         'group_mailboxes': Mailbox.objects.filter(public=True, type=2).order_by('name'),
         'send_mailboxes': Mailbox.objects.filter(Q(character=char) | Q(line__lineorder__order=1, line__lineorder__character=char)),

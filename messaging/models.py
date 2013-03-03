@@ -1,6 +1,7 @@
 from hashlib import md5
 from django.db import models
 from django.conf import settings
+from django.shortcuts import get_object_or_404
 from hexgrid.models import Character
 from succession.models import Line
 
@@ -16,8 +17,17 @@ class Message(models.Model):
     def __unicode__(self):
         return "From: %s To: %s Time: %s Subject: %s" % (self.sender, self.to, self.time, self.subject)
 
+    @classmethod
+    def mail_to(cls, user, subject, message, sender="System"):
+        return cls.objects.create(
+            sender=Mailbox.objects.get_or_create(name=sender, type=0)[0],
+            to=get_object_or_404(Mailbox, character=user, type=1),
+            subject=subject,
+            text=message
+        )
+
 MAILBOX_TYPES = (
-    (0, 'Special'),
+    (0, 'System'),
     (1, 'Characters'),
     (2, 'Groups'),
     (3, 'Secret'),
