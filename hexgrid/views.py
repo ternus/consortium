@@ -7,8 +7,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import  render, get_object_or_404, redirect
 from hexgrid.game_settings import CURRENCY_SINGULAR, CURRENCY_PLURAL, HOME_NODE
-from hexgrid.models import Node, Character, Item, GameDay, CharNodeWatch, NodeEvent, Secret
+from hexgrid.models import Node, Character, Item, GameDay, CharNodeWatch, NodeEvent, Secret, ItemBid
 from django.utils.translation import ugettext as _, ungettext as _n
+from messaging.models import Message
+
 
 def gtc(request):
     """
@@ -71,6 +73,7 @@ def unlock(request, from_hex, to_hex):
     char.save()
 
     char.unlock_node_final(to_node)
+    char.revert_disguise()
 
     messages.success(request,
         _("%(from_node_name)s introduces you to %(to_node_name)s." %
@@ -110,6 +113,7 @@ def buy(request, item_id, template="node/buy.html"):
     """
     Buy an item.
     """
+    char = gtc(request)
     item = get_object_or_404(Item, id=item_id)
 
     result_str = _n(
@@ -123,8 +127,7 @@ def buy(request, item_id, template="node/buy.html"):
                                "currency_plural": CURRENCY_PLURAL}
 
 
-
-    #added = (Item.item_card is not None)
+    char.revert_disguise(request)
 
     return render(request, template, {"result_str": result_str, "item": item})
 
@@ -150,6 +153,8 @@ def watch(request, hex_id):
         _("You put a watcher near %(node_name)s." %
         {"node_name": watch_node.name}))
 
+    char.revert_disguise(request)
+
     return node(request, hex_id)
 
 @login_required()
@@ -164,7 +169,7 @@ def unwatch(request, hex_id):
         messages.error(request, _("You're not watching that node."))
         return node(request, hex_id)
 
-    char.watch_node_final(watch_node)
+    char.unwatch_node_final(watch_node)
 
     messages.success(request,
         _("You put a watcher near %(node_name)s." %
@@ -194,3 +199,17 @@ def events(request, template="node/events.html"):
         events.append(day_events)
 
     return render(request, template, {"events": events})
+
+def bid(request, hex, item):
+    try:
+        char = gtc(request)
+        item = get_object_or_404(Item, id=item)
+        node_hex = get_object_or_404(Node, hex=hex)
+        amount = int(request.POST.get("amount", 0))
+        char.bid_on(node_hex, item, amount)
+        messages.success(request, "Bid confirmed!")
+        Message.mail_to(char, "Market Bid Confirmed", "Your bid of %s on %s has been confirmed." % (amount, item), sender="Bakaara Market")
+        char.revert_disguise(request)
+    except:
+        messages.error(request, "Something went wrong and your bid was not processed.")
+    return redirect(node, hex)

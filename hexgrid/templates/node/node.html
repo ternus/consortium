@@ -12,11 +12,12 @@
                 <h3>{% trans "I can sell you:" %}</h3>
                 <ul class="node_sale_item">
                     {% for item in items %}
-                        <li><span class="node_sale_item_name">{{ item.name }}</span> -
-                            <span class="node_sale_item_cost">{{ item.price }}</span>
+                        <li><span class="node_sale_item_name">{{ item.name }}</span>
+                            ({{ item.rarity_class }})
                     {% if item.available %}<span class="node_sale_item_buy_link">
-                        <a href="{% url buy item.id %}">Buy</a>
+                        <a href="{% url buy item.id %}">Buy for {{ item.price }}</a>
                         </span>
+                    {% elif item.rarity_class == 'Auction' %}<form style="display:inline;" action='{% url bid node.hex item.id %}' method="post">{% csrf_token %}<label for="amount">Bid:</label><input name="amount" type="text" id="amount" size="2"/></form>
                     {% endif %}
                         </li>
                     {% endfor %}

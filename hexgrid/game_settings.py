@@ -1,6 +1,6 @@
 # coding=utf-8
-CURRENCY_SINGULAR = "credit"
-CURRENCY_PLURAL = "credits"
+CURRENCY_SINGULAR = "budget"
+CURRENCY_PLURAL = "budget"
 CURRENCY_SYMBOL = None
 
 BASE_PRICE = "1" # Must be a string!

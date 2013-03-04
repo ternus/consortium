@@ -1,5 +1,7 @@
 # coding=utf-8
 from logging import  debug
+import random
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -53,6 +55,9 @@ class Node(models.Model):
     rumors_per_day = models.IntegerField(default=2)
     special = models.BooleanField(default=False)
     expired = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['hex']
 
     def __unicode__(self):
         return "%s [%s] <%s> %s" % (self.name, self.hex, self.short_name, self.quick_desc)
@@ -150,6 +155,19 @@ class Node(models.Model):
                 neighbors += [ngbr]
         return neighbors
 
+    def distance_to(self, node):
+        distance = 0
+        nodes = {self}
+
+        while not node in nodes:
+            for neighbors in map(lambda x: x.get_all_neighbors(), nodes):
+                nodes.update(neighbors)
+            distance += 1
+            # print nodes
+            if distance > Node.objects.all().count():
+                return -1
+        return distance
+
     def populate_rumors(self):
         pass
 
@@ -192,13 +210,40 @@ class Rumor(models.Model):
                   " (default 1.0; 2 is twice as likely, 0.5 is half as likely)")
     # quality = models.IntegerField(default=1, help_text="On a scale of 1-4, how good is this rumor?")
     valid = models.BooleanField(default=True)
-
+#
 class ItemBid(models.Model):
     character = models.ForeignKey("Character")
     item = models.ForeignKey("Item")
+    node = models.ForeignKey("Node")
+    amount = models.IntegerField(default=0)
     day = models.IntegerField(default=0)
+    disguised = models.BooleanField(default=False)
     resolved = models.BooleanField(default=False)
     won = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return "%s bid %s on %s (day %s)" % (self.character, self.amount, self.item, self.day)
+
+EVENT_BUY      = "bought something"
+EVENT_PASSWORD = "spoke a password"
+EVENT_SECRET   = "heard a secret"
+EVENT_RUMOR    = "heard a rumor"
+EVENT_AGENT    = "placed an agent"
+EVENT_BID      = "placed a bid"
+EVENT_AUCTION  = "won an auction"
+EVENT_UNLOCK   = "was introduced to a merchant"
+
+EVENT_CHOICES = (
+    (EVENT_BUY, EVENT_BUY),
+    (EVENT_PASSWORD, EVENT_PASSWORD),
+    (EVENT_AGENT, EVENT_AGENT),
+    (EVENT_BID, EVENT_BID),
+    (EVENT_AUCTION, EVENT_AUCTION),
+    (EVENT_UNLOCK, EVENT_UNLOCK),
+    (EVENT_SECRET, EVENT_SECRET),
+    (EVENT_RUMOR, EVENT_RUMOR)
+)
+
 
 class NodeEvent(models.Model):
     """
@@ -208,16 +253,46 @@ class NodeEvent(models.Model):
     when = models.DateTimeField(auto_now_add=True)
     who = models.ForeignKey("Character")
     who_disguised = models.BooleanField()
-    what = models.CharField(max_length=256)
+    type = models.CharField(max_length=20, choices=EVENT_CHOICES)
     day = models.IntegerField()
+    item = models.ForeignKey("Item", null=True, blank=True)
+
+    def display_for(self, distance, char):
+        if char == self.who: distance = 0
+        # random.seed(self.where.hex * distance * char.id * self.id)
+        show = random.sample(["Where", "Who", "What"], 3 - distance)
+
+        if "Who" in show:
+            who = "A mysterious figure" if self.who_disguised else self.who.name
+        else:
+            who = "Someone"
+
+        if "What" in show:
+            what = self.type
+        else:
+            what = "did something"
+
+        if "Where" in show:
+            where = "at %s" % self.where.name
+        else:
+            where = "somewhere"
+        print "%s %s %s." % (who, what, where)
+
+        return "%s %s %s." % (who, what, where)
+
+RARITY_COMMON = "Common"
+RARITY_RARE = "Rare"
+RARITY_SCARCE = "Scarce"
+RARITY_AUCTION = "Auction"
 
 RARITY_CHOICES = (
-    (0, "Common (price never changes)"),
-    (1, "Rare (price increases over time)"),
-    (2, "Scarce (chance item disappears)"),
-    (3, "Unique (only one)"),
-    (4, "Auction (only one, auction model)")
+    (RARITY_COMMON, "Common (price never changes)"),
+    (RARITY_RARE, "Rare (price increases)"),
+    (RARITY_SCARCE, "Scarce (chance item disappears)"),
+    (RARITY_AUCTION, "Auction (only one, auction model)")
 )
+
+RARE_RANGE = 48 # Events in the last N hours increase rarity
 
 class Item(models.Model):
     """
@@ -235,6 +310,8 @@ class Item(models.Model):
         blank=True,
         help_text="What should the player see after purchasing? " + \
                   "(HTML OK, blank OK)")
+    rarity_class = models.CharField(max_length=10, choices=RARITY_CHOICES, default=RARITY_COMMON)
+    rarity_prob = models.FloatField(default=0.0, help_text="For rare items, this is the factor by which the price increases: x * 2^(n * a), where x is the base price, n is the number of times bought, and a is this factor. For scarce items, this affects the probability it disappears (n rolls; if number less than a, item disappears).")
     sold_by = models.ManyToManyField(Node,
         null=True,
         blank=True,
@@ -247,6 +324,7 @@ class Item(models.Model):
         help_text="Item card to sell. Can be null.<br />"+
           "Not seeing your item here? Make sure it has the %s field set." \
           % PRICE_FIELD)
+    valid = models.BooleanField(default=True, help_text="Goes False if the item disappears (sold or vanished if scarce)")
 
     @property
     def name(self):
@@ -258,7 +336,7 @@ class Item(models.Model):
         return self.item_card.name # May raise AttributeError.
 
     @property
-    def price(self):
+    def initial_price(self):
         """
         Determine price of object, referencing item card if necessary.
         """
@@ -266,8 +344,22 @@ class Item(models.Model):
             return self.base_price
         return int(self.item_card.get_field(PRICE_FIELD))
 
+    @property
+    def price(self):
+        num_purchase_events = NodeEvent.objects.filter(day__gte=(GameDay.get_day() - 1), item=self).count()
+        if self.rarity_class == RARITY_COMMON:
+            return self.initial_price
+        elif self.rarity_class == RARITY_RARE:
+            return int(math.ceil(self.initial_price * (2 ** (num_purchase_events * self.rarity_prob))))
+        elif self.rarity_class == RARITY_SCARCE:
+            return self.initial_price
+        elif self.rarity_class == RARITY_AUCTION:
+            return -1
+        else:
+            return 0
+
     def __unicode__(self):
-        return "%s (%s)" % (self.name, currency(self.price))
+        return "%s" % (self.name)
 
     def __getattr__(self, item):
         try:
@@ -310,6 +402,9 @@ class Character(GameTeXUser):
     """
     Hex Grid Character")
     """
+    phone = models.CharField(max_length=15, blank=True, default="")
+    urgent_sms = models.BooleanField(default=True)
+    routine_sms = models.BooleanField(default=False)
     points = models.IntegerField(default=0)
     nodes = models.ManyToManyField(Node, through=CharNode)
     is_disguised = models.BooleanField(default=False)
@@ -373,10 +468,10 @@ class Character(GameTeXUser):
 
         event = NodeEvent.objects.create(
             where = node,
-            what = _("unlocked"),
             who = self,
             day = GameDay.get_day(),
             who_disguised = self.is_disguised,
+            type = EVENT_UNLOCK
         )
         event.save()
 
@@ -392,10 +487,10 @@ class Character(GameTeXUser):
 
         event = NodeEvent.objects.create(
             where=node,
-            what=_("watched"),
             who=self,
             day=GameDay.get_day(),
             who_disguised=self.is_disguised,
+            type=EVENT_AGENT
         )
         event.save()
 
@@ -410,18 +505,40 @@ class Character(GameTeXUser):
 
         NodeEvent.objects.get(
             where=node,
-            what=_("watched"),
             who=self,
             day=GameDay.get_day(),
+            who_disguised=self.is_disguised,
+            type=EVENT_AGENT
         ).delete()
-#
-# @receiver(post_save, sender=Character)
-# def create_mailbox(sender, **kwargs):
-#     from messaging.models import Mailbox
-#     if kwargs['created']:
-#         print kwargs['instance']
-#         Mailbox.objects.get_or_create(name=kwargs['instance'].name,
-#                                       type=2)
+
+    def bid_on(self, node, item, price):
+
+        i = ItemBid.objects.get_or_create(
+            node=node,
+            item=item,
+            character=self,
+            day=GameDay.get_day(),
+            disguised=self.is_disguised
+        )[0]
+        i.amount = price
+        i.save()
+
+        NodeEvent.objects.create(
+            where=node,
+            who=self,
+            day=GameDay.get_day(),
+            type=EVENT_BID,
+            who_disguised=self.is_disguised
+        )
+
+    def revert_disguise(self, request):
+        if self.is_disguised:
+            self.is_disguised = False
+            self.save()
+        messages.warning(request, "Spent 1 Disguise; no longer disguised.")
+
+    def bid_for(self, item):
+        pass
 
 @receiver(post_save, sender=GameTeXUser)
 def create_hgcharacter(sender, **kwargs):
@@ -453,12 +570,74 @@ class GameDay(SingletonModel):
         """
         Tick the game state forward one day.
         """
+        from messaging.models import Message
+
+        # Resolve auctions.
+
+        auctioned_items = Item.objects.filter(id__in=ItemBid.objects.filter(day=GameDay.get_day()).values('item'))
+
+        for item in auctioned_items:
+            bids = ItemBid.objects.filter(day=GameDay.get_day(), item=item).order_by('-amount')
+            winning = bids[0]
+            winner = winning.character
+            winning.won = True
+            winning.resolved = True
+            winning.save()
+            NodeEvent.objects.create(
+                where=winning.node,
+                who=winner,
+                day=GameDay.get_day(),
+                type=EVENT_AUCTION,
+                who_disguised=bids[0].disguised
+            )
+
+            Message.mail_to(winner, "Congratulations! You won %s!" % item.name,
+                            "You've won %s.<br />Here's what you've won:<br/><br/>%s"
+                            % (item.name, item.post_buy), sender="Bakaara Market")
+            losers = bids[1:]
+            for loser in losers:
+                loser.won = False
+                loser.resolved = True
+                loser.save()
+                Message.mail_to(loser.character, "Sorry, you didn't win %s." % item.name,
+                                "You didn't win %s.  Add %s back to your budget. Better luck next time!"
+                                % (item.name, item.price), sender="Bakaara Market")
+
+
         for char in Character.objects.all():
             if char.char.has_field('market'):
                 char.points = char.char.market
 
-        for node in Node.objects.all():
-            pass
+        for w in CharNodeWatch.objects.filter():
+            messages = []
+            for e in NodeEvent.objects.filter(where=w.node, day=GameDay.get_day()):
+                print e
+                messages.append(e.display_for(0, w.char))
+            nodes = set()
+            for n in w.node.get_all_neighbors():
+                for e in NodeEvent.objects.filter(where=n, day=GameDay.get_day()):
+                    print e
+                    messages.append(e.display_for(1, w.char))
+                nodes.update(n.get_all_neighbors())
+            for n in nodes:
+                for e in NodeEvent.objects.filter(where=n, day=GameDay.get_day()):
+                    print e
+                    messages.append(e.display_for(2, w.char))
+            random.shuffle(messages)
+            Message.mail_to(w.char, "Agent report from %s" % w.node.name,
+                            "I saw the following things: <ul>" + "".join(("<li>%s</li>" % a) for a in messages) + "</ul>",
+                            sender="Bakaara Market")
+
+        for item in Item.objects.filter(valid=True):
+            if item.rarity_class == RARITY_SCARCE:
+                num_purchase_events = NodeEvent.objects.filter(day__gte=(GameDay.get_day() - 1), item=item).count()
+                if num_purchase_events > 0:
+                    if reduce(lambda a, b: a or b,
+                              [random.random() < item.rarity_prob for _foo in range(num_purchase_events)],
+                              False):  # Roll num_purchase_events random()s. If any come up True, item vanishes. So sad.
+                        item.valid = False
+                        item.save()
+
         gameday = GameDay.objects.get()
         gameday.day += 1
         gameday.save()
