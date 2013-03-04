@@ -12,31 +12,27 @@ from security.models import EntryWindow, SecureLocation, SecurityWindow
 from dateutil.parser import parse
 
 @login_required()
-def security_window(request, template='security/security_window.html'):
+def security(request, template='security/security.html'):
     char = gtc(request)
     if request.method == 'POST':
-        try:
-            time = parse(request.POST.get('time'))
-        except ValueError:
-            raise ValidationError("Invalid time; window not created.")
-        if time < datetime.now():
-            raise ValidationError("Start time must be in the future.")
-        try:
-            location = SecureLocation.objects.get(room=request.POST.get('room').strip())
-        except SecureLocation.DoesNotExist:
-            raise ValidationError("No secure location in room %s." % request.POST.get('room').strip())
-        new = SecurityWindow.objects.create(location=location, start_time=time, creator=char)
-        count = check_collisions_and_notify(new).count()
-        messages.success(request, "Window created! %s alerts triggered." % count)
-    current_windows = SecurityWindow.objects.filter(creator=char)
-    owned_locations = SecureLocation.objects.filter(controller__lineorder__order=1, controller__lineorder__character=char)
-    return render(request, template, {'current_windows': current_windows, 'owned_locations': owned_locations})
-
-@login_required()
-def entry_window(request, template='security/entry_window.html'):
-    char = gtc(request)
-    if request.method == 'POST':
-        try:
+        if request.POST.get('type') == 'entry':
+            try:
+                try:
+                    time = parse(request.POST.get('time'))
+                except ValueError:
+                    raise ValidationError("Invalid time; window not created.")
+                if time < datetime.now():
+                    raise ValidationError("Start time must be in the future.")
+                try:
+                    location = SecureLocation.objects.get(room=request.POST.get('room').strip())
+                except SecureLocation.DoesNotExist:
+                    raise ValidationError("No secure location in room %s." % request.POST.get('room').strip())
+                new = EntryWindow.objects.create(location=location, start_time=time, creator=char, person=request.POST.get('person'))
+                count = check_collisions_and_notify(new).count()
+                messages.success(request, "Window created!")
+            except ValidationError, e:
+                messages.error(request, e.messages[0])
+        else:
             try:
                 time = parse(request.POST.get('time'))
             except ValueError:
@@ -47,13 +43,13 @@ def entry_window(request, template='security/entry_window.html'):
                 location = SecureLocation.objects.get(room=request.POST.get('room').strip())
             except SecureLocation.DoesNotExist:
                 raise ValidationError("No secure location in room %s." % request.POST.get('room').strip())
-            new = EntryWindow.objects.create(location=location, start_time=time, creator=char, person=request.POST.get('person'))
+            new = SecurityWindow.objects.create(location=location, start_time=time, creator=char)
             count = check_collisions_and_notify(new).count()
-            messages.success(request, "Window created!")
-        except ValidationError, e:
-            messages.error(request, e.messages[0])
-    current_windows = EntryWindow.objects.filter(creator=char)
-    return render(request, template, {'current_windows': current_windows})
+            messages.success(request, "Window created! %s alerts triggered." % count)
+    entry_windows = EntryWindow.objects.filter(creator=char)
+    security_windows = SecurityWindow.objects.filter(creator=char)
+    owned_locations = SecureLocation.objects.filter(controller__lineorder__order=1, controller__lineorder__character=char)
+    return render(request, template, {'entry_windows': entry_windows, 'security_windows': security_windows, 'owned_locations': owned_locations})
 
 @login_required()
 def gm_security(request, template="security/gm.html"):
