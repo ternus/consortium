@@ -4,7 +4,7 @@ from django.db import models
 
 class Question(models.Model):
     asker_email = models.EmailField(blank=True)
-    public = models.BooleanField(default=False)
+    public = models.BooleanField(default=False, blank=True)
     question = models.TextField()
     asked_on = models.DateTimeField(auto_now_add=True)
     answer = models.TextField(blank=True)
