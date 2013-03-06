@@ -10,7 +10,7 @@ from consortium.consortium import send_mail
 def player_view(request, template='askgms/askgms.html'):
     if request.method == 'POST':
         email = request.POST.get('email'),
-        if not Question.objects.exists(asker_email=email[0] if email else None, question=request.POST.get('question')):
+        if not Question.objects.filter(asker_email=email[0] if email else None, question=request.POST.get('question')):
             q = Question(
                 asker_email=email[0] if email else None,
                 question=request.POST.get('question'),
