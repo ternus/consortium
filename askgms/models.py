@@ -10,3 +10,6 @@ class Question(models.Model):
     answer = models.TextField(blank=True)
     answered_by = models.CharField(max_length=256, blank=True)
     answered_on = models.DateTimeField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.asker_email + ": " + self.question[:60]
