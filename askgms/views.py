@@ -10,16 +10,20 @@ from consortium.consortium import send_mail
 def player_view(request, template='askgms/askgms.html'):
     if request.method == 'POST':
         email = request.POST.get('email'),
-        q = Question(
-            asker_email=email[0] if email else None,
-            question=request.POST.get('question'),
-            public=request.POST.get('public', False)
-        )
-        q.save()
-        send_mail('[Consortium] New question #%s from %s' % (q.id, q.asker_email),
-                  "%s has a question: \n\n%s\n\nGo to http://consortium.so/ask/gm/#q%s to answer." % (q.asker_email, q.question, q.id),
-                  'consortium-gms@cternus.net', ["consortium-gms@mit.edu"])
-        messages.success(request, "Question asked! You'll receive an answer as soon as possible.")
+        if not Question.objects.exists(asker_email=email[0] if email else None, question=request.POST.get('question')):
+            q = Question(
+                asker_email=email[0] if email else None,
+                question=request.POST.get('question'),
+                public=request.POST.get('public', False)
+            )
+            q.save()
+            send_mail('[Consortium] New question #%s from %s' % (q.id, q.asker_email),
+                      "%s has a question: \n\n%s\n\nGo to http://consortium.so/ask/gm/#q%s to answer." % (q.asker_email, q.question, q.id),
+                      'consortium-gms@cternus.net', ["consortium-gms@mit.edu"])
+
+            messages.success(request, "Question asked! You'll receive an answer as soon as possible.")
+        else:
+            messages.warning(request, "That question already exists -- just be patient.")
     questions = Question.objects.filter(public=True).exclude(answer='').order_by('-answered_on')
     return render(request, template, {'questions': questions})
 
