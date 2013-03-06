@@ -31,7 +31,6 @@ def player_view(request, template='askgms/askgms.html'):
 def gm_view(request, template='askgms/askgms.html'):
     if not request.user.is_superuser: raise Http404
     if request.method == 'POST':
-        email=request.POST.get('email', '')[0],
         q = get_object_or_404(Question, id=request.POST.get('qid', None))
         updated = q.answer != ''
         q.answer = request.POST.get('answer')
