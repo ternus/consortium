@@ -19,13 +19,17 @@
     </div>
     {% for question in questions %}
         <div class="question">
-            <div class="question-text">{{ question.question|linebreaks }}</div>
+        <div style="float:right"><h3><a name="q{{ question.id }}" href="{% url askgms %}#{{ question.id }}">#{{ question.id }}</a></h3></div>
+            <div class="question-text">{{ question.question|linebreaks }}
+                {% if gm %}<div class="question-answerer">Asked by {{ question.asker_email }}</div>{% endif %}
+
+            </div>
             {% if question.answer %}
                 <div class="question-answer">{{ question.answer|linebreaks }}</div>
                 <div class="question-answerer">Answered by {{ question.answered_by }} {{ question.answered_on|naturaltime }}</div>
             {% endif %}
         {% if gm %}
-            <a name="q{{ question.id }}" onclick="$('#answer_{{ question.id }}').slideToggle();">GM: Answer</a>
+            <a onclick="$('#answer_{{ question.id }}').slideToggle();">GM: Answer</a>
         <div class="answer" id="answer_{{ question.id }}">
         <form method="POST" action="{% url askgms_gm %}">
             {% csrf_token %}
