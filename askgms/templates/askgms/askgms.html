@@ -5,6 +5,7 @@
     <div class="subheader"><h2>Ask the GMs</h2></div>
     <div class="ask-dropdown"><a onclick="$('.ask').slideToggle(100);">Ask a Question</a></div>
     <div class="ask">
+    <h3>Please read all the currently posted clarifications before asking a new one.</h3>
         <form method="POST" action="{% url askgms %}">
             {% csrf_token %}
             <table>

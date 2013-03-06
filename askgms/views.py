@@ -11,7 +11,7 @@ def player_view(request, template='askgms/askgms.html'):
     if request.method == 'POST':
         email = request.POST.get('email'),
         q = Question(
-            asker_email=email[0],
+            asker_email=email[0] if email else None,
             question=request.POST.get('question'),
             public=request.POST.get('public', False)
         )
