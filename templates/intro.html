@@ -27,9 +27,11 @@
             <h3 id="consortium_gms">
                 <noscript>consortium-gms at mit dot edu</noscript>
             </h3>
+            <h3><a href="{{ STATIC_URL }}/rules-scenario.pdf">Rules and Scenario</a></h3>
+            {% if request.user %}<h3>Non-Public: <a href="{{ STATIC_URL }}/consortium-playerlist.pdf">Playerlist</a></h3>{% endif %}
+
         </div>
         <div id="floater">
-            <div id="consortium_teaser" class="consortium"><a href="{% url app %}" id="apply">Apply Now</a></div>
             <div id="consortium_blurb">
                 <div class="dateline">September 8, 2025, MOGADISHU:</div>
                 <p>
