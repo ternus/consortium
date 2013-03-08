@@ -11,7 +11,7 @@ from succession.models import Line
 class SecureLocation(models.Model):
     name = models.CharField(max_length=settings.ML, unique=True)
     room = models.CharField(max_length=settings.ML, unique=True)
-    controller = models.ForeignKey(Line, null=True)
+    controller = models.ForeignKey(Line, null=True, blank=True)
     entry_cost = models.IntegerField(default=0)
 
     def __unicode__(self):

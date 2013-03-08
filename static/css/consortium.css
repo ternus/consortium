@@ -396,6 +396,8 @@ App
     display: none; }
   #territory_info #tr_order {
     display: none; }
+  #territory_info #tr_disband {
+    display: none; }
   #territory_info #orderform {
     margin: 5px;
     display: none; }
@@ -535,3 +537,9 @@ Mail
 
 .answer {
   display: none; }
+
+.keycard {
+  width: 400px;
+  border: 1px solid black;
+  background: #f6f6f6;
+  padding: 20px; }

@@ -558,6 +558,9 @@ App
   #tr_order {
     display:none;
   }
+  #tr_disband {
+    display:none;
+  }
   #orderform {
 
     margin: 5px;
@@ -751,4 +754,11 @@ Mail
 
 .answer {
   display:none;
+}
+
+.keycard {
+  width: 400px;
+  border:  1px solid black;
+  background:  #f6f6f6;
+  padding: 20px;
 }
