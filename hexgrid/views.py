@@ -5,9 +5,11 @@ Views for hexgrid project.
 import json
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import  render, get_object_or_404, redirect
+from consortium.consortium import check_inspiration
 from hexgrid.game_settings import CURRENCY_SINGULAR, CURRENCY_PLURAL, HOME_NODE
-from hexgrid.models import Node, Character, Item, GameDay, CharNodeWatch, NodeEvent, Secret, ItemBid
+from hexgrid.models import Node, Character, Item, GameDay, CharNodeWatch, NodeEvent, Secret, ItemBid, RARITY_AUCTION, EVENT_BUY, EVENT_UNLOCK_2
 from django.utils.translation import ugettext as _, ungettext as _n
 from messaging.models import Message
 
@@ -34,15 +36,34 @@ def node(request, hex_id, template="node/node.html"):
     """
     Main view of a node.
     """
+    char = gtc(request)
     hex_node = Node.by_hex(hex_id)
-    print gtc(request)
+    items = Item.objects.filter(sold_by=hex_node, valid=True)
+    bids = {}
+    for i in items:
+        if i.rarity_class == RARITY_AUCTION:
+            if ItemBid.objects.filter(character=char, item=i):
+                bids[i] = ItemBid.objects.get(character=char, item=i).amount
     context = {
         'node': hex_node,
-        'items': Item.objects.filter(sold_by=hex_node),
+        'items': Item.objects.filter(sold_by=hex_node, valid=True),
+        'bids': bids,
         'char': gtc(request),
         'game_day': GameDay.get_day(),
     }
     return render(request, template, context)
+
+@login_required()
+def toggle_disguise(request):
+    char = gtc(request)
+    char.is_disguised = not char.is_disguised
+    char.save()
+    if char.is_disguised:
+        message = "You are now disguised."
+
+    else:
+        message = "You are no longer disguised."
+    return HttpResponse(json.dumps({'message': message, 'disguise': char.is_disguised}), mimetype="application/json")
 
 @login_required()
 def unlock(request, from_hex, to_hex):
@@ -73,7 +94,16 @@ def unlock(request, from_hex, to_hex):
     char.save()
 
     char.unlock_node_final(to_node)
-    char.revert_disguise()
+    event = NodeEvent.objects.create(
+        where=from_node,
+        who=char,
+        day=GameDay.get_day(),
+        who_disguised=char.is_disguised,
+        type=EVENT_UNLOCK_2
+    )
+
+    char.revert_disguise(request)
+    check_inspiration(request)
 
     messages.success(request,
         _("%(from_node_name)s introduces you to %(to_node_name)s." %
@@ -109,10 +139,11 @@ def node_map(request, template="node/map.html"):
                                       'unlockable': json.dumps(map(lambda x: x.pre_json(), unlockable))})
 
 @login_required()
-def buy(request, item_id, template="node/buy.html"):
+def buy(request, node_hex, item_id, template="node/buy.html"):
     """
     Buy an item.
     """
+    node = Node.by_hex(node_hex)
     char = gtc(request)
     item = get_object_or_404(Item, id=item_id)
 
@@ -126,10 +157,17 @@ def buy(request, item_id, template="node/buy.html"):
                                "currency_singular": CURRENCY_SINGULAR,
                                "currency_plural": CURRENCY_PLURAL}
 
+    event = NodeEvent.objects.create(
+         where=node,
+         who=char,
+         day=GameDay.get_day(),
+         who_disguised=char.is_disguised,
+         type=EVENT_BUY
+     )
 
     char.revert_disguise(request)
 
-    return render(request, template, {"result_str": result_str, "item": item})
+    return render(request, template, {"result_str": result_str, "item": item, "node": node})
 
 @login_required()
 def watch(request, hex_id):
@@ -155,10 +193,10 @@ def watch(request, hex_id):
 
     char.revert_disguise(request)
 
-    return node(request, hex_id)
+    return redirect(node, hex_id)
 
 @login_required()
-def unwatch(request, hex_id):
+def unwatch(request, from_hex, hex_id):
     """
     Remove a watcher from a node.
     """
@@ -172,10 +210,10 @@ def unwatch(request, hex_id):
     char.unwatch_node_final(watch_node)
 
     messages.success(request,
-        _("You put a watcher near %(node_name)s." %
+        _("You removed a watcher from %(node_name)s." %
         {"node_name": watch_node.name}))
 
-    return node(request, hex_id)
+    return redirect(node, from_hex)
 
 @login_required()
 def events(request, template="node/events.html"):
@@ -200,16 +238,17 @@ def events(request, template="node/events.html"):
 
     return render(request, template, {"events": events})
 
+
 def bid(request, hex, item):
     try:
         char = gtc(request)
         item = get_object_or_404(Item, id=item)
         node_hex = get_object_or_404(Node, hex=hex)
         amount = int(request.POST.get("amount", 0))
-        char.bid_on(node_hex, item, amount)
+        bid_x = char.bid_on(node_hex, item, amount)
         messages.success(request, "Bid confirmed!")
-        Message.mail_to(char, "Market Bid Confirmed", "Your bid of %s on %s has been confirmed." % (amount, item), sender="Bakaara Market")
+        Message.mail_to(char, "Market Bid Confirmed", "Your bid of %s on %s has been confirmed. %s" % (amount, item, "You were disguised when you bid." if bid_x.disguised else ""), sender="Bakaara Market")
         char.revert_disguise(request)
-    except:
-        messages.error(request, "Something went wrong and your bid was not processed.")
+    except Exception, e:
+        messages.error(request, "Something went wrong and your bid was not processed: %s" % e.message)
     return redirect(node, hex)

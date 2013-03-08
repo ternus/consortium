@@ -1,5 +1,6 @@
 {% extends "node/master.html" %}
 {% load i18n %}
+{% load lookup %}
 
 
 {% block main %}
@@ -14,10 +15,10 @@
                     {% for item in items %}
                         <li><span class="node_sale_item_name">{{ item.name }}</span>
                             ({{ item.rarity_class }})
-                    {% if item.available %}<span class="node_sale_item_buy_link">
-                        <a href="{% url buy item.id %}">Buy for {{ item.price }}</a>
+                    {% if item.available and item.rarity_class != 'Auction' %}<span class="node_sale_item_buy_link">
+                        <a href="{% url buy node.hex item.id %}">Buy for {{ item.price }}</a>
                         </span>
-                    {% elif item.rarity_class == 'Auction' %}<form style="display:inline;" action='{% url bid node.hex item.id %}' method="post">{% csrf_token %}<label for="amount">Bid:</label><input name="amount" type="text" id="amount" size="2"/></form>
+                    {% elif item.rarity_class == 'Auction' %}<form style="display:inline;" action='{% url bid node.hex item.id %}' method="post">{% csrf_token %}<label for="amount">Bid:</label><input name="amount" type="text" id="amount" size="2" value="{{ bids|lookup:item }}"/></form>
                     {% endif %}
                         </li>
                     {% endfor %}

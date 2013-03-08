@@ -1,0 +1,12 @@
+{% extends "node/master.html" %}
+{% load i18n %}
+
+
+{% block main %}
+    <h3>You bought: {{ item.name }}</h3>
+    <h4>You pay {{ item.price }}.</h4>
+    <div>
+    {{ item.post_buy }}
+    </div>
+
+{% endblock %}

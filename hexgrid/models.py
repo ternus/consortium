@@ -205,9 +205,7 @@ class Rumor(models.Model):
         help_text="Who or what is the rumor about?")
     text = models.TextField(
         help_text="What should the player see after purchasing? (HTML OK)")
-    probability = models.FloatField(default=1.0,
-        help_text="How likely is this rumor to show up?" + \
-                  " (default 1.0; 2 is twice as likely, 0.5 is half as likely)")
+    true = models.BooleanField(default=False)
     # quality = models.IntegerField(default=1, help_text="On a scale of 1-4, how good is this rumor?")
     valid = models.BooleanField(default=True)
 #
@@ -232,6 +230,7 @@ EVENT_AGENT    = "placed an agent"
 EVENT_BID      = "placed a bid"
 EVENT_AUCTION  = "won an auction"
 EVENT_UNLOCK   = "was introduced to a merchant"
+EVENT_UNLOCK_2 = "made an acquaintance"
 
 EVENT_CHOICES = (
     (EVENT_BUY, EVENT_BUY),
@@ -257,17 +256,24 @@ class NodeEvent(models.Model):
     day = models.IntegerField()
     item = models.ForeignKey("Item", null=True, blank=True)
 
+    def __unicode__(self):
+        return self.display_for(0, None)
+
     def display_for(self, distance, char):
         if char == self.who: distance = 0
         # random.seed(self.where.hex * distance * char.id * self.id)
         show = random.sample(["Where", "Who", "What"], 3 - distance)
 
-        if "Who" in show:
+        if self.who == char:
+            who = "You"
+        elif "Who" in show:
             who = "A mysterious figure" if self.who_disguised else self.who.name
         else:
             who = "Someone"
 
-        if "What" in show:
+        if self.who == char and self.type == EVENT_UNLOCK:
+            what = "were introduced to a merchant"
+        elif "What" in show:
             what = self.type
         else:
             what = "did something"
@@ -276,8 +282,6 @@ class NodeEvent(models.Model):
             where = "at %s" % self.where.name
         else:
             where = "somewhere"
-        print "%s %s %s." % (who, what, where)
-
         return "%s %s %s." % (who, what, where)
 
 RARITY_COMMON = "Common"
@@ -367,6 +371,9 @@ class Item(models.Model):
         except:
             raise AttributeError
 
+    def available(self):
+        return self.valid
+
     def clean(self):
         """
         Validation method for the admin.
@@ -434,7 +441,10 @@ class Character(GameTeXUser):
         All nodes a character has unlocked.
         """
         return Node.objects.filter(id__in=CharNodeWatch.objects.filter(
-            character=self).values_list('id', flat=True))
+            char=self).values_list('node', flat=True))
+
+    def can_watch(self):
+        return self.charnodewatch_set.all().count() <= self.market_stat()
 
     def visible_nodes(self):
         visible = set()
@@ -455,7 +465,7 @@ class Character(GameTeXUser):
         """
         Checks if a character has a node watched.
         """
-        return CharNodeWatch.objects.filter(character=self, node=node).exists()
+        return CharNodeWatch.objects.filter(char=self, node=node).exists()
 
     def unlock_node_final(self, node):
         """
@@ -481,7 +491,7 @@ class Character(GameTeXUser):
         Does *not* do error checking!
         """
         watchnode = CharNodeWatch.objects.get_or_create(node = node,
-            character = self,
+            char = self,
             watched_on = GameDay.get_day())[0]
         watchnode.save()
 
@@ -500,16 +510,15 @@ class Character(GameTeXUser):
         Does *not* do error checking!
         """
         CharNodeWatch.objects.get(node = node,
-            character = self,
+            char = self,
             watched_on = GameDay.get_day()).delete()
 
-        NodeEvent.objects.get(
+        NodeEvent.objects.filter(
             where=node,
             who=self,
             day=GameDay.get_day(),
-            who_disguised=self.is_disguised,
             type=EVENT_AGENT
-        ).delete()
+        ).all().delete()
 
     def bid_on(self, node, item, price):
 
@@ -530,12 +539,19 @@ class Character(GameTeXUser):
             type=EVENT_BID,
             who_disguised=self.is_disguised
         )
+        return i
 
     def revert_disguise(self, request):
         if self.is_disguised:
             self.is_disguised = False
             self.save()
-        messages.warning(request, "Spent 1 Disguise; no longer disguised.")
+            messages.warning(request, "Spent 1 Disguise; no longer disguised.")
+
+    def market_stat(self):
+        if not self.gto.has_field('Market'):
+            return 0
+        else:
+            return int(self.gto.Market[0])
 
     def bid_for(self, item):
         pass
@@ -577,7 +593,7 @@ class GameDay(SingletonModel):
         auctioned_items = Item.objects.filter(id__in=ItemBid.objects.filter(day=GameDay.get_day()).values('item'))
 
         for item in auctioned_items:
-            bids = ItemBid.objects.filter(day=GameDay.get_day(), item=item).order_by('-amount')
+            bids = ItemBid.objects.filter(day=GameDay.get_day(), item=item, character__alive=True).order_by('-amount')
             winning = bids[0]
             winner = winning.character
             winning.won = True
@@ -592,8 +608,8 @@ class GameDay(SingletonModel):
             )
 
             Message.mail_to(winner, "Congratulations! You won %s!" % item.name,
-                            "You've won %s.<br />Here's what you've won:<br/><br/>%s"
-                            % (item.name, item.post_buy), sender="Bakaara Market")
+                            "You've won %s at a cost of %s.<br />Here's what you've won:<br/><br/>%s"
+                            % (item.name, winning.amount, item.post_buy), sender="Bakaara Market")
             losers = bids[1:]
             for loser in losers:
                 loser.won = False
@@ -601,28 +617,32 @@ class GameDay(SingletonModel):
                 loser.save()
                 Message.mail_to(loser.character, "Sorry, you didn't win %s." % item.name,
                                 "You didn't win %s.  Add %s back to your budget. Better luck next time!"
-                                % (item.name, item.price), sender="Bakaara Market")
-
+                                % (item.name, loser.amount), sender="Bakaara Market")
+            item.valid = False
+            item.save()
 
         for char in Character.objects.all():
-            if char.char.has_field('market'):
-                char.points = char.char.market
+            char.points = char.market_stat()
+            char.save()
 
         for w in CharNodeWatch.objects.filter():
             messages = []
+            events = {0:set(), 1:set(), 2:set()}
             for e in NodeEvent.objects.filter(where=w.node, day=GameDay.get_day()):
-                print e
-                messages.append(e.display_for(0, w.char))
+                events[0].update([e])
             nodes = set()
             for n in w.node.get_all_neighbors():
                 for e in NodeEvent.objects.filter(where=n, day=GameDay.get_day()):
-                    print e
-                    messages.append(e.display_for(1, w.char))
+                    if not e in events[0]:
+                        events[1].update([e])
                 nodes.update(n.get_all_neighbors())
             for n in nodes:
                 for e in NodeEvent.objects.filter(where=n, day=GameDay.get_day()):
-                    print e
-                    messages.append(e.display_for(2, w.char))
+                    if not e in events[0] or e in events[1]:
+                        events[2].update([e])
+            for ed in events:
+                for e in events[ed]:
+                    messages.append(e.display_for(ed, w.char))
             random.shuffle(messages)
             Message.mail_to(w.char, "Agent report from %s" % w.node.name,
                             "I saw the following things: <ul>" + "".join(("<li>%s</li>" % a) for a in messages) + "</ul>",

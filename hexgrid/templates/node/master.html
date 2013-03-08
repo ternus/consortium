@@ -1,6 +1,26 @@
 {% extends "consortium.html" %}
 {% load i18n %}
 
+{% block javascripts %}
+
+    <script type="text/javascript">$(function() {
+        $('#toggle_disguise').click(function(){
+            $.get('{% url toggle_disguise %}', function(data) {
+                console.log(data);
+                if (data.disguise) {
+                    $('#disguise')[0].innerHTML = "On";
+                    $('#toggle_disguise')[0].innerHTML = "Disable without spending (regain point)";
+                } else {
+                        $('#disguise')[0].innerHTML = "Off";
+                        $('#toggle_disguise')[0].innerHTML = "Spend 1 Disguise to turn on";
+                }
+            });
+        });
+    });
+    </script>
+{% endblock %}
+
+
 {% block container %}
     <div class="node">
         <div class="subheader">
@@ -17,6 +37,17 @@
             </form></li>
             {% endif %}
             <li><a href="{% url map %}">{% if char %}My {% endif %}Map</a></li>
+            <li>Disguise: <span id="disguise">Off</span> <a id="toggle_disguise">Spend 1 Disguise to turn on</a></li>
+        <li>Agents:
+            <ul>
+                {% for a in char.charnodewatch_set.all %}
+                <li>{{ a.node.name }} <a href="{% url unwatch node.hex a.node.hex %}">Remove</a></li>
+                {% endfor %}
+            </ul>
+            {% if node %}
+            {% if char.can_watch %}<a href="{% url watch node.hex %}">Watch This Node</a>{% endif %}
+            {% endif %}
+        </li>
         </ul>
         </div>
         <div class="main">
