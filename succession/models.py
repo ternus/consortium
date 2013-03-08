@@ -12,6 +12,7 @@ ML=256
 class Line(models.Model):
     name = models.CharField(max_length=ML)
     description = models.TextField(blank=True)
+    leader_text = models.TextField(blank=True)
     members = models.ManyToManyField(Character, through="LineOrder")
     ability_card = models.ForeignKey(GameTeXObject, blank=True, null=True)
 
@@ -22,6 +23,10 @@ class Line(models.Model):
         if self.lineorder_set.order_by('order').exists():
             return self.lineorder_set.order_by('order')[0]
         return None
+
+    def rank(self, char):
+        if not char in self.members: return None
+        return LineOrder.objects.get(line=self, character=char).order
 
     @classmethod
     def by_char(cls, hgc, **kwargs):

@@ -17,12 +17,12 @@
 {% endblock %}
 
 {% block container %}
-    <h2>{{ line.name }}</h2>
+    <div class="subheader"><h2>{{ line.name }}</h2></div>
     <div>
         {{ line.description }}
     </div>
     <div>
-        <h3>This authorization controls:</h3>
+        <h3>The leader controls:</h3>
         <ul>
             {% for c in line_controls %}
                 <li>{{ c }}</li>

@@ -2,8 +2,11 @@
 {% load i18n %}
 
 {% block container %}
-    <h2>Chains of Command</h2>
+    <div class="subheader"><h2>Lines of Succession</h2></div>
+    <p>These are your lines of succession.</p>
+    <ul>
     {% for line in lines %}
-        <a href="{% url show_line line.id %}">{{ line.name }}</a> (current leader: {% ifequal line.current_leader.character char %}you!{% else %}{{ line.current_leader.character.gto.name }}{% endifequal %})<br />
+        <li><a href="{% url show_line line.id %}">{{ line.name }}</a> (current leader: {% ifequal line.current_leader.character char %}you!{% else %}{{ line.current_leader.character.gto.name }}{% endifequal %})</li>
     {% endfor %}
+    </ul>
 {% endblock %}
