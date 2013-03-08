@@ -38,87 +38,89 @@
 <body>
 
 {% block header %}
-<div id="consortium_header">
-    <div id="consortium_header_inner">
-        <div class="topbar_left">
-            <ul>
-                <li id="consortium_logo">
-                    <a href="/">
-                        {% trans "Consortium" %}
-                    </a>
-                </li>
-                <li class="points">
-                    <a href="/ask/">Ask GMs</a>
-                </li>
-
-                {% if char %}
-                <li class="points">
-                    <a href="/market/">Market</a>
-                </li>
+    <div id="consortium_header">
+        <div id="consortium_header_inner">
+            <div class="topbar_left">
+                <ul>
+                    <li id="consortium_logo">
+                        <a href="/">
+                            {% trans "Consortium" %}
+                        </a>
+                    </li>
                     <li class="points">
-                        <a href="/keycard/">Keycards</a>
+                        <a href="/ask/">Ask GMs</a>
                     </li>
 
-                    {% if has_lines %}
-                <li class="points">
-                    <a href="/succession/">Succession</a>
-                </li>
+                    {% if char %}
+                        {% if char.market_stat %}
+                            <li class="points">
+                                <a href="/market/">Market</a>
+                            </li>
+                        {% endif %}
+                        <li class="points">
+                            <a href="/keycard/">Keycards</a>
+                        </li>
+
+                        {% if has_lines %}
+                            <li class="points">
+                                <a href="/succession/">Succession</a>
+                            </li>
+                        {% endif %}
                         <li class="points">
                             <a href="/security/">Security</a>
                         </li>
+                        {% if has_wargame %}
+                            <li class="points"><a href="/territory/">Territory Control</a></li>
                         {% endif %}
-                    {% if has_wargame %}
-                        <li class="points"><a href="/territory/">Territory Control</a></li>
+
+                    {% elif gm %}
+                        <li class="points"><a href="/app/dashboard/">Apps</a></li>
+                        <li class="points"><a href="/territory/gm/">Territory Control</a></li>
+                        <li class="points"><a href="/security/gm/">Security</a></li>
+                        <li class="points"><a href="/succession/gm/">Succession</a></li>
+                        <li class="points"><a href="/mail/gm/">Mail [<span {% if unread %}class="mail-unread"{% endif %}>{{ unread }}</span>]</a></li>
+
                     {% endif %}
+                </ul>
+            </div>
+            <div class="topbar_right">
+                <ul>
+                    {% if char %}
+                        <li class="user">{{ char.char.name }}</li>
+                        <li><a href="/mail/"> <span class="icon-envelope{% if unread %} mail-unread{% endif %}">{{ unread }}</span></a></li>
 
-                {% elif gm %}
-                    <li class="points"><a href="/app/dashboard/">Apps</a></li>
-                    <li class="points"><a href="/territory/gm/">Territory Control</a></li>
-                    <li class="points"><a href="/security/gm/">Security</a></li>
-                    <li class="points"><a href="/succession/gm/">Succession</a></li>
-                    <li class="points"><a href="/mail/gm/">Mail [<span {% if unread %}class="mail-unread"{% endif %}>{{ unread }}</span>]</a></li>
+                        <li class="gameday">Day {{ game_day }}</li>
+                        <li class="logout"><a href="{% url logout %}">Logout</a></li>
+                    {% elif gm%}
+                        <li class="user">Welcome, GM.</li>
+                        <li class="logout"><a href="{% url logout %}">Logout</a></li>
+                    {% else %}
+                        <li>
+                            <a href="{% url login %}" class="loginlink">Login</a>
+                            <form method="post" id="login_form" action="{% url login %}">
+                                {% csrf_token %}
+                                <label for="id_username">Username</label>
+                                <input class="login_input" id="id_username" type="text" name="username" maxlength="30" />
+                                <label for="id_password">Password</label>
+                                <input class="login_input" type="password" name="password" id="id_password" />
+                                <input id="login_button" class="gradientbutton bluebutton" type="submit" value="Login" />
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                            </form>
 
-                {% endif %}
-            </ul>
-        </div>
-        <div class="topbar_right">
-            <ul>
-            {% if char %}
-                <li class="user">{{ char.char.name }}</li>
-                <li><a href="/mail/"> <span class="icon-envelope{% if unread %} mail-unread{% endif %}">{{ unread }}</span></a></li>
-
-                <li class="gameday">Day {{ game_day }}</li>
-                <li class="logout"><a href="{% url logout %}">Logout</a></li>
-            {% elif gm%}
-                <li class="user">Welcome, GM.</li>
-                <li class="logout"><a href="{% url logout %}">Logout</a></li>
-            {% else %}
-                <li>
-                <a href="{% url login %}" class="loginlink">Login</a>
-                <form method="post" id="login_form" action="{% url login %}">
-                    {% csrf_token %}
-                    <label for="id_username">Username</label>
-                    <input class="login_input" id="id_username" type="text" name="username" maxlength="30" />
-                    <label for="id_password">Password</label>
-                    <input class="login_input" type="password" name="password" id="id_password" />
-                    <input id="login_button" class="gradientbutton bluebutton" type="submit" value="Login" />
-                    <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                </form>
-
-                </li>
-            {% endif %}
-            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
 <div class="messages {% if messages %}closemargin{% endif %}">
     {% if messages %}
 
-    <div id="closemsgs"><a onclick="$('div.messages').fadeOut(200, function(){$('.container').addClass('topmargin');});">X</a></div>
-    <ul class="messages icons">
-        {% for message in messages %}
-            <li{% if message.tags %} class="iconized
+        <div id="closemsgs"><a onclick="$('div.messages').fadeOut(200, function(){$('.container').addClass('topmargin');});">X</a></div>
+        <ul class="messages icons">
+            {% for message in messages %}
+                <li{% if message.tags %} class="iconized
             {% if message.tags == "success" %}
             icon-ok-circle
             {% elif message.tags == "error" %}
@@ -129,8 +131,8 @@
             icon-warning-sign
             {% endif %}
             {{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
     {% endif %}
 
 </div>
