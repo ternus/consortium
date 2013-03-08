@@ -2,6 +2,8 @@
 """
 Miscellaneous stuff that didn't fit anywhere else.
 """
+from random import random, choice
+from django.contrib import messages
 from django.db.models import Q
 from hexgrid.models import Character, GameDay
 from messaging.models import Mailbox
@@ -62,3 +64,9 @@ def send_mail(subject, body, from_email, recipient_list, fail_silently=False, ht
 def post_import():
     for c in Character.objects.all():
         m = Mailbox.objects.create(type=1, character=c, name=c.gto.name)
+
+inspir_msgs = ['Congratulations', 'Ding', 'Surprise', 'Huzzah', 'It\'s your lucky day']
+
+def check_inspiration(request):
+    if random() <= .25:
+        messages.info(request, "%s! You gain 1 inspiration." % choice(inspir_msgs))
