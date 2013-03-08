@@ -2,7 +2,7 @@
 
 {% block container %}
 
-
+    <div class="subheader"><h2>Keycard Lookup</h2></div>
     <div style="padding-bottom: 10px;">
         <form method="get" action="{% url keycard %}">
             Look up a keycard by number: <input type="text" name="number"/>
@@ -12,9 +12,9 @@
 
     {% if number %}
         {% if kc %}
+            <div class="keycard">
+            <h3>{{ kc.name }}</h3>
 
-            <h2>{{ kc.name }}</h2>
-            <div>
                 <div>
                     <a href="#" onclick="$('#desc').slideToggle();">I have paid the soft skill cost</a>
 
@@ -30,7 +30,7 @@
 
                 {% if kc.koan %}
                     <div>
-                        <h3>Zendo koan for this keycard step:</h3>
+                        <h4>Zendo koan for this keycard step:</h4>
 
                         <p>{{ kc.koan }}</p>
                     </div>
@@ -43,6 +43,7 @@
                         <p id="hint" style="display: none;">{{ kc.hint }}</p>
                     </div>
                 {% endif %}
+            <a href="{% url pdf %}?items=refkey{% templatetag openbrace %}{{ kc.number }}{% templatetag closebrace %}&gtc=carditems">Keycard PDF</a>
             </div>
         {% else %}
 
