@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
+from consortium.consortium import check_inspiration
 from hexgrid.views import gtc
 from messaging.models import Message, Mailbox
 
@@ -33,10 +34,10 @@ def mail_home(request, template="messaging/mail_home.html"):
                     raise ValidationError("That mailbox doesn't exist.")
             new_mail.text = request.POST.get('text')
             new_mail.subject = request.POST.get('subject')
-            print request.POST.get('anon') == 'on'
             new_mail.anon = request.POST.get('anon') == 'on'
             new_mail.save()
-            print new_mail.anon
+            if new_mail.anon:
+                check_inspiration(request)
             messages.success(request, "Sent mail to %s" % new_mail.to.name)
             context['mail_text'] = ''
         except ValidationError, e:

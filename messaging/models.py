@@ -33,6 +33,17 @@ class Message(models.Model):
         return msg
 
     @classmethod
+    def mail_line(cls, line, subject, message, sender="System"):
+        if line == None: return None
+        msg = cls.objects.create(
+            sender=Mailbox.objects.get_or_create(name=sender, type=0)[0],
+            to=get_object_or_404(Mailbox, line=line, type=2),
+            subject=subject,
+            text=message
+        )
+        return msg
+
+    @classmethod
     def sms_to_char(cls, char, message):
         if not char.phone: return None
         client = TwilioRestClient(settings.TWILIO_SID, settings.TWILIO_AUTH_TOKEN)
