@@ -2,6 +2,7 @@
 # Django settings for hexgrid2 project.
 import os
 
+# SETTINGS_MODULE = 'hexgrid2.settings'
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -166,7 +167,9 @@ INSTALLED_APPS = (
     'territory',
     'security',
     'messaging',
-    'askgms'
+    'askgms',
+    'kombu.transport.django',
+    'djcelery'
     )
 
 
@@ -232,6 +235,12 @@ LOGGING = {
         },
     }
 }
+
+BROKER_URL = "django://" # tell kombu to use the Django database as the message queue
+
+import djcelery
+
+djcelery.setup_loader()
 
 # must be last
 from localsettings import *
