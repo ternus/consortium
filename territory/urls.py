@@ -14,6 +14,9 @@ urlpatterns = patterns('',
     url(r'^gm/tick/$', 'territory.views.game_tick', name='game_tick'),
 
     url(r'^submit/$', 'territory.views.submit_order', name='submit_order'),
+    url(r'^build/$', 'territory.views.submit_build', name='submit_build'),
+
+    url(r'^disband/$', 'territory.views.set_disband_priority', name='disband_priority'),
 
 #    url(r'^(?P<faction_code>\w+)/$', 'territory.views.overview', name='overview'),
 #    url(r'^line/(\d+)/$', 'succession.views.show_line', name='show_line'),

@@ -6,6 +6,7 @@ from django.db.models import Q, F
 from django.utils.timezone import now
 from singleton_models.models import SingletonModel
 from hexgrid.models import Character
+from messaging.models import Message
 from succession.models import Line
 
 ML = 256
@@ -17,6 +18,7 @@ FACTORY = "Factory"
 LAB = "Research Lab"
 
 special_choices = (
+    (None, "Nothing"),
     (SUPPLYDEPOT, SUPPLYDEPOT),
     (MINE,MINE),
     (FACTORY,FACTORY),
@@ -33,6 +35,17 @@ class Territory(models.Model):
     owner = models.ForeignKey('Faction', null=True, blank=True)
     special = models.CharField(max_length=ML, blank=True, null=True, choices=special_choices)
     special_type = models.CharField(max_length=ML, blank=True, null=True)
+
+    def resource_type(self):
+        if self.special != MINE: return None
+        return self.special_type[:-1]
+
+    def resource_amount(self):
+        if self.special != MINE: return 0
+        return 3 if self.special_type.endswith('+') else 2
+
+    def resource_generated(self):
+        return "%s %s" % (self.resource_amount(), self.resource_type())
 
     @classmethod
     def convert_pt(cls, pt):
@@ -98,6 +111,14 @@ class Territory(models.Model):
         return "[%s] %s <%s> (%s)" % (self.code, self.name, self.owner, self.has_unit)
 
 
+class BuildOrder(models.Model):
+    territory = models.ForeignKey('Territory')
+    faction = models.ForeignKey('Faction')
+    turn = models.IntegerField()
+
+    def __unicode__(self):
+        return "%s builds in %s on turn %s" % (self.faction, self.territory, self.turn)
+
 class Faction(models.Model):
     code = models.CharField(max_length=ML, primary_key=True, unique=True)
     name = models.CharField(max_length=ML)
@@ -107,12 +128,24 @@ class Faction(models.Model):
     def __unicode__(self):
         return "[%s] %s" % (self.code, self.name)
 
+    def units(self):
+        return self.unit_set.filter(alive=True).count()
+
+    def allowed_units(self):
+        return self.territory_set.filter(special=SUPPLYDEPOT).count() + 1
+
+    def rank(self, char):
+        if not self.controller: return 0
+        if not char: return 99999
+        return self.controller.rank(char)
+
 
 class Unit(models.Model):
     faction = models.ForeignKey('Faction')
     territory = models.ForeignKey('Territory')
     alive = models.BooleanField(default=True)
     special = models.CharField(max_length=ML, blank=True, default='')
+    disband_priority = models.IntegerField(default=3)
 
     @classmethod
     def live_units(cls):
@@ -226,18 +259,20 @@ class Action(models.Model):
 
     @property
     def p_str(self):
-        initial = "%s %s" % (self.territory.s_code, self.type)
+        initial = "%s: %s %s" % (self.issuer.gto.name if self.issuer else "System", self.territory.s_code, self.type)
         if self.type == MOVE:
-            return "%s %s" % (initial, self.target.s_code)
+            initial = "%s %s" % (initial, self.target.s_code)
         elif self.type == SUPP:
             if self.support_type == MOVE:
-                return "%s %s %s %s" % (initial, self.target.s_code, self.support_type, self.support_to.s_code)
+                initial = "%s %s %s %s" % (initial, self.target.s_code, self.support_type, self.support_to.s_code)
             else:
-                return "%s %s %s" % (initial, self.target.s_code, self.support_type)
+                initial = "%s %s %s" % (initial, self.target.s_code, self.support_type)
         elif self.type == SPEC:
-            return "%s %s" % (initial, self.special)
-        else:
+            initial =  "%s %s" % (initial, self.special)
+        if self.validation_level == V_PRELIM:
             return initial
+        else:
+            return "%s [%s]" % (initial, validation_str(self.validation_level))
 
     @classmethod
     def parse_move(cls, move, turn=None):
@@ -403,19 +438,31 @@ def resolve_conflict(opponents):
             a.validate(F_LOSE)
     return opps[0]
 
-DAY = 0
-NIGHT = 1
+
 
 class GameBoard(SingletonModel):
     turn = models.IntegerField(default=0)
 
+    DAY = 1
+    NIGHT = 0
+
+    PHASES = ['Night', 'Day']
+
+    @classmethod
+    def get_num_phase(cls):
+        return cls.get_turn() % 2
+
     @classmethod
     def get_phase(cls):
-        pass
+        return cls.PHASES[cls.get_num_phase()]
 
     @classmethod
     def get_turn(cls):
         return cls.objects.get().turn
+
+    @classmethod
+    def display_turn(cls):
+        return "%s %s" % (cls.get_phase(), cls.get_turn()/2 + 1)
 
     def generate_holds(self):
         """
@@ -568,23 +615,75 @@ class GameBoard(SingletonModel):
             u.alive = False
             u.save()
 
-    def execute_turn(self, debug=False):
-        if debug:
-            self.print_board()
+    def generate_resources(self):
+        for faction in Faction.objects.all():
+            generated = []
+            for territory in faction.territory_set.filter(special_type=MINE):
+                generated.append("%s generates %s" % (territory.name, territory.resource_generated()))
+            Message.mail_line(faction.controller, "Resources Generated", "Your territories generated the following resources:\n%s" % "\n".join(generated))
 
+    def build_units(self):
+        for faction in Faction.objects.all():
+            if not BuildOrder.objects.filter(faction=faction, turn=self.turn).exists():
+                continue
+            built = []
+            for b in BuildOrder.objects.filter(faction=faction, turn=self.turn):
+                if b.territory.owner != faction:
+                    built.append("%s: failed, territory not yours" % b.territory.name)
+                elif b.territory.has_unit:
+                    built.append("%s: failed, territory still occupied" % b.territory.name)
+                else:
+                    built.append("%s: succeeded" % b.territory.name)
+                    Unit.objects.create(faction=faction, territory=b.territory)
+            Message.mail_line(faction.controller, "Unit Build Results", "Your build orders:\n%s" % "\n".join(built))
+
+    def disband_units(self):
+        for faction in Faction.objects.all():
+            if faction.code == 'ET': continue # ET gets a pass, ha ha
+            if faction.units() > faction.allowed_units():
+                to_disband = faction.units() - faction.allowed_units()
+                disbandees = faction.unit_set.filter(alive=True).order_by('disband_priority')[:to_disband]
+                for d in disbandees:
+                    d.alive = False
+                    d.save()
+                try:
+                    Message.mail_line(faction.controller, "%s units disbanded" % disbandees.count(), "You were over your cap, so units in the following territories were disbanded:\n%s" % "\n".join(disbandees.values_list('territory__name', flat=True)))
+                except:
+                    pass
+
+    def mail_results(self):
+        for faction in Faction.objects.all():
+            actions = Action.objects.filter(faction=faction, turn=self.turn)
+            Message.mail_line(faction.controller, "%s Turn Results: %s" % (faction.name, self.display_turn()), "\n".join([a.p_str for a in actions]))
+
+    def execute_turn(self, debug=False, string=False):
+        pre = ""
+        if debug:
+            print self.print_board()
+        if string:
+            pre = self.print_board()
         self.generate_holds()
         self.validate_all_moves()
         self.process_moves()
+
+        if self.get_num_phase() == self.DAY:
+            self.generate_resources()
+            self.disband_units()
+        else:
+            self.build_units()
         self.turn += 1
         self.save()
-        # self.generate_holds()
+        self.generate_holds()
 
         if debug:
-            self.print_turn()
-            self.print_board()
+            print self.print_turn()
+            print self.print_board()
+
+        if string:
+            return "%s\n-------\n%s\n-------\n%s\n-------\n" % (pre, self.print_board(), self.print_turn(), self.print_board())
 
     def print_turn(self):
-        for a in Action.objects.filter(turn=self.turn - 1): print a
+        return "\n".join([str(a) for a in Action.objects.filter(turn=self.turn - 1)])
 
     def print_board(self):
-        for t in Territory.objects.all(): print t
+        return "\n".join([str(t) for t in Territory.objects.all()])

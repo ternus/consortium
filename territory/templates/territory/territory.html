@@ -59,8 +59,6 @@
                 for (o in data.orders) {
                     terrs[data.orders[o].territory].order = data.orders[o];
                     $('#order_table').append("<tr><td><a class='o_link' id='ol_"+data.orders[o].territory+"'>"+ {% if gm %}data.orders[o].gm_str{% else %}data.orders[o].str{% endif %} +"</a></td></tr>");
-
-                    {#                    $('#order_table').append("<tr><td><a class='o_link' id='ol_"+data.orders[o].territory+"'>"+ {% if gm %}data.orders[o].gm_str{% else %}data.orders[o].str{% endif %} +"</a></td><td>"+data.orders[o].issuer+"</td><td>"+data.orders[o].time+"</td></tr>");#}
                 }
                 $('body').data('territories', terrs);
                 $('.o_link').click(function(){
@@ -105,37 +103,42 @@
             $('select[name="support_from"]').val(o.support_from).trigger('change');
             $('select[name="move_to"]').val(o.target).trigger('change');
             $('input[name="special"]').val(o.special);
+            $('select[name="disband_priority"]').empty();
+            for (var p=1; p<{% if gm %}20{% else %}{{ faction.units|add:1 }}{% endif %}; p++) {
+                $('select[name="disband_priority"]').append('<option value="'+p+'">'+p+'</option>');
+            }
+            $('#disband_priority').val(o.disband_priority);
         }
 
-            var svg = $("#map").svg({height: 1200, onLoad: function (svg) {
-                terrs = $('body').data('territories');
-                ords = $('body').data('orders');
+        var svg = $("#map").svg({height: 1200, onLoad: function (svg) {
+            terrs = $('body').data('territories');
+            ords = $('body').data('orders');
 
-                var g = svg.group();
-                var defs = svg.defs(g);
-                for (var tx in terrs) {
-                    var t = terrs[tx];
-                    if (t.owner) {
-                        var lg = svg.linearGradient(g, t.color + "-grad", [
-                            [0, 'white'],
-                            [.5, t.color],
-                            [1, 'white']
-                        ], 0, 0, 0, "100%");
-                        var tt = svg.polygon(t.points, {fill: 'url(#' + t.color + '-grad)', stroke: 'green', id: t.code, class_: 'territory territory_poly territory_' + t.code});
-                    } else {
-                        var tt = svg.polygon(t.points, {fill: '#f0f9e7', stroke: 'green', id: t.code, class_: 'territory territory_poly territory_' + t.code});
-                    }
-                    if (t.has_unit) {
-                        svg.text(t.center[0], t.center[1], "★ "+t.s_code, {style: "font-size:8px;", id: t.code, class_: 'territory territory_text territory_unit territory_' + t.code});
-
-                    } else {
-                        svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;", id: t.code, class_: 'territory territory_text territory_' + t.code});
-
-                    }
-                    if (ords[tx] != undefined) {
-                        t.order = ords[tx];
-                    }
+            var g = svg.group();
+            var defs = svg.defs(g);
+            for (var tx in terrs) {
+                var t = terrs[tx];
+                if (t.owner) {
+                    var lg = svg.linearGradient(g, t.color + "-grad", [
+                        [0, 'white'],
+                        [.5, t.color],
+                        [1, 'white']
+                    ], 0, 0, 0, "100%");
+                    var tt = svg.polygon(t.points, {fill: 'url(#' + t.color + '-grad)', stroke: 'green', id: t.code, class_: 'territory territory_poly territory_' + t.code});
+                } else {
+                    var tt = svg.polygon(t.points, {fill: '#f0f9e7', stroke: 'green', id: t.code, class_: 'territory territory_poly territory_' + t.code});
                 }
+                if (t.has_unit) {
+                    svg.text(t.center[0], t.center[1], "★ "+t.s_code, {style: "font-size:8px;", id: t.code, class_: 'territory territory_text territory_unit territory_' + t.code});
+
+                } else {
+                    svg.text(t.center[0], t.center[1], t.s_code, {style: "font-size:8px;", id: t.code, class_: 'territory territory_text territory_' + t.code});
+
+                }
+                if (ords[tx] != undefined) {
+                    t.order = ords[tx];
+                }
+            }
 
             svg.polygon([{{ somalia }}], {fill: 'none', stroke: 'blue', strokeWidth: 2});
             refreshOrders();
@@ -158,10 +161,12 @@
                 if (t.owner == "{{ faction.name }}" || ({% if gm %}true{% else %}false{% endif %})) {
                     $('#t_id').val(terr);
                     $('#f_id').val(t.owner);
+                    $('#db_t_id').val(terr);
                     $('#order_status').hide();
                     $('select[name="move_to"]').empty();
                     $('select[name="support_to"]').empty();
                     $('select[name="support_from"]').empty();
+                    $('#tr_disband').show();
 
                     $('#orderform').slideDown();
                     $('#orderform').resetForm();
@@ -175,6 +180,7 @@
                         $('select[name="support_to"]').append('<option value="' + tct.code + '">' + tct.name + '</option>');
                     }
                     set_order_t(terr);
+
                     if (t.order != undefined) {
                         $("#t_order")[0].innerHTML = t.order.str;
                     } else {
@@ -201,27 +207,29 @@
             {% if gm %}
                 $("#t_code")[0].innerHTML = t.code;
             {% endif %}
-            if (t.owner == "{{ faction.name }}" || ({% if gm %}true{% else %}false{% endif %}))
+            if (t.owner == "{{ faction.name }}" || ({% if gm %}true{% else %}false{% endif %})) {
+                {#                if (t.order != undefined)#}
+                $('#tr_order').show();
                 $("#t_order")[0].innerHTML = t.order.str;
-
+            }
 
         }
         var unsetInfo = function (terr) {
             $(".territory_" + terr)[0].setAttribute("opacity", "1.0");
         }
-        var unset = function() {
+        var unset = function(x) {
             var t = $('body').data('t_selected');
             if (!(t) || t == undefined || (t != $(this).attr('id'))) {
                 if (t != undefined && t != $(this).attr('id')) {
                     unsetInfo(t);
                 }}
-            $('#territory_info td').html('');
+            $('#territory_info td.clear').html('');
             $('body').data('t_selected', null);
             $('.territory_red_outline').remove();
             $('#tr_owner').hide();
             $('#tr_unit').hide();
             $('#tr_order').hide();
-            $('#territory_info').slideUp();
+            $('#tr_disband').hide();
         };
         $('.territory').click(function (e) {
             $('body').data('tinfo', true);
@@ -235,7 +243,7 @@
                 setInfo($(this).attr('id'), true);
             }
             if ((getTerr($(this).attr('id')).owner != "{{ faction.name }}") && ({% if gm %}false{% else %}true{% endif %})) {
-                $('#orderform').slideUp();
+                $('#orderform').hide();
             }
         }).hover(function (e) {
                     $('body').data('tinfo', true);
@@ -299,9 +307,22 @@
         $('#orderform').ajaxForm({
             dataType: 'json',
             success: function (response) {
-                $('#order_status').addClass(response['status']).html(response['message']).show().delay(2000).fadeOut();
+                $('#order_status').addClass(response['status']).html(response['message']).show().delay(1000).fadeOut();
                 refreshOrders();
             }});
+        $('#disbandform').ajaxForm({
+            dataType: 'json',
+            success: function (response) {
+                $('#disband_status').addClass(response['status']).html(response['message']).show().delay(1000).fadeOut();
+                refreshOrders();
+            }});
+        $('#buildform').ajaxForm({
+            dataType: 'json',
+            success: function (response) {
+                $('#build_status').addClass(response['status']).html(response['message']).show().delay(1000).fadeOut();
+                refreshOrders();
+            }});
+
 
 
     });
@@ -311,40 +332,52 @@
 
 {% block container %}
     {% if gm %}
-        <h2>GM Territory View</h2>
+        <div class="subheader"><h2>GM Territory View</h2></div>
         <h4><a href="{% url game_tick %}">Tick Turn</a></h4>
     {% else %}
-        <h2>Control of Somalia</h2>
+        <div class="subheader"><h2>Control of Somalia</h2></div>
         <h3>You are controlling {{ faction.name }}.</h3>
     {% endif %}
+    <h3>It is {{ gameboard.display_turn }}.</h3>
+    <h4>Click to select a territory.  Click again to deselect.</h4>
     <div id="tcontainer">
         <div id="map" style="height:650px;"></div>
         <div id="territory_info">
             <table>
                 <tr>
                     <th>Name</th>
-                    <td id="t_name"></td>
+                    <td id="t_name" class="clear"></td>
                 </tr>
                 <tr>
-                    <th>Special</th>
-                    <td id="t_special"></td>
+                    <th>Contents</th>
+                    <td id="t_special" class="clear"></td>
                 </tr>
                 <tr id="tr_owner">
                     <th>Owner</th>
-                    <td id="t_owner"></td>
+                    <td id="t_owner" class="clear"></td>
                 </tr>
                 <tr id="tr_unit">
                     <th>Unit</th>
-                    <td id="t_unit"></td>
+                    <td id="t_unit" class="clear"></td>
                 </tr>
-                <tr id="tr_order">
+                <tr id="tr_disband">
+                    <th>Disband Priority</th><td>
+                    <form id="disbandform" method='post' action='{% url disband_priority %}'>{% csrf_token %}
+                        <input type="hidden" value='' name="db_t_id" id="db_t_id"/>
+                        <select name='disband_priority' id="disband_priority"><input type="submit" value="Set"/>
+                        </select>
+                    </form>
+                    <span id="disband_status"></span>
+                </td>
+                </tr>
+                <tr id="tr_order" class="clear">
                     <th>Order</th>
                     <td id="t_order"></td>
                 </tr>
                 {% if gm %}
                     <tr>
                         <th>Code</th>
-                        <td id="t_code"></td>
+                        <td id="t_code" class="clear"></td>
                     </tr>
 
                 {% endif %}
@@ -394,13 +427,34 @@
         <div>
             <h3>Orders This Turn</h3>
             <table id="order_table">
-
             </table>
+        {% if faction %}
+        <h3>Faction Status</h3>
+        You currently have {{ faction.units }} units.  With your current holdings, you are allowed {{ faction.allowed_units }}.
+            {% ifequal gameboard.get_num_phase gameboard.NIGHT %}
+                <h3>Build</h3>
+                <form action="{% url submit_build %}" method="POST" id="buildform">
+                {% csrf_token %}
+                    <input type="hidden" name="build_f_id" value="{{ faction.code }}" />
+                    <select name="build_t1">
+                        <option value=''>[None]</option>
+                        {% for t in owned_terrs %}
+                            <option value='{{ t.code }}' {% ifequal builds.0.territory.code t.code %}selected{% endifequal %}>{{ t.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="build_t2">
+                        <option value=''>[None]</option>
+                        {% for t in owned_terrs %}
+                            <option value='{{ t.code }}' {% ifequal builds.1.territory.code t.code %}selected{% endifequal %}>{{ t.name }}</option>
+                        {% endfor %}
+                    </select>
+                <input type="submit" value="Submit Build Orders" />
+                </form><span id="build_status"></span>
+            {% endifequal %}
+        {% endif %}
             <h3>Orders Last Turn</h3>
             <table id="last_order_table">
-
             </table>
-
         </div>
 
     </div>
