@@ -2,7 +2,9 @@ from datetime import timedelta
 from django.db import models
 from django.conf import settings
 from django.db.models import Q
+from django.utils.timezone import localtime
 from hexgrid.models import Character
+from messaging.models import Message
 from succession.models import Line
 
 
@@ -22,6 +24,7 @@ class EntryWindow(models.Model):
     person = models.CharField(max_length=settings.ML, unique=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField(editable=False)
+    notified = models.BooleanField(default=False)
 
     def __unicode__(self):
         return "%s entering %s at %s" % (self.creator, self.location, self.start_time)
@@ -36,6 +39,15 @@ class EntryWindow(models.Model):
                 Q(start_time__lt=self.start_time) & Q(end_time__lt=self.end_time)) | Q(
                 Q(start_time__lt=self.start_time) & Q(end_time__gt=self.end_time)))
 
+    def check_and_notify(self):
+        if self.notified == True: return
+        for s in self.overlaps():
+            if s.creator.alive:
+                Message.mail_to(s.creator, "Security Alarm: %s" % self.location,
+                "Security alert! Entry window detected; possible breach attempt in progress at %s, start time: %s" % (
+                self.location, localtime(self.start_time)), sender="Security", urgent=True)
+        self.notified = True
+        self.save()
 
 class SecurityWindow(models.Model):
     creator = models.ForeignKey(Character)

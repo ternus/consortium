@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render
+from consortium.consortium import check_inspiration
 from hexgrid.views import gtc
 from messaging.models import Message
 from security.models import EntryWindow, SecureLocation, SecurityWindow
@@ -30,6 +31,7 @@ def security(request, template='security/security.html'):
                 new = EntryWindow.objects.create(location=location, start_time=time, creator=char, person=request.POST.get('person'))
                 count = check_collisions_and_notify(new).count()
                 messages.success(request, "Window created!")
+                check_inspiration(request)
             except ValidationError, e:
                 messages.error(request, e.messages[0])
         else:
@@ -44,8 +46,10 @@ def security(request, template='security/security.html'):
             except SecureLocation.DoesNotExist:
                 raise ValidationError("No secure location in room %s." % request.POST.get('room').strip())
             new = SecurityWindow.objects.create(location=location, start_time=time, creator=char)
-            count = check_collisions_and_notify(new).count()
-            messages.success(request, "Window created! %s alerts triggered." % count)
+            # count = check_collisions_and_notify(new).count()
+            messages.success(request, "Window created!")
+            check_inspiration(request)
+
     entry_windows = EntryWindow.objects.filter(creator=char)
     security_windows = SecurityWindow.objects.filter(creator=char)
     owned_locations = SecureLocation.objects.filter(controller__lineorder__order=1, controller__lineorder__character=char)

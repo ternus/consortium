@@ -17,13 +17,14 @@
     </div>
     <div>
         <h3>Create a new entry window:</h3>
+        <p>Make sure to check the entry cost (may involve going to the location) before creating a window</p>
         <form method="post">
             <input type="hidden" name="type" value="entry" />
             {% csrf_token %}
             <label for="room">Room:</label><input type="text" id="room" name="room" /><br />
             <label for="person">Person entering:</label> <input type="text" id="person" name="person" /><br />
             <label for="time">Start time (e.g. "3/12 2:15 p.m."):</label> <input type="text" id="time" name="time" />
-            <input type="submit" value="Create Entry Window" />
+            <input type="submit" value="Spend Entry Cost and Create Entry Window" />
         </form>
     </div>
     <div><h3>Your current security windows:</h3>
@@ -39,7 +40,8 @@
             <input type="hidden" name="type" value="security" />
             {% csrf_token %}
             <label for="room">Room:</label><input type="text" id="room" name="room" /><br />
-            <label for="time">Start time (e.g. "3/12 2:15 p.m."):</label> <input type="text" id="time" name="time" /><br />          <input type="submit" value="Create Security Window" />
+            <label for="time">Start time (e.g. "3/12 2:15 p.m."):</label> <input type="text" id="time" name="time" /><br />
+            <input type="submit" value="Spend Security 1 and Create Security Window" />
         </form>
     </div>
 
