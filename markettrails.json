@@ -1,0 +1,366 @@
+[
+    {
+        "pk": 1, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2619, 
+            "text": "You have my shipment? Excellent. Bring the cocaine to the east end of 14-0 and wait for 5 uninterrupted minutes. I'll give you 15 Budget in exchange for it. (Give the item card to the GMs)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "CORNCOB", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 2, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2012, 
+            "text": "What's that? I think you have the wrong guy.", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "CORNCOB", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 3, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2312, 
+            "text": "What's that? I think you have the wrong guy.", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "CORNCOB", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 4, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2512, 
+            "text": "What's that? I think you have the wrong guy.", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "CORNCOB", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 5, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2215, 
+            "text": "What's that? I think you have the wrong guy.", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "CORNCOB", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 6, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2718, 
+            "text": "What's that? I think you have the wrong guy.", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "CORNCOB", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 7, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2417, 
+            "text": "Ah, you're here for the naval intel. I've got the transmissions, but you'll have to decode them yourself. (See the GMs for a copy of keycard 7070)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "BLUE DEEP", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 8, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2616, 
+            "text": "Oh, the naval codes? Yeah, I've got them. They're just a bit more encrypted than you might prefer. (See the GMs for a copy of keycard 7272) ", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "GREEN DEEP", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 9, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2313, 
+            "text": "You're here for the intel? I'll let you have it, but I'm warning you, it's not decrypted yet. (See the GMs for a copy of keycard 7846)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "BLACK DEEP", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 10, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2015, 
+            "text": "I've got proof that the government has been paying off a lot of different military organizations. I'm sure it's related to something deeper... (See the GMs for a copy of keycard 7046)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "BUFFALO", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 11, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2117, 
+            "text": "I've got proof that the police forces in the city have been collaborating with outside miltary. I'm sure it's related to something deeper...(See the GMs for a copy of keycard 7315)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "GAZELLE", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 12, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2316, 
+            "text": "Look at these photos. This woman is clearly connected at the highest levels, but no one I've talked to even knows her name... (See the GMs for a copy of keycard 7669)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "ZEBRA", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 13, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2413, 
+            "text": "Other researchers, you say? I think I might have heard something about that from my friend Deepak. He's pretty well connected in the city's rumor mill. If you tell him you're ALMIRS FRIEND I'm sure he'll clue you in.", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "FIVE BLACK SHEEP", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 14, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2614, 
+            "text": "Normally I don't give away information for free, but I suppose if you're trying to help out a friend... I know there's going to be an auction sometime soon, but I'm not sure when or where. Rashad might know more - he'll be willing to talk to you if you tell him it's a FAVOR FOR DEEPAK", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "ALMIRS FRIEND", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 15, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2815, 
+            "text": "You're in luck, friend. I had a customer in here yesterday who was only too happy to tell me all about that. Apparently, they're running the auction by email - just send your bid to the mailbox RANSOM before 8PM Friday. (You may change your bid at any time by sending a new email. Your most recent bid is assumed to be held in escrow, you may not spend budget if it would reduce you to being unable to pay for your bid", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "FAVOR FOR DEEPAK", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 16, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2514, 
+            "text": "I'm sorry to hear about your loss. You know, Captain Hughes was friends with a local doctor named Lakshmi. She might be able to help you if you ask for a copy of STEVES NOTES", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "REST IN PEACE", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 17, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2214, 
+            "text": "Captain Hughes passed away? That's tragic. But fortunately I do have some notes that he told me to keep safe. (You gain a copy of keycard 7015)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "STEVES NOTES", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 18, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2614, 
+            "text": "Are you sure you're interested? You know what happened to the last man who ran that network. Heh heh heh. Well, if you're sure, I hear there's a pink haired hacker who might be able to help you out if you tell her you've got a SWITCHBLADE", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "DAGGER", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 19, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2813, 
+            "text": "Hmm, you're looking into the information network cetered here? My sources say that the best interrogator in town might know something useful - but he won't talk unless you identify yourself with the phrase MACHETE", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "SWITCHBLADE", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 20, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2914, 
+            "text": "I'd prefer not to talk about it. The memories are too painful. Here, take this - it should have the information you need. (You gain a copy of the keycard 7786)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "MACHETE", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 21, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2418, 
+            "text": "HaroldVex, LLC? Yeah, I sent some people to work there. Like my brother Hakeem. If you're interested, you can try to talk to him at his day job selling rare earths. Tell him it's about the HAROLDVEX JOB", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "SHELL CORP", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 22, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2617, 
+            "text": "Oh yeah, I did some work for HaroldVex, but I didn't see anything interesting. They've got real tight security there. Well, had. Why don't you try talking to Aasad. She's always a good lead for some of the corporate gossip around here. Tell her it's about CORPORATE SHENANIGANS", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "HAROLDVEX JOB", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 23, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2514, 
+            "text": "HaroldVex, LLC, you say? I know they'd been having some legal issues before the attack, but their lawyer was setting up a pretty big runaround. Under normal circumstances, he wouldn't say a thing, but you might be able to convince him to talk if you tell him you know about his AFFAIR", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "CORPORATE SHENANIGANS", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 24, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2714, 
+            "text": "Ah. Well, ordinarily I'm not in the habit of divulging privledged information. But seeing as how HaroldVex is no longer my client, I suppose there's no harm in letting you see this. (You obtain a copy of keycard 7662)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "AFFAIR", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 25, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2513, 
+            "text": "I'm afraid that's a bit outside my area of expertise. Why don't you try talking to my friend Dmitry. He'll know I sent you if you call him a RUSSIAN BEAR", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "SILVER RUN", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 26, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2312, 
+            "text": "Hmmm.. you seem trustworthy enough. Why don't you go talk to my friend Abdiqani. Don't let her fool you - she knows more than she lets on. Just tell her you need to arrange a PROPERTY TRANSITION", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "RUSSIAN BEAR", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 27, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2113, 
+            "text": "Ah. A friend of Dmitry's, I see. We've been working with a supplier, but I don't know his name. I only know he's a safe vendor and I can identify myself to him with the passphrase SAFETY FIRST", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "PROPERTY TRANSITION", 
+            "only_once": false
+        }
+    },
+    {
+        "pk": 28, 
+        "model": "hexgrid.secret", 
+        "fields": {
+            "node": 2116, 
+            "text": "So you're looking to join our little network? Welcome on board. (You obtain a copy of keycard 7637.)", 
+            "moneycost": 0, 
+            "valid": true, 
+            "othercost": "", 
+            "password": "SAFETY FIRST", 
+            "only_once": false
+        }
+    }
+]
