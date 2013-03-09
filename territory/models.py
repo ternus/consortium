@@ -618,7 +618,7 @@ class GameBoard(SingletonModel):
     def generate_resources(self):
         for faction in Faction.objects.all():
             generated = []
-            for territory in faction.territory_set.filter(special_type=MINE):
+            for territory in faction.territory_set.filter(special=MINE):
                 generated.append("%s generates %s" % (territory.name, territory.resource_generated()))
             try:
                 Message.mail_line(faction.controller, "Resources Generated", "Your territories generated the following resources:\n%s" % "\n".join(generated))
