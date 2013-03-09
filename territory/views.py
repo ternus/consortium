@@ -161,10 +161,12 @@ def submit_order(request):
             if a.type == MOVE:
                 a.target = Territory.objects.get(code=request.POST.get('move_to'))
             elif a.type == SUPP:
-                a.target = Territory.objects.get(code=request.POST.get('support_from'))
                 a.support_type = request.POST.get('support_type')
                 if a.support_type == MOVE:
+                    a.target = Territory.objects.get(code=request.POST.get('support_from'))
                     a.support_to = Territory.objects.get(code=request.POST.get('support_to'))
+                else:
+                    a.target = Territory.objects.get(code=request.POST.get('support_to'))
             elif a.type == SPEC:
                 a.special = request.POST.get('special')
             else:
