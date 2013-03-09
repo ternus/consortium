@@ -684,7 +684,7 @@ class GameBoard(SingletonModel):
             print self.print_board()
 
         if string:
-            return "%s\n-------\n%s\n-------\n%s\n-------\n" % (pre, self.print_board(), self.print_turn(), self.print_board())
+            return "%s\n-------\n%s\n-------\n%s\n-------\n%s" % (pre, self.print_board(), self.print_turn(), self.print_board())
 
     def print_turn(self):
         return "\n".join([str(a) for a in Action.objects.filter(turn=self.turn - 1)])
