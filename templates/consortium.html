@@ -48,7 +48,11 @@
                         </a>
                     </li>
                     <li class="points">
-                        <a href="/ask/">Ask GMs</a>
+                        {% if gm %}
+                            <a href="/ask/gm/">Ask GMs</a>
+                        {% else %}
+                            <a href="/ask/">Ask GMs</a>
+                        {% endif %}
                     </li>
 
                     {% if char %}
