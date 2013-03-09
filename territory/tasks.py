@@ -7,7 +7,7 @@ from territory.models import GameBoard
 
 __author__ = 'cternus'
 
-@periodic_task(run_every=crontab(minute='2', hour='0'))
+@periodic_task(run_every=crontab(minute='0', hour='19'))
 def day_phase():
     g = GameBoard.objects.get()
     s = g.execute_turn(string=True)
