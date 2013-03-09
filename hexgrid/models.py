@@ -453,7 +453,7 @@ class Character(GameTeXUser):
             char=self).values_list('node', flat=True))
 
     def can_watch(self):
-        return self.charnodewatch_set.all().count() <= self.market_stat()
+        return self.charnodewatch_set.all().count() < self.market_stat()
 
     def visible_nodes(self):
         visible = set()
@@ -560,6 +560,9 @@ class Character(GameTeXUser):
             return 0
         else:
             return int(self.gto.Market[0])
+
+    def current_agents(self):
+        return self.charnodewatch_set.all().count()
 
     def bid_for(self, item):
         pass
