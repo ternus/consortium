@@ -1,0 +1,54 @@
+{% extends "consortium.html" %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+
+            $('#char_prefs').ajaxForm({
+                dataType: 'json',
+                success: function (response) {
+                    $('#prefs_status').addClass(response['status']).html(response['message']).show().delay(1000).fadeOut();
+                }});
+        });
+    </script>
+{% endblock %}
+
+{% block container %}
+    <div class="subheader"><h2>{{ char.name }}</h2></div>
+    {% if request_char == char or gm %}
+        <h3>Stats</h3>
+        <div class="char_stats">
+            <table>
+                {% for field in fields %}
+                    {% if field.value %}
+                        <tr><td>{{ field.field.name }}</td><td>{{ field.value }}</td></tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <h3>Preferences</h3>
+        <div class="char_preferences">
+            <form id="char_prefs" method="POST" action="{% url char_prefs char.id %}">
+                {% csrf_token %}
+                <table>
+                    <tr><td><label for="email">Email</label></td><td><input id="email" type="text" name="email" value="{{ char.user.email }}" /></td></tr>
+                    <tr><td><label for="contact_email">Send me emails when I get new in-game mail</label></td><td><input id="contact_email" type="checkbox" name="contact_email" {% if char.contact_email %}checked{% endif %} /></td></tr>
+                    <tr><td><label for="zephyr">Athena username</label></td><td><input id="zephyr" type="text" name="zephyr" value="{{ char.zephyr }}" /></td></tr>
+                    <tr><td><label for="contact_zephyr">Send me zephyrs when I get new in-game mail</label></td><td><input id="contact_zephyr" type="checkbox" name="contact_zephyr" {% if char.contact_zephyr %}checked{% endif %} /></td></tr>
+                    <tr><td><label for="phone">Phone</label></td><td><input id="phone" name="phone" value="{{ char.phone }}" /></td></tr>
+                    <tr><td><label for="routine_sms">Send me routine SMS (whenever I get mail)</label></td><td><input id="routine_sms" type="checkbox" name="routine_sms" {% if char.routine_sms %}checked{% endif %} /></td></tr>
+                    <tr><td><label for="urgent_sms">Send me alert SMS (urgent events only)</label></td><td><input id="urgent_sms" type="checkbox" name="urgent_sms" {% if char.urgent_sms %}checked{% endif %} /></td></tr>
+                </table>
+                <input type="submit" value="Update Preferences">
+            </form>
+            <span id="prefs_status"></span>
+        </div>
+    {% endif %}
+    <h3>Player Info</h3>
+    Player: {{ char.gto.player }}<br />
+    Email: {% if char.user.email %}{{ char.user.email }}{% else %}{{ char.gto.email }}{% endif %}<br />
+    Phone: {{ char.phone }}<br />
+    {{ char.gto.note }}<br />
+{% endblock %}

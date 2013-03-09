@@ -1,0 +1,14 @@
+{% extends "consortium.html" %}
+
+{% block container %}
+    <div class="subheader"><h2>Character List</h2></div>
+    <div>
+    <table id="char_table">
+        {% for char in characters %}
+            <tr><td><a href="{% url char_profile char.id %}">{{ char.name }}</a></td>
+                <td>{{ char.player }}</td></tr>
+        {% endfor %}
+    </table>
+
+    </div>
+{% endblock %}

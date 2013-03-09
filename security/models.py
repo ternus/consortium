@@ -9,7 +9,7 @@ from succession.models import Line
 
 
 class SecureLocation(models.Model):
-    name = models.CharField(max_length=settings.ML, unique=True)
+    name = models.CharField(max_length=settings.ML)
     room = models.CharField(max_length=settings.ML, unique=True)
     controller = models.ForeignKey(Line, null=True, blank=True)
     entry_cost = models.IntegerField(default=0)

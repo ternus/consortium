@@ -18,9 +18,20 @@
 
 {% block container %}
     <div class="subheader"><h2>{{ line.name }}</h2></div>
+    {% if line.description %}
+    <h3>Description</h3>
     <div>
-        {{ line.description }}
+        {{ line.description|linebreaks }}
     </div>
+    {% endif %}
+    {% if is_leader or gm %}
+        {% if line.leader_text %}
+            <h3>Leader Briefing</h3>
+            <div>
+                {{ line.leader_text|linebreaks }}
+            </div>
+        {% endif %}
+    {% endif %}
     <div>
         <h3>The leader controls:</h3>
         <ul>

@@ -1,7 +1,9 @@
 from hashlib import md5
-from django.db import models
+import subprocess
+from django.db import models, IntegrityError
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+from consortium.consortium import send_mail
 from hexgrid.models import Character
 from succession.models import Line
 from twilio.rest import TwilioRestClient
@@ -26,10 +28,14 @@ class Message(models.Model):
             subject=subject,
             text=message
         )
-        if char.routine_sms:
-            Message.sms_to_char(char, "New Mail: %s" % subject)
-        elif urgent and char.urgent_sms:
-            Message.sms_to_char(char, "New Urgent Mail: %s" % subject)
+        # if char.routine_sms:
+        #     Message.sms_to_char(char, "New Mail: %s" % subject)
+        # elif urgent and char.urgent_sms:
+        #     Message.sms_to_char(char, "New Urgent Mail: %s" % subject)
+        # if char.contact_email:
+        #     Message.mail_to_char(char)
+        # if char.contact_zephyr:
+        #     Message.zephyr_to_char(char)
         return msg
 
     @classmethod
@@ -42,6 +48,17 @@ class Message(models.Model):
             text=message
         )
         return msg
+
+    @classmethod
+    def mail_to_char(cls, char):
+        if not char.user.email: return None
+        return send_mail("[Consortium] New in-game mail", "You have a new in-game mail.  Go to http://consortium.so/mail/ to check it.", "consortium-gms@cternus.net", [char.user.email], fail_silently=True)
+
+    @classmethod
+    def zephyr_to_char(cls, char):
+        if not char.zephyr: return None
+        if " " in char.zephyr: return None
+        return subprocess.call("zwrite -d %s -m 'You have new Consortium mail. http://consortium.so/mail/'", shell=True)
 
     @classmethod
     def sms_to_char(cls, char, message):
@@ -60,9 +77,9 @@ MAILBOX_TYPES = (
 class Mailbox(models.Model):
     name = models.CharField(max_length=settings.ML)
     code = models.CharField(max_length=settings.ML, blank=True)
-    character = models.ForeignKey(Character, null=True)
+    character = models.ForeignKey(Character, null=True, blank=True)
     type = models.IntegerField(default=1, choices=MAILBOX_TYPES)
-    line = models.OneToOneField(Line, null=True)
+    line = models.OneToOneField(Line, null=True, blank=True)
     public = models.BooleanField(default=True)
 
     def __unicode__(self):

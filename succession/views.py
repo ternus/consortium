@@ -118,11 +118,12 @@ def show_line(request, line_id, template="lines/show_line.html"):
                         sender="Group Command")
         return redirect('show_line', line_id)
     if not request.user.is_superuser:
-        membership = get_object_or_404(LineOrder, character=gtu)
+        membership = get_object_or_404(LineOrder, character=gtu, line=line)
     else:
         membership = None
     context = {
         "line": line,
+        "is_leader": line.current_leader().character == gtu,
         "line_controls": line_controls,
         "line_members": line.members.all().order_by('lineorder'),
         "membership": membership,

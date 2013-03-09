@@ -6,11 +6,11 @@ from random import random, choice
 from django.contrib import messages
 from django.db.models import Q
 from hexgrid.models import Character, GameDay
-from messaging.models import Mailbox
 from succession.models import LineOrder, Line
 from django.core.mail import send_mail as core_send_mail
 from django.core.mail import EmailMultiAlternatives
 import threading
+
 
 def consortium_context(request):
     """
@@ -18,6 +18,8 @@ def consortium_context(request):
     :param request: request object
     :return: none
     """
+    from messaging.models import Mailbox
+
     mboxes = []
     try:
         char = Character.objects.get(user=request.user)

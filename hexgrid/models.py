@@ -410,6 +410,9 @@ class Character(GameTeXUser):
     Hex Grid Character")
     """
     phone = models.CharField(max_length=15, blank=True, default="")
+    zephyr = models.CharField(max_length=8, blank=True, default="")
+    contact_email = models.BooleanField(default=False)
+    contact_zephyr = models.BooleanField(default=False)
     urgent_sms = models.BooleanField(default=True)
     routine_sms = models.BooleanField(default=False)
     points = models.IntegerField(default=0)
