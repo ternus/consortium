@@ -168,6 +168,13 @@
                     $('select[name="support_from"]').empty();
                     $('#tr_disband').show();
 
+                    $('#tr_special').show();
+
+                    var ts = t.special;
+                    if (t.special_type)
+                        ts = ts + " " + t.special_type;
+                    $("#t_special")[0].innerHTML = ts;
+
                     $('#orderform').slideDown();
                     $('#orderform').resetForm();
                     $('#special').hide();
@@ -187,6 +194,7 @@
                     }
 
                 } else {
+                    $('#t_order').hide();
                     $('#orderform').slideUp();
                 }
             }
@@ -203,7 +211,6 @@
                 $("#t_owner")[0].innerHTML = t.owner;
             } else { $("#tr_owner").hide();}
 
-            $("#t_special")[0].innerHTML = t.special;
             {% if gm %}
                 $("#t_code")[0].innerHTML = t.code;
             {% endif %}
@@ -230,6 +237,7 @@
             $('#tr_unit').hide();
             $('#tr_order').hide();
             $('#tr_disband').hide();
+            $('#tr_special').hide();
         };
         $('.territory').click(function (e) {
             $('body').data('tinfo', true);
@@ -348,7 +356,7 @@
                     <th>Name</th>
                     <td id="t_name" class="clear"></td>
                 </tr>
-                <tr>
+                <tr id="tr_special" style="display:none;">
                     <th>Contents</th>
                     <td id="t_special" class="clear"></td>
                 </tr>

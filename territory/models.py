@@ -53,7 +53,6 @@ class Territory(models.Model):
 
     @classmethod
     def convert_points(cls, pts):
-    #        return pts
         return map(Territory.convert_pt, pts)
 
     @property
@@ -71,6 +70,7 @@ class Territory(models.Model):
             'owner': self.owner.name if self.owner else '',
             'color': self.owner.color if self.owner else 'white',
             'special': self.special,
+            'special_type': self.special_type,
             'has_unit': self.has_unit,
             #            'has_order': self.order() is not None
         })
