@@ -229,7 +229,7 @@ EVENT_RUMOR    = "heard a rumor"
 EVENT_AGENT    = "placed an agent"
 EVENT_BID      = "placed a bid"
 EVENT_AUCTION  = "won an auction"
-EVENT_UNLOCK   = "was introduced to a merchant"
+EVENT_UNLOCK   = "was introduced"
 EVENT_UNLOCK_2 = "made an acquaintance"
 
 EVENT_CHOICES = (
