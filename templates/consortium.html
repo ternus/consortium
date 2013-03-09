@@ -52,6 +52,9 @@
                     </li>
 
                     {% if char %}
+                        <li class="points">
+                        <a href="/c/charlist">Characters</a>
+                        </li>
                         {% if char.market_stat %}
                             <li class="points">
                                 <a href="/market/">Market</a>
@@ -74,7 +77,7 @@
                         {% endif %}
 
                     {% elif gm %}
-                        <li class="points"><a href="/app/dashboard/">Apps</a></li>
+                        <li class="points"><a href="/keycard/">Keycards</a></li>
                         <li class="points"><a href="/territory/gm/">Territory Control</a></li>
                         <li class="points"><a href="/security/gm/">Security</a></li>
                         <li class="points"><a href="/succession/gm/">Succession</a></li>
@@ -86,7 +89,7 @@
             <div class="topbar_right">
                 <ul>
                     {% if char %}
-                        <li class="user">{{ char.char.name }}</li>
+                        <li class="user"><a href="{% url char_profile char.id %}">{{ char.char.name }}</a></li>
                         <li><a href="/mail/"> <span class="icon-envelope{% if unread %} mail-unread{% endif %}">{{ unread }}</span></a></li>
 
                         <li class="gameday">Day {{ game_day }}</li>
