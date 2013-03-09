@@ -169,7 +169,8 @@ INSTALLED_APPS = (
     'messaging',
     'askgms',
     'kombu.transport.django',
-    'djcelery'
+    'djcelery',
+    'consortium'
     )
 
 
