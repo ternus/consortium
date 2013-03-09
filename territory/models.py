@@ -620,8 +620,10 @@ class GameBoard(SingletonModel):
             generated = []
             for territory in faction.territory_set.filter(special_type=MINE):
                 generated.append("%s generates %s" % (territory.name, territory.resource_generated()))
-            Message.mail_line(faction.controller, "Resources Generated", "Your territories generated the following resources:\n%s" % "\n".join(generated))
-
+            try:
+                Message.mail_line(faction.controller, "Resources Generated", "Your territories generated the following resources:\n%s" % "\n".join(generated))
+            except:
+                pass
     def build_units(self):
         for faction in Faction.objects.all():
             if not BuildOrder.objects.filter(faction=faction, turn=self.turn).exists():
@@ -635,8 +637,10 @@ class GameBoard(SingletonModel):
                 else:
                     built.append("%s: succeeded" % b.territory.name)
                     Unit.objects.create(faction=faction, territory=b.territory)
-            Message.mail_line(faction.controller, "Unit Build Results", "Your build orders:\n%s" % "\n".join(built))
-
+            try:
+                Message.mail_line(faction.controller, "Unit Build Results", "Your build orders:\n%s" % "\n".join(built))
+            except:
+                pass
     def disband_units(self):
         for faction in Faction.objects.all():
             if faction.code == 'ET': continue # ET gets a pass, ha ha
