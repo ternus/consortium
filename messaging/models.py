@@ -28,14 +28,14 @@ class Message(models.Model):
             subject=subject,
             text=message
         )
-        if char.routine_sms:
-            Message.sms_to_char(char, "New Mail: %s" % subject)
-        elif urgent and char.urgent_sms:
-            Message.sms_to_char(char, "New Urgent Mail: %s" % subject)
-        if char.contact_email:
-            Message.mail_to_char(char)
-        if char.contact_zephyr:
-            Message.zephyr_to_char(char)
+        # if char.routine_sms:
+        #     Message.sms_to_char(char, "New Mail: %s" % subject)
+        # elif urgent and char.urgent_sms:
+        #     Message.sms_to_char(char, "New Urgent Mail: %s" % subject)
+        # if char.contact_email:
+        #     Message.mail_to_char(char)
+        # if char.contact_zephyr:
+        #     Message.zephyr_to_char(char)
         return msg
 
     @classmethod
@@ -58,7 +58,7 @@ class Message(models.Model):
     def zephyr_to_char(cls, char):
         if not char.zephyr: return None
         if " " in char.zephyr: return None
-        return subprocess.call("zwrite -d %s -m 'You have new Consortium mail. http://consortium.so/mail/'", shell=True)
+        return subprocess.call("zwrite -d %s -m 'You have new Consortium mail. http://consortium.so/mail/'" % char.zephyr, shell=True)
 
     @classmethod
     def sms_to_char(cls, char, message):

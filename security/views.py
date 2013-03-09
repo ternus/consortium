@@ -36,19 +36,22 @@ def security(request, template='security/security.html'):
                 messages.error(request, e.messages[0])
         else:
             try:
-                time = parse(request.POST.get('time'))
-            except ValueError:
-                raise ValidationError("Invalid time; window not created.")
-            if time < datetime.now():
-                raise ValidationError("Start time must be in the future.")
-            try:
-                location = SecureLocation.objects.get(room=request.POST.get('room').strip())
-            except SecureLocation.DoesNotExist:
-                raise ValidationError("No secure location in room %s." % request.POST.get('room').strip())
-            new = SecurityWindow.objects.create(location=location, start_time=time, creator=char)
-            # count = check_collisions_and_notify(new).count()
-            messages.success(request, "Window created!")
-            check_inspiration(request)
+                try:
+                    time = parse(request.POST.get('time'))
+                except ValueError:
+                    raise ValidationError("Invalid time; window not created.")
+                if time < datetime.now():
+                    raise ValidationError("Start time must be in the future.")
+                try:
+                    location = SecureLocation.objects.get(room=request.POST.get('room').strip())
+                except SecureLocation.DoesNotExist:
+                    raise ValidationError("No secure location in room %s." % request.POST.get('room').strip())
+                new = SecurityWindow.objects.create(location=location, start_time=time, creator=char)
+                # count = check_collisions_and_notify(new).count()
+                messages.success(request, "Window created!")
+                check_inspiration(request)
+            except ValidationError, e:
+                messages.error(request, e.messages[0])
 
     entry_windows = EntryWindow.objects.filter(creator=char)
     security_windows = SecurityWindow.objects.filter(creator=char)
