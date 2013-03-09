@@ -213,7 +213,7 @@ def unwatch(request, from_hex, hex_id):
         _("You removed a watcher from %(node_name)s." %
         {"node_name": watch_node.name}))
 
-    return redirect(node, from_hex)
+    return redirect(node, from_hex) if from_hex else redirect(node, HOME_NODE)
 
 @login_required()
 def events(request, template="node/events.html"):
