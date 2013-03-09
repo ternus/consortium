@@ -177,6 +177,10 @@ def watch(request, hex_id):
     char = gtc(request)
     watch_node = Node.by_hex(hex_id)
 
+    if CharNodeWatch.objects.filter(char=char).count() >= char.market_stat():
+        messages.error(request, _("All your agents are placed; remove one first."))
+        return node(request, hex_id)
+
     if not char.has_node(watch_node):
         messages.error(request, _("You haven't unlocked that node."))
         return node(request, hex_id)

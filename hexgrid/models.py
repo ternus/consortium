@@ -519,8 +519,7 @@ class Character(GameTeXUser):
         Does *not* do error checking!
         """
         CharNodeWatch.objects.get(node = node,
-            char = self,
-            watched_on = GameDay.get_day()).delete()
+            char = self).delete()
 
         NodeEvent.objects.filter(
             where=node,
