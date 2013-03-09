@@ -71,8 +71,9 @@ div.messages {
 .closemargin {
   margin: 33px auto 10px auto; }
 
-.topmargin {
-  margin: 52px auto 10px auto; }
+@media screen and (min-width: 651px) {
+  .topmargin {
+    margin: 52px auto 10px auto; } }
 
 .container {
   position: relative;
@@ -80,7 +81,9 @@ div.messages {
   color: #111111 !important; }
   @media screen and (max-width: 720px) {
     .container {
-      width: 100%; } }
+      width: 100%;
+      position: static;
+      clear: both; } }
   @media screen and (min-width: 721px) {
     .container {
       margin-left: auto;
@@ -157,12 +160,18 @@ div.messages {
     line-height: 25px;
     height: 30px; }
   @media screen and (max-width: 650px) {
-    #consortium_header form {
-      display: none;
-      visibility: hidden; }
-    #consortium_header .loginlink {
-      display: block;
-      visibility: visible; } }
+    #consortium_header {
+      background: none;
+      height: auto;
+      position: static; }
+      #consortium_header li.points {
+        display: block; }
+      #consortium_header form {
+        display: none;
+        visibility: hidden; }
+      #consortium_header .loginlink {
+        display: block;
+        visibility: visible; } }
   @media screen and (min-width: 651px) {
     #consortium_header form {
       display: block;

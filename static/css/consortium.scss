@@ -169,9 +169,9 @@ div.messages {
   //}
 }
 .topmargin {
-  //@media screen and (min-width:$breaksmall+1) {
-  margin: $headersize+20 auto 10px auto;
-  //}
+  @media screen and (min-width:$breaktiny+1) {
+    margin: $headersize+20 auto 10px auto;
+  }
 }
 
 
@@ -179,6 +179,9 @@ div.messages {
   position:relative;
   @media screen and (max-width:$breaksmall) {
     width: 100%;
+    position: static;
+    clear:both;
+
   }
   @media screen and (min-width:$breaksmall+1) {
     margin-left: auto;
@@ -274,6 +277,13 @@ $headercolor: $ultralight;
     height: 30px;
   }
   @media screen and (max-width:$breaktiny) {
+    background: none;
+    height: auto;
+    position: static;
+    li.points {
+      display: block;
+    }
+
     form {
       display: none;
       visibility: hidden;
