@@ -25,7 +25,7 @@ class Line(models.Model):
         return None
 
     def rank(self, char):
-        if not char in self.members: return None
+        if not char in self.members.all(): return None
         return LineOrder.objects.get(line=self, character=char).order
 
     @classmethod
