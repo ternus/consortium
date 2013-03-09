@@ -397,6 +397,9 @@ class CharNode(models.Model):
     node = models.ForeignKey(Node)
     unlocked_on = models.IntegerField(default=0)
 
+    def __unicode__(self):
+        return "%s unlocked %s on day %s" % (self.character, self.node, self.unlocked_on)
+
 class CharNodeWatch(models.Model):
     """
     Links characters to nodes to track watchers.
@@ -404,6 +407,9 @@ class CharNodeWatch(models.Model):
     char = models.ForeignKey("Character")
     node = models.ForeignKey(Node)
     watched_on = models.IntegerField()
+
+    def __unicode__(self):
+        return "%s watching %s on %s" % (self.char, self.node, self.watched_on)
 
 class Character(GameTeXUser):
     """
