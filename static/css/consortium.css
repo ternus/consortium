@@ -544,6 +544,9 @@ Mail
   .question td.lbl {
     width: 200px; }
 
+.unanswered {
+  background: lightyellow; }
+
 .answer {
   display: none; }
 

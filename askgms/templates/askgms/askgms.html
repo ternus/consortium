@@ -18,7 +18,7 @@
     <p>You'll receive an email when your question is answered.</p>
     </div>
     {% for question in questions %}
-        <div class="question">
+        <div class="question {% if question.answered_on %}{% else %}un{% endif %}answered">
         <div style="float:right"><h3><a name="q{{ question.id }}" href="{% url askgms %}#{{ question.id }}">#{{ question.id }}</a></h3></div>
             <div class="question-text">{{ question.question|linebreaks }}
                 {% if gm %}<div class="question-answerer">Asked by {{ question.asker_email }}</div>{% endif %}
