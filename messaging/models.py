@@ -28,14 +28,14 @@ class Message(models.Model):
             subject=subject,
             text=message
         )
-        # if char.routine_sms:
-        #     Message.sms_to_char(char, "New Mail: %s" % subject)
-        # elif urgent and char.urgent_sms:
-        #     Message.sms_to_char(char, "New Urgent Mail: %s" % subject)
-        # if char.contact_email:
-        #     Message.mail_to_char(char)
-        # if char.contact_zephyr:
-        #     Message.zephyr_to_char(char)
+        if char.routine_sms:
+            Message.sms_to_char(char, "New Mail: %s" % subject)
+        elif urgent and char.urgent_sms:
+            Message.sms_to_char(char, "New Urgent Mail: %s" % subject)
+        if char.contact_email:
+            Message.mail_to_char(char)
+        if char.contact_zephyr:
+            Message.zephyr_to_char(char)
         return msg
 
     @classmethod
