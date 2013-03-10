@@ -2,13 +2,14 @@ from datetime import timedelta, datetime
 from django.db import models
 from django.conf import settings
 from django.db.models import Q
+from django.utils import timezone
 from django.utils.timezone import localtime, make_aware
 from hexgrid.models import Character
 from messaging.models import Message
 from succession.models import Line
 
-DST_START = make_aware(datetime(2013, 3, 10, 1, 59))
-DST_END = make_aware(datetime(2013, 3, 10, 3, 1))
+DST_START = make_aware(datetime(2013, 3, 10, 1, 59), timezone.get_default_timezone())
+DST_END = make_aware(datetime(2013, 3, 10, 3, 1), timezone.get_default_timezone())
 
 class SecureLocation(models.Model):
     name = models.CharField(max_length=settings.ML)
