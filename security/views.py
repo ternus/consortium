@@ -35,7 +35,6 @@ def security(request, template='security/security.html'):
                 except SecureLocation.DoesNotExist:
                     raise ValidationError("No secure location in room %s." % request.POST.get('room').strip())
                 new = EntryWindow.objects.create(location=location, start_time=time, creator=char, person=request.POST.get('person'))
-                count = check_collisions_and_notify(new).count()
                 messages.success(request, "Window created!")
                 check_inspiration(request)
             except ValidationError, e:
