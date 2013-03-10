@@ -4,6 +4,7 @@
 {% block container %}
     <div class="subheader"><h2>Lines of Succession</h2></div>
     <p>These are your lines of succession.</p>
+    {% if gm %}<a href="{% url kill_character %}">Declare Character Dead</a>{% endif %}
     <ul>
     {% for line in lines %}
         <li><a href="{% url show_line line.id %}">{{ line.name }}</a> (current leader: {% ifequal line.current_leader.character char %}you!{% else %}{{ line.current_leader.character.gto.name }}{% endifequal %})</li>
