@@ -6,7 +6,10 @@ from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render
+from django.utils.timezone import make_aware, now
 from pytz import NonExistentTimeError
+from django.utils.timezone import localtime, make_aware
+from django.utils import timezone
 from consortium.consortium import check_inspiration
 from hexgrid.views import gtc
 from messaging.models import Message
@@ -20,12 +23,12 @@ def security(request, template='security/security.html'):
         if request.POST.get('type') == 'entry':
             try:
                 try:
-                    time = parse(request.POST.get('time'))
+                    time = make_aware(parse(request.POST.get('time')), timezone.get_default_timezone())
                 except ValueError:
                     raise ValidationError("Invalid time; window not created.")
                 except NonExistentTimeError:
                     raise ValidationError("Go google 'Daylight Saving Time' and try again.")
-                if time < datetime.now():
+                if time < now():
                     raise ValidationError("Start time must be in the future.")
                 try:
                     location = SecureLocation.objects.get(room=request.POST.get('room').strip())
@@ -40,12 +43,12 @@ def security(request, template='security/security.html'):
         else:
             try:
                 try:
-                    time = parse(request.POST.get('time'))
+                    time = make_aware(parse(request.POST.get('time')), timezone.get_default_timezone())
                 except NonExistentTimeError:
                     raise ValidationError("Go google 'Daylight Saving Time' and try again.")
                 except ValueError:
                     raise ValidationError("Invalid time; window not created.")
-                if time < datetime.now():
+                if time < now():
                     raise ValidationError("Start time must be in the future.")
                 try:
                     location = SecureLocation.objects.get(room=request.POST.get('room').strip())
