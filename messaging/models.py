@@ -58,7 +58,7 @@ class Message(models.Model):
     def zephyr_to_char(cls, char):
         if not char.zephyr: return None
         if " " in char.zephyr: return None
-        return subprocess.call("zwrite -d %s -m 'You have new Consortium mail. http://consortium.so/mail/'" % char.zephyr, shell=True)
+        return subprocess.call("zwrite -d %s@ATHENA.MIT.EDU -m 'You have new Consortium mail. http://consortium.so/mail/'" % char.zephyr, shell=True)
 
     @classmethod
     def sms_to_char(cls, char, message):
