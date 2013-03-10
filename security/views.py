@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render
+from pytz import NonExistentTimeError
 from consortium.consortium import check_inspiration
 from hexgrid.views import gtc
 from messaging.models import Message
@@ -22,6 +23,8 @@ def security(request, template='security/security.html'):
                     time = parse(request.POST.get('time'))
                 except ValueError:
                     raise ValidationError("Invalid time; window not created.")
+                except NonExistentTimeError:
+                    raise ValidationError("Go google 'Daylight Saving Time' and try again.")
                 if time < datetime.now():
                     raise ValidationError("Start time must be in the future.")
                 try:
@@ -38,6 +41,8 @@ def security(request, template='security/security.html'):
             try:
                 try:
                     time = parse(request.POST.get('time'))
+                except NonExistentTimeError:
+                    raise ValidationError("Go google 'Daylight Saving Time' and try again.")
                 except ValueError:
                     raise ValidationError("Invalid time; window not created.")
                 if time < datetime.now():
