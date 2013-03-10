@@ -360,7 +360,10 @@ class Item(models.Model):
         elif self.rarity_class == RARITY_AUCTION:
             return -1
         else:
-            return 0
+            try:
+                return self.initial_price
+            except:
+                return 1
 
     def __unicode__(self):
         return "%s" % (self.name)
