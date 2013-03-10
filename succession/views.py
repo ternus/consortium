@@ -94,9 +94,9 @@ def show_line(request, line_id, template="lines/show_line.html"):
     promote = request.GET.get('promote', None)
     if promote:
         promoted_user = get_object_or_404(User, id=int(promote))
-        from_membership = get_object_or_404(LineOrder, character__user=promoted_user)
+        from_membership = get_object_or_404(LineOrder, line=line, character__user=promoted_user)
         print from_membership.character, from_membership.order
-        to_membership = get_object_or_404(LineOrder, order=from_membership.order - 1)
+        to_membership = get_object_or_404(LineOrder, line=line, order=from_membership.order - 1)
         print to_membership.character, to_membership.order
         # get around db column uniqueness enforcement
         neworder = to_membership.order
