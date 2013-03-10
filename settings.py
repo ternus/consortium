@@ -170,6 +170,7 @@ INSTALLED_APPS = (
     'askgms',
     'kombu.transport.django',
     'djcelery',
+    'django_crontab',
     'consortium'
     )
 
