@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta, datetime
 from django.db import models
 from django.conf import settings
 from django.db.models import Q
@@ -7,6 +7,8 @@ from hexgrid.models import Character
 from messaging.models import Message
 from succession.models import Line
 
+DST_START = localtime(datetime(2013, 3, 10, 1, 59))
+DST_END = localtime(datetime(2013, 3, 10, 3, 1))
 
 class SecureLocation(models.Model):
     name = models.CharField(max_length=settings.ML)
@@ -30,7 +32,15 @@ class EntryWindow(models.Model):
         return "%s entering %s at %s" % (self.creator, self.location, self.start_time)
 
     def save(self, **kwargs):
+
+        if self.start_time >= DST_START and self.start_time <= DST_END:
+            self.start_time = DST_START
+
         self.end_time = self.start_time + timedelta(minutes=settings.ENTRY_WINDOW_MINUTES)
+
+        if self.end_time >= DST_START and self.end_time <= DST_END:
+            self.end_time = DST_END
+
         return super(EntryWindow, self).save(**kwargs)
 
     def overlaps(self):
@@ -56,7 +66,15 @@ class SecurityWindow(models.Model):
     end_time = models.DateTimeField(editable=False)
 
     def save(self, **kwargs):
+
+        if self.start_time >= DST_START and self.start_time <= DST_END:
+            self.start_time = DST_START
+
         self.end_time = self.start_time + timedelta(minutes=settings.SECURITY_WINDOW_MINUTES+1)
+
+        if self.end_time >= DST_START and self.end_time <= DST_END:
+            self.end_time = DST_END
+
         return super(SecurityWindow, self).save(**kwargs)
 
     def __unicode__(self):
