@@ -9,7 +9,7 @@ from territory.models import GameBoard
 __author__ = 'cternus'
 
 def test_task():
-    send_mail("[Consortium] Test!", "Day phase successful at %s\n%s" % (datetime.now(), s), 'consortium-gms@cternus.net',
+    send_mail("[Consortium] Test!", "Day phase successful at %s" % (datetime.now()), 'consortium-gms@cternus.net',
           ['ternus@cternus.net'], fail_silently=True)
 
 # @periodic_task(run_every=crontab(minute='0', hour='19'))
