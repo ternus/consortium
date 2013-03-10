@@ -33,7 +33,7 @@ class EntryWindow(models.Model):
         return "%s entering %s at %s" % (self.creator, self.location, self.start_time)
 
     def save(self, **kwargs):
-        self.start_time = make_aware(self.start_time, timezone.get_default_timezone())
+        # self.start_time = make_aware(self.start_time, timezone.get_default_timezone())
         if self.start_time >= DST_START and self.start_time <= DST_END:
             self.start_time = DST_START
 
