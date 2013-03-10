@@ -56,7 +56,7 @@ class SecurityWindow(models.Model):
     end_time = models.DateTimeField(editable=False)
 
     def save(self, **kwargs):
-        self.end_time = self.start_time + timedelta(minutes=settings.SECURITY_WINDOW_MINUTES)
+        self.end_time = self.start_time + timedelta(minutes=settings.SECURITY_WINDOW_MINUTES+1)
         return super(SecurityWindow, self).save(**kwargs)
 
     def __unicode__(self):
