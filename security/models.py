@@ -7,8 +7,8 @@ from hexgrid.models import Character
 from messaging.models import Message
 from succession.models import Line
 
-DST_START = localtime(datetime(2013, 3, 10, 1, 59))
-DST_END = localtime(datetime(2013, 3, 10, 3, 1))
+DST_START = datetime(2013, 3, 10, 1, 59)
+DST_END = datetime(2013, 3, 10, 3, 1)
 
 class SecureLocation(models.Model):
     name = models.CharField(max_length=settings.ML)
