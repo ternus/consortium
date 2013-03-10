@@ -70,5 +70,5 @@ def post_import():
 inspir_msgs = ['Congratulations', 'Ding', 'Surprise', 'Huzzah', 'It\'s your lucky day']
 
 def check_inspiration(request):
-    if random() <= .25:
+    if random() <= .50:
         messages.info(request, "%s! You gain 1 inspiration." % choice(inspir_msgs))
