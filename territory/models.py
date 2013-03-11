@@ -147,6 +147,9 @@ class Unit(models.Model):
     special = models.CharField(max_length=ML, blank=True, default='')
     disband_priority = models.IntegerField(default=3)
 
+    def __unicode__(self):
+        return "%s %s" % (self.faction, self.territory)
+
     @classmethod
     def live_units(cls):
         return cls.objects.filter(alive=True)
