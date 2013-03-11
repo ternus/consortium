@@ -51,7 +51,7 @@ class EntryWindow(models.Model):
                 Q(start_time__lte=self.start_time) & Q(end_time__gte=self.start_time)))
 
     def check_and_notify(self):
-        if self.notified == True: return
+        if self.notified == True: return False
         for s in self.overlaps():
             if s.creator.alive:
                 Message.mail_to(s.creator, "Security Alarm: %s" % self.location,
@@ -59,6 +59,7 @@ class EntryWindow(models.Model):
                 self.location, localtime(self.start_time)), sender="Security", urgent=True)
         self.notified = True
         self.save()
+        return True
 
 class SecurityWindow(models.Model):
     creator = models.ForeignKey(Character)

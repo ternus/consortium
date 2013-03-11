@@ -11,6 +11,6 @@ __author__ = 'cternus'
 def check_security_windows():
     windows = EntryWindow.objects.filter(start_time__lte=now(), start_time__gt=now() - timedelta(hours=1))
     for w in windows:
-        w.check_and_notify()
-        send_mail("[Consortium] Security window alert!", "Security window triggered: %s" % w, 'consortium-gms@cternus.net',
+        if w.check_and_notify():
+            send_mail("[Consortium] Security window alert!", "Security window triggered: %s" % w, 'consortium-gms@cternus.net',
                   ['ternus@mit.edu'], fail_silently=True)
