@@ -82,7 +82,7 @@ def show_line(request, line_id, template="lines/show_line.html"):
     line = get_object_or_404(Line, id=line_id)
     line_controls = []
     try:
-        line_controls += ['The mailbox %s' % line.mailbox.name]
+        line_controls += ['The mailbox %s (code %s)' % (line.mailbox.name, line.mailbox.code)]
     except:
         pass
     try:
