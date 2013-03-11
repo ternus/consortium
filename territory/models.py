@@ -418,12 +418,12 @@ def resolve_conflict(opponents):
         opponents[0].validate(V_SUCCESS)
         return opponents[0]
     opps = sorted(opponents, key=lambda x: x.support_strength, reverse=True)
-    if opps[0].faction == opps[1].faction:
-        # This code should never get run, but it's here anyway.
-        if opps[0].support_strength > opps[1].support_strength:
-            map(lambda x: x.validate(F_NODESTROY),
-                filter(lambda y: y.faction == opps[0].faction, opponents)
-            )
+    # if opps[0].faction == opps[1].faction:
+    #     # This code should never get run, but it's here anyway.
+    #     if opps[0].support_strength > opps[1].support_strength:
+    #         map(lambda x: x.validate(F_NODESTROY),
+    #             filter(lambda y: y.faction == opps[0].faction, opponents)
+    #         )
     if opps[0].support_strength == opps[1].support_strength:
         for a in opponents:
             if a.validation_level >= V_PRELIM:
