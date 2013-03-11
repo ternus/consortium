@@ -93,7 +93,9 @@
                                 <tr><td colspan=4><div id="mtext_{{ m.id }}" style="display:none;" class="mail_txt">
                                     {{ m.text|safe|linebreaks }}<br />
                                 </div></td>
-                                </tr></table>
+                                </tr>
+                            {% if not m.anon and not m.sender.public %}<tr><td colspan=4>You may reply to this mail using mail code {{ m.sender.code }}.</td></tr>{% endif %}
+                            </table>
                         </div>
                     {% endfor %}
                 {% else %}
