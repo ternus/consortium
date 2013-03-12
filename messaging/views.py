@@ -75,10 +75,8 @@ def gm_mail_home(request, template="messaging/mail_home.html"):
             print request.POST.get('anon') == 'on'
             new_mail.anon = request.POST.get('anon') == 'on'
             new_mail.save()
-            print new_mail.anon
-            subprocess.call("/usr/bin/zwrite -d -c consortium-sekrit-auto -m 'Mail from %s to %s:\n%s'" % (new_mail.sender.name,
-                                                                                      new_mail.to.name, new_mail.text.replace("'", "\\'")))
-
+            subprocess.Popen(['zwrite', '-d', '-c', 'consortium-sekrit-auto', '-m', "Mail from %s to %s:\n%s" % (new_mail.sender.name,
+                              new_mail.to.name, new_mail.text.replace('"', "'"))])
             messages.success(request, "Sent mail to %s" % new_mail.to.name)
             context['mail_text'] = ''
         except ValidationError, e:
