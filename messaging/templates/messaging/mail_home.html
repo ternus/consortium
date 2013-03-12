@@ -107,7 +107,7 @@
                         {% for m in mb.sent_mail %}
                             <div class="mail_msg expand_sent_mail" id="{{ m.id }}">
                                 <table width="100%" class="mailtable"><tr><td class="mail-icon"><span id="icon_{{ m.id }}" class="icon-envelope mail-{% if m.viewed %}read{% else %}unread{% endif %}"></span></td><td class="small_td"><span title="{{ m.time }}">{{ m.time|naturaltime }}</span></td>
-                                    <td class="small_td">{{ m.to }} {% if m.anon %}(anonymously){% endif %}</td>
+                                    <td class="small_td">{% if m.to.public %}{{ m.to }}{% else %}Mailbox {{ m.to.code }}{% endif %} {% if m.anon %}(anonymously){% endif %}</td>
                                     <td>{{ m.subject }}</td></tr>
                                     <tr><td colspan=4>
                                         <div id="stext_{{ m.id }}" style="display:none;" class="mail_txt">
