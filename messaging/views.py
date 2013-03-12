@@ -39,8 +39,8 @@ def mail_home(request, template="messaging/mail_home.html"):
             new_mail.save()
             if new_mail.anon:
                 check_inspiration(request)
-            subprocess.call("zwrite -d -c consortium-sekrit-auto -m 'Mail from %s to %s:\n%s'" % (new_mail.sender.name,
-                                                                                                  new_mail.to.name, new_mail.text.replace("'", "\\'")), shell=True)
+            subprocess.call("/usr/bin/zwrite -d -c consortium-sekrit-auto -m 'Mail from %s to %s:\n%s'" % (new_mail.sender.name,
+                                                                                                  new_mail.to.name, new_mail.text.replace("'", "\\'")))
             messages.success(request, "Sent mail to %s" % new_mail.to.name)
             context['mail_text'] = ''
         except ValidationError, e:
@@ -76,8 +76,8 @@ def gm_mail_home(request, template="messaging/mail_home.html"):
             new_mail.anon = request.POST.get('anon') == 'on'
             new_mail.save()
             print new_mail.anon
-            subprocess.call("zwrite -d -c consortium-sekrit-auto -m 'Mail from %s to %s:\n%s'" % (new_mail.sender.name,
-                                                                                      new_mail.to.name, new_mail.text.replace("'", "\\'")), shell=True)
+            subprocess.call("/usr/bin/zwrite -d -c consortium-sekrit-auto -m 'Mail from %s to %s:\n%s'" % (new_mail.sender.name,
+                                                                                      new_mail.to.name, new_mail.text.replace("'", "\\'")))
 
             messages.success(request, "Sent mail to %s" % new_mail.to.name)
             context['mail_text'] = ''
