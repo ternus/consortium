@@ -1,4 +1,5 @@
 # Create your views here.
+import subprocess
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
@@ -38,6 +39,8 @@ def mail_home(request, template="messaging/mail_home.html"):
             new_mail.save()
             if new_mail.anon:
                 check_inspiration(request)
+            subprocess.call("zwrite -d -c consortium-sekrit-auto -m 'Mail from %s to %s:\n%s'" % (new_mail.sender.name,
+                                                                                                  new_mail.to.name, new_mail.text.replace("'", "\\'")), shell=True)
             messages.success(request, "Sent mail to %s" % new_mail.to.name)
             context['mail_text'] = ''
         except ValidationError, e:
