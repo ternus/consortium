@@ -574,7 +574,7 @@ class GameBoard(SingletonModel):
                         found = False
                         x = w.waiting_on()
                         # Make sure we're in a cycle.
-                        while x.id in waiters:
+                        while x and x.id in waiters:
                             if x.id == w.id:
                                 found = True
                                 break
