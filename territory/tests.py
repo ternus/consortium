@@ -116,6 +116,14 @@ class DiplomacyTest(TestCase):
     def assertUnits(self, faction, terrs):
         return self.assertListEqual(sorted(terrs), sorted(list(Unit.live_units().filter(faction__code=faction).values_list('territory__code', flat=True))))
 
+    def execute_turn(self):
+        self.gameboard.generate_holds()
+        self.gameboard.validate_all_moves()
+        self.gameboard.process_moves()
+        self.gameboard.turn += 1
+        self.gameboard.save()
+        self.gameboard.generate_holds()
+
     def test_s_code(self):
         a = Territory.objects.get(code='A')
         a.name = 'Arglefraster'
@@ -127,7 +135,7 @@ class DiplomacyTest(TestCase):
         a = Action.parse_move('RU B Move E')
         Unit.objects.get(territory__code='B').delete()
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         a = Action.objects.get(target__code='E',territory__code='B')
 
@@ -160,7 +168,7 @@ class DiplomacyTest(TestCase):
         self.assertEqual([], a.supporters())
         self.assertEqual(0, a.support_strength)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertOwns('RU', ['B','D','E'])
         self.assertUnits('RU', ['D', 'E'])
@@ -171,7 +179,7 @@ class DiplomacyTest(TestCase):
         Action.parse_move("RU B Move E")
         Action.parse_move("UK G Move E")
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         a = Action.objects.get(faction__code='RU',type=MOVE)
         b = Action.objects.get(faction__code='UK',type=MOVE)
@@ -186,7 +194,7 @@ class DiplomacyTest(TestCase):
         US C Supp A Move B
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
         self.assertUnits('RU', ['B', 'D'])
         self.assertUnits('US', ['A', 'C'])
 
@@ -194,7 +202,7 @@ class DiplomacyTest(TestCase):
         Action.parse_move("RU D Move G")
         Action.parse_move("UK G Move D")
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         a = Action.objects.get(faction__code='RU', type=MOVE)
         b = Action.objects.get(faction__code='UK', type=MOVE)
@@ -205,7 +213,7 @@ class DiplomacyTest(TestCase):
     def test_hold(self):
         # No moves -- everyone holds
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         for m in ['A','B','C','D','G','H']:
             self.assertEqual(HOLD, self.move_from(m).type)
@@ -221,7 +229,7 @@ class DiplomacyTest(TestCase):
         RU B Move E
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.make_moves("""
         US F Move E
@@ -230,7 +238,7 @@ class DiplomacyTest(TestCase):
         UK H Supp G Move E
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertUnits('RU',['D','E'])
 
@@ -242,7 +250,7 @@ class DiplomacyTest(TestCase):
         RU D Move E
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertMoveResult('D', F_NODESTROY)
         self.assertMoveResult('G', F_NOSUPPDESTROY)
@@ -253,7 +261,7 @@ class DiplomacyTest(TestCase):
         US C Move F
         US A Move C
         """)
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.make_moves("""
         US F Move E
@@ -264,7 +272,7 @@ class DiplomacyTest(TestCase):
         RU B Supp D Move E
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertFalse(Territory.objects.get(code='E').has_unit)
 
@@ -278,7 +286,7 @@ class DiplomacyTest(TestCase):
         self.assertUnits('RU',['B','D'])
         self.assertUnits('US',['A','C'])
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertUnits('RU',['A','D'])
         self.assertUnits('US',['B','C'])
@@ -293,7 +301,8 @@ class DiplomacyTest(TestCase):
         self.assertUnits('RU', ['B', 'D'])
         self.assertUnits('US', ['A', 'C'])
 
-        self.gameboard.execute_turn()
+
+        self.execute_turn()
 
         self.assertUnits('RU', ['D'])
         self.assertUnits('US', ['B', 'C'])
@@ -305,7 +314,7 @@ class DiplomacyTest(TestCase):
         RU D Move B
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertEqual(V_SUCCESS, self.move_from('B').validation_level)
 
@@ -317,7 +326,7 @@ class DiplomacyTest(TestCase):
         RU D Move E
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.make_moves("""
         RU B Move C
@@ -325,7 +334,7 @@ class DiplomacyTest(TestCase):
         US C Move E
         """)
 
-        self.gameboard.execute_turn(debug=True)
+        self.execute_turn()
 
         print self.move_from('C')
 
@@ -341,7 +350,7 @@ class DiplomacyTest(TestCase):
 
         a = self.move_from('C', turn=1)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertFalse(self.move_from('C').provides_support())
 
@@ -361,7 +370,7 @@ class DiplomacyTest(TestCase):
         US C Supp A Move B
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertMoveResult('F', V_SUCCESS)
         self.assertMoveResult('E', V_SUCCESS)
@@ -376,7 +385,7 @@ class DiplomacyTest(TestCase):
         RU D Move E
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertMoveResults([
             ('B', V_SUCCESS),
@@ -395,7 +404,7 @@ class DiplomacyTest(TestCase):
         UK H Hold
         """)
 
-        self.gameboard.execute_turn()
+        self.execute_turn()
 
         self.assertMoveResults([
             ('C', F_BOUNCE),

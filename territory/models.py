@@ -507,10 +507,15 @@ class GameBoard(SingletonModel):
                     a.validate(F_SUPPORTCUT)
                 continue
             if a.type == MOVE and acts().filter(target=a.territory, territory=a.target, type=MOVE).exists():
+                b = acts().get(target=a.territory, territory=a.target, type=MOVE)
                 # Swap detected.
-                a.validate(F_NOSWAP)
-                acts().get(target=a.territory, territory=a.target, type=MOVE).validate(F_NOSWAP)
-                continue
+                if a.support_strength == b.support_strength:
+                    a.validate(F_NOSWAP)
+                    b.validate(F_NOSWAP)
+                    continue
+                else:
+                    resolve_conflict(acts().filter(Q(Q(target=a.territory) & Q(type=MOVE)) | Q(id=a.id)))
+                    continue
             if not (Unit.live_units().filter(territory=a.target).exists() or acts().filter(target=a.target).exclude(
                 id=a.id).exists()):
                 # Unopposed move.  Just succeeds.
