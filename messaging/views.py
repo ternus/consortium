@@ -39,8 +39,11 @@ def mail_home(request, template="messaging/mail_home.html"):
             new_mail.save()
             if new_mail.anon:
                 check_inspiration(request)
-            subprocess.Popen(['zwrite', '-d', '-c', 'consortium-sekrit-auto', '-m', "Mail from %s to %s\nSubject: %s\n%s" % (new_mail.sender.name,
-                  new_mail.to.name, new_mail.subject, new_mail.text.replace('"', "'"))])
+            try:
+                subprocess.Popen(['zwrite', '-d', '-c', 'consortium-sekrit-auto', '-m', "Mail from %s to %s\nSubject: %s\n%s" % (new_mail.sender.name,
+                new_mail.to.name, new_mail.subject, new_mail.text.replace('"', "'"))])
+            except:
+                pass
             messages.success(request, "Sent mail to %s" % new_mail.to.name)
             context['mail_text'] = ''
         except ValidationError, e:
