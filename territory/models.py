@@ -6,7 +6,7 @@ from django.db.models import Q, F
 from django.utils.timezone import now
 from singleton_models.models import SingletonModel
 from hexgrid.models import Character
-from messaging.models import Message
+from messaging.models import Message, Mailbox
 from succession.models import Line
 
 ML = 256
@@ -342,9 +342,11 @@ class Action(models.Model):
                 and (not (self.support_type == MOVE and
                           self.target.has_unit and
                           self.support_to.has_unit and
-                          (
+                          ((
                           self.support_to.unit.faction == self.target.unit.faction or #Can't support someone else in destroying themselves
                           self.support_to.unit.faction == self.faction)
+                           and not Action.objects.filter(turn=self.turn, territory=self.support_to, type=MOVE,
+                                                         validation_level__gte=0))
                           # Can't support destroying yourself, even if it's someone else
             ))
                 and (not Action.objects.filter(
@@ -500,7 +502,8 @@ class GameBoard(SingletonModel):
                 if a.provides_support():
                     a.validate(V_SUCCESS)
                 elif a.support_to and a.support_to.has_unit and a.support_to.unit.faction and a.target.has_unit and (
-                a.target.unit.faction == a.support_to.unit.faction or a.support_to.unit.faction == a.faction):
+                a.target.unit.faction == a.support_to.unit.faction or a.support_to.unit.faction == a.faction) and not \
+                acts().filter(territory=a.support_to, type=MOVE):
                     # Can't support the destruction of your own unit, or someone else's destruction of theirs
                     a.validate(F_NOSUPPDESTROY)
                 else:
@@ -515,6 +518,7 @@ class GameBoard(SingletonModel):
                     continue
                 else:
                     resolve_conflict(acts().filter(Q(Q(target=a.territory) & Q(type=MOVE)) | Q(id=a.id)))
+                    resolve_conflict(acts().filter(Q(Q(target=b.territory) & Q(type=MOVE)) | Q(id=b.id)))
                     continue
             if not (Unit.live_units().filter(territory=a.target).exists() or acts().filter(target=a.target).exclude(
                 id=a.id).exists()):
@@ -659,9 +663,9 @@ class GameBoard(SingletonModel):
                     d.alive = False
                     d.save()
                 try:
-                    Message.mail_line(faction.controller, "%s units disbanded" % disbandees.count(), "You were over your cap, so units in the following territories were disbanded:\n%s" % "\n".join(disbandees.values_list('territory__name', flat=True)))
-                except:
-                    pass
+                    Message.mail_line(faction.controller, "%s units disbanded" % disbandees.count(), "You were over your cap, so units in the following territories were disbanded:\n%s" % "\n".join([d.territory.name for d in list(disbandees)]))
+                except Exception, e:
+                    print e, type(e), e.message
 
     def mail_results(self):
         for faction in Faction.objects.all():
