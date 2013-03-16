@@ -417,7 +417,6 @@ def resolve_conflict(opponents):
     """
     Resolves a multi-party conflict, sets validation level appropriately, and returns the winner.
     """
-
     if not opponents: return None
     elif len(opponents) == 1:
         opponents[0].validate(V_SUCCESS)
@@ -437,7 +436,8 @@ def resolve_conflict(opponents):
                 else:
                     a.validate(V_SUCCESS)
     else:
-        opps[0].validate(V_SUCCESS)
+        if opps[0].validation_level >= V_PRELIM:
+            opps[0].validate(V_SUCCESS)
         for a in opponents:
             if a == opps[0]: continue
             a.validate(F_LOSE)
