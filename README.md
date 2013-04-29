@@ -3,7 +3,7 @@ Consortium
 
 This was the webapp for the Assassins' Guild ten-day Consortium, which ran in March 2013.
 
-You have permission to use it, or derivatives thereof, for your MIT Assasins' Guild game, subject to the following disclaimer: 
+You have permission to use it, or derivatives thereof, for your MIT Assassins' Guild game, subject to the following disclaimer: 
 
 THIS CODE COMES WITH NO WARRANTY OR PROMISE OF FUNCTIONALITY WHATSOEVER. IT IS ALMOST CERTAINLY INSECURE. IT MAY BREAK ON DAY EIGHT, REVEAL SECRETS TO YOUR PLAYERS, COMPROMISE YOUR SERVER, AND KICK YOUR PUPPY. NEITHER THE AUTHORS NOR THE MIT ASSASSINS' GUILD ASSUME ANY LIABILITY WHATSOEVER FOR ANYTHING YOU DO WITH THIS CODE.
 
